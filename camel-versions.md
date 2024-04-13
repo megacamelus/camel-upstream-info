@@ -2,245 +2,245 @@
 
 # Apache Camel 4
 
-- Version 4.5.0 was released on 2024-03-28.
-- Version 4.4.0 was released on 2024-02-12.
-- Version 4.3.0 was released on 2023-12-11.
-- Version 4.2.0 was released on 2023-11-10.
-- Version 4.1.0 was released on 2023-10-06.
-- Version 4.0.4 was released on 2024-01-27.
-- Version 4.0.3 was released on 2023-11-14.
-- Version 4.0.2 was released on 2023-10-22.
-- Version 4.0.1 was released on 2023-09-22.
-- Version 4.0.0 was released on 2023-08-10.
-- Version 4.0.0-RC2 was released on 2023-07-25.
-- Version 4.0.0-RC1 was released on 2023-06-28.
-- Version 4.0.0-M3 was released on 2023-04-28.
-- Version 4.0.0-M2 was released on 2023-03-06.
-- Version 4.0.0-M1 was released on 2023-01-31.
+- Apache Camel 4.5.0 was released on 2024-03-28.
+- Apache Camel 4.4.0 was released on 2024-02-12.
+- Apache Camel 4.3.0 was released on 2023-12-11.
+- Apache Camel 4.2.0 was released on 2023-11-10.
+- Apache Camel 4.1.0 was released on 2023-10-06.
+- Apache Camel 4.0.4 was released on 2024-01-27.
+- Apache Camel 4.0.3 was released on 2023-11-14.
+- Apache Camel 4.0.2 was released on 2023-10-22.
+- Apache Camel 4.0.1 was released on 2023-09-22.
+- Apache Camel 4.0.0 was released on 2023-08-10.
+- Apache Camel 4.0.0-RC2 was released on 2023-07-25.
+- Apache Camel 4.0.0-RC1 was released on 2023-06-28.
+- Apache Camel 4.0.0-M3 was released on 2023-04-28.
+- Apache Camel 4.0.0-M2 was released on 2023-03-06.
+- Apache Camel 4.0.0-M1 was released on 2023-01-31.
 
 # Apache Camel 3
 
-- Version 3.22.1 was released on 2024-01-25.
-- Version 3.22.0 was released on 2023-12-19.
-- Version 3.21.4 was released on 2024-01-24.
-- Version 3.21.3 was released on 2023-12-09.
-- Version 3.21.2 was released on 2023-10-23.
-- Version 3.21.1 was released on 2023-09-24.
-- Version 3.21.0 was released on 2023-06-23.
-- Version 3.20.9 was released on 2023-12-08.
-- Version 3.20.8 was released on 2023-10-26.
-- Version 3.20.7 was released on 2023-09-26.
-- Version 3.20.6 was released on 2023-06-14.
-- Version 3.20.5 was released on 2023-05-22.
-- Version 3.20.4 was released on 2023-04-21.
-- Version 3.20.3 was released on 2023-03-25.
-- Version 3.20.2 was released on 2023-02-03.
-- Version 3.20.1 was released on 2023-01-03.
-- Version 3.20.0 was released on 2022-12-16.
-- Version 3.19.0 was released on 2022-09-29.
-- Version 3.18.8 was released on 2023-06-10.
-- Version 3.18.7 was released on 2023-05-21.
-- Version 3.18.6 was released on 2023-03-29.
-- Version 3.18.5 was released on 2023-01-20.
-- Version 3.18.4 was released on 2022-11-25.
-- Version 3.18.3 was released on 2022-10-22.
-- Version 3.18.2 was released on 2022-09-05.
-- Version 3.18.1 was released on 2022-08-05.
-- Version 3.18.0 was released on 2022-07-02.
-- Version 3.17.0 was released on 2022-05-15.
-- Version 3.16.0 was released on 2022-03-22.
-- Version 3.15.0 was released on 2022-01-31.
-- Version 3.14.10 was released on 2023-11-04.
-- Version 3.14.9 was released on 2023-06-13.
-- Version 3.14.8 was released on 2023-05-23.
-- Version 3.14.7 was released on 2022-12-13.
-- Version 3.14.6 was released on 2022-10-31.
-- Version 3.14.5 was released on 2022-08-16.
-- Version 3.14.4 was released on 2022-06-25.
-- Version 3.14.3 was released on 2022-04-30.
-- Version 3.14.2 was released on 2022-03-03.
-- Version 3.14.1 was released on 2022-01-23.
-- Version 3.14.0 was released on 2021-12-12.
-- Version 3.13.0 was released on 2021-11-08.
-- Version 3.12.0 was released on 2021-09-28.
-- Version 3.11.7 was released on 2022-05-01.
-- Version 3.11.6 was released on 2022-03-09.
-- Version 3.11.5 was released on 2021-12-24.
-- Version 3.11.4 was released on 2021-11-17.
-- Version 3.11.3 was released on 2021-10-07.
-- Version 3.11.2 was released on 2021-09-09.
-- Version 3.11.1 was released on 2021-08-01.
-- Version 3.11.0 was released on 2021-06-23.
-- Version 3.10.0 was released on 2021-05-15.
-- Version 3.9.0 was released on 2021-03-22.
-- Version 3.8.0 was released on 2021-02-09.
-- Version 3.7.7 was released on 2021-12-17.
-- Version 3.7.6 was released on 2021-09-29.
-- Version 3.7.5 was released on 2021-07-06.
-- Version 3.7.4 was released on 2021-04-29.
-- Version 3.7.3 was released on 2021-03-05.
-- Version 3.7.2 was released on 2021-02-04.
-- Version 3.7.1 was released on 2021-01-17.
-- Version 3.7.0 was released on 2020-12-11.
-- Version 3.6.0 was released on 2020-10-16.
-- Version 3.5.0 was released on 2020-08-31.
-- Version 3.4.6 was released on 2021-06-17.
-- Version 3.4.5 was released on 2020-12-18.
-- Version 3.4.4 was released on 2020-09-22.
-- Version 3.4.3 was released on 2020-08-10.
-- Version 3.4.2 was released on 2020-07-19.
-- Version 3.4.1 was released on 2020-07-12.
-- Version 3.4.0 was released on 2020-06-14.
-- Version 3.3.0 was released on 2020-05-10.
-- Version 3.2.0 was released on 2020-04-01.
-- Version 3.1.0 was released on 2020-02-20.
-- Version 3.0.1 was released on 2020-01-11.
-- Version 3.0.0 was released on 2019-11-24.
-- Version 3.0.0-RC3 was released on 2019-10-20.
-- Version 3.0.0-RC2 was released on 2019-10-01.
-- Version 3.0.0-RC1 was released on 2019-08-26.
-- Version 3.0.0-M4 was released on 2019-07-06.
-- Version 3.0.0-M3 was released on 2019-06-04.
-- Version 3.0.0-M2 was released on 2019-03-24.
-- Version 3.0.0-M1 was released on 2019-02-17.
+- Apache Camel 3.22.1 was released on 2024-01-25.
+- Apache Camel 3.22.0 was released on 2023-12-19.
+- Apache Camel 3.21.4 was released on 2024-01-24.
+- Apache Camel 3.21.3 was released on 2023-12-09.
+- Apache Camel 3.21.2 was released on 2023-10-23.
+- Apache Camel 3.21.1 was released on 2023-09-24.
+- Apache Camel 3.21.0 was released on 2023-06-23.
+- Apache Camel 3.20.9 was released on 2023-12-08.
+- Apache Camel 3.20.8 was released on 2023-10-26.
+- Apache Camel 3.20.7 was released on 2023-09-26.
+- Apache Camel 3.20.6 was released on 2023-06-14.
+- Apache Camel 3.20.5 was released on 2023-05-22.
+- Apache Camel 3.20.4 was released on 2023-04-21.
+- Apache Camel 3.20.3 was released on 2023-03-25.
+- Apache Camel 3.20.2 was released on 2023-02-03.
+- Apache Camel 3.20.1 was released on 2023-01-03.
+- Apache Camel 3.20.0 was released on 2022-12-16.
+- Apache Camel 3.19.0 was released on 2022-09-29.
+- Apache Camel 3.18.8 was released on 2023-06-10.
+- Apache Camel 3.18.7 was released on 2023-05-21.
+- Apache Camel 3.18.6 was released on 2023-03-29.
+- Apache Camel 3.18.5 was released on 2023-01-20.
+- Apache Camel 3.18.4 was released on 2022-11-25.
+- Apache Camel 3.18.3 was released on 2022-10-22.
+- Apache Camel 3.18.2 was released on 2022-09-05.
+- Apache Camel 3.18.1 was released on 2022-08-05.
+- Apache Camel 3.18.0 was released on 2022-07-02.
+- Apache Camel 3.17.0 was released on 2022-05-15.
+- Apache Camel 3.16.0 was released on 2022-03-22.
+- Apache Camel 3.15.0 was released on 2022-01-31.
+- Apache Camel 3.14.10 was released on 2023-11-04.
+- Apache Camel 3.14.9 was released on 2023-06-13.
+- Apache Camel 3.14.8 was released on 2023-05-23.
+- Apache Camel 3.14.7 was released on 2022-12-13.
+- Apache Camel 3.14.6 was released on 2022-10-31.
+- Apache Camel 3.14.5 was released on 2022-08-16.
+- Apache Camel 3.14.4 was released on 2022-06-25.
+- Apache Camel 3.14.3 was released on 2022-04-30.
+- Apache Camel 3.14.2 was released on 2022-03-03.
+- Apache Camel 3.14.1 was released on 2022-01-23.
+- Apache Camel 3.14.0 was released on 2021-12-12.
+- Apache Camel 3.13.0 was released on 2021-11-08.
+- Apache Camel 3.12.0 was released on 2021-09-28.
+- Apache Camel 3.11.7 was released on 2022-05-01.
+- Apache Camel 3.11.6 was released on 2022-03-09.
+- Apache Camel 3.11.5 was released on 2021-12-24.
+- Apache Camel 3.11.4 was released on 2021-11-17.
+- Apache Camel 3.11.3 was released on 2021-10-07.
+- Apache Camel 3.11.2 was released on 2021-09-09.
+- Apache Camel 3.11.1 was released on 2021-08-01.
+- Apache Camel 3.11.0 was released on 2021-06-23.
+- Apache Camel 3.10.0 was released on 2021-05-15.
+- Apache Camel 3.9.0 was released on 2021-03-22.
+- Apache Camel 3.8.0 was released on 2021-02-09.
+- Apache Camel 3.7.7 was released on 2021-12-17.
+- Apache Camel 3.7.6 was released on 2021-09-29.
+- Apache Camel 3.7.5 was released on 2021-07-06.
+- Apache Camel 3.7.4 was released on 2021-04-29.
+- Apache Camel 3.7.3 was released on 2021-03-05.
+- Apache Camel 3.7.2 was released on 2021-02-04.
+- Apache Camel 3.7.1 was released on 2021-01-17.
+- Apache Camel 3.7.0 was released on 2020-12-11.
+- Apache Camel 3.6.0 was released on 2020-10-16.
+- Apache Camel 3.5.0 was released on 2020-08-31.
+- Apache Camel 3.4.6 was released on 2021-06-17.
+- Apache Camel 3.4.5 was released on 2020-12-18.
+- Apache Camel 3.4.4 was released on 2020-09-22.
+- Apache Camel 3.4.3 was released on 2020-08-10.
+- Apache Camel 3.4.2 was released on 2020-07-19.
+- Apache Camel 3.4.1 was released on 2020-07-12.
+- Apache Camel 3.4.0 was released on 2020-06-14.
+- Apache Camel 3.3.0 was released on 2020-05-10.
+- Apache Camel 3.2.0 was released on 2020-04-01.
+- Apache Camel 3.1.0 was released on 2020-02-20.
+- Apache Camel 3.0.1 was released on 2020-01-11.
+- Apache Camel 3.0.0 was released on 2019-11-24.
+- Apache Camel 3.0.0-RC3 was released on 2019-10-20.
+- Apache Camel 3.0.0-RC2 was released on 2019-10-01.
+- Apache Camel 3.0.0-RC1 was released on 2019-08-26.
+- Apache Camel 3.0.0-M4 was released on 2019-07-06.
+- Apache Camel 3.0.0-M3 was released on 2019-06-04.
+- Apache Camel 3.0.0-M2 was released on 2019-03-24.
+- Apache Camel 3.0.0-M1 was released on 2019-02-17.
 
 ## Apache Camel 2
 
-- Version 2.25.4 was released on 2021-05-24.
-- Version 2.25.3 was released on 2020-12-20.
-- Version 2.25.2 was released on 2020-07-18.
-- Version 2.25.1 was released on 2020-04-12.
-- Version 2.25.0 was released on 2020-01-19.
-- Version 2.24.3 was released on 2019-12-19.
-- Version 2.24.2 was released on 2019-09-08.
-- Version 2.24.1 was released on 2019-06-20.
-- Version 2.24.0 was released on 2019-05-06.
-- Version 2.23.4 was released on 2019-09-15.
-- Version 2.23.3 was released on 2019-06-09.
-- Version 2.23.2 was released on 2019-04-06.
-- Version 2.23.1 was released on 2019-01-12.
-- Version 2.23.0 was released on 2018-11-24.
-- Version 2.22.5 was released on 2019-06-08.
-- Version 2.22.4 was released on 2019-04-07.
-- Version 2.22.3 was released on 2019-01-19.
-- Version 2.22.2 was released on 2018-11-01.
-- Version 2.22.1 was released on 2018-09-02.
-- Version 2.22.0 was released on 2018-06-29.
-- Version 2.21.5 was released on 2019-02-02.
-- Version 2.21.4 was released on 2019-01-06.
-- Version 2.21.3 was released on 2018-10-21.
-- Version 2.21.2 was released on 2018-07-16.
-- Version 2.21.1 was released on 2018-04-29.
-- Version 2.21.0 was released on 2018-03-11.
-- Version 2.20.4 was released on 2018-07-21.
-- Version 2.20.3 was released on 2018-03-25.
-- Version 2.20.2 was released on 2018-01-22.
-- Version 2.20.1 was released on 2017-11-10.
-- Version 2.20.0 was released on 2017-10-07.
-- Version 2.19.5 was released on 2018-03-24.
-- Version 2.19.4 was released on 2017-11-01.
-- Version 2.19.3 was released on 2017-09-10.
-- Version 2.19.2 was released on 2017-07-28.
-- Version 2.19.1 was released on 2017-06-11.
-- Version 2.19.0 was released on 2017-04-30.
-- Version 2.18.5 was released on 2017-09-21.
-- Version 2.18.4 was released on 2017-05-20.
-- Version 2.18.3 was released on 2017-03-08.
-- Version 2.18.2 was released on 2017-01-22.
-- Version 2.18.1 was released on 2016-11-27.
-- Version 2.18.0 was released on 2016-10-05.
-- Version 2.17.7 was released on 2017-05-14.
-- Version 2.17.6 was released on 2017-03-05.
-- Version 2.17.5 was released on 2017-01-18.
-- Version 2.17.4 was released on 2016-11-23.
-- Version 2.17.3 was released on 2016-08-04.
-- Version 2.17.2 was released on 2016-06-26.
-- Version 2.17.1 was released on 2016-05-01.
-- Version 2.17.0 was released on 2016-03-22.
-- Version 2.16.5 was released on 2016-12-16.
-- Version 2.16.4 was released on 2016-09-19.
-- Version 2.16.3 was released on 2016-04-03.
-- Version 2.16.2 was released on 2016-01-22.
-- Version 2.16.1 was released on 2015-11-17.
-- Version 2.16.0 was released on 2015-10-05.
-- Version 2.15.6 was released on 2016-03-27.
-- Version 2.15.5 was released on 2015-11-23.
-- Version 2.15.4 was released on 2015-10-23.
-- Version 2.15.3 was released on 2015-08-15.
-- Version 2.15.2 was released on 2015-04-29.
-- Version 2.15.1 was released on 2015-03-28.
-- Version 2.15.0 was released on 2015-03-07.
-- Version 2.14.4 was released on 2015-11-06.
-- Version 2.14.3 was released on 2015-05-29.
-- Version 2.14.2 was released on 2015-03-03.
-- Version 2.14.1 was released on 2014-12-10.
-- Version 2.14.0 was released on 2014-09-15.
-- Version 2.13.4 was released on 2015-03-05.
-- Version 2.13.3 was released on 2014-10-28.
-- Version 2.13.2 was released on 2014-07-01.
-- Version 2.13.1 was released on 2014-05-07.
-- Version 2.13.0 was released on 2014-03-17.
-- Version 2.12.5 was released on 2014-10-24.
-- Version 2.12.4 was released on 2014-07-01.
-- Version 2.12.3 was released on 2014-02-21.
-- Version 2.12.2 was released on 2013-11-23.
-- Version 2.12.1 was released on 2013-09-18.
-- Version 2.12.0 was released on 2013-09-05.
-- Version 2.11.4 was released on 2014-02-15.
-- Version 2.11.3 was released on 2014-01-07.
-- Version 2.11.2 was released on 2013-09-19.
-- Version 2.11.1 was released on 2013-07-10.
-- Version 2.11.0 was released on 2013-04-17.
-- Version 2.10.7 was released on 2013-09-15.
-- Version 2.10.6 was released on 2013-07-03.
-- Version 2.10.5 was released on 2013-06-23.
-- Version 2.10.4 was released on 2013-02-22.
-- Version 2.10.3 was released on 2012-12-03.
-- Version 2.10.2 was released on 2012-10-11.
-- Version 2.10.1 was released on 2012-08-24.
-- Version 2.10.0 was released on 2012-06-28.
-- Version 2.9.8 was released on 2013-09-17.
-- Version 2.9.7 was released on 2013-04-24.
-- Version 2.9.6 was released on 2013-03-05.
-- Version 2.9.5 was released on 2012-11-29.
-- Version 2.9.4 was released on 2012-10-11.
-- Version 2.9.3 was released on 2012-08-24.
-- Version 2.9.2 was released on 2012-04-12.
-- Version 2.9.1 was released on 2012-03-01.
-- Version 2.8.6 was released on 2012-07-05.
-- Version 2.8.5 was released on 2012-04-23.
-- Version 2.8.4 was released on 2012-01-25.
-- Version 2.8.3 was released on 2011-11-17.
-- Version 2.8.2 was released on 2011-10-19.
-- Version 2.8.1 was released on 2011-09-06.
-- Version 2.8.0 was released on 2011-07-19.
-- Version 2.7.5 was released on 2012-04-23.
-- Version 2.7.4 was released on 2011-10-13.
-- Version 2.7.3 was released on 2011-07-13.
-- Version 2.7.2 was released on 2011-05-31.
-- Version 2.7.1 was released on 2011-04-08.
-- Version 2.7.0 was released on 2011-03-18.
-- Version 2.6.0 was released on 2011-01-25.
-- Version 2.5.0 was released on 2010-10-25.
-- Version 2.4.0 was released on 2010-07-12.
-- Version 2.3.0 was released on 2010-05-22.
-- Version 2.2.0 was released on 2010-02-11.
-- Version 2.1.0 was released on 2009-12-01.
-- Version 2.0.0 was released on 2009-08-18.
-- Version 2.0.0-M3 was released on 2009-07-20.
-- Version 2.0.0-M2 was released on 2009-06-12.
-- Version 2.0.0-M1 was released on 2009-03-16.
+- Apache Camel 2.25.4 was released on 2021-05-24.
+- Apache Camel 2.25.3 was released on 2020-12-20.
+- Apache Camel 2.25.2 was released on 2020-07-18.
+- Apache Camel 2.25.1 was released on 2020-04-12.
+- Apache Camel 2.25.0 was released on 2020-01-19.
+- Apache Camel 2.24.3 was released on 2019-12-19.
+- Apache Camel 2.24.2 was released on 2019-09-08.
+- Apache Camel 2.24.1 was released on 2019-06-20.
+- Apache Camel 2.24.0 was released on 2019-05-06.
+- Apache Camel 2.23.4 was released on 2019-09-15.
+- Apache Camel 2.23.3 was released on 2019-06-09.
+- Apache Camel 2.23.2 was released on 2019-04-06.
+- Apache Camel 2.23.1 was released on 2019-01-12.
+- Apache Camel 2.23.0 was released on 2018-11-24.
+- Apache Camel 2.22.5 was released on 2019-06-08.
+- Apache Camel 2.22.4 was released on 2019-04-07.
+- Apache Camel 2.22.3 was released on 2019-01-19.
+- Apache Camel 2.22.2 was released on 2018-11-01.
+- Apache Camel 2.22.1 was released on 2018-09-02.
+- Apache Camel 2.22.0 was released on 2018-06-29.
+- Apache Camel 2.21.5 was released on 2019-02-02.
+- Apache Camel 2.21.4 was released on 2019-01-06.
+- Apache Camel 2.21.3 was released on 2018-10-21.
+- Apache Camel 2.21.2 was released on 2018-07-16.
+- Apache Camel 2.21.1 was released on 2018-04-29.
+- Apache Camel 2.21.0 was released on 2018-03-11.
+- Apache Camel 2.20.4 was released on 2018-07-21.
+- Apache Camel 2.20.3 was released on 2018-03-25.
+- Apache Camel 2.20.2 was released on 2018-01-22.
+- Apache Camel 2.20.1 was released on 2017-11-10.
+- Apache Camel 2.20.0 was released on 2017-10-07.
+- Apache Camel 2.19.5 was released on 2018-03-24.
+- Apache Camel 2.19.4 was released on 2017-11-01.
+- Apache Camel 2.19.3 was released on 2017-09-10.
+- Apache Camel 2.19.2 was released on 2017-07-28.
+- Apache Camel 2.19.1 was released on 2017-06-11.
+- Apache Camel 2.19.0 was released on 2017-04-30.
+- Apache Camel 2.18.5 was released on 2017-09-21.
+- Apache Camel 2.18.4 was released on 2017-05-20.
+- Apache Camel 2.18.3 was released on 2017-03-08.
+- Apache Camel 2.18.2 was released on 2017-01-22.
+- Apache Camel 2.18.1 was released on 2016-11-27.
+- Apache Camel 2.18.0 was released on 2016-10-05.
+- Apache Camel 2.17.7 was released on 2017-05-14.
+- Apache Camel 2.17.6 was released on 2017-03-05.
+- Apache Camel 2.17.5 was released on 2017-01-18.
+- Apache Camel 2.17.4 was released on 2016-11-23.
+- Apache Camel 2.17.3 was released on 2016-08-04.
+- Apache Camel 2.17.2 was released on 2016-06-26.
+- Apache Camel 2.17.1 was released on 2016-05-01.
+- Apache Camel 2.17.0 was released on 2016-03-22.
+- Apache Camel 2.16.5 was released on 2016-12-16.
+- Apache Camel 2.16.4 was released on 2016-09-19.
+- Apache Camel 2.16.3 was released on 2016-04-03.
+- Apache Camel 2.16.2 was released on 2016-01-22.
+- Apache Camel 2.16.1 was released on 2015-11-17.
+- Apache Camel 2.16.0 was released on 2015-10-05.
+- Apache Camel 2.15.6 was released on 2016-03-27.
+- Apache Camel 2.15.5 was released on 2015-11-23.
+- Apache Camel 2.15.4 was released on 2015-10-23.
+- Apache Camel 2.15.3 was released on 2015-08-15.
+- Apache Camel 2.15.2 was released on 2015-04-29.
+- Apache Camel 2.15.1 was released on 2015-03-28.
+- Apache Camel 2.15.0 was released on 2015-03-07.
+- Apache Camel 2.14.4 was released on 2015-11-06.
+- Apache Camel 2.14.3 was released on 2015-05-29.
+- Apache Camel 2.14.2 was released on 2015-03-03.
+- Apache Camel 2.14.1 was released on 2014-12-10.
+- Apache Camel 2.14.0 was released on 2014-09-15.
+- Apache Camel 2.13.4 was released on 2015-03-05.
+- Apache Camel 2.13.3 was released on 2014-10-28.
+- Apache Camel 2.13.2 was released on 2014-07-01.
+- Apache Camel 2.13.1 was released on 2014-05-07.
+- Apache Camel 2.13.0 was released on 2014-03-17.
+- Apache Camel 2.12.5 was released on 2014-10-24.
+- Apache Camel 2.12.4 was released on 2014-07-01.
+- Apache Camel 2.12.3 was released on 2014-02-21.
+- Apache Camel 2.12.2 was released on 2013-11-23.
+- Apache Camel 2.12.1 was released on 2013-09-18.
+- Apache Camel 2.12.0 was released on 2013-09-05.
+- Apache Camel 2.11.4 was released on 2014-02-15.
+- Apache Camel 2.11.3 was released on 2014-01-07.
+- Apache Camel 2.11.2 was released on 2013-09-19.
+- Apache Camel 2.11.1 was released on 2013-07-10.
+- Apache Camel 2.11.0 was released on 2013-04-17.
+- Apache Camel 2.10.7 was released on 2013-09-15.
+- Apache Camel 2.10.6 was released on 2013-07-03.
+- Apache Camel 2.10.5 was released on 2013-06-23.
+- Apache Camel 2.10.4 was released on 2013-02-22.
+- Apache Camel 2.10.3 was released on 2012-12-03.
+- Apache Camel 2.10.2 was released on 2012-10-11.
+- Apache Camel 2.10.1 was released on 2012-08-24.
+- Apache Camel 2.10.0 was released on 2012-06-28.
+- Apache Camel 2.9.8 was released on 2013-09-17.
+- Apache Camel 2.9.7 was released on 2013-04-24.
+- Apache Camel 2.9.6 was released on 2013-03-05.
+- Apache Camel 2.9.5 was released on 2012-11-29.
+- Apache Camel 2.9.4 was released on 2012-10-11.
+- Apache Camel 2.9.3 was released on 2012-08-24.
+- Apache Camel 2.9.2 was released on 2012-04-12.
+- Apache Camel 2.9.1 was released on 2012-03-01.
+- Apache Camel 2.8.6 was released on 2012-07-05.
+- Apache Camel 2.8.5 was released on 2012-04-23.
+- Apache Camel 2.8.4 was released on 2012-01-25.
+- Apache Camel 2.8.3 was released on 2011-11-17.
+- Apache Camel 2.8.2 was released on 2011-10-19.
+- Apache Camel 2.8.1 was released on 2011-09-06.
+- Apache Camel 2.8.0 was released on 2011-07-19.
+- Apache Camel 2.7.5 was released on 2012-04-23.
+- Apache Camel 2.7.4 was released on 2011-10-13.
+- Apache Camel 2.7.3 was released on 2011-07-13.
+- Apache Camel 2.7.2 was released on 2011-05-31.
+- Apache Camel 2.7.1 was released on 2011-04-08.
+- Apache Camel 2.7.0 was released on 2011-03-18.
+- Apache Camel 2.6.0 was released on 2011-01-25.
+- Apache Camel 2.5.0 was released on 2010-10-25.
+- Apache Camel 2.4.0 was released on 2010-07-12.
+- Apache Camel 2.3.0 was released on 2010-05-22.
+- Apache Camel 2.2.0 was released on 2010-02-11.
+- Apache Camel 2.1.0 was released on 2009-12-01.
+- Apache Camel 2.0.0 was released on 2009-08-18.
+- Apache Camel 2.0.0-M3 was released on 2009-07-20.
+- Apache Camel 2.0.0-M2 was released on 2009-06-12.
+- Apache Camel 2.0.0-M1 was released on 2009-03-16.
 
 # Apache Camel 1
 
-- Version 1.6.4 was released on 2010-12-12.
-- Version 1.6.3 was released on 2010-05-31.
-- Version 1.6.2 was released on 2009-11-18.
-- Version 1.6.1 was released on 2009-05-14.
-- Version 1.6.0 was released on 2009-02-17.
-- Version 1.5.0 was released on 2008-10-31.
-- Version 1.4.0 was released on 2008-07-22.
-- Version 1.3.0 was released on 2008-04-07.
-- Version 1.2.0 was released on 2007-10-16.
-- Version 1.1.0 was released on 2007-08-17.
-- Version 1.0.0 was released on 2007-07-02.
+- Apache Camel 1.6.4 was released on 2010-12-12.
+- Apache Camel 1.6.3 was released on 2010-05-31.
+- Apache Camel 1.6.2 was released on 2009-11-18.
+- Apache Camel 1.6.1 was released on 2009-05-14.
+- Apache Camel 1.6.0 was released on 2009-02-17.
+- Apache Camel 1.5.0 was released on 2008-10-31.
+- Apache Camel 1.4.0 was released on 2008-07-22.
+- Apache Camel 1.3.0 was released on 2008-04-07.
+- Apache Camel 1.2.0 was released on 2007-10-16.
+- Apache Camel 1.1.0 was released on 2007-08-17.
+- Apache Camel 1.0.0 was released on 2007-07-02.
