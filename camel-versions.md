@@ -1,5 +1,7 @@
 # Apache Camel Versions
 
+Dates are in the YYYY-MM-DD format (that is: 4-digit year, 2-digit month and 2-digit day)
+
 # Apache Camel 4
 
 - Apache Camel 4.5.0 was released on 2024-03-28.
