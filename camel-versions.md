@@ -1,9 +1,12 @@
 # Apache Camel Versions
 
-Dates are in the YYYY-MM-DD format (that is: 4-digit year, 2-digit month and 2-digit day)
-
 # Apache Camel 4
 
+The latest version of Apache Camel 4 is 4.6.0.
+
+Apache Camel 4 release dates were:
+
+- Apache Camel 4.6.0 was released on 2024-05-10.
 - Apache Camel 4.5.0 was released on 2024-03-28.
 - Apache Camel 4.4.0 was released on 2024-02-12.
 - Apache Camel 4.3.0 was released on 2023-12-11.
@@ -21,6 +24,10 @@ Dates are in the YYYY-MM-DD format (that is: 4-digit year, 2-digit month and 2-d
 - Apache Camel 4.0.0-M1 was released on 2023-01-31.
 
 # Apache Camel 3
+
+The latest version of Apache Camel 3 is 3.22.1.
+
+Apache Camel 3 release dates were:
 
 - Apache Camel 3.22.1 was released on 2024-01-25.
 - Apache Camel 3.22.0 was released on 2023-12-19.
@@ -107,6 +114,8 @@ Dates are in the YYYY-MM-DD format (that is: 4-digit year, 2-digit month and 2-d
 - Apache Camel 3.0.0-M1 was released on 2019-02-17.
 
 ## Apache Camel 2
+
+Apache Camel 2 release dates were:
 
 - Apache Camel 2.25.4 was released on 2021-05-24.
 - Apache Camel 2.25.3 was released on 2020-12-20.

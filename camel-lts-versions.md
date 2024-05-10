@@ -21,4 +21,6 @@
 
 ## Apache Camel 2
 
+Apache Camel 2 is not maintained anymore.
+
 - Versions 2.25.x
