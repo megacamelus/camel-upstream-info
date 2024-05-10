@@ -28,7 +28,7 @@ Apache Camel 4 release dates were:
 
 # Apache Camel 3
 
-The latest version of Apache Camel 3 is 3.22.1.
+The latest version of Apache Camel 3 is 3.22.2.
 
 Apache Camel 3 release dates were:
 
