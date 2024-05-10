@@ -29,6 +29,7 @@ The latest version of Apache Camel 3 is 3.22.1.
 
 Apache Camel 3 release dates were:
 
+- Apache Camel 3.22.2 was released on 2024-05-05.
 - Apache Camel 3.22.1 was released on 2024-01-25.
 - Apache Camel 3.22.0 was released on 2023-12-19.
 - Apache Camel 3.21.4 was released on 2024-01-24.
