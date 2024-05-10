@@ -8,10 +8,13 @@ Apache Camel 4 release dates were:
 
 - Apache Camel 4.6.0 was released on 2024-05-10.
 - Apache Camel 4.5.0 was released on 2024-03-28.
+- Apache Camel 4.4.2 was released on 2024-06-05.
+- Apache Camel 4.4.1 was released on 2024-03-14.
 - Apache Camel 4.4.0 was released on 2024-02-12.
 - Apache Camel 4.3.0 was released on 2023-12-11.
 - Apache Camel 4.2.0 was released on 2023-11-10.
 - Apache Camel 4.1.0 was released on 2023-10-06.
+- Apache Camel 4.0.5 was released on 2024-04-26.
 - Apache Camel 4.0.4 was released on 2024-01-27.
 - Apache Camel 4.0.3 was released on 2023-11-14.
 - Apache Camel 4.0.2 was released on 2023-10-22.
