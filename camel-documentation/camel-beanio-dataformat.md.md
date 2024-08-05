@@ -1,0 +1,93 @@
+# Beanio-dataformat.md
+
+**Since Camel 2.10**
+
+The BeanIO Data Format uses [BeanIO](https://beanio.github.io/) to
+handle flat payloads (such as XML, CSV, delimited, or fixed length
+formats).
+
+BeanIO is configured using a mapping XML file where you define the
+mapping from the flat format to Objects (POJOs). This mapping file is
+mandatory to use.
+
+# Options
+
+# Usage
+
+An example of a [mapping file is
+here](https://svn.apache.org/repos/asf/camel/trunk/components/camel-beanio/src/test/resources/org/apache/camel/dataformat/beanio/mappings.xml).
+
+To use the `BeanIODataFormat` you need to configure the data format with
+the mapping file, as well the name of the stream.
+
+This can be done as shown below. The streamName is `employeeFile`.
+
+Java  
+DataFormat format = new BeanIODataFormat(
+"org/apache/camel/dataformat/beanio/mappings.xml",
+"employeeFile");
+
+    // a route which uses the bean io data format to format the CSV data
+    // to java objects
+    from("direct:unmarshal")
+            .unmarshal(format)
+            // and then split the message body, so we get a message for each row
+            .split(body())
+            .to("mock:beanio-unmarshal");
+    
+    // convert a list of java objects back to flat format
+    from("direct:marshal")
+            .marshal(format)
+            .to("mock:beanio-marshal");
+
+XML  
+<route>  
+<from uri="direct:unmarshal"/>  
+<unmarshal>  
+<beanio mapping="org/apache/camel/dataformat/beanio/mappings.xml" streamName="employeeFile"/>  
+</unmarshal>  
+<split>  
+<simple>${body}</simple>  
+<to uri="mock:beanio-unmarshal"/>  
+</split>  
+</route>
+
+    <route>
+        <from uri="direct:marshal"/>
+        <marshal>
+            <beanio mapping="org/apache/camel/dataformat/beanio/mappings.xml" streamName="employeeFile"/>
+        </marshal>
+        <to uri="mock:beanio-marshal"/>
+    </route>
+
+To use the BeanIO data format in XML, you need to configure it using the
+`<beanio>` XML tag as shown below. The routes are similar to the example
+above.
+
+The first route is for transforming CSV data into a `List<Employee>`
+Java objects. Which we then split, so the mock endpoint receives a
+message for each row.
+
+The second route is for the reverse operation, to transform a
+`List<Employee>` into a stream of CSV data.
+
+The CSV data could, for example, be as below:
+
+    Joe,Smith,Developer,75000,10012009
+    Jane,Doe,Architect,80000,01152008
+    Jon,Anderson,Manager,85000,03182007
+
+# Dependencies
+
+To use BeanIO in your Camel routes, you need to add a dependency on
+**camel-beanio** which implements this data format.
+
+If you use Maven, you can just add the following to your pom.xml,
+substituting the version number for the latest \& greatest release (see
+the download page for the latest versions).
+
+    <dependency>
+      <groupId>org.apache.camel</groupId>
+      <artifactId>camel-beanio</artifactId>
+      <version>4.4.0</version>
+    </dependency>

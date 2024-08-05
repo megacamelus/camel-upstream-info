@@ -1,0 +1,298 @@
+# Azure-key-vault
+
+**Since Camel 3.17**
+
+**Only producer is supported**
+
+The azure-key-vault component that integrates [Azure Key
+Vault](https://azure.microsoft.com/en-us/services/key-vault/).
+
+Prerequisites
+
+You must have a valid Windows Azure Key Vault account. More information
+is available at [Azure Documentation
+Portal](https://docs.microsoft.com/azure/).
+
+# URI Format
+
+    <dependency>
+        <groupId>org.apache.camel</groupId>
+        <artifactId>camel-azure-key-vault</artifactId>
+        <version>x.x.x</version>
+        <!-- use the same version as your Camel core version -->
+    </dependency>
+
+# Usage
+
+## Using Azure Key Vault Property Function
+
+To use this function, you’ll need to provide credentials to Azure Key
+Vault Service as environment variables:
+
+    export $CAMEL_VAULT_AZURE_TENANT_ID=tenantId
+    export $CAMEL_VAULT_AZURE_CLIENT_ID=clientId
+    export $CAMEL_VAULT_AZURE_CLIENT_SECRET=clientSecret
+    export $CAMEL_VAULT_AZURE_VAULT_NAME=vaultName
+
+You can also configure the credentials in the `application.properties`
+file such as:
+
+    camel.vault.azure.tenantId = accessKey
+    camel.vault.azure.clientId = clientId
+    camel.vault.azure.clientSecret = clientSecret
+    camel.vault.azure.vaultName = vaultName
+
+Or you can enable the usage of Azure Identity in the following way:
+
+    export $CAMEL_VAULT_AZURE_IDENTITY_ENABLED=true
+    export $CAMEL_VAULT_AZURE_VAULT_NAME=vaultName
+
+You can also enable the usage of Azure Identity in the
+`application.properties` file such as:
+
+    camel.vault.azure.azureIdentityEnabled = true
+    camel.vault.azure.vaultName = vaultName
+
+At this point, you’ll be able to reference a property in the following
+way:
+
+    <camelContext>
+        <route>
+            <from uri="direct:start"/>
+            <to uri="{{azure:route}}"/>
+        </route>
+    </camelContext>
+
+Where route will be the name of the secret stored in the Azure Key Vault
+Service.
+
+You could specify a default value in case the secret is not present on
+Azure Key Vault Service:
+
+    <camelContext>
+        <route>
+            <from uri="direct:start"/>
+            <to uri="{{azure:route:default}}"/>
+        </route>
+    </camelContext>
+
+In this case, if the secret doesn’t exist, the property will fall back
+to "default" as value.
+
+Also, you are able to get a particular field of the secret, if you have,
+for example, a secret named database of this form:
+
+    {
+      "username": "admin",
+      "password": "password123",
+      "engine": "postgres",
+      "host": "127.0.0.1",
+      "port": "3128",
+      "dbname": "db"
+    }
+
+You’re able to do get single secret value in your route, like for
+example:
+
+    <camelContext>
+        <route>
+            <from uri="direct:start"/>
+            <log message="Username is {{azure:database/username}}"/>
+        </route>
+    </camelContext>
+
+Or re-use the property as part of an endpoint.
+
+You could specify a default value in case the particular field of secret
+is not present on Azure Key Vault:
+
+    <camelContext>
+        <route>
+            <from uri="direct:start"/>
+            <log message="Username is {{azure:database/username:admin}}"/>
+        </route>
+    </camelContext>
+
+In this case, if the secret doesn’t exist or the secret exists, but the
+username field is not part of the secret, the property will fall back to
+"admin" as value.
+
+There is also the syntax to get a particular version of the secret for
+both the approach, with field/default value specified or only with
+secret:
+
+    <camelContext>
+        <route>
+            <from uri="direct:start"/>
+            <to uri="{{azure:route@bf9b4f4b-8e63-43fd-a73c-3e2d3748b451}}"/>
+        </route>
+    </camelContext>
+
+This approach will return the RAW route secret with the version
+*bf9b4f4b-8e63-43fd-a73c-3e2d3748b451*.
+
+    <camelContext>
+        <route>
+            <from uri="direct:start"/>
+            <to uri="{{azure:route:default@bf9b4f4b-8e63-43fd-a73c-3e2d3748b451}}"/>
+        </route>
+    </camelContext>
+
+This approach will return the route secret value with version
+*bf9b4f4b-8e63-43fd-a73c-3e2d3748b451* or default value in case the
+secret doesn’t exist or the version doesn’t exist.
+
+    <camelContext>
+        <route>
+            <from uri="direct:start"/>
+            <log message="Username is {{azure:database/username:admin@bf9b4f4b-8e63-43fd-a73c-3e2d3748b451}}"/>
+        </route>
+    </camelContext>
+
+This approach will return the username field of the database secret with
+version *bf9b4f4b-8e63-43fd-a73c-3e2d3748b451* or admin in case the
+secret doesn’t exist or the version doesn’t exist.
+
+For the moment we are not considering the rotation function if any are
+applied, but it is in the work to be done.
+
+The only requirement is adding the camel-azure-key-vault jar to your
+Camel application.
+
+## Automatic Camel context reloading on Secret Refresh
+
+Being able to reload Camel context on a Secret Refresh could be done by
+specifying the usual credentials (the same used for Azure Key Vault
+Property Function).
+
+With Environment variables:
+
+    export $CAMEL_VAULT_AZURE_TENANT_ID=tenantId
+    export $CAMEL_VAULT_AZURE_CLIENT_ID=clientId
+    export $CAMEL_VAULT_AZURE_CLIENT_SECRET=clientSecret
+    export $CAMEL_VAULT_AZURE_VAULT_NAME=vaultName
+
+or as plain Camel main properties:
+
+    camel.vault.azure.tenantId = accessKey
+    camel.vault.azure.clientId = clientId
+    camel.vault.azure.clientSecret = clientSecret
+    camel.vault.azure.vaultName = vaultName
+
+If you want to use Azure Identity with environment variables, you can do
+in the following way:
+
+    export $CAMEL_VAULT_AZURE_IDENTITY_ENABLED=true
+    export $CAMEL_VAULT_AZURE_VAULT_NAME=vaultName
+
+You can also enable the usage of Azure Identity in the
+`application.properties` file such as:
+
+    camel.vault.azure.azureIdentityEnabled = true
+    camel.vault.azure.vaultName = vaultName
+
+To enable the automatic refresh, you’ll need additional properties to
+set:
+
+    camel.vault.azure.refreshEnabled=true
+    camel.vault.azure.refreshPeriod=60000
+    camel.vault.azure.secrets=Secret
+    camel.vault.azure.eventhubConnectionString=eventhub_conn_string
+    camel.vault.azure.blobAccountName=blob_account_name
+    camel.vault.azure.blobContainerName=blob_container_name
+    camel.vault.azure.blobAccessKey=blob_access_key
+    camel.main.context-reload-enabled = true
+
+where `camel.vault.azure.refreshEnabled` will enable the automatic
+context reload, `camel.vault.azure.refreshPeriod` is the interval of
+time between two different checks for update events and
+`camel.vault.azure.secrets` is a regex representing the secrets we want
+to track for updates.
+
+where `camel.vault.azure.eventhubConnectionString` is the eventhub
+connection string to get notification from,
+`camel.vault.azure.blobAccountName`,
+`camel.vault.azure.blobContainerName` and
+`camel.vault.azure.blobAccessKey` are the Azure Storage Blob parameters
+for the checkpoint store needed by Azure Eventhub.
+
+Note that `camel.vault.azure.secrets` is not mandatory: if not specified
+the task responsible for checking updates events will take into accounts
+or the properties with an `azure:` prefix.
+
+The only requirement is adding the camel-azure-key-vault jar to your
+Camel application.
+
+## Azure Key Vault Producer operations
+
+Azure Key Vault component provides the following operation on the
+producer side:
+
+-   createSecret
+
+-   getSecret
+
+-   deleteSecret
+
+-   purgeDeletedSecret
+
+# Examples
+
+## Producer Examples
+
+-   createSecret: this operation will create a secret in Azure Key Vault
+
+<!-- -->
+
+    from("direct:createSecret")
+        .setHeader(KeyVaultConstants.SECRET_NAME, "Test")
+        .setBody(constant("Test"))
+        .to("azure-key-vault://test123?clientId=RAW({{clientId}})&clientSecret=RAW({{clientSecret}})&tenantId=RAW({{tenantId}})")
+
+-   getSecret: this operation will get a secret from Azure Key Vault
+
+<!-- -->
+
+    from("direct:getSecret")
+        .setHeader(KeyVaultConstants.SECRET_NAME, "Test")
+        .to("azure-key-vault://test123?clientId=RAW({{clientId}})&clientSecret=RAW({{clientSecret}})&tenantId=RAW({{tenantId}})&operation=getSecret")
+
+-   deleteSecret: this operation will delete a Secret from Azure Key
+    Vault
+
+<!-- -->
+
+    from("direct:deleteSecret")
+        .setHeader(KeyVaultConstants.SECRET_NAME, "Test")
+        .to("azure-key-vault://test123?clientId=RAW({{clientId}})&clientSecret=RAW({{clientSecret}})&tenantId=RAW({{tenantId}})&operation=deleteSecret")
+
+-   purgeDeletedSecret: this operation will purge a deleted Secret from
+    Azure Key Vault
+
+<!-- -->
+
+    from("direct:purgeDeletedSecret")
+        .setHeader(KeyVaultConstants.SECRET_NAME, "Test")
+        .to("azure-key-vault://test123?clientId=RAW({{clientId}})&clientSecret=RAW({{clientSecret}})&tenantId=RAW({{tenantId}})&operation=purgeDeletedSecret")
+
+## Component Configurations
+
+  
+|Name|Description|Default|Type|
+|---|---|---|---|
+|lazyStartProducer|Whether the producer should be started lazy (on the first message). By starting lazy you can use this to allow CamelContext and routes to startup in situations where a producer may otherwise fail during starting and cause the route to fail being started. By deferring this startup to be lazy then the startup failure can be handled during routing messages via Camel's routing error handlers. Beware that when the first message is processed then creating and starting the producer may take a little time and prolong the total processing time of the processing.|false|boolean|
+|autowiredEnabled|Whether autowiring is enabled. This is used for automatic autowiring options (the option must be marked as autowired) by looking up in the registry to find if there is a single instance of matching type, which then gets configured on the component. This can be used for automatic configuring JDBC data sources, JMS connection factories, AWS Clients, etc.|true|boolean|
+
+## Endpoint Configurations
+
+  
+|Name|Description|Default|Type|
+|---|---|---|---|
+|vaultName|Vault Name to be used||string|
+|credentialType|Determines the credential strategy to adopt|CLIENT\_SECRET|object|
+|operation|Operation to be performed||object|
+|secretClient|Instance of Secret client||object|
+|lazyStartProducer|Whether the producer should be started lazy (on the first message). By starting lazy you can use this to allow CamelContext and routes to startup in situations where a producer may otherwise fail during starting and cause the route to fail being started. By deferring this startup to be lazy then the startup failure can be handled during routing messages via Camel's routing error handlers. Beware that when the first message is processed then creating and starting the producer may take a little time and prolong the total processing time of the processing.|false|boolean|
+|clientId|Client Id to be used||string|
+|clientSecret|Client Secret to be used||string|
+|tenantId|Tenant Id to be used||string|
