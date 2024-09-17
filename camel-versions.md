@@ -2,10 +2,12 @@
 
 # Apache Camel 4
 
-The latest version of Apache Camel 4 is 4.6.0.
+The latest version of Apache Camel 4 is 4.8.0.
 
 Apache Camel 4 release dates were:
 
+- Apache Camel 4.8.0 was released on 2024-09-15.
+- Apache Camel 4.7.0 was released on 2024-07-13.
 - Apache Camel 4.6.0 was released on 2024-05-10.
 - Apache Camel 4.5.0 was released on 2024-03-28.
 - Apache Camel 4.4.2 was released on 2024-05-06.
