@@ -1,5 +1,11 @@
-fetch-docs:
-	huggingface-cli download --repo-type dataset --local-dir camel-documentation megacamelus/camel-documentation
+clean:
 
-fetch-components:
-	huggingface-cli download --repo-type dataset --local-dir camel-components megacamelus/camel-components
+ITEMS=components eips beans languages documentation
+
+$(ITEMS):
+	@rm -f camel-$@/* || true
+	@huggingface-cli download --repo-type dataset --include="*.json" --include="*.md" --local-dir camel-$@ megacamelus/camel-$@
+
+fetch-all: $(ITEMS)
+
+.PHONY: fetch $(ITEMS)
