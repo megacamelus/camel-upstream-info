@@ -22,7 +22,9 @@ for this component.
 
 Where **topic** is the topic name
 
-# Configuring servers
+# Usage
+
+## Configuring servers
 
 You configure the NATS servers on either the component or the endpoint.
 
@@ -53,7 +55,7 @@ urls in the `application.properties` file
 
     camel.component.nats.servers=scott:tiger@someserver:4222,superman:123@someotherserver:42222
 
-# Request/Reply support
+## Request/Reply support
 
 The producer supports request/reply where it can wait for an expected
 reply message.
@@ -63,7 +65,7 @@ message as reply-message if required.
 
 # Examples
 
-**Producer example:**
+## Producer example
 
     from("direct:send")
       .to("nats:mytopic");
@@ -79,7 +81,7 @@ or your token
     from("direct:send")
       .to("nats:mytopic?servers=token@localhost:4222);
 
-**Consumer example:**
+## Consumer example
 
     from("nats:mytopic?maxMessages=5&queueName=myqueue")
       .to("mock:result");

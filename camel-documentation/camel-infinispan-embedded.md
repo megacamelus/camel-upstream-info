@@ -44,7 +44,9 @@ consumer allows listening for events from local infinispan cache.
 If no cache configuration is provided, embedded cacheContainer is
 created directly in the component.
 
-# Camel Operations
+# Usage
+
+## Camel Operations
 
 This section lists all available operations, along with their header
 information.
@@ -56,28 +58,28 @@ information.
 <col style="width: 60%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Operation Name</th>
 <th style="text-align: left;">Description</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td
 style="text-align: left;"><p><code>InfinispanOperation.PUT</code></p></td>
 <td style="text-align: left;"><pre><code>Put a key/value pair in the cache, optionally with expiration</code></pre></td>
 </tr>
-<tr>
+<tr class="even">
 <td
 style="text-align: left;"><p><code>InfinispanOperation.PUTASYNC</code></p></td>
 <td style="text-align: left;"><pre><code>Asynchronously puts a key/value pair in the cache, optionally with expiration</code></pre></td>
 </tr>
-<tr>
+<tr class="odd">
 <td
 style="text-align: left;"><p><code>InfinispanOperation.PUTIFABSENT</code></p></td>
 <td style="text-align: left;"><pre><code>Put a key/value pair in the cache if it did not exist, optionally with expiration</code></pre></td>
 </tr>
-<tr>
+<tr class="even">
 <td
 style="text-align: left;"><p><code>InfinispanOperation.PUTIFABSENTASYNC</code></p></td>
 <td style="text-align: left;"><pre><code>Asynchronously puts a key/value pair in the cache if it did not exist, optionally with expiration</code></pre></td>
@@ -114,18 +116,18 @@ Put Operations
 <col style="width: 60%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Operation Name</th>
 <th style="text-align: left;">Description</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td
 style="text-align: left;"><p><code>InfinispanOperation.PUTALL</code></p></td>
 <td style="text-align: left;"><pre><code>Adds multiple entries to a cache, optionally with expiration</code></pre></td>
 </tr>
-<tr>
+<tr class="even">
 <td
 style="text-align: left;"><p><code>CamelInfinispanOperation.PUTALLASYNC</code></p></td>
 <td style="text-align: left;"><pre><code>Asynchronously adds multiple entries to a cache, optionally with expiration</code></pre></td>
@@ -156,18 +158,18 @@ Put All Operations
 <col style="width: 60%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Operation Name</th>
 <th style="text-align: left;">Description</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td
 style="text-align: left;"><p><code>InfinispanOperation.GET</code></p></td>
 <td style="text-align: left;"><pre><code>Retrieve the value associated with a specific key from the cache</code></pre></td>
 </tr>
-<tr>
+<tr class="even">
 <td
 style="text-align: left;"><p><code>InfinispanOperation.GETORDEFAULT</code></p></td>
 <td style="text-align: left;"><pre><code>Retrieves the value, or default value, associated with a specific key from the cache</code></pre></td>
@@ -188,13 +190,13 @@ Get Operations
 <col style="width: 60%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Operation Name</th>
 <th style="text-align: left;">Description</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td
 style="text-align: left;"><p><code>InfinispanOperation.CONTAINSKEY</code></p></td>
 <td style="text-align: left;"><pre><code>Determines whether a cache contains a specific key</code></pre></td>
@@ -219,13 +221,13 @@ Contains Key Operation
 <col style="width: 60%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Operation Name</th>
 <th style="text-align: left;">Description</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td
 style="text-align: left;"><p><code>InfinispanOperation.CONTAINSVALUE</code></p></td>
 <td style="text-align: left;"><pre><code>Determines whether a cache contains a specific value</code></pre></td>
@@ -246,18 +248,18 @@ Contains Value Operation
 <col style="width: 60%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Operation Name</th>
 <th style="text-align: left;">Description</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td
 style="text-align: left;"><p><code>InfinispanOperation.REMOVE</code></p></td>
 <td style="text-align: left;"><pre><code>Removes an entry from a cache, optionally only if the value matches a given one</code></pre></td>
 </tr>
-<tr>
+<tr class="even">
 <td
 style="text-align: left;"><p><code>InfinispanOperation.REMOVEASYNC</code></p></td>
 <td style="text-align: left;"><pre><code>Asynchronously removes an entry from a cache, optionally only if the value matches a given one</code></pre></td>
@@ -286,18 +288,18 @@ Remove Operations
 <col style="width: 60%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Operation Name</th>
 <th style="text-align: left;">Description</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td
 style="text-align: left;"><p><code>InfinispanOperation.REPLACE</code></p></td>
 <td style="text-align: left;"><pre><code>Conditionally replaces an entry in the cache, optionally with expiration</code></pre></td>
 </tr>
-<tr>
+<tr class="even">
 <td
 style="text-align: left;"><p><code>InfinispanOperation.REPLACEASYNC</code></p></td>
 <td style="text-align: left;"><pre><code>Asynchronously conditionally replaces an entry in the cache, optionally with expiration</code></pre></td>
@@ -336,18 +338,18 @@ Replace Operations
 <col style="width: 60%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Operation Name</th>
 <th style="text-align: left;">Description</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td
 style="text-align: left;"><p><code>InfinispanOperation.CLEAR</code></p></td>
 <td style="text-align: left;"><pre><code>Clears the cache</code></pre></td>
 </tr>
-<tr>
+<tr class="even">
 <td
 style="text-align: left;"><p><code>InfinispanOperation.CLEARASYNC</code></p></td>
 <td style="text-align: left;"><pre><code>Asynchronously clears the cache</code></pre></td>
@@ -364,13 +366,13 @@ Clear Operations
 <col style="width: 60%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Operation Name</th>
 <th style="text-align: left;">Description</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td
 style="text-align: left;"><p><code>InfinispanOperation.SIZE</code></p></td>
 <td style="text-align: left;"><pre><code>Returns the number of entries in the cache</code></pre></td>
@@ -391,13 +393,13 @@ Size Operation
 <col style="width: 60%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Operation Name</th>
 <th style="text-align: left;">Description</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td
 style="text-align: left;"><p><code>InfinispanOperation.STATS</code></p></td>
 <td style="text-align: left;"><pre><code>Returns statistics about the cache</code></pre></td>
@@ -418,13 +420,13 @@ Stats Operation
 <col style="width: 60%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Operation Name</th>
 <th style="text-align: left;">Description</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td
 style="text-align: left;"><p><code>InfinispanOperation.QUERY</code></p></td>
 <td style="text-align: left;"><pre><code>Executes a query on the cache</code></pre></td>
@@ -500,7 +502,7 @@ previous value by default.
     class and annotate the resulting class with `@Listener` which can be
     found in the package `org.infinispan.notifications`.
 
-# Using the Infinispan based idempotent repository
+## Using the Infinispan based idempotent repository
 
 In this section, we will use the Infinispan based idempotent repository.
 
@@ -552,7 +554,7 @@ XML
 
 3.  Set the repository to the route
 
-# Using the Infinispan based aggregation repository
+## Using the Infinispan based aggregation repository
 
 In this section, we will use the Infinispan based aggregation
 repository.

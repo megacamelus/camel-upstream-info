@@ -12,7 +12,9 @@ Used for communicating with a remote Bonita BPM process engine.
 
 Where **operation** is the specific action to perform on Bonita.
 
-# Body content
+# Usage
+
+## Body content
 
 For the startCase operation, the input variables are retrieved from the
 body message. This one has to contain a `Map<String,Serializable>`.

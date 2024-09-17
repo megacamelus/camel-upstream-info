@@ -26,7 +26,7 @@ for this component:
 
 The OAI-PMH component supports both consumer and producer endpoints.
 
-# Producer Example
+## Producer Example
 
 The following is a basic example of how to send a request to an OAI-PMH
 Server.
@@ -38,7 +38,7 @@ in Java DSL
 The result is a set of pages in XML format with all the records of the
 consulted repository.
 
-# Consumer Example
+## Consumer Example
 
 The following is a basic example of how to receive all messages from an
 OAI-PMH Server. In Java DSL

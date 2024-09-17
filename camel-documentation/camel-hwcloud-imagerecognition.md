@@ -37,41 +37,41 @@ RAW(image\_base64\_value) to avoid encoding issue.
 <col style="width: 79%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Header</th>
 <th style="text-align: left;">Type</th>
 <th style="text-align: left;">Description</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td
 style="text-align: left;"><p><code>CamelHwCloudImageContent</code></p></td>
 <td style="text-align: left;"><p><code>String</code></p></td>
 <td style="text-align: left;"><p>The Base64 character string converted
 from the image</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td
 style="text-align: left;"><p><code>CamelHwCloudImageUrl</code></p></td>
 <td style="text-align: left;"><p><code>String</code></p></td>
 <td style="text-align: left;"><p>The URL of an image</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td
 style="text-align: left;"><p><code>CamelHwCloudImageTagLimit</code></p></td>
 <td style="text-align: left;"><p><code>Integer</code></p></td>
 <td style="text-align: left;"><p>The maximum number of the returned tags
 when the operation is tagRecognition</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td
 style="text-align: left;"><p><code>CamelHwCloudImageTagLanguage</code></p></td>
 <td style="text-align: left;"><p><code>String</code></p></td>
 <td style="text-align: left;"><p>The language of the returned tags when
 the operation is tagRecognition</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td
 style="text-align: left;"><p><code>CamelHwCloudImageThreshold</code></p></td>
 <td style="text-align: left;"><p><code>Integer</code></p></td>
@@ -80,7 +80,7 @@ style="text-align: left;"><p><code>CamelHwCloudImageThreshold</code></p></td>
 </tbody>
 </table>
 
-# List of Supported Image Recognition Operations
+## List of Supported Image Recognition Operations
 
 -   celebrityRecognition - to analyze and identify the political
     figures, stars and online celebrities contained in the picture, and
@@ -89,9 +89,9 @@ style="text-align: left;"><p><code>CamelHwCloudImageThreshold</code></p></td>
 -   tagRecognition - to recognize hundreds of scenes and thousands of
     objects and their properties in natural images
 
-# Inline Configuration of route
+## Inline Configuration of route
 
-## celebrityRecognition
+### celebrityRecognition
 
 Java DSL
 

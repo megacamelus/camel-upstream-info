@@ -46,7 +46,9 @@ There is also a `log` directly in the DSL, but it has a different
 purpose. It’s meant for lightweight and human logs. See more details at
 [LogEIP](#eips:log-eip.adoc).
 
-# Regular logger sample
+# Examples
+
+## Regular logger example
 
 In the route below we log the incoming orders at `DEBUG` level before
 the order is processed:
@@ -61,7 +63,7 @@ Or using Spring XML to define the route:
       <to uri="bean:processOrder"/>
     </route>
 
-# Regular logger with formatter sample
+## Regular logger with formatter example
 
 In the route below we log the incoming orders at `INFO` level before the
 order is processed.
@@ -69,7 +71,7 @@ order is processed.
     from("activemq:orders").
         to("log:com.mycompany.order?showAll=true&multiline=true").to("bean:processOrder");
 
-# Throughput logger with groupSize sample
+## Throughput logger with groupSize example
 
 In the route below we log the throughput of the incoming orders at
 `DEBUG` level grouped by 10 messages.
@@ -77,7 +79,7 @@ In the route below we log the throughput of the incoming orders at
     from("activemq:orders").
         to("log:com.mycompany.order?level=DEBUG&groupSize=10").to("bean:processOrder");
 
-# Throughput logger with groupInterval sample
+## Throughput logger with groupInterval example
 
 This route will result in message stats logged every 10s, with an
 initial 60s delay, and stats should be displayed even if there isn’t any
@@ -90,7 +92,7 @@ The following will be logged:
 
     "Received: 1000 new messages, with total 2000 so far. Last group took: 10000 millis which is: 100 messages per second. average: 100"
 
-# Masking sensitive information like password
+## Masking sensitive information like password
 
 You can enable security masking for logging by setting `logMask` flag to
 `true`. Note that this option also affects Log EIP.
@@ -122,7 +124,7 @@ put it into registry with the name `CamelCustomLogMask`. Note that the
 masking formatter must implement
 `org.apache.camel.spi.MaskingFormatter`.
 
-# Full customization of the logging output
+## Full customization of the logging output
 
 With the options outlined in the [#Formatting](#log-component.adoc)
 section, you can control much of the output of the logger. However, log
@@ -164,7 +166,7 @@ in either of two ways:
        <property name="exchangeFormatter" ref="myCustomFormatter" />
     </bean>
 
-## Convention over configuration:\*
+### Convention over configuration:\*
 
 Simply by registering a bean with the name `logFormatter`; the Log
 Component is intelligent enough to pick it up automatically.

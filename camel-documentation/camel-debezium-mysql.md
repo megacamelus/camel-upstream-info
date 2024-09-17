@@ -60,7 +60,7 @@ the state of the row after the event occurred as `Struct` format or
 
 Check below for more details.
 
-# Samples
+# Examples
 
 ## Consuming events
 

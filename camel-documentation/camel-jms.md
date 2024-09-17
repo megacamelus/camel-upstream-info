@@ -139,13 +139,6 @@ valid Java identifiers. One benefit of doing this is that you can then
 use your headers inside a JMS Selector (whose SQL92 syntax mandates Java
 identifier syntax for headers).
 
-A simple strategy for mapping header names is used by default. The
-strategy is to replace any dots and hyphens in the header name as shown
-below and to reverse the replacement when the header name is restored
-from a JMS message sent over the wire. What does this mean? No more
-losing method names to invoke on a bean component, no more losing the
-filename header for the File Component, and so on.
-
 The current header name strategy for accepting header names in Camel is
 as follows:
 
@@ -155,8 +148,34 @@ as follows:
 -   Hyphen is replaced by `\_HYPHEN_` and the replacement is reversed
     when Camel consumes the message
 
-You can configure many different properties on the JMS endpoint, which
-map to properties on the `JMSConfiguration` object.
+Camel comes with two implementations of `HeaderFilterStrategy`:
+
+-   `org.apache.camel.component.jms.ClassicJmsHeaderFilterStrategy` -
+    classic strategy used until Camel 4.8.
+
+-   `org.apache.camel.component.jms.JmsHeaderFilterStrategy` - newer
+    default strategy from Camel 4.9 onwards.
+
+### ClassicJmsHeaderFilterStrategy
+
+A classic strategy for mapping header names is used in Camel 4.8 or
+older.
+
+This strategy also includes Camel internal headers such as
+`CamelFileName` and `CamelBeanMethodName` which means that you can send
+Camel messages over JMS to another Camel instance and preserve this
+information. However, this also means that JMS messages contains
+properties with `Camel...` keys. This is not desirable always, and
+therefore we changed default from Camel 4.9 onwards.
+
+You can always configure a custom `HeaderFilterStrategy` to remove all
+`Camel...` headers in Camel 4.8 or older.
+
+### JmsHeaderFilterStrategy
+
+The new default strategy from Camel 4.9 onwards behaves similar to other
+components, where `Camel...` headers are removed, and only allowing
+explicit end user headers.
 
 **Mapping to Spring JMS**
 
@@ -164,7 +183,7 @@ Many of these properties map to properties on Spring JMS, which Camel
 uses for sending and receiving messages. So you can get more information
 about these properties by consulting the relevant Spring documentation.
 
-# Samples
+# Examples
 
 JMS is used in many examples for other components as well. But we
 provide a few samples below to get started.
@@ -200,7 +219,7 @@ Camel also has annotations, so you can use [POJO
 Consuming](#manual::pojo-consuming.adoc) and [POJO
 Producing](#manual::pojo-producing.adoc).
 
-## Spring DSL sample
+## Spring DSL Example
 
 The preceding examples use the Java DSL. Camel also supports Spring XML
 DSL. Here is the big spender sample using Spring DSL:
@@ -213,7 +232,7 @@ DSL. Here is the big spender sample using Spring DSL:
       </filter>
     </route>
 
-## Other samples
+## Other Examples
 
 JMS appears in many of the examples for other components and EIP
 patterns, as well in this Camel documentation. So feel free to browse
@@ -264,7 +283,9 @@ Here we only store the original cause error message in the transform.
 You can, however, use any Expression to send whatever you like. For
 example, you can invoke a method on a Bean or use a custom processor.
 
-# Message Mapping between JMS and Camel
+# Usage
+
+## Message Mapping between JMS and Camel
 
 Camel automatically maps messages between `javax.jms.Message` and
 `org.apache.camel.Message`.
@@ -279,65 +300,65 @@ following JMS message types:
 <col style="width: 79%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Body Type</th>
 <th style="text-align: left;">JMS Message</th>
 <th style="text-align: left;">Comment</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>String</code></p></td>
 <td
 style="text-align: left;"><p><code>javax.jms.TextMessage</code></p></td>
 <td style="text-align: left;"></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>org.w3c.dom.Node</code></p></td>
 <td
 style="text-align: left;"><p><code>javax.jms.TextMessage</code></p></td>
 <td style="text-align: left;"><p>The DOM will be converted to
 <code>String</code>.</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>Map</code></p></td>
 <td
 style="text-align: left;"><p><code>javax.jms.MapMessage</code></p></td>
 <td style="text-align: left;"></td>
 </tr>
-<tr>
+<tr class="even">
 <td
 style="text-align: left;"><p><code>java.io.Serializable</code></p></td>
 <td
 style="text-align: left;"><p><code>javax.jms.ObjectMessage</code></p></td>
 <td style="text-align: left;"></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>byte[]</code></p></td>
 <td
 style="text-align: left;"><p><code>javax.jms.BytesMessage</code></p></td>
 <td style="text-align: left;"></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>java.io.File</code></p></td>
 <td
 style="text-align: left;"><p><code>javax.jms.BytesMessage</code></p></td>
 <td style="text-align: left;"></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>java.io.Reader</code></p></td>
 <td
 style="text-align: left;"><p><code>javax.jms.BytesMessage</code></p></td>
 <td style="text-align: left;"></td>
 </tr>
-<tr>
+<tr class="even">
 <td
 style="text-align: left;"><p><code>java.io.InputStream</code></p></td>
 <td
 style="text-align: left;"><p><code>javax.jms.BytesMessage</code></p></td>
 <td style="text-align: left;"></td>
 </tr>
-<tr>
+<tr class="odd">
 <td
 style="text-align: left;"><p><code>java.nio.ByteBuffer</code></p></td>
 <td
@@ -356,29 +377,29 @@ following body type:
 <col style="width: 50%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">JMS Message</th>
 <th style="text-align: left;">Body Type</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td
 style="text-align: left;"><p><code>javax.jms.TextMessage</code></p></td>
 <td style="text-align: left;"><p><code>String</code></p></td>
 </tr>
-<tr>
+<tr class="even">
 <td
 style="text-align: left;"><p><code>javax.jms.BytesMessage</code></p></td>
 <td style="text-align: left;"><p><code>byte[]</code></p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td
 style="text-align: left;"><p><code>javax.jms.MapMessage</code></p></td>
 <td
 style="text-align: left;"><p><code>Map&lt;String, Object&gt;</code></p></td>
 </tr>
-<tr>
+<tr class="even">
 <td
 style="text-align: left;"><p><code>javax.jms.ObjectMessage</code></p></td>
 <td style="text-align: left;"><p><code>Object</code></p></td>
@@ -428,7 +449,7 @@ the header with the key `CamelJmsMessageType`. For example:
 The possible values are defined in the `enum` class,
 `org.apache.camel.jms.JmsMessageType`.
 
-# Message format when sending
+## Message format when sending
 
 The exchange sent over the JMS wire must conform to the [JMS Message
 spec](http://java.sun.com/j2ee/1.4/docs/api/javax/jms/Message.html).
@@ -466,7 +487,7 @@ at **DEBUG** level if it drops a given header value. For example:
     2008-07-09 06:43:04,046 [main           ] DEBUG JmsBinding
       - Ignoring non primitive header: order of class: org.apache.camel.component.jms.issues.DummyOrder with value: DummyOrder{orderId=333, itemId=4444, quantity=2}
 
-# Message format when receiving
+## Message format when receiving
 
 Camel adds the following properties to the `Exchange` when it receives a
 message:
@@ -478,14 +499,14 @@ message:
 <col style="width: 79%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Property</th>
 <th style="text-align: left;">Type</th>
 <th style="text-align: left;">Description</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td
 style="text-align: left;"><p><code>org.apache.camel.jms.replyDestination</code></p></td>
 <td
@@ -505,68 +526,68 @@ it receives a JMS message:
 <col style="width: 79%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Header</th>
 <th style="text-align: left;">Type</th>
 <th style="text-align: left;">Description</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>JMSCorrelationID</code></p></td>
 <td style="text-align: left;"><p><code>String</code></p></td>
 <td style="text-align: left;"><p>The JMS correlation ID.</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>JMSDeliveryMode</code></p></td>
 <td style="text-align: left;"><p><code>int</code></p></td>
 <td style="text-align: left;"><p>The JMS delivery mode.</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>JMSDestination</code></p></td>
 <td
 style="text-align: left;"><p><code>javax.jms.Destination</code></p></td>
 <td style="text-align: left;"><p>The JMS destination.</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>JMSExpiration</code></p></td>
 <td style="text-align: left;"><p><code>long</code></p></td>
 <td style="text-align: left;"><p>The JMS expiration.</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>JMSMessageID</code></p></td>
 <td style="text-align: left;"><p><code>String</code></p></td>
 <td style="text-align: left;"><p>The JMS unique message ID.</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>JMSPriority</code></p></td>
 <td style="text-align: left;"><p><code>int</code></p></td>
 <td style="text-align: left;"><p>The JMS priority (with 0 as the lowest
 priority and 9 as the highest).</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>JMSRedelivered</code></p></td>
 <td style="text-align: left;"><p><code>boolean</code></p></td>
 <td style="text-align: left;"><p>Whether the JMS message is
 redelivered.</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>JMSReplyTo</code></p></td>
 <td
 style="text-align: left;"><p><code>javax.jms.Destination</code></p></td>
 <td style="text-align: left;"><p>The JMS reply-to destination.</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>JMSTimestamp</code></p></td>
 <td style="text-align: left;"><p><code>long</code></p></td>
 <td style="text-align: left;"><p>The JMS timestamp.</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>JMSType</code></p></td>
 <td style="text-align: left;"><p><code>String</code></p></td>
 <td style="text-align: left;"><p>The JMS type.</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>JMSXGroupID</code></p></td>
 <td style="text-align: left;"><p><code>String</code></p></td>
 <td style="text-align: left;"><p>The JMS group ID.</p></td>
@@ -578,7 +599,7 @@ As all the above information is standard JMS, you can check the [JMS
 documentation](http://java.sun.com/javaee/5/docs/api/javax/jms/Message.html)
 for further details.
 
-# About using Camel to send and receive messages and JMSReplyTo
+## About using Camel to send and receive messages and JMSReplyTo
 
 The JMS component is complex, and you have to pay close attention to how
 it works in some cases. So this is a short summary of some
@@ -599,7 +620,7 @@ following conditions:
 All this can be a tad complex to understand and configure to support
 your use case.
 
-## JmsProducer
+### JmsProducer
 
 The `JmsProducer` behaves as follows, depending on configuration:
 
@@ -610,14 +631,14 @@ The `JmsProducer` behaves as follows, depending on configuration:
 <col style="width: 79%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Exchange Pattern</th>
 <th style="text-align: left;">Other options</th>
 <th style="text-align: left;">Description</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><em>InOut</em></p></td>
 <td style="text-align: left;"><p>-</p></td>
 <td style="text-align: left;"><p>Camel will expect a reply, set a
@@ -625,20 +646,20 @@ temporary <code>JMSReplyTo</code>, and after sending the message, it
 will start to listen for the reply message on the temporary
 queue.</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><em>InOut</em></p></td>
 <td style="text-align: left;"><p><code>JMSReplyTo</code> is set</p></td>
 <td style="text-align: left;"><p>Camel will expect a reply and, after
 sending the message, it will start to listen for the reply message on
 the specified <code>JMSReplyTo</code> queue.</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><em>InOnly</em></p></td>
 <td style="text-align: left;"><p>-</p></td>
 <td style="text-align: left;"><p>Camel will send the message and
 <strong>not</strong> expect a reply.</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><em>InOnly</em></p></td>
 <td style="text-align: left;"><p><code>JMSReplyTo</code> is set</p></td>
 <td style="text-align: left;"><p>By default, Camel discards the
@@ -655,7 +676,7 @@ thus continue after sending the message.</p></td>
 </tbody>
 </table>
 
-## JmsConsumer
+### JmsConsumer
 
 The `JmsConsumer` behaves as follows, depending on configuration:
 
@@ -666,26 +687,26 @@ The `JmsConsumer` behaves as follows, depending on configuration:
 <col style="width: 79%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Exchange Pattern</th>
 <th style="text-align: left;">Other options</th>
 <th style="text-align: left;">Description</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><em>InOut</em></p></td>
 <td style="text-align: left;"><p>-</p></td>
 <td style="text-align: left;"><p>Camel will send the reply back to the
 <code>JMSReplyTo</code> queue.</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><em>InOnly</em></p></td>
 <td style="text-align: left;"><p>-</p></td>
 <td style="text-align: left;"><p>Camel will not send a reply back, as
 the pattern is <em>InOnly</em>.</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>-</p></td>
 <td
 style="text-align: left;"><p><code>disableReplyTo=true</code></p></td>
@@ -706,7 +727,7 @@ This is useful if you want to send an `InOnly` message to a JMS topic:
        .to(ExchangePattern.InOnly, "activemq:topic:order")
        .to("bean:handleOrder");
 
-# Reuse endpoint and send to different destinations computed at runtime
+## Reuse endpoint and send to different destinations computed at runtime
 
 If you need to send messages to a lot of different JMS destinations, it
 makes sense to reuse a JMS endpoint and specify the real destination in
@@ -723,21 +744,21 @@ You can specify the destination in the following headers:
 <col style="width: 79%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Header</th>
 <th style="text-align: left;">Type</th>
 <th style="text-align: left;">Description</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td
 style="text-align: left;"><p><code>CamelJmsDestination</code></p></td>
 <td
 style="text-align: left;"><p><code>javax.jms.Destination</code></p></td>
 <td style="text-align: left;"><p>A destination object.</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td
 style="text-align: left;"><p><code>CamelJmsDestinationName</code></p></td>
 <td style="text-align: left;"><p><code>String</code></p></td>
@@ -777,7 +798,7 @@ them to the created JMS message to avoid the accidental loops in the
 routes (in scenarios when the message will be forwarded to another JMS
 endpoint).
 
-# Configuring different JMS providers
+## Configuring different JMS providers
 
 You can configure your JMS provider in Spring XML as follows:
 
@@ -796,7 +817,7 @@ This works by the SpringCamelContext lazily fetching components from the
 spring context for the scheme name you use for Endpoint URIs and having
 the Component resolve the endpoint URIs.
 
-## Using JNDI to find the ConnectionFactory
+### Using JNDI to find the ConnectionFactory
 
 If you are using a J2EE container, you might need to look up JNDI to
 find the JMS `ConnectionFactory` rather than use the usual `<bean>`
@@ -814,7 +835,7 @@ schema](http://static.springsource.org/spring/docs/3.0.x/spring-framework-refere
 in the Spring reference documentation for more details about JNDI
 lookup.
 
-# Concurrent Consuming
+## Concurrent Consuming
 
 A common requirement with JMS is to consume messages concurrently in
 multiple threads to make an application more responsive. You can set the
@@ -833,7 +854,7 @@ You can configure this option in one of the following ways:
 -   By invoking `setConcurrentConsumers()` directly on the
     `JmsEndpoint`.
 
-## Concurrent Consuming with async consumer
+### Concurrent Consuming with async consumer
 
 Notice that each concurrent consumer will only pick up the next
 available message from the JMS broker, when the current message has been
@@ -846,7 +867,7 @@ Engine). See more details in the table on top of the page about the
     from("jms:SomeQueue?concurrentConsumers=20&asyncConsumer=true").
       bean(MyClass.class);
 
-# Request-reply over JMS
+## Request-reply over JMS
 
 Camel supports Request Reply over JMS. In essence the MEP of the
 Exchange should be `InOut` when you send a message to a JMS queue.
@@ -863,7 +884,7 @@ summaries the options.
 <col style="width: 69%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Option</th>
 <th style="text-align: left;">Performance</th>
 <th style="text-align: left;">Cluster</th>
@@ -871,7 +892,7 @@ summaries the options.
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>Temporary</code></p></td>
 <td style="text-align: left;"><p>Fast</p></td>
 <td style="text-align: left;"><p>Yes</p></td>
@@ -881,7 +902,7 @@ queue, and automatic created by Camel. To use this, do
 can optionally configure <code>replyToType=Temporary</code> to make it
 stand out that temporary queues are in use.</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>Shared</code></p></td>
 <td style="text-align: left;"><p>Slow</p></td>
 <td style="text-align: left;"><p>Yes</p></td>
@@ -899,7 +920,7 @@ therefore not as fast as <code>Temporary</code> or
 <code>Exclusive</code> queues. See further below how to tweak this for
 better performance.</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>Exclusive</code></p></td>
 <td style="text-align: left;"><p>Fast</p></td>
 <td style="text-align: left;"><p>No (*Yes)</p></td>
@@ -922,7 +943,7 @@ a unique name per node, then you can run this in a clustered
 environment. As then the reply message will be sent back to that queue
 for the given node that awaits the reply message.</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td
 style="text-align: left;"><p><code>concurrentConsumers</code></p></td>
 <td style="text-align: left;"><p>Fast</p></td>
@@ -934,7 +955,7 @@ a range using the <code>concurrentConsumers</code> and
 That using <code>Shared</code> reply queues may not work as well with
 concurrent listeners, so use this option with care.</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td
 style="text-align: left;"><p><code>maxConcurrentConsumers</code></p></td>
 <td style="text-align: left;"><p>Fast</p></td>
@@ -972,7 +993,7 @@ this in Camel as shown below:
 In this route, we instruct Camel to route replies asynchronously using a
 thread pool with five threads.
 
-## Request-reply over JMS and using a shared fixed reply queue
+### Request-reply over JMS and using a shared fixed reply queue
 
 If you use a fixed reply queue when doing Request Reply over JMS as
 shown in the example below, then pay attention.
@@ -999,7 +1020,7 @@ Notice this will cause the Camel to send pull requests to the message
 broker more frequently, and thus require more network traffic.  
 It is generally recommended to use temporary queues if possible.
 
-## Request-reply over JMS and using an exclusive fixed reply queue
+### Request-reply over JMS and using an exclusive fixed reply queue
 
 In the previous example, Camel would anticipate the fixed reply queue
 named "bar" was shared, and thus it uses a `JMSSelector` to only consume
@@ -1038,7 +1059,7 @@ node in the cluster may pick up messages intended as a reply on another
 node. For clustered environments, it’s recommended to use shared reply
 queues instead.
 
-# Synchronizing clocks between senders and receivers
+## Synchronizing clocks between senders and receivers
 
 When doing messaging between systems, it is desirable that the systems
 have synchronized clocks. For example, when sending a
@@ -1053,7 +1074,7 @@ use the [timestamp
 plugin](http://activemq.apache.org/timestampplugin.html) to synchronize
 clocks.
 
-# About time to live
+## About time to live
 
 Read first above about synchronized clocks.
 
@@ -1113,7 +1134,7 @@ For example, to indicate a 5 sec., you set `timeToLive=5000`. The option
 also for InOnly messaging. The `requestTimeout` option is not being used
 for InOnly messaging.
 
-# Enabling Transacted Consumption
+## Enabling Transacted Consumption
 
 A common requirement is to consume from a queue in a transaction and
 then process the message using the Camel route. To do this, just ensure
@@ -1159,7 +1180,7 @@ more details about this kind of setup, see
 and
 [here](http://forum.springsource.org/showthread.php?123631-JMS-DMLC-not-caching%20connection-when-using-TX-despite-cacheLevel-CACHE_CONSUMER&p=403530&posted=1#post403530).
 
-# Using JMSReplyTo for late replies
+## Using JMSReplyTo for late replies
 
 When using Camel as a JMS listener, it sets an Exchange property with
 the value of the ReplyTo `javax.jms.Destination` object, having the key
@@ -1189,13 +1210,13 @@ For example:
         }
     }
 
-# Using a request timeout
+## Using a request timeout
 
 In the sample below we send a Request Reply style message Exchange (we
 use the `requestBody` method = `InOut`) to the slow queue for further
 processing in Camel, and we wait for a return reply:
 
-# Sending an InOnly message and keeping the JMSReplyTo header
+## Sending an InOnly message and keeping the JMSReplyTo header
 
 When sending to a [JMS](#jms-component.adoc) destination using
 **camel-jms**, the producer will use the MEP to detect if it is `InOnly`
@@ -1217,7 +1238,7 @@ For example, to send an `InOnly` message to the foo queue, but with a
 Notice we use `preserveMessageQos=true` to instruct Camel to keep the
 `JMSReplyTo` header.
 
-# Setting JMS provider options on the destination
+## Setting JMS provider options on the destination
 
 Some JMS providers, like IBM’s WebSphere MQ, need options to be set on
 the JMS destination. For example, you may need to specify the

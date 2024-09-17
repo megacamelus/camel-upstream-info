@@ -48,11 +48,11 @@ the scheme:
     pop3s://[username@]host[:port][?options]
     imaps://[username@]host[:port][?options]
 
-## Sample endpoints
+# Usage
 
 Typically, you specify a URI with login credentials as follows:
 
-**SMTP example**
+**SMTP endpoint example**
 
     smtp://[username@]host[:port][?password=somepwd]
 
@@ -67,17 +67,17 @@ For example:
 
 ## Component alias names
 
--   IMAP
+-   `IMAP`
 
--   IMAPs
+-   `IMAPs`
 
--   POP3s
+-   `POP3s`
 
--   POP3s
+-   `POP3s`
 
--   SMTP
+-   `SMTP`
 
--   SMTPs
+-   `SMTPs`
 
 ## Default ports
 
@@ -90,40 +90,40 @@ determines the port number to use based on the protocol.
 <col style="width: 89%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Protocol</th>
 <th style="text-align: left;">Default Port Number</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>SMTP</code></p></td>
 <td style="text-align: left;"><p><code>25</code></p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>SMTPS</code></p></td>
 <td style="text-align: left;"><p><code>465</code></p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>POP3</code></p></td>
 <td style="text-align: left;"><p><code>110</code></p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>POP3S</code></p></td>
 <td style="text-align: left;"><p><code>995</code></p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>IMAP</code></p></td>
 <td style="text-align: left;"><p><code>143</code></p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>IMAPS</code></p></td>
 <td style="text-align: left;"><p><code>993</code></p></td>
 </tr>
 </tbody>
 </table>
 
-# SSL support
+## SSL support
 
 The underlying mail framework is responsible for providing SSL support.
 You may either configure SSL/TLS support by completely specifying the
@@ -131,7 +131,7 @@ necessary Java Mail API configuration options, or you may provide a
 configured SSLContextParameters through the component or endpoint
 configuration.
 
-## Using the JSSE Configuration Utility
+### Using the JSSE Configuration Utility
 
 The mail component supports SSL/TLS configuration through the [Camel
 JSSE Configuration
@@ -167,7 +167,7 @@ Spring DSL based configuration of endpoint
     ...
     <to uri="smtps://smtp.google.com?username=user@gmail.com&password=password&sslContextParameters=#sslContextParameters"/>...
 
-## Configuring JavaMail Directly
+### Configuring JavaMail Directly
 
 Camel uses Jakarta JavaMail, which only trusts certificates issued by
 well-known Certificate Authorities (the default JVM trust
@@ -176,7 +176,7 @@ the CA certificates into the JVM’s Java trust/key store files, override
 the default JVM trust/key store files (see `SSLNOTES.txt` in JavaMail
 for details).
 
-# Mail Message Content
+## Mail Message Content
 
 Camel uses the message exchange’s IN body as the
 [MimeMessage](http://java.sun.com/javaee/5/docs/api/javax/mail/internet/MimeMessage.html)
@@ -211,7 +211,7 @@ able to get the message id of the
 [MimeMessage](http://java.sun.com/javaee/5/docs/api/javax/mail/internet/MimeMessage.html)
 with the key `CamelMailMessageId` from the Camel message header.
 
-# Headers take precedence over pre-configured recipients
+## Headers take precedence over pre-configured recipients
 
 The recipients specified in the message headers always take precedence
 over recipients pre-configured in the endpoint URI. The idea is that if
@@ -234,7 +234,7 @@ pre-configured settings.
     
     template.sendBodyAndHeaders("smtp://admin@localhost?to=info@mycompany.com", "Hello World", headers);
 
-# Multiple recipients for easier configuration
+## Multiple recipients for easier configuration
 
 It is possible to set multiple recipients using a comma-separated or a
 semicolon-separated list. This applies both to header settings and to
@@ -245,7 +245,7 @@ settings in an endpoint URI. For example:
 
 The preceding example uses a semicolon, `;`, as the separator character.
 
-# Setting sender name and email
+## Setting sender name and email
 
 You can specify recipients in the format, `name <email>`, to include
 both the name and the email address of the recipient.
@@ -260,13 +260,13 @@ For example, you define the following headers on the message:
     map.put("Bcc", "An Other <another@example.com>");
     map.put("Reply-To", "An Other <another@example.com>");
 
-# JavaMail API (ex SUN JavaMail)
+## JavaMail API (ex SUN JavaMail)
 
 [JavaMail API](https://java.net/projects/javamail/pages/Home) is used
-under the hood for consuming and producing mails.  
-We encourage end-users to consult these references when using either
-POP3 or IMAP protocol. Note particularly that POP3 has a much more
-limited set of features than IMAP.
+under the hood for consuming and producing mails. We encourage end-users
+to consult these references when using either POP3 or IMAP protocol.
+Note particularly that POP3 has a much more limited set of features than
+IMAP.
 
 -   [JavaMail POP3
     API](https://javamail.java.net/nonav/docs/api/com/sun/mail/pop3/package-summary.html)
@@ -277,7 +277,17 @@ limited set of features than IMAP.
 -   And generally about the [MAIL
     Flags](https://javamail.java.net/nonav/docs/api/javax/mail/Flags.html)
 
-# Samples
+## Polling Optimization
+
+The parameter maxMessagePerPoll and fetchSize allow you to restrict the
+number of messages that should be processed for each poll. These
+parameters should help to prevent bad performance when working with
+folders that contain a lot of messages. In previous versions, these
+parameters have been evaluated too late, so that big mailboxes could
+still cause performance problems. With Camel 3.1, these parameters are
+evaluated earlier during the poll to avoid these problems.
+
+# Examples
 
 We start with a simple route that sends the messages received from a JMS
 queue as emails. The email account is the `admin` account on
@@ -290,7 +300,7 @@ In the next sample, we poll a mailbox for new emails once every minute.
     from("imap://admin@mymailserver.com?password=secret&unseen=true&delay=60000")
         .to("seda://mails");
 
-# Sending mail with attachment sample
+## Sending mail with attachment
 
 **Attachments are not supported by all Camel components**
 
@@ -323,7 +333,7 @@ attachment.
     // and let it go (processes the exchange by sending the email)
     producer.process(exchange);
 
-# SSL sample
+## SSL example
 
 In this sample, we want to poll our Google Mail inbox for mails. To
 download mail onto a local mail client, Google Mail requires you to
@@ -346,7 +356,7 @@ progress in the logs:
     2008-05-08 06:32:12,171 DEBUG MailConsumer - Processing message: messageNumber=[332], from=[James Bond <007@mi5.co.uk>], to=YOUR_USERNAME@gmail.com], subject=[...
     2008-05-08 06:32:12,187 INFO  newmail - Exchange[MailMessage: messageNumber=[332], from=[James Bond <007@mi5.co.uk>], to=YOUR_USERNAME@gmail.com], subject=[...
 
-# Consuming mails with attachment sample
+## Consuming mails with attachment
 
 In this sample, we poll a mailbox and store all attachments from the
 mails as files. First, we define a route to poll the mailbox. As this
@@ -386,7 +396,7 @@ As you can see the API to handle attachments is a bit clunky, but it’s
 there, so you can get the `javax.activation.DataHandler` so you can
 handle the attachments using standard API.
 
-# How to split a mail message with attachments
+## How to split a mail message with attachments
 
 In this example, we consume mail messages which may have a number of
 attachments. What we want to do is to use the Splitter EIP per
@@ -401,7 +411,7 @@ The code is provided out of the box in Camel 2.10 onwards in the
 `camel-mail` component. The code is in the class:
 `org.apache.camel.component.mail.SplitAttachmentsExpression`, which you
 can find the source code
-[here](https://svn.apache.org/repos/asf/camel/trunk/components/camel-mail/src/main/java/org/apache/camel/component/mail/SplitAttachmentsExpression.java)
+[here](https://github.com/apache/camel/blob/main/components/camel-mail/src/main/java/org/apache/camel/component/mail/SplitAttachmentsExpression.java)
 
 In the Camel route, you then need to use this Expression in the route as
 shown below:
@@ -421,7 +431,7 @@ message body. This is done by creating the expression with boolean true
 
 And then use the expression with the splitter EIP.
 
-# Using custom SearchTerm
+## Using custom SearchTerm
 
 You can configure a `searchTerm` on the `MailEndpoint` which allows you
 to filter out unwanted mails.
@@ -489,17 +499,7 @@ allows you to build complex terms such as:
     
     SearchTerm term = builder.build();
 
-# Polling Optimization
-
-The parameter maxMessagePerPoll and fetchSize allow you to restrict the
-number of messages that should be processed for each poll. These
-parameters should help to prevent bad performance when working with
-folders that contain a lot of messages. In previous versions, these
-parameters have been evaluated too late, so that big mailboxes could
-still cause performance problems. With Camel 3.1, these parameters are
-evaluated earlier during the poll to avoid these problems.
-
-# Using headers with additional Java Mail Sender properties
+## Using headers with additional Java Mail Sender properties
 
 When sending mails, then you can provide dynamic java mail properties
 for the `JavaMailSender` from the Exchange as message headers with keys

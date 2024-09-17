@@ -59,7 +59,7 @@ The message body if is not `null` (in case of tombstones), it contains
 the state of the row after the event occurred as `String` JSON format,
 and you can unmarshal using Camel JSON Data Format.
 
-# Samples
+# Examples
 
 ## Consuming events
 

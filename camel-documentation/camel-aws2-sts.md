@@ -77,7 +77,9 @@ side:
 
 -   getFederationToken
 
-# Producer Examples
+# Examples
+
+## Producer Examples
 
 -   assumeRole: this operation will make an AWS user assume a different
     role temporary
@@ -106,7 +108,7 @@ side:
         .setHeader(STS2Constants.FEDERATED_NAME, constant("federation-account"))
         .to("aws2-sts://test?stsClient=#amazonSTSClient&operation=getSessionToken")
 
-# Using a POJO as body
+## Using a POJO as body
 
 Sometimes building an AWS Request can be complex because of multiple
 options. We introduce the possibility to use a POJO as the body. In AWS

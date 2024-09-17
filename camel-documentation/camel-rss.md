@@ -25,7 +25,9 @@ The component currently only supports consuming feeds.
 
 Where `rssUri` is the URI to the RSS feed to poll.
 
-# Exchange data types
+# Usage
+
+## Exchange data types
 
 Camel initializes the In body on the Exchange with a ROME `SyndFeed`.
 Depending on the value of the `splitEntries` flag, Camel returns either
@@ -38,20 +40,20 @@ a `SyndFeed` with one `SyndEntry` or a `java.util.List` of `SyndEntrys`.
 <col style="width: 79%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Option</th>
 <th style="text-align: left;">Value</th>
 <th style="text-align: left;">Behavior</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>splitEntries</code></p></td>
 <td style="text-align: left;"><p><code>true</code></p></td>
 <td style="text-align: left;"><p>A single entry from the current feed is
 set in the exchange.</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>splitEntries</code></p></td>
 <td style="text-align: left;"><p><code>false</code></p></td>
 <td style="text-align: left;"><p>The entire list of entries from the
@@ -69,7 +71,7 @@ following example will be resolved:
     from("rss:http://someserver.com/feeds/posts/default?alt=rss&splitEntries=false&delay=1000")
         .to("bean:rss");
 
-# Filtering entries
+## Filtering entries
 
 You can filter out entries using XPath, as shown in the data format
 section above. You can also exploit Camel’s Bean Integration to

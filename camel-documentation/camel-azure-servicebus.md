@@ -25,11 +25,11 @@ Portal](https://docs.microsoft.com/azure/).
         <!-- use the same version as your Camel core version -->
     </dependency>
 
-# Consumer and Producer
+# Usage
+
+## Consumer and Producer
 
 This component implements the Consumer and Producer.
-
-# Usage
 
 ## Authentication Information
 
@@ -84,18 +84,18 @@ In the consumer, the returned message body will be of type \`String.
 <col style="width: 89%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Operation</th>
 <th style="text-align: left;">Description</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>sendMessages</code></p></td>
 <td style="text-align: left;"><p>Sends a set of messages to a Service
 Bus queue or topic using a batched approach.</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>scheduleMessages</code></p></td>
 <td style="text-align: left;"><p>Sends a scheduled message to the Azure
 Service Bus entity this sender is connected to. A scheduled message is
@@ -113,18 +113,18 @@ time.</p></td>
 <col style="width: 89%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Operation</th>
 <th style="text-align: left;">Description</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>receiveMessages</code></p></td>
 <td style="text-align: left;"><p>Receives an &lt;b&gt;infinite&lt;/b&gt;
 stream of messages from the Service Bus entity.</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>peekMessages</code></p></td>
 <td style="text-align: left;"><p>Reads the next batch of active messages
 without changing the state of the receiver or the message
@@ -133,7 +133,7 @@ source.</p></td>
 </tbody>
 </table>
 
-### Examples
+# Examples
 
 -   `sendMessages`
 

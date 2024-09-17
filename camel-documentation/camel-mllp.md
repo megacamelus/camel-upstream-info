@@ -36,7 +36,9 @@ for this component:
         <!-- use the same version as your Camel core version -->
     </dependency>
 
-# MLLP Consumer
+# Usage
+
+## MLLP Consumer
 
 The MLLP Consumer supports receiving MLLP-framed messages and sending
 HL7 Acknowledgements. The MLLP Consumer can automatically generate the
@@ -48,10 +50,11 @@ acknowledgement that will be generated can be controlled by setting the
 read messages without sending any HL7 Acknowledgement if the automatic
 acknowledgement is disabled and the exchange pattern is `InOnly`.
 
-## Exchange Properties
+### Exchange Properties
 
-The type of acknowledgment the MLLP Consumer generates and state of the
-TCP Socket can be controlled by these properties on the Camel exchange:
+The type of acknowledgment the MLLP Consumer generates, and the state of
+the TCP Socket can be controlled by these properties on the Camel
+exchange:
 
 <table>
 <colgroup>
@@ -60,85 +63,85 @@ TCP Socket can be controlled by these properties on the Camel exchange:
 <col style="width: 32%" />
 </colgroup>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><strong>Key</strong></p></td>
 <td style="text-align: left;"><p><strong>Type</strong></p></td>
 <td style="text-align: left;"><p><strong>Description</strong></p></td>
 </tr>
-<tr>
+<tr class="even">
 <td
 style="text-align: left;"><p><code>CamelMllpAcknowledgement</code></p></td>
-<td style="text-align: left;"><p>byte[]</p></td>
+<td style="text-align: left;"><p><code>byte[]</code></p></td>
 <td style="text-align: left;"><p>If present, this property will be sent
 to the client as the MLLP Acknowledgement</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td
 style="text-align: left;"><p><code>CamelMllpAcknowledgementString</code></p></td>
-<td style="text-align: left;"><p>String</p></td>
+<td style="text-align: left;"><p><code>String</code></p></td>
 <td style="text-align: left;"><p>If present and
 <code>CamelMllpAcknowledgement</code> is not present, this property will
 we sent to the client as the MLLP Acknowledgement</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td
 style="text-align: left;"><p><code>CamelMllpAcknowledgementMsaText</code></p></td>
-<td style="text-align: left;"><p>String</p></td>
+<td style="text-align: left;"><p><code>String</code></p></td>
 <td style="text-align: left;"><p>If neither
 <code>CamelMllpAcknowledgement</code> or
 <code>CamelMllpAcknowledgementString</code> are present and autoAck is
 true, this property can be used to specify the contents of MSA-3 in the
 generated HL7 acknowledgement</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td
 style="text-align: left;"><p><code>CamelMllpAcknowledgementType</code></p></td>
-<td style="text-align: left;"><p>String</p></td>
+<td style="text-align: left;"><p><code>String</code></p></td>
 <td style="text-align: left;"><p>If neither
 <code>CamelMllpAcknowledgement</code> or
 <code>CamelMllpAcknowledgementString</code> are present and autoAck is
 true, this property can be used to specify the HL7 acknowledgement type
 (i.e. AA, AE, AR)</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td
 style="text-align: left;"><p><code>CamelMllpAutoAcknowledge</code></p></td>
-<td style="text-align: left;"><p>Boolean</p></td>
+<td style="text-align: left;"><p><code>Boolean</code></p></td>
 <td style="text-align: left;"><p>Overrides the autoAck query
 parameter</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td
 style="text-align: left;"><p><code>CamelMllpCloseConnectionBeforeSend</code></p></td>
-<td style="text-align: left;"><p>Boolean</p></td>
+<td style="text-align: left;"><p><code>Boolean</code></p></td>
 <td style="text-align: left;"><p>If true, the Socket will be closed
 before sending data</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td
 style="text-align: left;"><p><code>CamelMllpResetConnectionBeforeSend</code></p></td>
-<td style="text-align: left;"><p>Boolean</p></td>
+<td style="text-align: left;"><p><code>Boolean</code></p></td>
 <td style="text-align: left;"><p>If true, the Socket will be reset
 before sending data</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td
 style="text-align: left;"><p><code>CamelMllpCloseConnectionAfterSend</code></p></td>
-<td style="text-align: left;"><p>Boolean</p></td>
+<td style="text-align: left;"><p><code>Boolean</code></p></td>
 <td style="text-align: left;"><p>If true, the Socket will be closed
 immediately after sending data</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td
 style="text-align: left;"><p><code>CamelMllpResetConnectionAfterSend</code></p></td>
-<td style="text-align: left;"><p>Boolean</p></td>
+<td style="text-align: left;"><p><code>Boolean</code></p></td>
 <td style="text-align: left;"><p>If true, the Socket will be reset
 immediately after sending any data</p></td>
 </tr>
 </tbody>
 </table>
 
-# MLLP Producer
+## MLLP Producer
 
 The MLLP Producer supports sending MLLP-framed messages and receiving
 HL7 Acknowledgements. The MLLP Producer interrogates the HL7
@@ -148,7 +151,7 @@ is raised in the event of a negative acknowledgement. The MLLP Producer
 can ignore acknowledgements when configured with InOnly exchange
 pattern.
 
-## Exchange Properties
+### Exchange Properties
 
 The state of the TCP Socket can be controlled by these properties on the
 Camel exchange:
@@ -160,36 +163,36 @@ Camel exchange:
 <col style="width: 32%" />
 </colgroup>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><strong>Key</strong></p></td>
 <td style="text-align: left;"><p><strong>Type</strong></p></td>
 <td style="text-align: left;"><p><strong>Description</strong></p></td>
 </tr>
-<tr>
+<tr class="even">
 <td
 style="text-align: left;"><p><code>CamelMllpCloseConnectionBeforeSend</code></p></td>
-<td style="text-align: left;"><p>Boolean</p></td>
+<td style="text-align: left;"><p><code>Boolean</code></p></td>
 <td style="text-align: left;"><p>If true, the Socket will be closed
 before sending data</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td
 style="text-align: left;"><p><code>CamelMllpResetConnectionBeforeSend</code></p></td>
-<td style="text-align: left;"><p>Boolean</p></td>
+<td style="text-align: left;"><p><code>Boolean</code></p></td>
 <td style="text-align: left;"><p>If true, the Socket will be reset
 before sending data</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td
 style="text-align: left;"><p><code>CamelMllpCloseConnectionAfterSend</code></p></td>
-<td style="text-align: left;"><p>Boolean</p></td>
+<td style="text-align: left;"><p><code>Boolean</code></p></td>
 <td style="text-align: left;"><p>If true, the Socket will be closed
 immediately after sending data</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td
 style="text-align: left;"><p><code>CamelMllpResetConnectionAfterSend</code></p></td>
-<td style="text-align: left;"><p>Boolean</p></td>
+<td style="text-align: left;"><p><code>Boolean</code></p></td>
 <td style="text-align: left;"><p>If true, the Socket will be reset
 immediately after sending any data</p></td>
 </tr>

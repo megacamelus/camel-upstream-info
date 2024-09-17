@@ -44,7 +44,7 @@ endpoint.
     // Send a message to the cluster named 'clusterName'
     from("direct:start").to("jgroups:clusterName");
 
-# Predefined filters
+## Predefined filters
 
 JGroups component comes with predefined filters factory class named
 `JGroupsFilters.`
@@ -64,7 +64,7 @@ node.
       filter(dropNonCoordinatorViews()).
       to("seda:masterNodeEventsQueue");
 
-# Predefined expressions
+## Predefined expressions
 
 JGroups component comes with predefined expressions factory class named
 `JGroupsExpressions.`

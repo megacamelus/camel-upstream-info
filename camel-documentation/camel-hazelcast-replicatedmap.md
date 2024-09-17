@@ -25,7 +25,7 @@ The replicatedmap producer provides 6 operations:
 
 -   containsValue
 
-## Sample for **put**:
+## Example for **put**:
 
 Java DSL  
 from("direct:put")
@@ -42,7 +42,7 @@ Spring XML
 <to uri="hazelcast-replicatedmap:foo" />  
 </route>
 
-## Sample for **get**:
+## Example for **get**:
 
 Java DSL  
 from("direct:get")
@@ -61,7 +61,7 @@ Spring XML
 <to uri="seda:out" />  
 </route>
 
-## Sample for **delete**:
+## Example for **delete**:
 
 Java DSL  
 from("direct:delete")
@@ -113,27 +113,27 @@ Header Variables inside the response message:
 <col style="width: 79%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Name</th>
 <th style="text-align: left;">Type</th>
 <th style="text-align: left;">Description</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td
 style="text-align: left;"><p><code>CamelHazelcastListenerTime</code></p></td>
 <td style="text-align: left;"><p><code>Long</code></p></td>
 <td style="text-align: left;"><p>time of the event in millis</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td
 style="text-align: left;"><p><code>CamelHazelcastListenerType</code></p></td>
 <td style="text-align: left;"><p><code>String</code></p></td>
 <td style="text-align: left;"><p>the map consumer sets here
 "cachelistener"</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td
 style="text-align: left;"><p><code>CamelHazelcastListenerAction</code></p></td>
 <td style="text-align: left;"><p><code>String</code></p></td>
@@ -141,20 +141,20 @@ style="text-align: left;"><p><code>CamelHazelcastListenerAction</code></p></td>
 <strong>added</strong> and <strong>removed</strong> (and soon
 <strong>envicted</strong>)</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td
 style="text-align: left;"><p><code>CamelHazelcastObjectId</code></p></td>
 <td style="text-align: left;"><p><code>String</code></p></td>
 <td style="text-align: left;"><p>the oid of the object</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td
 style="text-align: left;"><p><code>CamelHazelcastCacheName</code></p></td>
 <td style="text-align: left;"><p><code>String</code></p></td>
 <td style="text-align: left;"><p>the name of the cache (e.g.,
 "foo")</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td
 style="text-align: left;"><p><code>CamelHazelcastCacheType</code></p></td>
 <td style="text-align: left;"><p><code>String</code></p></td>

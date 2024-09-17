@@ -14,7 +14,7 @@ to the endpoint are all available to be browsed.
 
 Where *someId* can be any string to uniquely identify the endpoint.
 
-# Sample
+# Examples
 
 In the route below, we insert a `browse:` component to be able to browse
 the Exchanges that are passing through:

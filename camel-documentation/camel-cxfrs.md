@@ -45,7 +45,9 @@ Please check the following files for more details:
 
 -   [CXF JAX-RS documentation](http://cxf.apache.org/docs/jax-rs.html).
 
-# How to configure the REST endpoint in Camel
+# Examples
+
+## How to configure the REST endpoint in Camel
 
 In the [camel-cxf schema
 file](https://github.com/apache/camel/blob/main/components/camel-cxf/camel-cxf-spring-rest/src/main/resources/schema/cxfJaxrsEndpoint.xsd),
@@ -57,7 +59,7 @@ there are two elements for the REST endpoint definition:
 
 You can find a Camel REST service route configuration example there.
 
-# How to override the CXF producer address from message header
+## How to override the CXF producer address from message header
 
 The `camel-cxfrs` producer supports overriding the service address by
 setting the message with the key of `CamelDestinationOverrideUrl`.
@@ -65,7 +67,7 @@ setting the message with the key of `CamelDestinationOverrideUrl`.
      // set up the service address from the message header to override the setting of CXF endpoint
      exchange.getIn().setHeader(Exchange.DESTINATION_OVERRIDE_URL, constant(getServiceAddress()));
 
-# Consuming a REST Request - Simple Binding Style
+## Consuming a REST Request - Simple Binding Style
 
 **Since Camel 2.11**
 
@@ -184,9 +186,9 @@ Will print the message:
 
 More examples on how to process requests and write responses can be
 found
-[here](https://svn.apache.org/repos/asf/camel/trunk/components/camel-cxf/src/test/java/org/apache/camel/component/cxf/jaxrs/simplebinding/).
+[here](https://github.com/apache/camel/tree/main/components/camel-cxf/camel-cxf-rest/src/test/java/org/apache/camel/component/cxf/jaxrs/simplebinding).
 
-# Consuming a REST Request - Default Binding Style
+## Consuming a REST Request - Default Binding Style
 
 The [CXF JAXRS front end](http://cxf.apache.org/docs/jax-rs.html)
 implements the [JAX-RS (JSR-311) API](https://javaee.github.io/jsr311/),
@@ -270,7 +272,7 @@ for post-processing JAX-RS Responses in custom processors.
                         String payload);
     }
 
-# How to invoke the REST service through camel-cxfrs producer
+## How to invoke the REST service through camel-cxfrs producer
 
 The [CXF JAXRS front end](http://cxf.apache.org/docs/jax-rs.html)
 implements [a proxy-based client

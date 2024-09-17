@@ -13,7 +13,19 @@ You must have a valid Amazon Web Services developer account, and be
 signed up to use Amazon Cloudtrail. More information is available at
 [AWS Cloudtrail](https://aws.amazon.com/cloudtrail/)
 
-# Static credentials, Default Credential Provider and Profile Credentials Provider
+# URI Format
+
+    aws-cloudtrail://label[?options]
+
+The stream needs to be created prior to it being used.
+
+You can append query options to the URI in the following format:
+
+`?options=value&option2=value&...`
+
+# Usage
+
+## Static credentials, Default Credential Provider and Profile Credentials Provider
 
 You have the possibility of avoiding the usage of explicit static
 credentials by specifying the useDefaultCredentialsProvider option and
@@ -47,7 +59,7 @@ same time.
 For more information about this you can look at [AWS credentials
 documentation](https://docs.aws.amazon.com/sdk-for-java/latest/developer-guide/credentials.html)
 
-# Cloudtrail Events consumed
+## Cloudtrail Events consumed
 
 The Cloudtrail consumer will use an API method called LookupEvents.
 
@@ -60,16 +72,6 @@ logs stored on S3, in case of creation of a new Trail.
 
 This is important to notice, and it must be taken into account when
 using this component.
-
-# URI Format
-
-    aws-cloudtrail://label[?options]
-
-The stream needs to be created prior to it being used.
-
-You can append query options to the URI in the following format:
-
-`?options=value&option2=value&...`
 
 ## Component Configurations
 

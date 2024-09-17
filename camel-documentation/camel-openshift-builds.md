@@ -8,17 +8,22 @@ The Openshift Builds component is one of [Kubernetes
 Components](#kubernetes-summary.adoc) which provides a producer to
 execute Openshift builds operations.
 
-# Supported producer operation
+# Usage
 
--   listBuilds
+## Supported producer operation
 
--   listBuildsByLabels
+-   `listBuilds`
 
--   getBuild
+-   `listBuildsByLabels`
 
-# Openshift Builds Producer Examples
+-   `getBuild`
 
--   listBuilds: this operation lists the Builds on an Openshift cluster
+# Examples
+
+## Openshift Builds Producer Examples
+
+-   `listBuilds`: this operation lists the builds on an Openshift
+    cluster
 
 <!-- -->
 
@@ -28,8 +33,8 @@ execute Openshift builds operations.
 
 This operation returns a List of Builds from your Openshift cluster
 
--   listBuildsByLabels: this operation lists the builds by labels on an
-    Openshift cluster
+-   `listBuildsByLabels`: this operation lists the builds by labels on
+    an Openshift cluster
 
 <!-- -->
 
@@ -45,7 +50,7 @@ This operation returns a List of Builds from your Openshift cluster
         toF("openshift-builds:///?kubernetesClient=#kubernetesClient&operation=listBuildsByLabels").
         to("mock:result");
 
-This operation returns a List of Builds from your cluster, using a label
+This operation returns a list of builds from your cluster using a label
 selector (with key1 and key2, with value value1 and value2)
 
 ## Component Configurations

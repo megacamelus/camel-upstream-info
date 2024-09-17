@@ -11,7 +11,8 @@ The openstack-keystone component supports only Identity API v3
 
 # Dependencies
 
-Maven users will need to add the following dependency to their pom.xml.
+Maven users will need to add the following dependency to their
+`pom.xml`.
 
 **pom.xml**
 
@@ -32,9 +33,9 @@ Camel.
 
 You can use the following settings for each subsystem:
 
-# domains
+## Domains
 
-## Operations you can perform with the Domain producer
+### Operations you can perform with the Domain producer
 
 <table>
 <colgroup>
@@ -42,29 +43,29 @@ You can use the following settings for each subsystem:
 <col style="width: 80%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Operation</th>
 <th style="text-align: left;">Description</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>create</code></p></td>
 <td style="text-align: left;"><p>Create a new domain.</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>get</code></p></td>
 <td style="text-align: left;"><p>Get the domain.</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>getAll</code></p></td>
 <td style="text-align: left;"><p>Get all domains.</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>update</code></p></td>
 <td style="text-align: left;"><p>Update the domain.</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>delete</code></p></td>
 <td style="text-align: left;"><p>Delete the domain.</p></td>
 </tr>
@@ -72,12 +73,12 @@ You can use the following settings for each subsystem:
 </table>
 
 If you need more precise domain settings, you can create a new object of
-the type **org.openstack4j.model.identity.v3.Domain** and send in the
+the type `org.openstack4j.model.identity.v3.Domain` and send in the
 message body.
 
-# groups
+## Groups
 
-## Operations you can perform with the Group producer
+### Operations you can perform with the Group producer
 
 <table>
 <colgroup>
@@ -85,42 +86,42 @@ message body.
 <col style="width: 80%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Operation</th>
 <th style="text-align: left;">Description</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>create</code></p></td>
 <td style="text-align: left;"><p>Create a new group.</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>get</code></p></td>
 <td style="text-align: left;"><p>Get the group.</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>getAll</code></p></td>
 <td style="text-align: left;"><p>Get all groups.</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>update</code></p></td>
 <td style="text-align: left;"><p>Update the group.</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>delete</code></p></td>
 <td style="text-align: left;"><p>Delete the group.</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>addUserToGroup</code></p></td>
 <td style="text-align: left;"><p>Add the user to the group.</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>checkUserGroup</code></p></td>
 <td style="text-align: left;"><p>Check whether is the user in the
 group.</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td
 style="text-align: left;"><p><code>removeUserFromGroup</code></p></td>
 <td style="text-align: left;"><p>Remove the user from the
@@ -130,12 +131,12 @@ group.</p></td>
 </table>
 
 If you need more precise group settings, you can create a new object of
-the type **org.openstack4j.model.identity.v3.Group** and send in the
+the type `org.openstack4j.model.identity.v3.Group` and send in the
 message body.
 
-# projects
+## Projects
 
-## Operations you can perform with the Project producer
+### Operations you can perform with the Project producer
 
 <table>
 <colgroup>
@@ -143,29 +144,29 @@ message body.
 <col style="width: 80%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Operation</th>
 <th style="text-align: left;">Description</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>create</code></p></td>
 <td style="text-align: left;"><p>Create a new project.</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>get</code></p></td>
 <td style="text-align: left;"><p>Get the project.</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>getAll</code></p></td>
 <td style="text-align: left;"><p>Get all projects.</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>update</code></p></td>
 <td style="text-align: left;"><p>Update the project.</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>delete</code></p></td>
 <td style="text-align: left;"><p>Delete the project.</p></td>
 </tr>
@@ -173,12 +174,12 @@ message body.
 </table>
 
 If you need more precise project settings, you can create a new object
-of the type **org.openstack4j.model.identity.v3.Project** and send in
-the message body.
+of the type `org.openstack4j.model.identity.v3.Project` and send in the
+message body.
 
-# regions
+## Regions
 
-## Operations you can perform with the Region producer
+### Operations you can perform with the Region producer
 
 <table>
 <colgroup>
@@ -186,29 +187,29 @@ the message body.
 <col style="width: 80%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Operation</th>
 <th style="text-align: left;">Description</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>create</code></p></td>
 <td style="text-align: left;"><p>Create new region.</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>get</code></p></td>
 <td style="text-align: left;"><p>Get the region.</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>getAll</code></p></td>
 <td style="text-align: left;"><p>Get all regions.</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>update</code></p></td>
 <td style="text-align: left;"><p>Update the region.</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>delete</code></p></td>
 <td style="text-align: left;"><p>Delete the region.</p></td>
 </tr>
@@ -216,12 +217,12 @@ the message body.
 </table>
 
 If you need more precise region settings, you can create a new object of
-the type **org.openstack4j.model.identity.v3.Region** and send in the
+the type `org.openstack4j.model.identity.v3.Region` and send in the
 message body.
 
-# users
+## Users
 
-## Operations you can perform with the User producer
+### Operations you can perform with the User producer
 
 <table>
 <colgroup>
@@ -229,29 +230,29 @@ message body.
 <col style="width: 80%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Operation</th>
 <th style="text-align: left;">Description</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>create</code></p></td>
 <td style="text-align: left;"><p>Create new user.</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>get</code></p></td>
 <td style="text-align: left;"><p>Get the user.</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>getAll</code></p></td>
 <td style="text-align: left;"><p>Get all users.</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>update</code></p></td>
 <td style="text-align: left;"><p>Update the user.</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>delete</code></p></td>
 <td style="text-align: left;"><p>Delete the user.</p></td>
 </tr>
@@ -259,7 +260,7 @@ message body.
 </table>
 
 If you need more precise user settings, you can create a new object of
-the type **org.openstack4j.model.identity.v3.User** and send in the
+the type `org.openstack4j.model.identity.v3.User` and send in the
 message body.
 
 ## Component Configurations

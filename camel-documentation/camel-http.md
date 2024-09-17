@@ -23,14 +23,16 @@ for this component:
 
 Will by default use port 80 for HTTP and 443 for HTTPS.
 
-# Message Body
+# Usage
+
+## Message Body
 
 Camel will store the HTTP response from the external server on the *OUT*
 body. All headers from the *IN* message will be copied to the *OUT*
 message, so headers are preserved during routing. Additionally, Camel
 will add the HTTP response headers as well to the *OUT* message headers.
 
-# Using System Properties
+## Using System Properties
 
 When setting useSystemProperties to true, the HTTP Client will look for
 the following System Properties, and it will use it:
@@ -67,7 +69,7 @@ the following System Properties, and it will use it:
 
 -   `http.maxConnections`
 
-# Response code
+## Response code
 
 Camel will handle, according to the HTTP response code:
 
@@ -88,7 +90,7 @@ The option, `throwExceptionOnFailure`, can be set to `false` to prevent
 the `HttpOperationFailedException` from being thrown for failed response
 codes. This allows you to get any response from the remote server.
 
-# Exceptions
+## Exceptions
 
 `HttpOperationFailedException` exception contains the following
 information:
@@ -102,7 +104,7 @@ information:
 -   Response body as a `java.lang.String`, if server provided a body as
     response
 
-# Which HTTP method will be used
+## Which HTTP method will be used
 
 The following algorithm is used to determine what HTTP method should be
 used:
@@ -114,7 +116,7 @@ used:
 5. `POST` if there is data to send (body is not `null`).
 6. `GET` otherwise.
 
-# Configuring URI to call
+## Configuring URI to call
 
 You can set the HTTP producer’s URI directly from the endpoint URI. In
 the route below, Camel will call out to the external server, `oldhost`,
@@ -142,7 +144,7 @@ endpoint is configured with [http://oldhost](http://oldhost).
 If the http endpoint is working in bridge mode, it will ignore the
 message header of `Exchange.HTTP_URI`.
 
-# Configuring URI Parameters
+## Configuring URI Parameters
 
 The **http** producer supports URI parameters to be sent to the HTTP
 server. The URI parameters can either be set directly on the endpoint
@@ -157,7 +159,7 @@ Or options provided in a header:
       .setHeader(Exchange.HTTP_QUERY, constant("order=123&detail=short"))
       .to("http://oldhost");
 
-# How to set the http method (GET/PATCH/POST/PUT/DELETE/HEAD/OPTIONS/TRACE) to the HTTP producer
+## How to set the http method (GET/PATCH/POST/PUT/DELETE/HEAD/OPTIONS/TRACE) to the HTTP producer
 
 The HTTP component provides a way to set the HTTP request method by
 setting the message header. Here is an example:
@@ -182,13 +184,13 @@ And the equivalent XML DSL:
       <to uri="mock:results"/>
     </route>
 
-# Using client timeout - SO\_TIMEOUT
+## Using client timeout - SO\_TIMEOUT
 
 See the
 [HttpSOTimeoutTest](https://github.com/apache/camel/blob/main/components/camel-http/src/test/java/org/apache/camel/component/http/HttpSOTimeoutTest.java)
 unit test.
 
-# Configuring a Proxy
+## Configuring a Proxy
 
 The HTTP component provides a way to configure a proxy.
 
@@ -198,7 +200,7 @@ The HTTP component provides a way to configure a proxy.
 There is also support for proxy authentication via the
 `proxyAuthUsername` and `proxyAuthPassword` options.
 
-## Using proxy settings outside of URI
+### Using proxy settings outside of URI
 
 To avoid System properties conflicts, you can set proxy configuration
 only from the CamelContext or URI.  
@@ -223,14 +225,14 @@ override the system properties with the endpoint options.
 There is also a `http.proxyScheme` property you can set to explicitly
 configure the scheme to use.
 
-# Configuring charset
+## Configuring charset
 
 If you are using `POST` to send data you can configure the `charset`
 using the `Exchange` property:
 
     exchange.setProperty(Exchange.CHARSET_NAME, "ISO-8859-1");
 
-## Sample with scheduled poll
+### Example with scheduled poll
 
 This sample polls the Google homepage every 10 seconds and write the
 page to the file `message.html`:
@@ -240,7 +242,7 @@ page to the file `message.html`:
       .setHeader(FileComponent.HEADER_FILE_NAME, "message.html")
       .to("file:target/google");
 
-## URI Parameters from the endpoint URI
+### URI Parameters from the endpoint URI
 
 In this sample, we have the complete URI endpoint that is just what you
 would have typed in a web browser. Multiple URI parameters can of course
@@ -250,7 +252,7 @@ web browser. Camel does no tricks here.
     // we query for Camel at the Google page
     template.sendBody("http://www.google.com/search?q=Camel", null);
 
-## URI Parameters from the Message
+### URI Parameters from the Message
 
     Map headers = new HashMap();
     headers.put(Exchange.HTTP_QUERY, "q=Camel&lr=lang_en");
@@ -260,7 +262,7 @@ web browser. Camel does no tricks here.
 In the header value above notice that it should **not** be prefixed with
 `?` and you can separate parameters as usual with the `&` char.
 
-## Getting the Response Code
+### Getting the Response Code
 
 You can get the HTTP response code from the HTTP component by getting
 the value from the Out message header with
@@ -274,20 +276,20 @@ the value from the Out message header with
     Message out = exchange.getOut();
     int responseCode = out.getHeader(Exchange.HTTP_RESPONSE_CODE, Integer.class);
 
-# Disabling Cookies
+## Disabling Cookies
 
 To disable cookies in the CookieStore, you can set the HTTP Client to
 ignore cookies by adding this URI option:
 `httpClient.cookieSpec=ignore`. This doesn’t affect cookies manually set
 in the `Cookie` header
 
-# Basic auth with the streaming message body
+## Basic auth with the streaming message body
 
 To avoid the `NonRepeatableRequestException`, you need to do the
 Preemptive Basic Authentication by adding the option:
 `authenticationPreemptive=true`
 
-# OAuth2 Support
+## OAuth2 Support
 
 To get an access token from an Authorization Server and fill that in
 Authorization header to do requests to protected services, you will need
@@ -314,13 +316,13 @@ Camel only provides support for OAuth2 client credentials flow
 Camel does not perform any validation in access token. It’s up to the
 underlying service to validate it.
 
-# Advanced Usage
+## Advanced Usage
 
 If you need more control over the HTTP producer, you should use the
 `HttpComponent` where you can set various classes to give you custom
 behavior.
 
-## Setting up SSL for HTTP Client
+### Setting up SSL for HTTP Client
 
 Using the JSSE Configuration Utility
 
@@ -495,7 +497,7 @@ we have two components, each using their own instance of
 |clientConnectionManager|To use a custom and shared HttpClientConnectionManager to manage connections. If this has been configured then this is always used for all endpoints created by this component.||object|
 |connectionsPerRoute|The maximum number of connections per route.|20|integer|
 |connectionStateDisabled|Disables connection state tracking|false|boolean|
-|connectionTimeToLive|The time for connection to live, the time unit is millisecond, the default value is always keep alive.||integer|
+|connectionTimeToLive|The time for connection to live, the time unit is millisecond, the default value is always keepAlive.||integer|
 |contentCompressionDisabled|Disables automatic content decompression|false|boolean|
 |cookieManagementDisabled|Disables state (cookie) management|false|boolean|
 |defaultUserAgentDisabled|Disables the default user agent set by this builder if none has been provided by the user|false|boolean|
@@ -528,7 +530,7 @@ we have two components, each using their own instance of
 |Name|Description|Default|Type|
 |---|---|---|---|
 |httpUri|The url of the HTTP endpoint to call.||string|
-|disableStreamCache|Determines whether or not the raw input stream from Servlet is cached or not (Camel will read the stream into a in memory/overflow to file, Stream caching) cache. By default Camel will cache the Servlet input stream to support reading it multiple times to ensure it Camel can retrieve all data from the stream. However you can set this option to true when you for example need to access the raw stream, such as streaming it directly to a file or other persistent store. DefaultHttpBinding will copy the request input stream into a stream cache and put it into message body if this option is false to support reading the stream multiple times. If you use Servlet to bridge/proxy an endpoint then consider enabling this option to improve performance, in case you do not need to read the message payload multiple times. The http producer will by default cache the response body stream. If setting this option to true, then the producers will not cache the response body stream but use the response stream as-is as the message body.|false|boolean|
+|disableStreamCache|Determines whether or not the raw input stream is cached or not. The Camel consumer (camel-servlet, camel-jetty etc.) will by default cache the input stream to support reading it multiple times to ensure it Camel can retrieve all data from the stream. However you can set this option to true when you for example need to access the raw stream, such as streaming it directly to a file or other persistent store. DefaultHttpBinding will copy the request input stream into a stream cache and put it into message body if this option is false to support reading the stream multiple times. If you use Servlet to bridge/proxy an endpoint then consider enabling this option to improve performance, in case you do not need to read the message payload multiple times. The producer (camel-http) will by default cache the response body stream. If setting this option to true, then the producers will not cache the response body stream but use the response stream as-is (the stream can only be read once) as the message body.|false|boolean|
 |headerFilterStrategy|To use a custom HeaderFilterStrategy to filter header to and from Camel message.||object|
 |bridgeEndpoint|If the option is true, HttpProducer will ignore the Exchange.HTTP\_URI header, and use the endpoint's URI for request. You may also set the option throwExceptionOnFailure to be false to let the HttpProducer send all the fault response back.|false|boolean|
 |connectionClose|Specifies whether a Connection Close header must be added to HTTP Request. By default connectionClose is false.|false|boolean|
@@ -578,6 +580,7 @@ we have two components, each using their own instance of
 |authUsername|Authentication username||string|
 |oauth2ClientId|OAuth2 client id||string|
 |oauth2ClientSecret|OAuth2 client secret||string|
+|oauth2Scope|OAuth2 scope||string|
 |oauth2TokenEndpoint|OAuth2 Token endpoint||string|
 |sslContextParameters|To configure security using SSLContextParameters. Important: Only one instance of org.apache.camel.util.jsse.SSLContextParameters is supported per HttpComponent. If you need to use 2 or more different instances, you need to define a new HttpComponent per instance you need.||object|
 |x509HostnameVerifier|To use a custom X509HostnameVerifier such as DefaultHostnameVerifier or NoopHostnameVerifier||object|

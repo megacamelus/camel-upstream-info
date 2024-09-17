@@ -37,7 +37,9 @@ for this component:
 
 The WhatsApp component supports only producer endpoints.
 
-# Producer Example
+# Examples
+
+## Producer Example
 
 The following is a basic example of how to send a message to a WhatsApp
 chat through the Business Cloud API.
@@ -62,9 +64,9 @@ Supported API are:
 and
 [Media](https://developers.facebook.com/docs/whatsapp/cloud-api/reference/media)
 
-# Webhook Mode
+## Webhook Mode
 
-The Whatsapp component supports usage in the **webhook mode** using the
+The WhatsApp component supports usage in the **webhook mode** using the
 **camel-webhook** component.
 
 To enable webhook mode, users need first to add a REST implementation to

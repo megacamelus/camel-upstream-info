@@ -33,17 +33,24 @@ the scheme.
     lpr://localhost/default[?options]
     lpr://remotehost:port/path/to/printer[?options]
 
-# Sending Messages to a Printer
+# Usage
 
-## Printer Producer
+## Sending Messages to a Printer
+
+### Printer Producer
 
 Sending data to the printer is very straightforward and involves
 creating a producer endpoint that can be sent message exchanges on in
 route.
 
-# Usage Samples
+# Examples
 
-## Example 1: Printing text-based payloads on a Default printer using letter stationary and one-sided mode
+Usage samples.
+
+## Printing text-based payloads
+
+**Printing text-based payloads on a Default printer using letter
+stationary and one-sided mode**
 
     RouteBuilder builder = new RouteBuilder() {
         public void configure() {
@@ -55,7 +62,10 @@ route.
                "&sides=one-sided");
         }};
 
-## Example 2: Printing GIF-based payloads on a remote printer using A4 stationary and one-sided mode
+## Printing GIF-based payloads
+
+**Printing GIF-based payloads on a remote printer using A4 stationary
+and one-sided mode**
 
     RouteBuilder builder = new RouteBuilder() {
         public void configure() {
@@ -66,7 +76,10 @@ route.
                "&flavor=DocFlavor.INPUT_STREAM");
        }};
 
-## Example 3: Printing JPEG-based payloads on a remote printer using Japanese Postcard stationary and one-sided mode
+## Printing JPEG-based payloads
+
+**Printing JPEG-based payloads on a remote printer using Japanese
+Postcard stationary and one-sided mode**
 
     RouteBuilder builder = new RouteBuilder() {
         public void configure() {

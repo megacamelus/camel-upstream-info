@@ -14,7 +14,9 @@ Vector Database](https://https://milvus.io/).
 Where **collection** represents a named set of points (vectors with a
 payload) defined in your database.
 
-# Collection Samples
+# Examples
+
+## Collection Examples
 
 In the route below, we use the milvus component to create a collection
 named *test* with the given parameters:
@@ -57,9 +59,9 @@ FieldType fieldType1 = FieldType.newBuilder()
                         .build())
         .to("milvus:test");
 
-# Points Samples
+## Points Examples
 
-## Upsert
+### Upsert
 
 In the route below we use the milvus component to perform insert on
 points in the collection named *test*:
@@ -98,7 +100,7 @@ vectors.add(vector);
                     .withCollectionName("test")
                     .withFields(fields)
                     .build())
-        .to("qdrant:test");
+        .to("milvus:test");
 
 ## Search
 
@@ -128,7 +130,53 @@ return vector;
                     .withOutputFields(Lists.newArrayList("userAge"))
                     .withConsistencyLevel(ConsistencyLevelEnum.STRONG)
                     .build())
-        .to("qdrant:myCollection");
+        .to("milvus:myCollection");
+
+## Relation with Langchain4j-Embeddings component
+
+The Milvus component provides a datatype transformer, from
+langchain4j-embeddings to an insert/upsert object compatible with
+Milvus.
+
+As an example, you could think about these routes:
+
+Java
+
+<!-- -->
+
+        protected RoutesBuilder createRouteBuilder() {
+            return new RouteBuilder() {
+                public void configure() {
+                    from("direct:in")
+                            .to("langchain4j-embeddings:test")
+                            .setHeader(Milvus.Headers.ACTION).constant(MilvusAction.INSERT)
+                            .setHeader(Milvus.Headers.KEY_NAME).constant("userID")
+                            .setHeader(Milvus.Headers.KEY_VALUE).constant(Long.valueOf("3"))
+                            .transform(new org.apache.camel.spi.DataType("milvus:embeddings"))
+                            .to(MILVUS_URI);
+    
+                    from("direct:up")
+                            .to("langchain4j-embeddings:test")
+                            .setHeader(Milvus.Headers.ACTION).constant(MilvusAction.UPSERT)
+                            .setHeader(Milvus.Headers.KEY_NAME).constant("userID")
+                            .setHeader(Milvus.Headers.KEY_VALUE).constant(Long.valueOf("3"))
+                            .transform(new org.apache.camel.spi.DataType("milvus:embeddings"))
+                            .to(MILVUS_URI);
+                }
+            };
+        }
+
+It’s important to note that Milvus SDK doesn’t support upsert for autoID
+fields. This means if you set a field as key, and you set the autoID to
+true, the upsert won’t be possible.
+
+That’s the reason why, in the example, we are setting the userID as
+keyName with a keyValue of 3. This is particularly important when you
+design your Milvus database.
+
+The transformer only supports insert/upsert objects, so the only
+operation you can set via header are INSERT and UPSERT, otherwise the
+transformer will fail with an error log.
 
 ## Component Configurations
 

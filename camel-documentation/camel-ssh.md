@@ -21,7 +21,9 @@ for this component:
 
     ssh:[username[:password]@]host[:port][?options]
 
-# Usage as a Producer endpoint
+# Usage
+
+## Usage as a Producer endpoint
 
 When the SSH Component is used as a Producer (`.to("ssh://...")`), it
 will send the message body as the command to execute on the remote SSH
@@ -35,11 +37,11 @@ an XML encoded newline (`+&#10;+`).
       <setBody>
         <constant>features:list&#10;</constant>
       </setBody>
-      <to uri="ssh://karaf:karaf@localhost:8101"/>
+      <to uri="ssh://user:pass@localhost:8101"/>
       <log message="${body}"/>
     </route>
 
-# Authentication
+## Authentication
 
 The SSH Component can authenticate against the remote SSH server using
 one of two mechanisms: Public Key certificate or username/password.
@@ -80,7 +82,7 @@ In the Java DSL,
 An example of using Public Key authentication is provided in
 `examples/camel-example-ssh-security`.
 
-# Certificate Dependencies
+## Certificate Dependencies
 
 You will need to add some additional runtime dependencies if you use
 certificate-based authentication. You may need to use later versions

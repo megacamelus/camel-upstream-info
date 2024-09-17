@@ -133,7 +133,7 @@ side:
         .setHeader(MQ2Constants.BROKER_ID, constant("123")
         .to("aws2-mq://test?amazonMqClient=#amazonMqClient&operation=rebootBroker")
 
-# Using a POJO as body
+## Using a POJO as body
 
 Sometimes building an AWS Request can be complex because of multiple
 options. We introduce the possibility to use a POJO as the body. In AWS

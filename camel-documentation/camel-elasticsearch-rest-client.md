@@ -34,14 +34,14 @@ The following operations are currently supported.
 <col style="width: 79%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">operation</th>
 <th style="text-align: left;">message body</th>
 <th style="text-align: left;">description</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>INDEX_OR_UPDATE</code></p></td>
 <td style="text-align: left;"><p><code>String</code>,
 <code>byte[]</code>, <code>Reader</code> or <code>InputStream</code>
@@ -53,7 +53,7 @@ parameter option, or by providing a message header with the key
 <code>INDEX_NAME</code>. When updating indexed content, you must provide
 its id via a message header with the key <code>ID</code> .</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>GET_BY_ID</code></p></td>
 <td style="text-align: left;"><p><code>String</code> id of content to
 retrieve</p></td>
@@ -65,7 +65,7 @@ message header with the key <code>INDEX_NAME</code>. You must provide
 the index id of the content to retrieve either in the message body, or
 via a message header with the key <code>ID</code> .</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>DELETE</code></p></td>
 <td style="text-align: left;"><p><code>String</code> id of content to
 delete</p></td>
@@ -78,7 +78,7 @@ URI parameter option, or by providing a message header with the key
 delete either in the message body, or via a message header with the key
 <code>ID</code> .</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>CREATE_INDEX</code></p></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"><p>Creates the specified
@@ -90,7 +90,7 @@ header with the key <code>INDEX_NAME</code>. You may also provide a
 header with the key <code>INDEX_SETTINGS</code> where the value is a
 JSON String representation of the index settings.</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>DELETE_INDEX</code></p></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"><p>Deletes the specified
@@ -100,7 +100,7 @@ You can set the name of the target index to create from the
 <code>indexName</code> URI parameter option, or by providing a message
 header with the key <code>INDEX_NAME</code>.</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>SEARCH</code></p></td>
 <td style="text-align: left;"><p><code>Map</code> (optional)</p></td>
 <td style="text-align: left;"><p>Search for content with either a
@@ -115,7 +115,9 @@ the query criteria.</p></td>
 </tbody>
 </table>
 
-# Index Content Example
+# Examples
+
+## Index Content Example
 
 To index some content.
 
@@ -131,13 +133,13 @@ the message body with the updated content.
         .setBody().constant("{\"content\": \"ElasticSearch REST Client With Camel\"}")
         .to("elasticsearch-rest-client://myCluster?operation=INDEX_OR_UPDATE&indexName=myIndex");
 
-# Get By ID Example
+## Get By ID Example
 
     from("direct:getById")
         .setHeader("ID").constant("1")
         .to("elasticsearch-rest-client://myCluster?operation=GET_BY_ID&indexName=myIndex");
 
-# Delete Example
+## Delete Example
 
 To delete indexed content, provide the `ID` message header.
 
@@ -145,7 +147,7 @@ To delete indexed content, provide the `ID` message header.
         .setHeader("ID").constant("1")
         .to("elasticsearch-rest-client://myCluster?operation=DELETE&indexName=myIndex");
 
-# Create Index Example
+## Create Index Example
 
 To create a new index.
 
@@ -160,14 +162,14 @@ To create a new index with some custom settings.
         .setHeader("INDEX_SETTINGS").constant(indexSettings)
         .to("elasticsearch-rest-client://myCluster?operation=CREATE_INDEX&indexName=myIndex");
 
-# Delete Index Example
+## Delete Index Example
 
 To delete an index.
 
     from("direct:deleteIndex")
         .to("elasticsearch-rest-client://myCluster?operation=DELETE_INDEX&indexName=myIndex");
 
-# Search Example
+## Search Example
 
 Search with a JSON query.
 

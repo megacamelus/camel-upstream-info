@@ -35,7 +35,9 @@ this component:
 
 # Options
 
-# Meter Registry
+# Usage
+
+## Meter Registry
 
 By default the Camel Micrometer component creates a
 `SimpleMeterRegistry` instance, suitable mainly for testing. You should
@@ -44,7 +46,7 @@ Micrometer registries primarily determine the backend monitoring system
 to be used. A `CompositeMeterRegistry` can be used to address more than
 one monitoring target.
 
-# Default Camel Metrics
+## Default Camel Metrics
 
 Some Camel specific metrics are available out of the box.
 
@@ -55,83 +57,83 @@ Some Camel specific metrics are available out of the box.
 <col style="width: 33%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Name</th>
 <th style="text-align: left;">Type</th>
 <th style="text-align: left;">Description</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>camel.message.history</p></td>
 <td style="text-align: left;"><p>timer</p></td>
 <td style="text-align: left;"><p>Sample of performance of each node in
 the route when message history is enabled</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p>camel.routes.added</p></td>
 <td style="text-align: left;"><p>gauge</p></td>
 <td style="text-align: left;"><p>Number of routes in total</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>camel.routes.reloaded</p></td>
 <td style="text-align: left;"><p>gauge</p></td>
 <td style="text-align: left;"><p>Number of routes that has been
 reloaded</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p>camel.routes.running</p></td>
 <td style="text-align: left;"><p>gauge</p></td>
 <td style="text-align: left;"><p>Number of routes currently
 running</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>camel.exchanges.inflight</p></td>
 <td style="text-align: left;"><p>gauge</p></td>
 <td style="text-align: left;"><p>Route inflight messages</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p>camel.exchanges.total</p></td>
 <td style="text-align: left;"><p>counter</p></td>
 <td style="text-align: left;"><p>Total number of processed
 exchanges</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>camel.exchanges.succeeded</p></td>
 <td style="text-align: left;"><p>counter</p></td>
 <td style="text-align: left;"><p>Number of successfully completed
 exchanges</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p>camel.exchanges.failed</p></td>
 <td style="text-align: left;"><p>counter</p></td>
 <td style="text-align: left;"><p>Number of failed exchanges</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td
 style="text-align: left;"><p>camel.exchanges.failures.handled</p></td>
 <td style="text-align: left;"><p>counter</p></td>
 <td style="text-align: left;"><p>Number of failures handled</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td
 style="text-align: left;"><p>camel.exchanges.external.redeliveries</p></td>
 <td style="text-align: left;"><p>counter</p></td>
 <td style="text-align: left;"><p>Number of external initiated
 redeliveries (such as from JMS broker)</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>camel.exchange.event.notifier</p></td>
 <td style="text-align: left;"><p>gauge + summary</p></td>
 <td style="text-align: left;"><p>Metrics for messages created, sent,
 completed, and failed events</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p>camel.route.policy</p></td>
 <td style="text-align: left;"><p>gauge + summary</p></td>
 <td style="text-align: left;"><p>Route performance metrics</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>camel.route.policy.long.task</p></td>
 <td style="text-align: left;"><p>gauge + summary</p></td>
 <td style="text-align: left;"><p>Route long task metric</p></td>
@@ -139,7 +141,7 @@ completed, and failed events</p></td>
 </tbody>
 </table>
 
-## Using legacy metrics naming
+### Using legacy metrics naming
 
 In Camel 3.20 or older, then the naming of metrics is using *camelCase*
 style. However, since Camel 3.21 onwards, the naming is using the
@@ -163,7 +165,7 @@ The naming style can be configured on:
 
 -   `MicrometerMessageHistoryFactory`
 
-# Usage of producers
+## Usage of producers
 
 Each meter has type and name. Supported types are
 [counter](##MicrometerComponent-counter), [distribution
@@ -180,7 +182,7 @@ strings that are also evaluated as `Simple` expression. E.g., the URI
 parameter `tags=X=${header.Y}` would assign the current value of header
 `Y` to the key `X`.
 
-## Headers
+### Headers
 
 The meter name defined in URI can be overridden by populating a header
 with name `CamelMetricsName`. The meter tags defined as URI parameters
@@ -203,11 +205,11 @@ Micrometer endpoint finishes processing of exchange. While processing
 exchange Micrometer endpoint will catch all exceptions and write log
 entry using level `warn`.
 
-# Counter
+## Counter
 
     micrometer:counter:name[?options]
 
-## Options
+### Options
 
 <table>
 <colgroup>
@@ -216,20 +218,20 @@ entry using level `warn`.
 <col style="width: 33%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Name</th>
 <th style="text-align: left;">Default</th>
 <th style="text-align: left;">Description</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>increment</p></td>
 <td style="text-align: left;"><p>-</p></td>
 <td style="text-align: left;"><p>Double value to add to the
 counter</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p>decrement</p></td>
 <td style="text-align: left;"><p>-</p></td>
 <td style="text-align: left;"><p>Double value to subtract from the
@@ -262,7 +264,7 @@ that evaluates to 3.0, the `simple.counter` counter is decremented by
         .to("micrometer:counter:simple.counter?decrement=${header.X}")
         .to("direct:out");
 
-## Headers
+### Headers
 
 Like in `camel-metrics`, specific Message headers can be used to
 override `increment` and `decrement` values specified in the Micrometer
@@ -275,20 +277,20 @@ endpoint URI.
 <col style="width: 10%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Name</th>
 <th style="text-align: left;">Description</th>
 <th style="text-align: left;">Expected type</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>CamelMetricsCounterIncrement</p></td>
 <td style="text-align: left;"><p>Override increment value in
 URI</p></td>
 <td style="text-align: left;"><p>Double</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p>CamelMetricsCounterDecrement</p></td>
 <td style="text-align: left;"><p>Override decrement value in
 URI</p></td>
@@ -309,11 +311,11 @@ URI</p></td>
         .to("micrometer:counter:body.length")
         .to("direct:out");
 
-# Distribution Summary
+## Distribution Summary
 
     micrometer:summary:metricname[?options]
 
-## Options
+### Options
 
 <table>
 <colgroup>
@@ -322,14 +324,14 @@ URI</p></td>
 <col style="width: 33%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Name</th>
 <th style="text-align: left;">Default</th>
 <th style="text-align: left;">Description</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>value</p></td>
 <td style="text-align: left;"><p>-</p></td>
 <td style="text-align: left;"><p>Value to use in histogram</p></td>
@@ -358,7 +360,7 @@ registered with the `simple.histogram`:
         .to("micrometer:summary:simple.histogram?value=${header.X}")
         .to("direct:out");
 
-## Headers
+### Headers
 
 Like in `camel-metrics`, a specific Message header can be used to
 override the value specified in the Micrometer endpoint URI.
@@ -370,14 +372,14 @@ override the value specified in the Micrometer endpoint URI.
 <col style="width: 10%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Name</th>
 <th style="text-align: left;">Description</th>
 <th style="text-align: left;">Expected type</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>CamelMetricsHistogramValue</p></td>
 <td style="text-align: left;"><p>Override histogram value in
 URI</p></td>
@@ -392,11 +394,11 @@ URI</p></td>
         .to("micrometer:summary:simple.histogram?value=700")
         .to("direct:out")
 
-# Timer
+## Timer
 
     micrometer:timer:metricname[?options]
 
-## Options
+### Options
 
 <table>
 <colgroup>
@@ -405,14 +407,14 @@ URI</p></td>
 <col style="width: 33%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Name</th>
 <th style="text-align: left;">Default</th>
 <th style="text-align: left;">Description</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>action</p></td>
 <td style="text-align: left;"><p>-</p></td>
 <td style="text-align: left;"><p>start or stop</p></td>
@@ -437,7 +439,7 @@ different Metrics component calls.
 `action` is evaluated as a `Simple` expression returning a result of
 type `MicrometerTimerAction`.
 
-## Headers
+### Headers
 
 Like in `camel-metrics`, a specific Message header can be used to
 override action value specified in the Micrometer endpoint URI.
@@ -449,14 +451,14 @@ override action value specified in the Micrometer endpoint URI.
 <col style="width: 10%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Name</th>
 <th style="text-align: left;">Description</th>
 <th style="text-align: left;">Expected type</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>CamelMetricsTimerAction</p></td>
 <td style="text-align: left;"><p>Override timer action in URI</p></td>
 <td
@@ -471,7 +473,7 @@ style="text-align: left;"><p><code>org.apache.camel.component.micrometer.Microme
         .to("micrometer:timer:simple.timer")
         .to("direct:out");
 
-# Using Micrometer route policy factory
+## Using Micrometer route policy factory
 
 `MicrometerRoutePolicyFactory` allows to add a RoutePolicy for each
 route to expose route utilization statistics using Micrometer. This
@@ -500,33 +502,33 @@ the following options:
 <col style="width: 33%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Name</th>
 <th style="text-align: left;">Default</th>
 <th style="text-align: left;">Description</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>prettyPrint</p></td>
 <td style="text-align: left;"><p>false</p></td>
 <td style="text-align: left;"><p>Whether to use pretty print when
 outputting statistics in json format</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p>meterRegistry</p></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"><p>Allow using a shared
 <code>MeterRegistry</code>. If none is provided, then Camel will create
 a shared instance used by the CamelContext.</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>durationUnit</p></td>
 <td style="text-align: left;"><p>TimeUnit.MILLISECONDS</p></td>
 <td style="text-align: left;"><p>The unit to use for duration in when
 dumping the statistics as json.</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p>configuration</p></td>
 <td style="text-align: left;"><p>see below</p></td>
 <td
@@ -544,74 +546,74 @@ The `MicrometerRoutePolicyConfiguration` supports the following options:
 <col style="width: 33%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Name</th>
 <th style="text-align: left;">Default</th>
 <th style="text-align: left;">Description</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>contextEnabled</p></td>
 <td style="text-align: left;"><p>true</p></td>
 <td style="text-align: left;"><p>whether to include counter for context
 level metrics</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p>routeEnabled</p></td>
 <td style="text-align: left;"><p>true</p></td>
 <td style="text-align: left;"><p>whether to include counter for route
 level metrics</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>additionalCounters</p></td>
 <td style="text-align: left;"><p>true</p></td>
 <td style="text-align: left;"><p>activates all additional
 counters</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p>exchangesSucceeded</p></td>
 <td style="text-align: left;"><p>true</p></td>
 <td style="text-align: left;"><p>activates counter for succeeded
 exchanges</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>exchangesFailed</p></td>
 <td style="text-align: left;"><p>true</p></td>
 <td style="text-align: left;"><p>activates counter for failed
 exchanges</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p>exchangesTotal</p></td>
 <td style="text-align: left;"><p>true</p></td>
 <td style="text-align: left;"><p>activates counter for total count of
 exchanges</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>externalRedeliveries</p></td>
 <td style="text-align: left;"><p>true</p></td>
 <td style="text-align: left;"><p>activates counter for redeliveries of
 exchanges</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p>failuresHandled</p></td>
 <td style="text-align: left;"><p>true</p></td>
 <td style="text-align: left;"><p>activates counter for handled
 failures</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>longTask</p></td>
 <td style="text-align: left;"><p>false</p></td>
 <td style="text-align: left;"><p>activates long task timer (current
 processing time for micrometer)</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p>timerInitiator</p></td>
 <td style="text-align: left;"><p>null</p></td>
 <td style="text-align: left;"><p>Consumer&lt;Timer.Builder&gt; for
 custom initialize Timer</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>longTaskInitiator</p></td>
 <td style="text-align: left;"><p>null</p></td>
 <td style="text-align: left;"><p>Consumer&lt;LongTaskTimer.Builder&gt;
@@ -623,7 +625,7 @@ for custom initialize LongTaskTimer</p></td>
 If JMX is enabled in the CamelContext, the MBean is registered in the
 `type=services` tree with `name=MicrometerRoutePolicy`.
 
-# Using Micrometer message history factory
+## Using Micrometer message history factory
 
 `MicrometerMessageHistoryFactory` allows to use metrics to capture
 Message History performance statistics while routing messages. It works
@@ -648,27 +650,27 @@ The following options are supported on the factory:
 <col style="width: 33%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Name</th>
 <th style="text-align: left;">Default</th>
 <th style="text-align: left;">Description</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>prettyPrint</p></td>
 <td style="text-align: left;"><p>false</p></td>
 <td style="text-align: left;"><p>Whether to use pretty print when
 outputting statistics in json format</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p>meterRegistry</p></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"><p>Allow using a shared
 <code>MeterRegistry</code>. If none is provided, then Camel will create
 a shared instance used by the CamelContext.</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>durationUnit</p></td>
 <td style="text-align: left;"><p>TimeUnit.MILLISECONDS</p></td>
 <td style="text-align: left;"><p>The unit to use for duration when
@@ -688,7 +690,7 @@ From Java code, you can get the service from the CamelContext as shown:
 If JMX is enabled in the CamelContext, the MBean is registered in the
 `type=services` tree with `name=MicrometerMessageHistory`.
 
-# Micrometer event notification
+## Micrometer event notification
 
 There is a `MicrometerRouteEventNotifier` (counting added and running
 routes) and a `MicrometerExchangeEventNotifier` (timing exchanges from
@@ -709,7 +711,7 @@ From Java code, you can get the service from the CamelContext as shown:
 If JMX is enabled in the CamelContext, the MBean is registered in the
 `type=services` tree with `name=MicrometerEventNotifier`.
 
-# Instrumenting Camel thread pools
+## Instrumenting Camel thread pools
 
 `InstrumentedThreadPoolFactory` allows you to gather performance
 information about Camel Thread Pools by injecting a
@@ -717,7 +719,7 @@ information about Camel Thread Pools by injecting a
 inside of Camel. See more details at [Threading
 Model](#manual::threading-model.adoc).
 
-# Exposing Micrometer statistics in JMX
+## Exposing Micrometer statistics in JMX
 
 Micrometer uses `MeterRegistry` implementations to publish statistics.
 While in production scenarios it is advisable to select a dedicated
@@ -762,7 +764,7 @@ return meterRegistry;
 The `HierarchicalNameMapper` strategy determines how meter name and tags
 are assembled into an MBean name.
 
-# Using Camel Micrometer with Camel Main
+## Using Camel Micrometer with Camel Main
 
 When you use Camel standalone (`camel-main`), then if you need to expose
 metrics for Prometheus, then you can use `camel-micrometer-prometheus`
@@ -780,7 +782,7 @@ as shown:
     # include additional out-of-the-box micrometer metrics for cpu, jvm and used file descriptors
     camel.metrics.binders=processor,jvm-info,file-descriptor
 
-# Using Camel Micrometer with Spring Boot
+## Using Camel Micrometer with Spring Boot
 
 When you use `camel-micrometer-starter` with Spring Boot, then Spring
 Boot autoconfiguration will automatically enable metrics capture if a

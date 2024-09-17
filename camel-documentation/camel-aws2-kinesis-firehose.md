@@ -13,8 +13,6 @@ You must have a valid Amazon Web Services developer account, and be
 signed up to use Amazon Kinesis Firehose. More information is available
 at [AWS Kinesis Firehose](https://aws.amazon.com/kinesis/firehose/)
 
-The AWS2 Kinesis Firehose component is not supported in OSGI
-
 # URI Format
 
     aws2-kinesis-firehose://delivery-stream-name[?options]

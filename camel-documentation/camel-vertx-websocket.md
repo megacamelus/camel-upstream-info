@@ -25,8 +25,8 @@ for this component:
 # Usage
 
 The following example shows how to expose a WebSocket on
-[http://localhost:8080/echo](http://localhost:8080/echo) and returns an *echo* response back to the
-same channel:
+[http://localhost:8080/echo](http://localhost:8080/echo) and returns an **echo** response back to
+the same channel:
 
     from("vertx-websocket:localhost:8080/echo")
         .transform().simple("Echo: ${body}")
@@ -38,7 +38,7 @@ client on a remote address with the `consumeAsClient` option:
     from("vertx-websocket:my.websocket.com:8080/chat?consumeAsClient=true")
         .log("Got WebSocket message ${body}");
 
-# Path \& query parameters
+## Path \& query parameters
 
 The WebSocket server consumer supports the configuration of
 parameterized paths. The path parameter value will be set as a Camel
@@ -56,7 +56,7 @@ WebSocket client to connect to the server endpoint:
     from("vertx-websocket:localhost:8080/chat/{user}")
         .log("New message from ${header.user} (${header.role}) >>> ${body}")
 
-# Sending messages to peers connected to the vertx-websocket server consumer
+## Sending messages to peers connected to the vertx-websocket server consumer
 
 This section only applies when producing messages to a WebSocket hosted
 by the camel-vertx-websocket consumer. It is not relevant when producing
@@ -90,7 +90,7 @@ identifying the peer will be propagated via the
         .setHeader(VertxWebsocketConstants.CONNECTION_KEY).constant("key-1,key-2,key-3")
         .to("vertx-websocket:localhost:8080/chat");
 
-# SSL
+## SSL
 
 By default, the `ws://` protocol is used, but secure connections with
 `wss://` are supported by configuring the consumer or producer via the

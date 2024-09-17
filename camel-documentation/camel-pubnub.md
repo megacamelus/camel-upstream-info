@@ -39,7 +39,9 @@ for this component:
 
 Where **channel** is the PubNub channel to publish or subscribe to.
 
-# Message body
+# Usage
+
+## Message body
 
 The message body can contain any JSON serializable data, including
 Objects, Arrays, Integers, and Strings. Message data should not contain
@@ -127,9 +129,9 @@ asf events.
 
 There are a couple of examples in the test directory that show some of
 the PubNub features. They require a PubNub account, from where you can
-obtain a publish- and subscribe key.
+obtain a publish/subscribe key.
 
-The example PubNubSensorExample already contains a subscribe key
+The example PubNubSensorExample already contains a subscription key
 provided by PubNub, so this is ready to run without an account. The
 example illustrates the PubNub component subscribing to an infinite
 stream of sensor data.

@@ -11,7 +11,9 @@ JSR107/JCache as cache implementation.
 
     jcache:cacheName[?options]
 
-# JCache Policy
+# Usage
+
+## JCache Policy
 
 The JCachePolicy is an interceptor around a route that caches the
 "result of the route" (the message body) after the route is completed.
@@ -41,7 +43,7 @@ parameters set.
 Similar caching solution is available, for example, in Spring using the
 @Cacheable annotation.
 
-# JCachePolicy Fields
+## JCachePolicy Fields
 
 <table>
 <colgroup>
@@ -51,7 +53,7 @@ Similar caching solution is available, for example, in Spring using the
 <col style="width: 16%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Name</th>
 <th style="text-align: left;">Description</th>
 <th style="text-align: left;">Default</th>
@@ -59,7 +61,7 @@ Similar caching solution is available, for example, in Spring using the
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><strong>cache</strong></p></td>
 <td style="text-align: left;"><p>The Cache to use to store the cached
 values. If this value is set, <code>cacheManager</code>,
@@ -68,7 +70,7 @@ ignored.</p></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"><p>Cache</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><strong>cacheManager</strong></p></td>
 <td style="text-align: left;"><p>The CacheManager to use to look up or
 create the Cache. Used only if <code>cache</code> is not set.</p></td>
@@ -77,7 +79,7 @@ in the <code>CamelContext</code> registry or calls the standard JCache
 <code>Caching.getCachingProvider().getCacheManager()</code>.</p></td>
 <td style="text-align: left;"><p>CacheManager</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><strong>cacheName</strong></p></td>
 <td style="text-align: left;"><p>Name of the cache. Get the Cache from
 <code>cacheManager</code> or create a new one if it doesn’t
@@ -85,7 +87,7 @@ exist.</p></td>
 <td style="text-align: left;"><p>RouteId of the route.</p></td>
 <td style="text-align: left;"><p>String</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td
 style="text-align: left;"><p><strong>cacheConfiguration</strong></p></td>
 <td style="text-align: left;"><p>JCache cache configuration to use if a
@@ -94,14 +96,14 @@ new Cache is created</p></td>
 <code>MutableConfiguration</code> object.</p></td>
 <td style="text-align: left;"><p>CacheConfiguration</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><strong>keyExpression</strong></p></td>
 <td style="text-align: left;"><p>An Expression to evaluate to determine
 the cache key.</p></td>
 <td style="text-align: left;"><p>Exchange body</p></td>
 <td style="text-align: left;"><p>Expression</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><strong>enabled</strong></p></td>
 <td style="text-align: left;"><p>If the policy is not enabled, no
 wrapper processor is added to the route. It has impact only during
@@ -113,9 +115,9 @@ caching from properties.</p></td>
 </tbody>
 </table>
 
-# How to determine cache to use?
+## How to determine cache to use?
 
-# Set cache
+## Set cache
 
 The cache used by the policy can be set directly. This means you have to
 configure the cache yourself and get a JCache Cache object, but this
@@ -137,7 +139,7 @@ possible to use the standard Caching API as below:
         .log("Getting order with id: ${body}")
         .bean(OrderService.class,"findOrderById(${body})");
 
-# Set cacheManager
+## Set cacheManager
 
 If the `cache` is not set, the policy will try to look up or create the
 cache automatically. If the `cacheManager` is set on the policy, it will
@@ -155,7 +157,7 @@ using the `cacheConfiguration` (new MutableConfiguration by default).
     jcachePolicy.setCacheManager(cacheManager);
     jcachePolicy.setCacheName("items")
 
-# Find cacheManager
+## Find cacheManager
 
 If `cacheManager` (and the `cache`) is not set, the policy will try to
 find a JCache CacheManager object:
@@ -174,7 +176,7 @@ find a JCache CacheManager object:
         .log("Getting order with id: ${body}")
         .bean(OrderService.class,"findOrderById(${body})");
 
-# Partially wrapped route
+## Partially wrapped route
 
 In the examples above, the whole route was executed or skipped. A policy
 can be used to wrap only a segment of the route instead of all
@@ -192,7 +194,7 @@ The `.log()` at the beginning and at the end of the route is always
 called, but the section inside `.policy()` and `.end()` is executed
 based on the cache.
 
-# KeyExpression
+## KeyExpression
 
 By default, the policy uses the received Exchange body as the *key*, so
 the default expression is like `simple("${body\}")`. We can set a
@@ -220,7 +222,7 @@ to store the *value* in cache at the end of the route.
         .log("Getting order with id: ${header.orderId}")
         .bean(OrderService.class,"findOrderById(${header.orderId})");
 
-# BypassExpression
+## BypassExpression
 
 The `JCachePolicy` can be configured with an `Expression` that can per
 `Exchange` determine whether to look up the value from the cache or
@@ -228,9 +230,9 @@ bypass. If the expression is evaluated to `false` then the route is
 executed as normal, and the returned value is inserted into the cache
 for future lookup.
 
-# Camel XML DSL examples
+## Camel XML DSL examples
 
-# Use JCachePolicy in an XML route
+## Use JCachePolicy in an XML route
 
 In Camel XML DSL, we need a named reference to the JCachePolicy instance
 (registered in CamelContext or simply in Spring). We have to wrap the
@@ -263,7 +265,7 @@ See this example when only a part of the route is wrapped:
         </route>
     </camelContext>
 
-# Define CachePolicy in Spring
+## Define CachePolicy in Spring
 
 It’s more convenient to create a JCachePolicy in Java, especially within
 a RouteBuilder using the Camel DSL expressions, but see this example to
@@ -278,7 +280,7 @@ define it in a Spring XML:
         </property>
     </bean>
 
-# Create Cache from XML
+## Create Cache from XML
 
 It’s not strictly speaking related to Camel XML DSL, but JCache
 providers usually have a way to configure the cache in an XML file. For
@@ -299,7 +301,7 @@ configure the cache "spring" used in the example above.
     
     </hazelcast>
 
-# Special scenarios and error handling
+## Special scenarios and error handling
 
 If the Cache used by the policy is closed (can be done dynamically), the
 whole caching functionality is skipped, the route will be executed every

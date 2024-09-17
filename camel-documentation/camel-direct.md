@@ -19,7 +19,7 @@ invocation of any consumers when a producer sends a message exchange.
 
 Where *someId* can be any string to uniquely identify the endpoint.
 
-# Samples
+# Examples
 
 In the route below, we use the direct component to link the two routes
 together:
@@ -73,4 +73,4 @@ they can be used together.
 |failIfNoConsumers|Whether the producer should fail by throwing an exception, when sending to a DIRECT endpoint with no active consumers.|true|boolean|
 |timeout|The timeout value to use if block is enabled.|30000|integer|
 |lazyStartProducer|Whether the producer should be started lazy (on the first message). By starting lazy you can use this to allow CamelContext and routes to startup in situations where a producer may otherwise fail during starting and cause the route to fail being started. By deferring this startup to be lazy then the startup failure can be handled during routing messages via Camel's routing error handlers. Beware that when the first message is processed then creating and starting the producer may take a little time and prolong the total processing time of the processing.|false|boolean|
-|synchronous|Whether synchronous processing is forced. If enabled then the producer thread, will be forced to wait until the message has been completed before the same thread will continue processing. If disabled (default) then the producer thread may be freed and can do other work while the message is continued processed by other threads (reactive).|false|boolean|
+|synchronous|Whether synchronous processing is forced. If enabled, then the producer thread will be forced to wait until the message has been completed before the same thread will continue processing. If disabled, the default, then the producer thread may be freed and can do other work while the message is continued processed by other threads (reactive).|false|boolean|

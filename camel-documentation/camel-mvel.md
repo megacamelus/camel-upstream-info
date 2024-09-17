@@ -26,7 +26,9 @@ Where **templateName** is the classpath-local URI of the template to
 invoke; or the complete URL of the remote template (e.g.:
 `\file://folder/myfile.mvel`).
 
-# MVEL Context
+# Usage
+
+## MVEL Context
 
 Camel will provide exchange information in the MVEL context (just a
 `Map`). The `Exchange` is transferred as:
@@ -37,53 +39,53 @@ Camel will provide exchange information in the MVEL context (just a
 <col style="width: 89%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">key</th>
 <th style="text-align: left;">value</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>exchange</code></p></td>
 <td style="text-align: left;"><p>The <code>Exchange</code>
 itself</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td
 style="text-align: left;"><p><code>exchange.properties</code></p></td>
 <td style="text-align: left;"><p>The <code>Exchange</code>
 properties</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>variables</code></p></td>
 <td style="text-align: left;"><p>The variables</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>headers</code></p></td>
 <td style="text-align: left;"><p>The headers of the message</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>camelContext</code></p></td>
 <td style="text-align: left;"><p>The <code>CamelContext</code></p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>request</code></p></td>
 <td style="text-align: left;"><p>The message</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>in</code></p></td>
 <td style="text-align: left;"><p>The message</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>body</code></p></td>
 <td style="text-align: left;"><p>The message body</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>out</code></p></td>
 <td style="text-align: left;"><p>The Out message (only for InOut message
 exchange pattern).</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>response</code></p></td>
 <td style="text-align: left;"><p>The Out message (only for InOut message
 exchange pattern).</p></td>
@@ -91,7 +93,7 @@ exchange pattern).</p></td>
 </tbody>
 </table>
 
-# Hot reloading
+## Hot reloading
 
 The mvel template resource is, by default, hot reloadable for both file
 and classpath resources (expanded jar). If you set `contentCache=true`,
@@ -99,14 +101,14 @@ Camel will only load the resource once, and thus hot reloading is not
 possible. This scenario can be used in production when the resource
 never changes.
 
-# Dynamic templates
+## Dynamic templates
 
 Camel provides two headers by which you can define a different resource
 location for a template, or the template content itself. If any of these
 headers is set, then Camel uses this over the endpoint configured
 resource. This allows you to provide a dynamic template at runtime.
 
-# Example
+# Examples
 
 For example, you could use something like
 

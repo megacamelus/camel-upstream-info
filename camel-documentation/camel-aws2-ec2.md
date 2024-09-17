@@ -63,7 +63,7 @@ same time.
 For more information about this you can look at [AWS credentials
 documentation](https://docs.aws.amazon.com/sdk-for-java/latest/developer-guide/credentials.html)
 
-# Supported producer operations
+## Supported producer operations
 
 -   createAndRunInstances
 
@@ -149,7 +149,7 @@ documentation](https://docs.aws.amazon.com/sdk-for-java/latest/developer-guide/c
             })
          .to("aws2-ec2://TestDomain?accessKey=xxxx&secretKey=xxxx&operation=terminateInstances");
 
-# Using a POJO as body
+## Using a POJO as body
 
 Sometimes building an AWS Request can be complex because of multiple
 options. We introduce the possibility to use a POJO as a body. In AWS

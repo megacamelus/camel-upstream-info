@@ -72,9 +72,9 @@ same time.
 For more information about this you can look at [AWS credentials
 documentation](https://docs.aws.amazon.com/sdk-for-java/latest/developer-guide/credentials.html)
 
-# Coping with Downtime
+## Coping with Downtime
 
-## AWS DynamoDB Streams outage of less than 24 hours
+### AWS DynamoDB Streams outage of less than 24 hours
 
 The consumer will resume from the last seen sequence number (as
 implemented for

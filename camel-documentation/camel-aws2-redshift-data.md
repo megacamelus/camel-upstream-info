@@ -92,7 +92,9 @@ the producer side:
 
 -   getStatementResult
 
-# Producer Examples
+# Examples
+
+## Producer Examples
 
 -   listDatabases: this operation will list redshift databases
 
@@ -101,7 +103,7 @@ the producer side:
     from("direct:listDatabases")
         .to("aws2-redshift-data://test?awsRedshiftDataClient=#awsRedshiftDataClient&operation=listDatabases")
 
-# Using a POJO as body
+## Using a POJO as body
 
 Sometimes building an AWS Request can be complex because of multiple
 options. We introduce the possibility to use a POJO as body. In AWS

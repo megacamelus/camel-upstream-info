@@ -27,22 +27,24 @@ You can append query options to the URI in the following format:
 
 # Options
 
-# Supported Knative resources
+# Usage
+
+## Supported Knative resources
 
 The component support the following Knative resources you can target or
 exposes using the `type` path parameter:
 
--   **channel**: allow producing or consuming events to or from a
+-   `channel`: allow producing or consuming events to or from a
     [**Knative Channel**](https://knative.dev/docs/eventing/channels/)
 
--   **endpoint**: allow exposing or targeting serverless workloads using
+-   `endpoint`: allow exposing or targeting serverless workloads using
     [**Knative
     Services**](https://knative.dev/docs/serving/spec/knative-api-specification-1.0/#service)
 
--   **event**: allow producing or consuming events to or from a
-    [**Knative Broker**](https://knative.dev/docs/eventing/broker)
+-   `event`: allow producing or consuming events to or from a [**Knative
+    Broker**](https://knative.dev/docs/eventing/broker)
 
-# Knative Environment
+## Knative Environment
 
 As the Knative component hides the technical details of how to
 communicate with Knative services to the user (protocols, addresses,
@@ -51,6 +53,8 @@ set up the low-level transport details. To do so, the component needs a
 so called `Knative Environment`, which is essence is a Json document
 made by a number of `service` elements which looks like the below
 example:
+
+**Example**
 
     {
         "services": [
@@ -88,28 +92,28 @@ The `metadata` fields has some additional advanced fields:
 <col style="width: 33%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Name</th>
 <th style="text-align: left;">Description</th>
 <th style="text-align: left;">Example</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><strong>filter.</strong></p></td>
 <td style="text-align: left;"><p>The prefix to define filters to be
 applied to the incoming message headers.</p></td>
 <td
 style="text-align: left;"><p>```filter.ce.source=my-source```</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><strong>knative.kind</strong></p></td>
 <td style="text-align: left;"><p>The type of the k8s resource referenced
 by the endpoint.</p></td>
 <td
 style="text-align: left;"><p>```knative.kind=InMemoryChannel```</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td
 style="text-align: left;"><p><strong>knative.apiVersion</strong></p></td>
 <td style="text-align: left;"><p>The version of the k8s resource
@@ -117,13 +121,13 @@ referenced by the endpoint</p></td>
 <td
 style="text-align: left;"><p>```knative.apiVersion=messaging.knative.dev/v1beta1```</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><strong>knative.reply</strong></p></td>
 <td style="text-align: left;"><p>If the consumer should construct a full
 reply to knative request.</p></td>
 <td style="text-align: left;"><p>```knative.reply=false```</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><strong>ce.override.</strong></p></td>
 <td style="text-align: left;"><p>The prefix to define CloudEvents values
 that have to be overridden.</p></td>
@@ -133,7 +137,7 @@ style="text-align: left;"><p>```ce.override.ce-type=MyType```</p></td>
 </tbody>
 </table>
 
-# Example
+**Example**
 
     CamelContext context = new DefaultCamelContext();
     
@@ -149,7 +153,7 @@ style="text-align: left;"><p>```ce.override.ce-type=MyType```</p></td>
 
 -   expose knative service
 
-# Using custom Knative Transport
+## Using custom Knative Transport
 
 As today the component only support `http` as transport as it is the
 only supported protocol on Knative side but the transport is pluggable
@@ -181,13 +185,13 @@ by implementing the following interface:
             KnativeEnvironment.KnativeServiceDefinition service, Processor processor);
     }
 
-# Using ProducerTemplate
+## Using ProducerTemplate
 
 When using Knative producer with a ProducerTemplate, it is necessary to
 specify a value for the CloudEvent source, simply by setting a value for
 the header *CamelCloudEventSource*.
 
-## Example
+**Example**
 
     producerTemplate.sendBodyAndHeader("knative:event/broker-test", body, CloudEvent.CAMEL_CLOUD_EVENT_SOURCE, "my-source-name");
 

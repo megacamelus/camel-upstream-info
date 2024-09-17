@@ -79,7 +79,9 @@ schema above:
 *Note: Existing classes can be used only for RPC (see below), not in
 data format.*
 
-# Using Avro RPC in Camel
+# Usage
+
+## Using Avro RPC in Camel
 
 As mentioned above, Avro also provides RPC support over multiple
 transports such as http and netty. Camel provides consumers and
@@ -164,7 +166,7 @@ is used and `getProcessor` will receive Value class directly in body,
 while `putProcessor` will receive an array of size 2 with `String` key
 and `Value` value filled as array contents.
 
-# Avro via HTTP SPI
+## Avro via HTTP SPI
 
 The Avro RPC component offers the
 `org.apache.camel.component.avro.spi.AvroRpcHttpServerFactory` service

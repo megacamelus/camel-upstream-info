@@ -32,7 +32,7 @@ for this component:
 <col style="width: 70%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">CamelServiceNowResource</th>
 <th style="text-align: left;">CamelServiceNowAction</th>
 <th style="text-align: left;">Method</th>
@@ -40,49 +40,49 @@ for this component:
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>TABLE</p></td>
 <td style="text-align: left;"><pre><code>RETRIEVE</code></pre></td>
 <td style="text-align: left;"><pre><code>GET</code></pre></td>
 <td style="text-align: left;"><pre><code>/api/now/v1/table/{table_name}/{sys_id}</code></pre></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><pre><code>CREATE</code></pre></td>
 <td style="text-align: left;"><pre><code>POST</code></pre></td>
 <td style="text-align: left;"><pre><code>/api/now/v1/table/{table_name}</code></pre></td>
 <td></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><pre><code>MODIFY</code></pre></td>
 <td style="text-align: left;"><pre><code>PUT</code></pre></td>
 <td style="text-align: left;"><pre><code>/api/now/v1/table/{table_name}/{sys_id}</code></pre></td>
 <td></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><pre><code>DELETE</code></pre></td>
 <td style="text-align: left;"><pre><code>DELETE</code></pre></td>
 <td style="text-align: left;"><pre><code>/api/now/v1/table/{table_name}/{sys_id}</code></pre></td>
 <td></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><pre><code>UPDATE</code></pre></td>
 <td style="text-align: left;"><pre><code>PATCH</code></pre></td>
 <td style="text-align: left;"><pre><code>/api/now/v1/table/{table_name}/{sys_id}</code></pre></td>
 <td></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><pre><code>AGGREGATE</code></pre></td>
 <td style="text-align: left;"><pre><code>RETRIEVE</code></pre></td>
 <td style="text-align: left;"><pre><code>GET</code></pre></td>
 <td style="text-align: left;"><pre><code>/api/now/v1/stats/{table_name}</code></pre></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>IMPORT</p></td>
 <td style="text-align: left;"><pre><code>RETRIEVE</code></pre></td>
 <td style="text-align: left;"><pre><code>GET</code></pre></td>
 <td style="text-align: left;"><pre><code>/api/now/import/{table_name}/{sys_id}</code></pre></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><pre><code>CREATE</code></pre></td>
 <td style="text-align: left;"><pre><code>POST</code></pre></td>
 <td style="text-align: left;"><pre><code>/api/now/import/{table_name}</code></pre></td>
@@ -106,7 +106,7 @@ Documentation](http://wiki.servicenow.com/index.php?title=REST_API#Available_API
 <col style="width: 60%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">CamelServiceNowResource</th>
 <th style="text-align: left;">CamelServiceNowAction</th>
 <th style="text-align: left;">CamelServiceNowActionSubject</th>
@@ -115,203 +115,203 @@ Documentation](http://wiki.servicenow.com/index.php?title=REST_API#Available_API
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>TABLE</p></td>
 <td style="text-align: left;"><pre><code>RETRIEVE</code></pre></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"><pre><code>GET</code></pre></td>
 <td style="text-align: left;"><pre><code>/api/now/v1/table/{table_name}/{sys_id}</code></pre></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><pre><code>CREATE</code></pre></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"><pre><code>POST</code></pre></td>
 <td style="text-align: left;"><pre><code>/api/now/v1/table/{table_name}</code></pre></td>
 <td></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><pre><code>MODIFY</code></pre></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"><pre><code>PUT</code></pre></td>
 <td style="text-align: left;"><pre><code>/api/now/v1/table/{table_name}/{sys_id}</code></pre></td>
 <td></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><pre><code>DELETE</code></pre></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"><pre><code>DELETE</code></pre></td>
 <td style="text-align: left;"><pre><code>/api/now/v1/table/{table_name}/{sys_id}</code></pre></td>
 <td></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><pre><code>UPDATE</code></pre></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"><pre><code>PATCH</code></pre></td>
 <td style="text-align: left;"><pre><code>/api/now/v1/table/{table_name}/{sys_id}</code></pre></td>
 <td></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><pre><code>AGGREGATE</code></pre></td>
 <td style="text-align: left;"><pre><code>RETRIEVE</code></pre></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"><pre><code>GET</code></pre></td>
 <td style="text-align: left;"><pre><code>/api/now/v1/stats/{table_name}</code></pre></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>IMPORT</p></td>
 <td style="text-align: left;"><pre><code>RETRIEVE</code></pre></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"><pre><code>GET</code></pre></td>
 <td style="text-align: left;"><pre><code>/api/now/import/{table_name}/{sys_id}</code></pre></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><pre><code>CREATE</code></pre></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"><pre><code>POST</code></pre></td>
 <td style="text-align: left;"><pre><code>/api/now/import/{table_name}</code></pre></td>
 <td></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>ATTACHMENT</p></td>
 <td style="text-align: left;"><pre><code>RETRIEVE</code></pre></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"><pre><code>GET</code></pre></td>
 <td style="text-align: left;"><pre><code>/api/now/api/now/attachment/{sys_id}</code></pre></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><pre><code>CONTENT</code></pre></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"><pre><code>GET</code></pre></td>
 <td style="text-align: left;"><pre><code>/api/now/attachment/{sys_id}/file</code></pre></td>
 <td></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><pre><code>UPLOAD</code></pre></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"><pre><code>POST</code></pre></td>
 <td style="text-align: left;"><pre><code>/api/now/api/now/attachment/file</code></pre></td>
 <td></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><pre><code>DELETE</code></pre></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"><pre><code>DELETE</code></pre></td>
 <td style="text-align: left;"><pre><code>/api/now/attachment/{sys_id}</code></pre></td>
 <td></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><pre><code>SCORECARDS</code></pre></td>
 <td style="text-align: left;"><pre><code>RETRIEVE</code></pre></td>
 <td style="text-align: left;"><pre><code>PERFORMANCE_ANALYTICS</code></pre></td>
 <td style="text-align: left;"><pre><code>GET</code></pre></td>
 <td style="text-align: left;"><pre><code>/api/now/pa/scorecards</code></pre></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p>MISC</p></td>
 <td style="text-align: left;"><pre><code>RETRIEVE</code></pre></td>
 <td style="text-align: left;"><pre><code>USER_ROLE_INHERITANCE</code></pre></td>
 <td style="text-align: left;"><pre><code>GET</code></pre></td>
 <td style="text-align: left;"><pre><code>/api/global/user_role_inheritance</code></pre></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><pre><code>CREATE</code></pre></td>
 <td style="text-align: left;"><pre><code>IDENTIFY_RECONCILE</code></pre></td>
 <td style="text-align: left;"><pre><code>POST</code></pre></td>
 <td style="text-align: left;"><pre><code>/api/now/identifyreconcile</code></pre></td>
 <td></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p>SERVICE_CATALOG</p></td>
 <td style="text-align: left;"><pre><code>RETRIEVE</code></pre></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"><pre><code>GET</code></pre></td>
 <td style="text-align: left;"><pre><code>/sn_sc/servicecatalog/catalogs/{sys_id}</code></pre></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><pre><code>RETRIEVE</code></pre></td>
 <td style="text-align: left;"><pre><code>CATEGORIES</code></pre></td>
 <td style="text-align: left;"><pre><code>GET</code></pre></td>
 <td style="text-align: left;"><pre><code>/sn_sc/servicecatalog/catalogs/{sys_id}/categories</code></pre></td>
 <td></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p>SERVICE_CATALOG_ITEMS</p></td>
 <td style="text-align: left;"><pre><code>RETRIEVE</code></pre></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"><pre><code>GET</code></pre></td>
 <td style="text-align: left;"><pre><code>/sn_sc/servicecatalog/items/{sys_id}</code></pre></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><pre><code>RETRIEVE</code></pre></td>
 <td style="text-align: left;"><pre><code>SUBMIT_GUIDE</code></pre></td>
 <td style="text-align: left;"><pre><code>POST</code></pre></td>
 <td style="text-align: left;"><pre><code>/sn_sc/servicecatalog/items/{sys_id}/submit_guide</code></pre></td>
 <td></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><pre><code>RETRIEVE</code></pre></td>
 <td style="text-align: left;"><pre><code>CHECKOUT_GUIDE</code></pre></td>
 <td style="text-align: left;"><pre><code>POST</code></pre></td>
 <td style="text-align: left;"><pre><code>/sn_sc/servicecatalog/items/{sys_id}/checkout_guide</code></pre></td>
 <td></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><pre><code>CREATE</code></pre></td>
 <td style="text-align: left;"><pre><code>SUBJECT_CART</code></pre></td>
 <td style="text-align: left;"><pre><code>POST</code></pre></td>
 <td style="text-align: left;"><pre><code>/sn_sc/servicecatalog/items/{sys_id}/add_to_cart</code></pre></td>
 <td></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><pre><code>CREATE</code></pre></td>
 <td style="text-align: left;"><pre><code>SUBJECT_PRODUCER</code></pre></td>
 <td style="text-align: left;"><pre><code>POST</code></pre></td>
 <td style="text-align: left;"><pre><code>/sn_sc/servicecatalog/items/{sys_id}/submit_producer</code></pre></td>
 <td></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>SERVICE_CATALOG_CARTS</p></td>
 <td style="text-align: left;"><pre><code>RETRIEVE</code></pre></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"><pre><code>GET</code></pre></td>
 <td style="text-align: left;"><pre><code>/sn_sc/servicecatalog/cart</code></pre></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><pre><code>RETRIEVE</code></pre></td>
 <td style="text-align: left;"><pre><code>DELIVERY_ADDRESS</code></pre></td>
 <td style="text-align: left;"><pre><code>GET</code></pre></td>
 <td style="text-align: left;"><pre><code>/sn_sc/servicecatalog/cart/delivery_address/{user_id}</code></pre></td>
 <td></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><pre><code>RETRIEVE</code></pre></td>
 <td style="text-align: left;"><pre><code>CHECKOUT</code></pre></td>
 <td style="text-align: left;"><pre><code>POST</code></pre></td>
 <td style="text-align: left;"><pre><code>/sn_sc/servicecatalog/cart/checkout</code></pre></td>
 <td></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><pre><code>UPDATE</code></pre></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"><pre><code>POST</code></pre></td>
 <td style="text-align: left;"><pre><code>/sn_sc/servicecatalog/cart/{cart_item_id}</code></pre></td>
 <td></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><pre><code>UPDATE</code></pre></td>
 <td style="text-align: left;"><pre><code>CHECKOUT</code></pre></td>
 <td style="text-align: left;"><pre><code>POST</code></pre></td>
 <td style="text-align: left;"><pre><code>/sn_sc/servicecatalog/cart/submit_order</code></pre></td>
 <td></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><pre><code>DELETE</code></pre></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"><pre><code>DELETE</code></pre></td>
 <td style="text-align: left;"><pre><code>/sn_sc/servicecatalog/cart/{sys_id}/empty</code></pre></td>
 <td></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><pre><code>SERVICE_CATALOG_CATEGORIES</code></pre></td>
 <td style="text-align: left;"><pre><code>RETRIEVE</code></pre></td>
 <td style="text-align: left;"></td>
@@ -326,7 +326,7 @@ API Mapping
 [Helsinki REST API
 Documentation](https://docs.servicenow.com/bundle/helsinki-servicenow-platform/page/integrate/inbound-rest/reference/r_RESTResources.html)
 
-# Usage examples:
+# Examples:
 
 **Retrieve 10 Incidents**
 

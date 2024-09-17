@@ -26,7 +26,9 @@ The component supports both producer and consumer (you can get messages
 from XMPP or send messages to XMPP). Consumer mode supports rooms
 starting.
 
-# Headers and setting Subject or Language
+# Usage
+
+## Headers and setting Subject or Language
 
 Camel sets the message IN headers as properties on the XMPP message. You
 can configure a `HeaderFilterStategy` if you need custom filtering of

@@ -22,12 +22,13 @@ for this component:
     </dependency>
 
 This component will by default load the MyBatis SqlMapConfig file from
-the root of the classpath with the expected name of
-`SqlMapConfig.xml`.  
+the root of the classpath with the expected name of `SqlMapConfig.xml`.
 If the file is located in another location, you will need to configure
 the `configurationUri` option on the `MyBatisComponent` component.
 
-# Message Body
+# Usage
+
+## Message Body
 
 The response from MyBatis will only be set as the body if it’s a
 `SELECT` statement. That means, for example, for `INSERT` statements
@@ -35,7 +36,7 @@ Camel will not replace the body. This allows you to continue routing and
 keep the original body. The response from MyBatis is always stored in
 the header with the key `CamelMyBatisResult`.
 
-# Samples
+# Examples
 
 For example, if you wish to consume beans from a JMS queue and insert
 them into a database, you could do the following:

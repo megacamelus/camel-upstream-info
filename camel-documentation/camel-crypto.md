@@ -76,7 +76,7 @@ complimentary `crypto:verify` in another, though for simplicity in the
 examples they appear one after the other. It goes without saying that
 both signing and verifying should be configured identically.
 
-# Using
+# Usage
 
 ## Raw keys
 

@@ -7,23 +7,6 @@
 The Simple JMS Component is a JMS component that only uses JMS APIs and
 no third-party framework such as Spring JMS.
 
-The component was reworked from Camel 3.8 onwards to be similar to the
-existing Camel JMS component that is based on Spring JMS.
-
-The reason is to offer many of the same features and functionality from
-the JMS component, but for users that require lightweight without having
-to include the Spring Framework.
-
-There are some advanced features in the Spring JMS component that has
-been omitted, such as shared queues for request/reply. Spring JMS offers
-fine-grained tunings for concurrency settings, which can be tweaked for
-dynamic scaling up and down depending on load. This is a special feature
-in Spring JMS that would require substantial code to implement in SJMS2.
-
-The SJMS2 component does not support for Spring or JTA Transaction,
-however, support for internal local transactions is supported using JMS
-or Transaction or Client Acknowledge Mode. See further details below.
-
 Maven users will need to add the following dependency to their `pom.xml`
 for this component:
 
@@ -56,7 +39,26 @@ example, to connect to the topic, `Stocks.Prices`, use:
 You append query options to the URI using the following format,
 `?option=value&option=value&...`
 
-# Reuse endpoint and send to different destinations computed at runtime
+# Usage
+
+The component was reworked from Camel 3.8 onwards to be similar to the
+existing Camel JMS component that is based on Spring JMS.
+
+The reason is to offer many of the same features and functionality from
+the JMS component, but for users that require lightweight without having
+to include the Spring Framework.
+
+There are some advanced features in the Spring JMS component that has
+been omitted, such as shared queues for request/reply. Spring JMS offers
+fine-grained tunings for concurrency settings, which can be tweaked for
+dynamic scaling up and down depending on load. This is a special feature
+in Spring JMS that would require substantial code to implement in SJMS2.
+
+The SJMS2 component does not support for Spring or JTA Transaction,
+however, support for internal local transactions is supported using JMS
+or Transaction or Client Acknowledge Mode. See further details below.
+
+## Reuse endpoint and send to different destinations computed at runtime
 
 If you need to send messages to a lot of different JMS destinations, it
 makes sense to reuse a SJMS endpoint and specify the real destination in
@@ -76,14 +78,14 @@ You can specify the destination in the following headers:
 <col style="width: 79%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Header</th>
 <th style="text-align: left;">Type</th>
 <th style="text-align: left;">Description</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td
 style="text-align: left;"><p><code>CamelJmsDestinationName</code></p></td>
 <td style="text-align: left;"><p><code>String</code></p></td>
@@ -121,7 +123,7 @@ them to the created JMS message to avoid the accidental loops in the
 routes (in scenarios when the message will be forwarded to another JMS
 endpoint).
 
-# Using toD
+## Using toD
 
 If you need to send messages to a lot of different JMS destinations, it
 makes sense to reuse a SJMS2 endpoint and specify the dynamic
@@ -130,10 +132,10 @@ destinations with simple language using [toD](#eips:toD-eip.adoc).
 For example, suppose you need to send messages to queues with order
 types, then using toD could, for example, be done as follows:
 
+**Example SJMS2 route with `toD`**
+
     from("direct:order")
       .toD("sjms2:order-${header.orderType}");
-
-# Additional Notes
 
 ## Local transactions
 
@@ -147,6 +149,8 @@ of processing the message before the active JMS Session will commit or
 rollback.
 
 You can combine consumer and producer, such as:
+
+**Example transacted SJMS2 route with consumer and producer**
 
     from("sjms2:cheese?transacted=true")
       .to("bean:foo")

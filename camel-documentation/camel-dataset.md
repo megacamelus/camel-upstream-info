@@ -40,7 +40,9 @@ some implementations that can be used for testing:
 `org.apache.camel.component.dataset.FileDataSet`, all of which extend
 `DataSetSupport`.
 
-# Configuring DataSet
+# Usage
+
+## Configuring DataSet
 
 Camel will look up in the Registry for a bean implementing the `DataSet`
 interface. So you can register your own data set as:
@@ -48,6 +50,199 @@ interface. So you can register your own data set as:
     <bean id="myDataSet" class="com.mycompany.MyDataSet">
       <property name="size" value="100"/>
     </bean>
+
+## DataSetSupport (abstract class)
+
+The `DataSetSupport` abstract class is a nice starting point for new
+data set, and provides some useful features to derived classes.
+
+### Additional Properties on DataSetSupport
+
+<table>
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 10%" />
+<col style="width: 10%" />
+<col style="width: 69%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Property</th>
+<th style="text-align: left;">Type</th>
+<th style="text-align: left;">Default</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><p><code>defaultHeaders</code></p></td>
+<td
+style="text-align: left;"><p><code>Map&lt;String,Object&gt;</code></p></td>
+<td style="text-align: left;"><p><code>null</code></p></td>
+<td style="text-align: left;"><p>Specify the default message body. For
+<code>SimpleDataSet</code> it is a constant payload; though if you want
+to create custom payloads per message, create your own derivation of
+<code>DataSetSupport</code>.</p></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><p><code>outputTransformer</code></p></td>
+<td
+style="text-align: left;"><p><code>org.apache.camel.Processor</code></p></td>
+<td style="text-align: left;"><p>null</p></td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><p><code>size</code></p></td>
+<td style="text-align: left;"><p><code>long</code></p></td>
+<td style="text-align: left;"><p><code>10</code></p></td>
+<td style="text-align: left;"><p>Specify how many messages to
+send/consume.</p></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><p><code>reportCount</code></p></td>
+<td style="text-align: left;"><p><code>long</code></p></td>
+<td style="text-align: left;"><p><code>-1</code></p></td>
+<td style="text-align: left;"><p>Specify the number of messages to be
+received before reporting progress. Useful for showing the progress of a
+large load test. If smaller than zero (` &lt; 0`), then
+<code>size</code> / 5, if is 0 then <code>size</code>, else set to
+<code>reportCount</code> value.</p></td>
+</tr>
+</tbody>
+</table>
+
+## SimpleDataSet
+
+The `SimpleDataSet` extends `DataSetSupport`, and adds a default body.
+
+### Additional Properties on SimpleDataSet
+
+<table>
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 10%" />
+<col style="width: 10%" />
+<col style="width: 69%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Property</th>
+<th style="text-align: left;">Type</th>
+<th style="text-align: left;">Default</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><p><code>defaultBody</code></p></td>
+<td style="text-align: left;"><p><code>Object</code></p></td>
+<td
+style="text-align: left;"><p><code>&lt;hello&gt;world!&lt;/hello&gt;</code></p></td>
+<td style="text-align: left;"><p>Specify the default message body. By
+default, the <code>SimpleDataSet</code> produces the same constant
+payload for each exchange. If you want to customize the payload for each
+exchange, create a Camel <code>Processor</code> and configure the
+<code>SimpleDataSet</code> to use it by setting the
+<code>outputTransformer</code> property.</p></td>
+</tr>
+</tbody>
+</table>
+
+## ListDataSet
+
+The List\`DataSet\` extends `DataSetSupport`, and adds a list of default
+bodies.
+
+### Additional Properties on ListDataSet
+
+<table>
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 10%" />
+<col style="width: 10%" />
+<col style="width: 69%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Property</th>
+<th style="text-align: left;">Type</th>
+<th style="text-align: left;">Default</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><p><code>defaultBodies</code></p></td>
+<td
+style="text-align: left;"><p><code>List&lt;Object&gt;</code></p></td>
+<td
+style="text-align: left;"><p><code>empty LinkedList&lt;Object&gt;</code></p></td>
+<td style="text-align: left;"><p>Specify the default message body. By
+default, the <code>ListDataSet</code> selects a constant payload from
+the list of <code>defaultBodies</code> using the
+<code>CamelDataSetIndex</code>. If you want to customize the payload,
+create a Camel <code>Processor</code> and configure the
+<code>ListDataSet</code> to use it by setting the
+<code>outputTransformer</code> property.</p></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><p><code>size</code></p></td>
+<td style="text-align: left;"><p><code>long</code></p></td>
+<td style="text-align: left;"><p>the size of the defaultBodies
+list</p></td>
+<td style="text-align: left;"><p>Specify how many messages to
+send/consume. This value can be different from the size of the
+<code>defaultBodies</code> list. If the value is less than the size of
+the <code>defaultBodies</code> list, some of the list elements will not
+be used. If the value is greater than the size of the
+<code>defaultBodies</code> list, the payload for the exchange will be
+selected using the modulus of the <code>CamelDataSetIndex</code> and the
+size of the <code>defaultBodies</code> list (i.e.,
+<code>CamelDataSetIndex % defaultBodies.size()</code> )</p></td>
+</tr>
+</tbody>
+</table>
+
+## FileDataSet
+
+The `FileDataSet` extends `ListDataSet`, and adds support for loading
+the bodies from a file.
+
+### Additional Properties on FileDataSet
+
+<table>
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 10%" />
+<col style="width: 10%" />
+<col style="width: 69%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Property</th>
+<th style="text-align: left;">Type</th>
+<th style="text-align: left;">Default</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><p><code>sourceFile</code></p></td>
+<td style="text-align: left;"><p><code>File</code></p></td>
+<td style="text-align: left;"><p>null</p></td>
+<td style="text-align: left;"><p>Specify the source file for
+payloads</p></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><p><code>delimiter</code></p></td>
+<td style="text-align: left;"><p><code>String</code></p></td>
+<td style="text-align: left;"><p>\z</p></td>
+<td style="text-align: left;"><p>Specify the delimiter pattern used by a
+<code>java.util.Scanner</code> to split the file into multiple
+payloads.</p></td>
+</tr>
+</tbody>
+</table>
 
 # Example
 
@@ -66,199 +261,6 @@ instance which is used to create the messages.
 Then you create a `DataSet` implementation, such as using the
 `SimpleDataSet` as described below, configuring things like how big the
 data set is and what the messages look like etc.
-
-# DataSetSupport (abstract class)
-
-The `DataSetSupport` abstract class is a nice starting point for new
-data set, and provides some useful features to derived classes.
-
-## Properties on DataSetSupport
-
-<table>
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 10%" />
-<col style="width: 10%" />
-<col style="width: 69%" />
-</colgroup>
-<thead>
-<tr>
-<th style="text-align: left;">Property</th>
-<th style="text-align: left;">Type</th>
-<th style="text-align: left;">Default</th>
-<th style="text-align: left;">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;"><p><code>defaultHeaders</code></p></td>
-<td
-style="text-align: left;"><p><code>Map&lt;String,Object&gt;</code></p></td>
-<td style="text-align: left;"><p><code>null</code></p></td>
-<td style="text-align: left;"><p>Specify the default message body. For
-<code>SimpleDataSet</code> it is a constant payload; though if you want
-to create custom payloads per message, create your own derivation of
-<code>DataSetSupport</code>.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>outputTransformer</code></p></td>
-<td
-style="text-align: left;"><p><code>org.apache.camel.Processor</code></p></td>
-<td style="text-align: left;"><p>null</p></td>
-<td style="text-align: left;"></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>size</code></p></td>
-<td style="text-align: left;"><p><code>long</code></p></td>
-<td style="text-align: left;"><p><code>10</code></p></td>
-<td style="text-align: left;"><p>Specify how many messages to
-send/consume.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>reportCount</code></p></td>
-<td style="text-align: left;"><p><code>long</code></p></td>
-<td style="text-align: left;"><p><code>-1</code></p></td>
-<td style="text-align: left;"><p>Specify the number of messages to be
-received before reporting progress. Useful for showing the progress of a
-large load test. If smaller than zero (` &lt; 0`), then
-<code>size</code> / 5, if is 0 then <code>size</code>, else set to
-<code>reportCount</code> value.</p></td>
-</tr>
-</tbody>
-</table>
-
-# SimpleDataSet
-
-The `SimpleDataSet` extends `DataSetSupport`, and adds a default body.
-
-## Additional Properties on SimpleDataSet
-
-<table>
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 10%" />
-<col style="width: 10%" />
-<col style="width: 69%" />
-</colgroup>
-<thead>
-<tr>
-<th style="text-align: left;">Property</th>
-<th style="text-align: left;">Type</th>
-<th style="text-align: left;">Default</th>
-<th style="text-align: left;">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;"><p><code>defaultBody</code></p></td>
-<td style="text-align: left;"><p><code>Object</code></p></td>
-<td
-style="text-align: left;"><p><code>&lt;hello&gt;world!&lt;/hello&gt;</code></p></td>
-<td style="text-align: left;"><p>Specify the default message body. By
-default, the <code>SimpleDataSet</code> produces the same constant
-payload for each exchange. If you want to customize the payload for each
-exchange, create a Camel <code>Processor</code> and configure the
-<code>SimpleDataSet</code> to use it by setting the
-<code>outputTransformer</code> property.</p></td>
-</tr>
-</tbody>
-</table>
-
-# ListDataSet
-
-The List\`DataSet\` extends `DataSetSupport`, and adds a list of default
-bodies.
-
-## Additional Properties on ListDataSet
-
-<table>
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 10%" />
-<col style="width: 10%" />
-<col style="width: 69%" />
-</colgroup>
-<thead>
-<tr>
-<th style="text-align: left;">Property</th>
-<th style="text-align: left;">Type</th>
-<th style="text-align: left;">Default</th>
-<th style="text-align: left;">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;"><p><code>defaultBodies</code></p></td>
-<td
-style="text-align: left;"><p><code>List&lt;Object&gt;</code></p></td>
-<td
-style="text-align: left;"><p><code>empty LinkedList&lt;Object&gt;</code></p></td>
-<td style="text-align: left;"><p>Specify the default message body. By
-default, the <code>ListDataSet</code> selects a constant payload from
-the list of <code>defaultBodies</code> using the
-<code>CamelDataSetIndex</code>. If you want to customize the payload,
-create a Camel <code>Processor</code> and configure the
-<code>ListDataSet</code> to use it by setting the
-<code>outputTransformer</code> property.</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>size</code></p></td>
-<td style="text-align: left;"><p><code>long</code></p></td>
-<td style="text-align: left;"><p>the size of the defaultBodies
-list</p></td>
-<td style="text-align: left;"><p>Specify how many messages to
-send/consume. This value can be different from the size of the
-<code>defaultBodies</code> list. If the value is less than the size of
-the <code>defaultBodies</code> list, some of the list elements will not
-be used. If the value is greater than the size of the
-<code>defaultBodies</code> list, the payload for the exchange will be
-selected using the modulus of the <code>CamelDataSetIndex</code> and the
-size of the <code>defaultBodies</code> list (i.e.,
-<code>CamelDataSetIndex % defaultBodies.size()</code> )</p></td>
-</tr>
-</tbody>
-</table>
-
-# FileDataSet
-
-The `FileDataSet` extends `ListDataSet`, and adds support for loading
-the bodies from a file.
-
-## Additional Properties on FileDataSet
-
-<table>
-<colgroup>
-<col style="width: 10%" />
-<col style="width: 10%" />
-<col style="width: 10%" />
-<col style="width: 69%" />
-</colgroup>
-<thead>
-<tr>
-<th style="text-align: left;">Property</th>
-<th style="text-align: left;">Type</th>
-<th style="text-align: left;">Default</th>
-<th style="text-align: left;">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;"><p><code>sourceFile</code></p></td>
-<td style="text-align: left;"><p><code>File</code></p></td>
-<td style="text-align: left;"><p>null</p></td>
-<td style="text-align: left;"><p>Specify the source file for
-payloads</p></td>
-</tr>
-<tr>
-<td style="text-align: left;"><p><code>delimiter</code></p></td>
-<td style="text-align: left;"><p><code>String</code></p></td>
-<td style="text-align: left;"><p>\z</p></td>
-<td style="text-align: left;"><p>Specify the delimiter pattern used by a
-<code>java.util.Scanner</code> to split the file into multiple
-payloads.</p></td>
-</tr>
-</tbody>
-</table>
 
 ## Component Configurations
 

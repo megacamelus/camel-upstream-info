@@ -9,23 +9,27 @@ Components](#kubernetes-summary.adoc) which provides a producer to
 execute Kubernetes Pods operations and a consumer to consume events
 related to Pod Objects.
 
-# Supported producer operation
+# Usage
 
--   listPods
+## Supported producer operation
 
--   listPodsByLabels
+-   `listPods`
 
--   getPod
+-   `listPodsByLabels`
 
--   createPod
+-   `getPod`
 
--   updatePod
+-   `createPod`
 
--   deletePod
+-   `updatePod`
 
-# Kubernetes Pods Producer Examples
+-   `deletePod`
 
--   listPods: this operation lists the pods on a kubernetes cluster
+# Examples
+
+## Kubernetes Pods Producer Examples
+
+-   `listPods`: this operation lists the pods on a kubernetes cluster
 
 <!-- -->
 
@@ -33,9 +37,9 @@ related to Pod Objects.
         toF("kubernetes-pods:///?kubernetesClient=#kubernetesClient&operation=listPods").
         to("mock:result");
 
-This operation returns a List of Pods from your cluster
+This operation returns a list of pods from your cluster
 
--   listPodsByLabels: this operation lists the pods by labels on a
+-   `listPodsByLabels`: this operation lists the pods by labels on a
     kubernetes cluster
 
 <!-- -->
@@ -52,10 +56,10 @@ This operation returns a List of Pods from your cluster
         toF("kubernetes-pods:///?kubernetesClient=#kubernetesClient&operation=listPodsByLabels").
         to("mock:result");
 
-This operation returns a List of Pods from your cluster, using a label
+This operation returns a list of pods from your cluster using a label
 selector (with key1 and key2, with value value1 and value2)
 
-# Kubernetes Pods Consumer Example
+## Kubernetes Pods Consumer Example
 
     fromF("kubernetes-pods://%s?oauthToken=%s&namespace=default&resourceName=test", host, authToken).process(new KubernertesProcessor()).to("mock:result");
         public class KubernertesProcessor implements Processor {

@@ -8,7 +8,7 @@ The Undertow component provides HTTP and WebSocket based endpoints for
 consuming and producing HTTP/WebSocket requests.
 
 That is, the Undertow component behaves as a simple Web server. Undertow
-can also be used as a http client that means you can also use it with
+can also be used as an HTTP client that means you can also use it with
 Camel as a producer.
 
 Since the component also supports WebSocket connections, it can serve as
@@ -37,7 +37,9 @@ for this component:
     undertow:ws://hostname[:port][/resourceUri][?options]
     undertow:wss://hostname[:port][/resourceUri][?options]
 
-# Message Headers
+# Usage
+
+## Message Headers
 
 Camel uses the same message headers as the [HTTP](#http-component.adoc)
 component. It also uses `Exchange.HTTP_CHUNKED,CamelHttpChunked` header
@@ -49,44 +51,7 @@ For example, given a client request with the URL,
 `\http://myserver/myserver?orderid=123`, the exchange will contain a
 header named `orderid` with the value `123`.
 
-# HTTP Producer Example
-
-The following is a basic example of how to send an HTTP request to an
-existing HTTP endpoint.
-
-Java  
-from("direct:start")
-.to("undertow:http://www.google.com");
-
-XML  
-<route>  
-<from uri="direct:start"/>  
-<to uri="undertow:http://www.google.com"/>  
-</route>
-
-# HTTP Consumer Example
-
-In this sample we define a route that exposes a HTTP service at
-`\http://localhost:8080/myapp/myservice`:
-
-    <route>
-      <from uri="undertow:http://localhost:8080/myapp/myservice"/>
-      <to uri="bean:myBean"/>
-    </route>
-
-# WebSocket Example
-
-In this sample we define a route that exposes a WebSocket service at
-`\http://localhost:8080/myapp/mysocket` and returns back a response to
-the same channel:
-
-    <route>
-      <from uri="undertow:ws://localhost:8080/myapp/mysocket"/>
-      <transform><simple>Echo ${body}</simple></transform>
-      <to uri="undertow:ws://localhost:8080/myapp/mysocket"/>
-    </route>
-
-# Using localhost as host
+## Using localhost as host
 
 When you specify `localhost` in a URL, Camel exposes the endpoint only
 on the local TCP/IP network interface, so it cannot be accessed from
@@ -104,7 +69,7 @@ If you actually want to expose routes by HTTP and already have a
 Servlet, you should instead refer to the [Servlet
 Transport](#servlet-component.adoc).
 
-# Security provider
+## Security provider
 
 To plug in a security provider for endpoint authentication, implement
 SPI interface
@@ -120,6 +85,45 @@ Property `requireServletContext` of security providers forces the
 Undertow server to start with servlet context. There will be no servlet
 actually handled. This feature is meant only for use with servlet
 filters, which needs servlet context for their functionality.
+
+# Examples
+
+## HTTP Producer Example
+
+The following is a basic example of how to send an HTTP request to an
+existing HTTP endpoint.
+
+Java  
+from("direct:start")
+.to("undertow:http://www.google.com");
+
+XML  
+<route>  
+<from uri="direct:start"/>  
+<to uri="undertow:http://www.google.com"/>  
+</route>
+
+## HTTP Consumer Example
+
+In this sample we define a route that exposes a HTTP service at
+`\http://localhost:8080/myapp/myservice`:
+
+    <route>
+      <from uri="undertow:http://localhost:8080/myapp/myservice"/>
+      <to uri="bean:myBean"/>
+    </route>
+
+## WebSocket Example
+
+In this sample we define a route that exposes a WebSocket service at
+`\http://localhost:8080/myapp/mysocket` and returns back a response to
+the same channel:
+
+    <route>
+      <from uri="undertow:ws://localhost:8080/myapp/mysocket"/>
+      <transform><simple>Echo ${body}</simple></transform>
+      <to uri="undertow:ws://localhost:8080/myapp/mysocket"/>
+    </route>
 
 ## Component Configurations
 

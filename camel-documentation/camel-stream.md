@@ -30,7 +30,9 @@ If the `stream:header` URI is specified, the `stream` header is used to
 find the stream to write to. This option is available only for stream
 producers (that is, it cannot appear in `from()`).
 
-# Message content
+# Usage
+
+## Message content
 
 The Stream component supports either `String` or `byte[]` for writing to
 streams. Just add either `String` or `byte[]` content to the
@@ -43,7 +45,7 @@ add a `java.io.OutputStream` object to `message.in.header` in the key
 `header`.  
 See samples for an example.
 
-# Samples
+# Examples
 
 In the following sample we route messages from the `direct:in` endpoint
 to the `System.out` stream:
@@ -75,7 +77,7 @@ should also turn on the `fileWatcher` and `retry` options.
     from("stream:file?fileName=/server/logs/server.log&scanStream=true&scanStreamDelay=1000&retry=true&fileWatcher=true")
       .to("bean:logService?method=parseLogLine");
 
-# Reading HTTP server side streaming
+## Reading HTTP server side streaming
 
 The camel-stream component has basic support for connecting to a remote
 HTTP server and read streaming data (chunk of data separated by

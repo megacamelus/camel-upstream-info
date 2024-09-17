@@ -9,7 +9,8 @@ OpenStack network services.
 
 # Dependencies
 
-Maven users will need to add the following dependency to their pom.xml.
+Maven users will need to add the following dependency to their
+`pom.xml`.
 
 **pom.xml**
 
@@ -30,9 +31,9 @@ Camel.
 
 You can use the following settings for each subsystem:
 
-# networks
+## Networks
 
-## Operations you can perform with the Network producer
+### Operations you can perform with the Network producer
 
 <table>
 <colgroup>
@@ -40,25 +41,25 @@ You can use the following settings for each subsystem:
 <col style="width: 80%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Operation</th>
 <th style="text-align: left;">Description</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>create</code></p></td>
 <td style="text-align: left;"><p>Create a new network.</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>get</code></p></td>
 <td style="text-align: left;"><p>Get the network.</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>getAll</code></p></td>
 <td style="text-align: left;"><p>Get all networks.</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>delete</code></p></td>
 <td style="text-align: left;"><p>Delete the network.</p></td>
 </tr>
@@ -66,12 +67,12 @@ You can use the following settings for each subsystem:
 </table>
 
 If you need more precise network settings, you can create a new object
-of the type **org.openstack4j.model.network.Network** and send in the
+of the type `org.openstack4j.model.network.Network` and send in the
 message body.
 
-# subnets
+## Subnets
 
-## Operations you can perform with the Subnet producer
+### Operations you can perform with the Subnet producer
 
 <table>
 <colgroup>
@@ -79,29 +80,29 @@ message body.
 <col style="width: 80%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Operation</th>
 <th style="text-align: left;">Description</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>create</code></p></td>
 <td style="text-align: left;"><p>Create new subnet.</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>get</code></p></td>
 <td style="text-align: left;"><p>Get the subnet.</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>getAll</code></p></td>
 <td style="text-align: left;"><p>Get all subnets.</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>delete</code></p></td>
 <td style="text-align: left;"><p>Delete the subnet.</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>action</code></p></td>
 <td style="text-align: left;"><p>Perform an action on the
 subnet.</p></td>
@@ -110,12 +111,12 @@ subnet.</p></td>
 </table>
 
 If you need more precise subnet settings, you can create a new object of
-the type **org.openstack4j.model.network.Subnet** and send in the
-message body.
+the type `org.openstack4j.model.network.Subnet` and send in the message
+body.
 
-# ports
+## Ports
 
-## Operations you can perform with the Port producer
+### Operations you can perform with the Port producer
 
 <table>
 <colgroup>
@@ -123,38 +124,38 @@ message body.
 <col style="width: 80%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Operation</th>
 <th style="text-align: left;">Description</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>create</code></p></td>
 <td style="text-align: left;"><p>Create a new port.</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>get</code></p></td>
 <td style="text-align: left;"><p>Get the port.</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>getAll</code></p></td>
 <td style="text-align: left;"><p>Get all ports.</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>update</code></p></td>
 <td style="text-align: left;"><p>Update the port.</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>delete</code></p></td>
 <td style="text-align: left;"><p>Delete the port.</p></td>
 </tr>
 </tbody>
 </table>
 
-# routers
+## Routers
 
-## Operations you can perform with the Router producer
+### Operations you can perform with the Router producer
 
 <table>
 <colgroup>
@@ -162,37 +163,37 @@ message body.
 <col style="width: 80%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Operation</th>
 <th style="text-align: left;">Description</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>create</code></p></td>
 <td style="text-align: left;"><p>Create a new router.</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>get</code></p></td>
 <td style="text-align: left;"><p>Get the router.</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>getAll</code></p></td>
 <td style="text-align: left;"><p>Get all routers.</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>update</code></p></td>
 <td style="text-align: left;"><p>Update the router.</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>delete</code></p></td>
 <td style="text-align: left;"><p>Delete the router.</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>attachInterface</code></p></td>
 <td style="text-align: left;"><p>Attach an interface.</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>detachInterface</code></p></td>
 <td style="text-align: left;"><p>Detach an interface.</p></td>
 </tr>

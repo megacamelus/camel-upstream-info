@@ -28,6 +28,8 @@ You can append query options to the URI in the following format:
 
 `?options=value&option2=value&...`
 
+# Usage
+
 ## Static credentials, Default Credential Provider and Profile Credentials Provider
 
 You have the possibility of avoiding the usage of explicit static
@@ -289,7 +291,7 @@ this operation will return a list of rules associated with a target.
 this operation will return a list of entries with related ID sent to
 servicebus.
 
-# Updating the rule
+## Updating the rule
 
 To update a rule, you’ll need to perform the putRule operation again.
 There is no explicit update rule operation in the Java SDK.

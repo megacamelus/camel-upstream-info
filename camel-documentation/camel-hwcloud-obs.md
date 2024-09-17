@@ -34,34 +34,34 @@ for this component:
 <col style="width: 79%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Header</th>
 <th style="text-align: left;">Type</th>
 <th style="text-align: left;">Description</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td
 style="text-align: left;"><p><code>CamelHwCloudObsOperation</code></p></td>
 <td style="text-align: left;"><p><code>String</code></p></td>
 <td style="text-align: left;"><p>Name of operation to invoke</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td
 style="text-align: left;"><p><code>CamelHwCloudObsBucketName</code></p></td>
 <td style="text-align: left;"><p><code>String</code></p></td>
 <td style="text-align: left;"><p>Bucket name to invoke operation
 on</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td
 style="text-align: left;"><p><code>CamelHwCloudObsBucketLocation</code></p></td>
 <td style="text-align: left;"><p><code>String</code></p></td>
 <td style="text-align: left;"><p>Bucket location when creating a new
 bucket</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td
 style="text-align: left;"><p><code>CamelHwCloudObsObjectName</code></p></td>
 <td style="text-align: left;"><p><code>String</code></p></td>
@@ -84,14 +84,14 @@ corresponding query parameter.
 <col style="width: 79%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Header</th>
 <th style="text-align: left;">Type</th>
 <th style="text-align: left;">Description</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td
 style="text-align: left;"><p><code>CamelHwCloudObsBucketExists</code></p></td>
 <td style="text-align: left;"><p><code>boolean</code></p></td>
@@ -101,7 +101,7 @@ style="text-align: left;"><p><code>CamelHwCloudObsBucketExists</code></p></td>
 </tbody>
 </table>
 
-# List of Supported OBS Operations
+## List of Supported OBS Operations
 
 -   listBuckets
 
@@ -161,7 +161,7 @@ endpoint uri.
      .setBody("{\"bucketName\":\"Bucket name\",\"maxKeys\":1000"}")
      .to("hwcloud-obs:listObjects?region=cn-north-4&accessKey=********&secretKey=********")
 
-# Using ServiceKey Configuration Bean
+## Using ServiceKey Configuration Bean
 
 Access key and secret keys are required to authenticate against the OBS
 cloud. You can avoid having them being exposed and scattered over in

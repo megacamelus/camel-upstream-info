@@ -37,7 +37,9 @@ template `fruit-template.html`:
 
 The `fruit` header is now accessible from the `message.out.headers`.
 
-# Thymeleaf Context
+# Usage
+
+## Thymeleaf Context
 
 Camel will provide exchange information in the Thymeleaf context (just a
 `Map`). The `Exchange` is transferred as:
@@ -48,49 +50,49 @@ Camel will provide exchange information in the Thymeleaf context (just a
 <col style="width: 89%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">key</th>
 <th style="text-align: left;">value</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>exchange</code></p></td>
 <td style="text-align: left;"><p>The <code>Exchange</code>
 itself.</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td
 style="text-align: left;"><p><code>exchange.properties</code></p></td>
 <td style="text-align: left;"><p>The <code>Exchange</code>
 properties.</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>headers</code></p></td>
 <td style="text-align: left;"><p>The headers of the In message.</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>camelContext</code></p></td>
 <td style="text-align: left;"><p>The Camel Context instance.</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>request</code></p></td>
 <td style="text-align: left;"><p>The In message.</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>in</code></p></td>
 <td style="text-align: left;"><p>The In message.</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>body</code></p></td>
 <td style="text-align: left;"><p>The In message body.</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>out</code></p></td>
 <td style="text-align: left;"><p>The Out message (only for InOut message
 exchange pattern).</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>response</code></p></td>
 <td style="text-align: left;"><p>The Out message (only for InOut message
 exchange pattern).</p></td>
@@ -105,7 +107,7 @@ You can set up a custom Thymeleaf Context yourself by setting property
     EngineContext engineContext = new EngineContext(variableMap);
     exchange.getIn().setHeader("CamelThymeleafContext", engineContext);
 
-# Hot reloading
+## Hot reloading
 
 The Thymeleaf template resource is, by default, hot reloadable for both
 file and classpath resources (expanded jar). If you set
@@ -113,7 +115,7 @@ file and classpath resources (expanded jar). If you set
 hot reloading is not possible. This scenario can be used in production
 when the resource never changes.
 
-# Dynamic templates
+## Dynamic templates
 
 Camel provides two headers by which you can define a different resource
 location for a template or the template content itself. If any of these
@@ -127,29 +129,31 @@ resource. This allows you to provide a dynamic template at runtime.
 <col style="width: 79%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Header</th>
 <th style="text-align: left;">Type</th>
 <th style="text-align: left;">Description</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td style="text-align: left;"><p>CamelThymeleafResourceUri</p></td>
-<td style="text-align: left;"><p>String</p></td>
+<tr class="odd">
+<td
+style="text-align: left;"><p><code>CamelThymeleafResourceUri</code></p></td>
+<td style="text-align: left;"><p><code>String</code></p></td>
 <td style="text-align: left;"><p>A URI for the template resource to use
 instead of the endpoint configured.</p></td>
 </tr>
-<tr>
-<td style="text-align: left;"><p>CamelThymeleafTemplate</p></td>
-<td style="text-align: left;"><p>String</p></td>
+<tr class="even">
+<td
+style="text-align: left;"><p><code>CamelThymeleafTemplate</code></p></td>
+<td style="text-align: left;"><p><code>String</code></p></td>
 <td style="text-align: left;"><p>The template to use instead of the
 endpoint configured.</p></td>
 </tr>
 </tbody>
 </table>
 
-# Samples
+# Examples
 
 For a simple use case, you could use something like:
 
@@ -193,7 +197,7 @@ should use it dynamically via a header, so, for example:
       .setHeader("CamelThymeleafTemplate").constant("Hi this is a thymeleaf template that can do templating ${body}")
       .to("thymeleaf:dummy?allowTemplateFromHeader=true"");
 
-# The Email Sample
+## The Email Example
 
 In this sample, we want to use Thymeleaf templating for an order
 confirmation email. The email template is laid out in Thymeleaf as:

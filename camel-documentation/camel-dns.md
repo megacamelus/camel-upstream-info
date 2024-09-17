@@ -17,11 +17,7 @@ following operations:
 
 **Requires SUN JVM**
 
-The DNSJava library requires running on the SUN JVM. If you use Apache
-ServiceMix or Apache Karaf, you’ll need to adjust the
-`etc/jre.properties` file, to add `sun.net.spi.nameservice` to the list
-of Java platform packages exported. The server will need restarting
-before this change takes effect.
+The DNSJava library requires running on the SUN JVM.
 
 Maven users will need to add the following dependency to their `pom.xml`
 for this component:
@@ -75,7 +71,7 @@ Dig is a Unix command-line utility to run DNS queries.
 
 The query must be provided in the header with key `"dns.query"`.
 
-# Dns Activation Policy
+## Dns Activation Policy
 
 The `DnsActivationPolicy` can be used to dynamically start and stop
 routes based on dns state.

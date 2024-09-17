@@ -90,13 +90,13 @@ For these operations, `accountName` option is required
 <col style="width: 89%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Operation</th>
 <th style="text-align: left;">Description</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>listFileSystem</code></p></td>
 <td style="text-align: left;"><p>List all the file systems that are
 present in the given azure account.</p></td>
@@ -115,23 +115,23 @@ required
 <col style="width: 89%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Operation</th>
 <th style="text-align: left;">Description</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>createFileSystem</code></p></td>
 <td style="text-align: left;"><p>Create a new file System with the
 storage account</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>deleteFileSystem</code></p></td>
 <td style="text-align: left;"><p>Delete the specified file system within
 the storage account</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>listPaths</code></p></td>
 <td style="text-align: left;"><p>Returns list of all the files within
 the given path in the given file system, with folder structure
@@ -151,18 +151,18 @@ For these operations, `accountName`, `fileSystemName` and
 <col style="width: 89%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Operation</th>
 <th style="text-align: left;">Description</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>createFile</code></p></td>
 <td style="text-align: left;"><p>Create a new file in the specified
 directory within the fileSystem</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>deleteDirectory</code></p></td>
 <td style="text-align: left;"><p>Delete the specified directory within
 the file system</p></td>
@@ -181,44 +181,44 @@ options are required
 <col style="width: 89%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Operation</th>
 <th style="text-align: left;">Description</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>getFile</code></p></td>
 <td style="text-align: left;"><p>Get the contents of a file</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>downloadToFile</code></p></td>
 <td style="text-align: left;"><p>Download the entire file from the file
 system into a path specified by fileDir.</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>downloadLink</code></p></td>
 <td style="text-align: left;"><p>Generate a download link for the
 specified file using Shared Access Signature (SAS). The expiration time
 to be set for the link can be specified otherwise 1 hour is taken as
 default.</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>deleteFile</code></p></td>
 <td style="text-align: left;"><p>Delete the specified file.</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>appendToFile</code></p></td>
 <td style="text-align: left;"><p>Appends the data passed to the
 specified file in the file System. Flush command is required after
 append.</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>flushToFile</code></p></td>
 <td style="text-align: left;"><p>Flushes the data already appended to
 the specified file.</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td
 style="text-align: left;"><p><code>openQueryInputStream</code></p></td>
 <td style="text-align: left;"><p>Opens an <code>InputStream</code> based
@@ -230,6 +230,8 @@ register the query acceleration feature with your subscription.</p></td>
 
 Refer to the examples section below for more details on how to use these
 operations
+
+# Examples
 
 ## Consumer Examples
 

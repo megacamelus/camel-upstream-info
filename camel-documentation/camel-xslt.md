@@ -30,23 +30,23 @@ You can append query options to the URI in the following format:
 <col style="width: 50%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">URI</th>
 <th style="text-align: left;">Description</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>xslt:com/acme/mytransform.xsl</p></td>
 <td style="text-align: left;"><p>Refers to the file
 com/acme/mytransform.xsl on the classpath</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p>xslt:file:///foo/bar.xsl</p></td>
 <td style="text-align: left;"><p>Refers to the file
 /foo/bar.xsl</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td
 style="text-align: left;"><p>xslt:http://acme.com/cheese/foo.xsl</p></td>
 <td style="text-align: left;"><p>Refers to the remote http
@@ -125,12 +125,12 @@ the prefix from the endpoint configuration. If no prefix is specified in
 the endpoint configuration, the default is `classpath:`.
 
 You can also refer backwards in the included paths. In the following
-example, the xsl file will be resolved under
+example, the XSL file will be resolved under
 `org/apache/camel/component`.
 
         <xsl:include href="../staff_other_template.xsl"/>
 
-# Using xsl:include and default prefix
+# Using `xsl:include` and default prefix
 
 Camel will use the prefix from the endpoint configuration as the default
 prefix.

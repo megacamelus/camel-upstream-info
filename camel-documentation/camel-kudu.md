@@ -23,24 +23,25 @@ for this component:
 You must have a valid Kudu instance running. More information is
 available at [Apache Kudu](https://kudu.apache.org/).
 
-# Input Body formats
+# Usage
 
-## Insert, delete, update, and upsert
+## Input Body formats
 
-The input body format has to be a java.util.Map\<String, Object\>.
-This map will represent a row of the table whose elements are columns,
-where the key is the column name and the value is the value of the
-column.
+### Insert, delete, update, and upsert
 
-# Output Body formats
+The input body format has to be a `java.util.Map<String, Object>`. This
+map will represent a row of the table whose elements are columns, where
+the key is the column name and the value is the value of the column.
 
-## Scan
+## Output Body formats
+
+### Scan
 
 The output body format will be a
-java.util.List\<java.util.Map\<String, Object\>\>. Each element
-of the list will be a different row of the table. Each row is a
-Map\<String, Object\> whose elements will be each pair of column
-name and column value for that row.
+`java.util.List<java.util.Map<String, Object>>`. Each element of the
+list will be a different row of the table. Each row is a
+`Map<String, Object>` whose elements will be each pair of column name
+and column value for that row.
 
 ## Component Configurations
 

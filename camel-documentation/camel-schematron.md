@@ -34,7 +34,7 @@ object representing the rules.
 <col style="width: 69%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Name</th>
 <th style="text-align: left;">Description</th>
 <th style="text-align: left;">Type</th>
@@ -42,7 +42,7 @@ object representing the rules.
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td
 style="text-align: left;"><p>CamelSchematronValidationStatus</p></td>
 <td style="text-align: left;"><p>The schematron validation status:
@@ -50,7 +50,7 @@ SUCCESS / FAILED</p></td>
 <td style="text-align: left;"><p>String</p></td>
 <td style="text-align: left;"><p>IN</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td
 style="text-align: left;"><p>CamelSchematronValidationReport</p></td>
 <td style="text-align: left;"><p>The schematrion report body in XML
@@ -61,7 +61,9 @@ format. See an example below</p></td>
 </tbody>
 </table>
 
-# URI and path syntax
+# Examples
+
+## URI and path syntax
 
 The following example shows how to invoke the schematron processor in
 Java DSL. The schematron rules file is sourced from the class path:
@@ -69,7 +71,7 @@ Java DSL. The schematron rules file is sourced from the class path:
     from("direct:start").to("schematron://sch/schematron.sch").to("mock:result")
 
 The following example shows how to invoke the schematron processor in
-XML DSL. The schematrion rules file is sourced from the file system:
+XML DSL. The schematron rules file is sourced from the file system:
 
     <route>
        <from uri="direct:start" />
@@ -105,7 +107,7 @@ update, all you need is to restart the route or the component. No harm
 in storing these rules in the class path though, but you will have to
 build and deploy the component to pick up the changes.
 
-# Schematron rules and report samples
+## Schematron rules and report examples
 
 Here is an example of schematron rules
 

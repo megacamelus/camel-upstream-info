@@ -21,14 +21,16 @@ dependency to their `pom.xml`:
         <!-- use the same version as your Camel core version -->
     </dependency>
 
-# To Detect a file’s MIME Type
+# Usage
+
+## To Detect a file’s MIME Type
 
 The file should be placed in the Body.
 
     from("direct:start")
             .to("tika:detect");
 
-# To Parse a File
+## To Parse a File
 
 The file should be placed in the Body.
 

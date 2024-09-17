@@ -26,11 +26,13 @@ for this component:
 
     xchange://exchange?options
 
-# Authentication
+# Usage
 
-This component communicates with supported crypto currency exchanges via
+## Authentication
+
+This component communicates with supported cryptocurrency exchanges via
 REST API. Some API requests use simple unauthenticated GET request. For
-most of the interesting stuff however, you’d need an account with the
+most of the interesting stuff, however, you’d need an account with the
 exchange and have API access keys enabled.
 
 These API access keys need to be guarded tightly, especially so when
@@ -39,7 +41,7 @@ who can get hold of your API keys can easily transfer funds from your
 account to some other address i.e. steal your money.
 
 Your API access keys can be strored in an exchange specific properties
-file in your SSH directory. For Binance for example this would be:
+file in your SSH directory. For Binance, for example, this would be:
 `~/.ssh/binance-secret.keys`
 
     ##
@@ -49,7 +51,7 @@ file in your SSH directory. For Binance for example this would be:
     apiKey = GuRW0*********
     secretKey = nKLki************
 
-# Samples
+# Examples
 
 In this sample we find the current Bitcoin market price in USDT:
 

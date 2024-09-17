@@ -61,7 +61,9 @@ Spring Boot users should use the starter instead.
 3.  **Create routes**. Starting creating routes that interact with
     salesforce!
 
-# Authenticating to Salesforce <span id="AuthenticatingToSalesforce"></span>
+# Usage
+
+## Authenticating to Salesforce <span id="AuthenticatingToSalesforce"></span>
 
 The component supports three OAuth authentication flows:
 
@@ -84,40 +86,40 @@ For each of the flows, different sets of properties need to be set:
 <col style="width: 33%" />
 </colgroup>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>Property</p></td>
 <td style="text-align: left;"><p>Where to find it on Salesforce</p></td>
 <td style="text-align: left;"><p>Flow</p></td>
 </tr>
-<tr>
-<td style="text-align: left;"><p>clientId</p></td>
+<tr class="even">
+<td style="text-align: left;"><p><code>clientId</code></p></td>
 <td style="text-align: left;"><p>Connected App, Consumer Key</p></td>
 <td style="text-align: left;"><p>All flows</p></td>
 </tr>
-<tr>
-<td style="text-align: left;"><p>clientSecret</p></td>
+<tr class="odd">
+<td style="text-align: left;"><p><code>clientSecret</code></p></td>
 <td style="text-align: left;"><p>Connected App, Consumer Secret</p></td>
 <td style="text-align: left;"><p>Username-Password, Refresh Token,
 Client Credentials</p></td>
 </tr>
-<tr>
-<td style="text-align: left;"><p>userName</p></td>
+<tr class="even">
+<td style="text-align: left;"><p><code>userName</code></p></td>
 <td style="text-align: left;"><p>Salesforce user username</p></td>
 <td style="text-align: left;"><p>Username-Password, JWT Bearer
 Token</p></td>
 </tr>
-<tr>
-<td style="text-align: left;"><p>password</p></td>
+<tr class="odd">
+<td style="text-align: left;"><p><code>password</code></p></td>
 <td style="text-align: left;"><p>Salesforce user password</p></td>
 <td style="text-align: left;"><p>Username-Password</p></td>
 </tr>
-<tr>
-<td style="text-align: left;"><p>refreshToken</p></td>
+<tr class="even">
+<td style="text-align: left;"><p><code>refreshToken</code></p></td>
 <td style="text-align: left;"><p>From OAuth flow callback</p></td>
 <td style="text-align: left;"><p>Refresh Token</p></td>
 </tr>
-<tr>
-<td style="text-align: left;"><p>keystore</p></td>
+<tr class="odd">
+<td style="text-align: left;"><p><code>keystore</code></p></td>
 <td style="text-align: left;"><p>Connected App, Digital
 Certificate</p></td>
 <td style="text-align: left;"><p>JWT Bearer Token</p></td>
@@ -136,9 +138,9 @@ The certificate used in JWT Bearer Token Flow can be a self-signed
 certificate. The KeyStore holding the certificate and the private key
 must contain only a single certificate-private key entry.
 
-# General Usage
+## General Usage
 
-## URI format
+### URI format
 
 When used as a consumer, receiving streaming events, the URI scheme is:
 
@@ -186,7 +188,7 @@ For example, to fetch API limits, you can specify:
 In addition, HTTP response status code and text are available as headers
 `Exchange.HTTP_RESPONSE_CODE` and `Exchange.HTTP_RESPONSE_TEXT`.
 
-## Sending null values to salesforce
+### Sending null values to salesforce
 
 By default, SObject fields with null values are not sent to salesforce.
 In order to send null values to salesforce, use the `fieldsToNull`
@@ -194,7 +196,7 @@ property, as follows:
 
     accountSObject.getFieldsToNull().add("Site");
 
-# Supported Salesforce APIs
+## Supported Salesforce APIs
 
 Camel supports the following Salesforce APIs:
 
@@ -212,7 +214,7 @@ Camel supports the following Salesforce APIs:
 
 -   [Reports API](#ReportsAPI)
 
-## REST API
+### REST API
 
 The following operations are supported:
 
@@ -308,7 +310,7 @@ Unless otherwise specified, DTO types for the following options are from
 `org.apache.camel.component.salesforce.api.dto` or one if its
 sub-packages.
 
-### Versions
+#### Versions
 
 `getVersions`
 
@@ -320,7 +322,7 @@ root.
 
 Type: `List<Version>`
 
-### Resources by Version
+#### Resources by Version
 
 `getResources`
 
@@ -331,7 +333,7 @@ resource name and URI.
 
 Type: `Map<String, String>`
 
-### Limits
+#### Limits
 
 `limits`
 
@@ -375,7 +377,7 @@ or `1` (no API limits consumed).
             .setBody(constant("Used up Salesforce API limits, leaving 10% for critical routes"))
         .endChoice()
 
-### Recently Viewed Items
+#### Recently Viewed Items
 
 `recent`
 
@@ -394,14 +396,14 @@ options in search.
 <col style="width: 20%" />
 </colgroup>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>Parameter</p></td>
 <td style="text-align: left;"><p>Type</p></td>
 <td style="text-align: left;"><p>Description</p></td>
 <td style="text-align: left;"><p>Default</p></td>
 <td style="text-align: left;"><p>Required</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>limit</code></p></td>
 <td style="text-align: left;"><p><code>int</code></p></td>
 <td style="text-align: left;"><p>An optional limit that specifies the
@@ -434,7 +436,7 @@ number of records to return. For example:
             .split().body()
                 .log("${body.name} at ${body.attributes.url}");
 
-### Describe Global
+#### Describe Global
 
 `getGlobalObjects`
 
@@ -446,7 +448,7 @@ maximum batch size permitted in queries.
 
 Type: `GlobalObjects`
 
-### sObject Basic Information
+#### sObject Basic Information
 
 `getBasicInfo`
 
@@ -461,14 +463,14 @@ Describes the individual metadata for the specified object.
 <col style="width: 20%" />
 </colgroup>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>Parameter</p></td>
 <td style="text-align: left;"><p>Type</p></td>
 <td style="text-align: left;"><p>Description</p></td>
 <td style="text-align: left;"><p>Default</p></td>
 <td style="text-align: left;"><p>Required</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>sObjectName</code></p></td>
 <td style="text-align: left;"><p><code>String</code></p></td>
 <td style="text-align: left;"><p>Name of SObject, e.g.
@@ -483,7 +485,7 @@ Describes the individual metadata for the specified object.
 
 Type: `SObjectBasicInfo`
 
-### sObject Describe
+#### sObject Describe
 
 `getDescription`
 
@@ -500,14 +502,14 @@ URLs, and child relationships for the Account object.
 <col style="width: 20%" />
 </colgroup>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>Parameter</p></td>
 <td style="text-align: left;"><p>Type</p></td>
 <td style="text-align: left;"><p>Description</p></td>
 <td style="text-align: left;"><p>Default</p></td>
 <td style="text-align: left;"><p>Required</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>sObjectName</code></p></td>
 <td style="text-align: left;"><p><code>String</code></p></td>
 <td style="text-align: left;"><p>Name of SObject, e.g.
@@ -522,7 +524,7 @@ URLs, and child relationships for the Account object.
 
 Type: `SObjectDescription`
 
-### Retrieve SObject
+#### Retrieve SObject
 
 `getSObject`
 
@@ -538,14 +540,14 @@ requires the `packages` option to be set.
 <col style="width: 20%" />
 </colgroup>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>Parameter</p></td>
 <td style="text-align: left;"><p>Type</p></td>
 <td style="text-align: left;"><p>Description</p></td>
 <td style="text-align: left;"><p>Default</p></td>
 <td style="text-align: left;"><p>Required</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>sObjectName</code></p></td>
 <td style="text-align: left;"><p><code>String</code></p></td>
 <td style="text-align: left;"><p>Name of SObject, e.g.
@@ -553,14 +555,14 @@ requires the `packages` option to be set.
 <td style="text-align: left;"></td>
 <td style="text-align: left;"><p>x</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>sObjectId</code></p></td>
 <td style="text-align: left;"><p><code>String</code></p></td>
 <td style="text-align: left;"><p>Id of record to retrieve.</p></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"><p>x</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>sObjectFields</code></p></td>
 <td style="text-align: left;"><p><code>String</code></p></td>
 <td style="text-align: left;"><p>Comma-separated list of fields to
@@ -568,7 +570,7 @@ retrieve</p></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>Body</p></td>
 <td
 style="text-align: left;"><p><code>AbstractSObjectBase</code></p></td>
@@ -585,7 +587,7 @@ query salesforce. If supplied, overrides <code>sObjectName</code> and
 
 Type: Subclass of `AbstractSObjectBase`
 
-### Retrieve SObject by External Id
+#### Retrieve SObject by External Id
 
 `getSObjectWithId`
 
@@ -601,28 +603,28 @@ the `packages` option to be set.
 <col style="width: 20%" />
 </colgroup>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>Parameter</p></td>
 <td style="text-align: left;"><p>Type</p></td>
 <td style="text-align: left;"><p>Description</p></td>
 <td style="text-align: left;"><p>Default</p></td>
 <td style="text-align: left;"><p>Required</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>sObjectIdName</code></p></td>
 <td style="text-align: left;"><p><code>String</code></p></td>
 <td style="text-align: left;"><p>Name of External ID field</p></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"><p>x</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>sObjectIdValue</code></p></td>
 <td style="text-align: left;"><p><code>String</code></p></td>
 <td style="text-align: left;"><p>External ID value</p></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"><p>x</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>sObjectName</code></p></td>
 <td style="text-align: left;"><p><code>String</code></p></td>
 <td style="text-align: left;"><p>Name of SObject, e.g.
@@ -630,7 +632,7 @@ the `packages` option to be set.
 <td style="text-align: left;"></td>
 <td style="text-align: left;"><p>x</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>Body</p></td>
 <td
 style="text-align: left;"><p><code>AbstractSObjectBase</code></p></td>
@@ -647,7 +649,7 @@ query salesforce. If supplied, overrides <code>sObjectName</code> and
 
 Type: Subclass of `AbstractSObjectBase`
 
-### sObject Blob Retrieve
+#### sObject Blob Retrieve
 
 `getBlobField`
 
@@ -662,14 +664,14 @@ Retrieves the specified blob field from an individual record.
 <col style="width: 20%" />
 </colgroup>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>Parameter</p></td>
 <td style="text-align: left;"><p>Type</p></td>
 <td style="text-align: left;"><p>Description</p></td>
 <td style="text-align: left;"><p>Default</p></td>
 <td style="text-align: left;"><p>Required</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td
 style="text-align: left;"><p><code>sObjectBlobFieldName</code></p></td>
 <td style="text-align: left;"><p><code>String</code></p></td>
@@ -677,7 +679,7 @@ style="text-align: left;"><p><code>sObjectBlobFieldName</code></p></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"><p>x</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>sObjectName</code></p></td>
 <td style="text-align: left;"><p><code>String</code></p></td>
 <td style="text-align: left;"><p>Name of SObject, e.g., Account</p></td>
@@ -685,7 +687,7 @@ style="text-align: left;"><p><code>sObjectBlobFieldName</code></p></td>
 <td style="text-align: left;"><p>Required if SObject not supplied in
 body</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>sObjectId</code></p></td>
 <td style="text-align: left;"><p><code>String</code></p></td>
 <td style="text-align: left;"><p>Id of SObject</p></td>
@@ -693,7 +695,7 @@ body</p></td>
 <td style="text-align: left;"><p>Required if SObject not supplied in
 body</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>Body</p></td>
 <td
 style="text-align: left;"><p><code>AbstractSObjectBase</code></p></td>
@@ -711,7 +713,7 @@ parameters will be used.</p></td>
 
 Type: `InputStream`
 
-### Create SObject
+#### Create SObject
 
 `createSObject`
 
@@ -726,14 +728,14 @@ Creates a record in salesforce.
 <col style="width: 20%" />
 </colgroup>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>Parameter</p></td>
 <td style="text-align: left;"><p>Type</p></td>
 <td style="text-align: left;"><p>Description</p></td>
 <td style="text-align: left;"><p>Default</p></td>
 <td style="text-align: left;"><p>Required</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p>Body</p></td>
 <td style="text-align: left;"><p><code>AbstractSObjectBase</code> or
 <code>String</code></p></td>
@@ -741,7 +743,7 @@ Creates a record in salesforce.
 <td style="text-align: left;"></td>
 <td style="text-align: left;"><p>x</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>sObjectName</code></p></td>
 <td style="text-align: left;"><p><code>String</code></p></td>
 <td style="text-align: left;"><p>Name of SObject, e.g.
@@ -758,7 +760,7 @@ Body.</p></td>
 
 Type: `CreateSObjectResult`
 
-### Update SObject
+#### Update SObject
 
 `updateSObject`
 
@@ -773,14 +775,14 @@ Updates a record in salesforce.
 <col style="width: 20%" />
 </colgroup>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>Parameter</p></td>
 <td style="text-align: left;"><p>Type</p></td>
 <td style="text-align: left;"><p>Description</p></td>
 <td style="text-align: left;"><p>Default</p></td>
 <td style="text-align: left;"><p>Required</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p>Body</p></td>
 <td style="text-align: left;"><p><code>AbstractSObjectBase</code> or
 <code>String</code></p></td>
@@ -788,7 +790,7 @@ Updates a record in salesforce.
 <td style="text-align: left;"></td>
 <td style="text-align: left;"><p>x</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>sObjectName</code></p></td>
 <td style="text-align: left;"><p><code>String</code></p></td>
 <td style="text-align: left;"><p>Name of SObject, e.g.
@@ -798,7 +800,7 @@ Body.</p></td>
 <td style="text-align: left;"><p>If Body is a
 <code>String</code></p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>sObjectId</code></p></td>
 <td style="text-align: left;"><p><code>String</code></p></td>
 <td style="text-align: left;"><p>Id of record to update. Only used if
@@ -810,7 +812,7 @@ Camel cannot determine from Body.</p></td>
 </tbody>
 </table>
 
-### Upsert SObject
+#### Upsert SObject
 
 `upsertSObject`
 
@@ -825,14 +827,14 @@ Upserts a record by External ID.
 <col style="width: 20%" />
 </colgroup>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>Parameter</p></td>
 <td style="text-align: left;"><p>Type</p></td>
 <td style="text-align: left;"><p>Description</p></td>
 <td style="text-align: left;"><p>Default</p></td>
 <td style="text-align: left;"><p>Required</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p>Body</p></td>
 <td style="text-align: left;"><p><code>AbstractSObjectBase</code> or
 <code>String</code></p></td>
@@ -840,14 +842,14 @@ Upserts a record by External ID.
 <td style="text-align: left;"></td>
 <td style="text-align: left;"><p>x</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>sObjectIdName</code></p></td>
 <td style="text-align: left;"><p><code>String</code></p></td>
 <td style="text-align: left;"><p>External ID field name.</p></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"><p>x</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>sObjectIdValue</code></p></td>
 <td style="text-align: left;"><p><code>String</code></p></td>
 <td style="text-align: left;"><p>External ID value</p></td>
@@ -855,7 +857,7 @@ Upserts a record by External ID.
 <td style="text-align: left;"><p>If Body is a
 <code>String</code></p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>sObjectName</code></p></td>
 <td style="text-align: left;"><p><code>String</code></p></td>
 <td style="text-align: left;"><p>Name of SObject, e.g.
@@ -872,7 +874,7 @@ Body.</p></td>
 
 Type: `UpsertSObjectResult`
 
-### Delete SObject
+#### Delete SObject
 
 `deleteSObject`
 
@@ -887,14 +889,14 @@ Deletes a record in salesforce.
 <col style="width: 20%" />
 </colgroup>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>Parameter</p></td>
 <td style="text-align: left;"><p>Type</p></td>
 <td style="text-align: left;"><p>Description</p></td>
 <td style="text-align: left;"><p>Default</p></td>
 <td style="text-align: left;"><p>Required</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p>Body</p></td>
 <td
 style="text-align: left;"><p><code>AbstractSObjectBase</code></p></td>
@@ -902,7 +904,7 @@ style="text-align: left;"><p><code>AbstractSObjectBase</code></p></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>sObjectName</code></p></td>
 <td style="text-align: left;"><p><code>String</code></p></td>
 <td style="text-align: left;"><p>Name of SObject, e.g.
@@ -912,7 +914,7 @@ Body.</p></td>
 <td style="text-align: left;"><p>If Body is not an
 <code>AbstractSObjectBase</code> instance</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>sObjectId</code></p></td>
 <td style="text-align: left;"><p><code>String</code></p></td>
 <td style="text-align: left;"><p>Id of record to delete.</p></td>
@@ -923,7 +925,7 @@ Body.</p></td>
 </tbody>
 </table>
 
-### Delete SObject by External Id
+#### Delete SObject by External Id
 
 `deleteSObjectWithId`
 
@@ -938,14 +940,14 @@ Deletes a record in salesforce by External ID.
 <col style="width: 20%" />
 </colgroup>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>Parameter</p></td>
 <td style="text-align: left;"><p>Type</p></td>
 <td style="text-align: left;"><p>Description</p></td>
 <td style="text-align: left;"><p>Default</p></td>
 <td style="text-align: left;"><p>Required</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p>Body</p></td>
 <td
 style="text-align: left;"><p><code>AbstractSObjectBase</code></p></td>
@@ -953,7 +955,7 @@ style="text-align: left;"><p><code>AbstractSObjectBase</code></p></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>sObjectIdName</code></p></td>
 <td style="text-align: left;"><p><code>String</code></p></td>
 <td style="text-align: left;"><p>Name of External ID field</p></td>
@@ -961,7 +963,7 @@ style="text-align: left;"><p><code>AbstractSObjectBase</code></p></td>
 <td style="text-align: left;"><p>If Body is not an
 <code>AbstractSObjectBase</code> instance</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>sObjectIdValue</code></p></td>
 <td style="text-align: left;"><p><code>String</code></p></td>
 <td style="text-align: left;"><p>External ID value</p></td>
@@ -969,7 +971,7 @@ style="text-align: left;"><p><code>AbstractSObjectBase</code></p></td>
 <td style="text-align: left;"><p>If Body is not an
 <code>AbstractSObjectBase</code> instance</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>sObjectName</code></p></td>
 <td style="text-align: left;"><p><code>String</code></p></td>
 <td style="text-align: left;"><p>Name of SObject, e.g.
@@ -982,7 +984,7 @@ Body.</p></td>
 </tbody>
 </table>
 
-### Query
+#### Query
 
 `query`
 
@@ -999,14 +1001,14 @@ Runs a Salesforce SOQL query. If neither `sObjectClass` nor
 <col style="width: 20%" />
 </colgroup>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>Parameter</p></td>
 <td style="text-align: left;"><p>Type</p></td>
 <td style="text-align: left;"><p>Description</p></td>
 <td style="text-align: left;"><p>Default</p></td>
 <td style="text-align: left;"><p>Required</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p>Body or
 <code>sObjectQuery</code></p></td>
 <td style="text-align: left;"><p><code>String</code></p></td>
@@ -1014,7 +1016,7 @@ Runs a Salesforce SOQL query. If neither `sObjectClass` nor
 <td style="text-align: left;"></td>
 <td style="text-align: left;"><p>x</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>streamQueryResult</p></td>
 <td style="text-align: left;"><p><code>Boolean</code></p></td>
 <td style="text-align: left;"><p>If true, returns a streaming
@@ -1024,7 +1026,7 @@ The <code>sObjectClass</code> option must reference an
 <td style="text-align: left;"><p>false</p></td>
 <td style="text-align: left;"></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>sObjectClass</code></p></td>
 <td style="text-align: left;"><p><code>String</code></p></td>
 <td style="text-align: left;"><p>Fully qualified name of class to
@@ -1034,7 +1036,7 @@ deserialize response to. Usually a subclass of
 <td style="text-align: left;"></td>
 <td style="text-align: left;"></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>sObjectName</code></p></td>
 <td style="text-align: left;"><p><code>String</code></p></td>
 <td style="text-align: left;"><p>Simple name of class to deserialize
@@ -1056,7 +1058,7 @@ Type: Instance of class supplied in `sObjectClass`, or
 `CamelSalesforceQueryResultTotalSize` is set to the number of records
 that matched the query.
 
-### Query More
+#### Query More
 
 `queryMore`
 
@@ -1075,14 +1077,14 @@ response.
 <col style="width: 20%" />
 </colgroup>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>Parameter</p></td>
 <td style="text-align: left;"><p>Type</p></td>
 <td style="text-align: left;"><p>Description</p></td>
 <td style="text-align: left;"><p>Default</p></td>
 <td style="text-align: left;"><p>Required</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p>Body or
 <code>sObjectQuery</code></p></td>
 <td style="text-align: left;"><p><code>String</code></p></td>
@@ -1092,7 +1094,7 @@ found in a prior query result in the
 <td style="text-align: left;"></td>
 <td style="text-align: left;"><p>X</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>sObjectClass</code></p></td>
 <td style="text-align: left;"><p><code>String</code></p></td>
 <td style="text-align: left;"><p>Fully qualified name of class to
@@ -1102,7 +1104,7 @@ deserialize response to. Usually a subclass of
 <td style="text-align: left;"></td>
 <td style="text-align: left;"></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>sObjectName</code></p></td>
 <td style="text-align: left;"><p><code>String</code></p></td>
 <td style="text-align: left;"><p>Simple name of class to deserialize
@@ -1120,7 +1122,7 @@ option be set.</p></td>
 
 Type: Instance of class supplied in `sObjectClass`
 
-### Query All
+#### Query All
 
 `queryAll`
 
@@ -1140,14 +1142,14 @@ based on the response.
 <col style="width: 20%" />
 </colgroup>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>Parameter</p></td>
 <td style="text-align: left;"><p>Type</p></td>
 <td style="text-align: left;"><p>Description</p></td>
 <td style="text-align: left;"><p>Default</p></td>
 <td style="text-align: left;"><p>Required</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p>Body or
 <code>sObjectQuery</code></p></td>
 <td style="text-align: left;"><p><code>String</code></p></td>
@@ -1155,7 +1157,7 @@ based on the response.
 <td style="text-align: left;"></td>
 <td style="text-align: left;"><p>x</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>streamQueryResult</p></td>
 <td style="text-align: left;"><p><code>Boolean</code></p></td>
 <td style="text-align: left;"><p>If true, returns a streaming
@@ -1165,7 +1167,7 @@ The <code>sObjectClass</code> option must reference an
 <td style="text-align: left;"><p>false</p></td>
 <td style="text-align: left;"></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>sObjectClass</code></p></td>
 <td style="text-align: left;"><p><code>String</code></p></td>
 <td style="text-align: left;"><p>Fully qualified name of class to
@@ -1175,7 +1177,7 @@ deserialize response to. Usually a subclass of
 <td style="text-align: left;"></td>
 <td style="text-align: left;"></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>sObjectName</code></p></td>
 <td style="text-align: left;"><p><code>String</code></p></td>
 <td style="text-align: left;"><p>Simple name of class to deserialize
@@ -1194,7 +1196,7 @@ option be set.</p></td>
 Type: Instance of class supplied in `sObjectClass`, or
 `Iterator<SomeSObject>` if `streamQueryResult` is true.
 
-### Search
+#### Search
 
 `search`
 
@@ -1209,14 +1211,14 @@ Runs a Salesforce SOSL search
 <col style="width: 20%" />
 </colgroup>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>Parameter</p></td>
 <td style="text-align: left;"><p>Type</p></td>
 <td style="text-align: left;"><p>Description</p></td>
 <td style="text-align: left;"><p>Default</p></td>
 <td style="text-align: left;"><p>Required</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p>Body or
 <code>sObjectSearch</code></p></td>
 <td style="text-align: left;"><p><code>String</code></p></td>
@@ -1231,7 +1233,7 @@ Runs a Salesforce SOSL search
 
 Type: `SearchResult2`
 
-### Submit Approval
+#### Submit Approval
 
 `approval`
 
@@ -1246,14 +1248,14 @@ Submit a record or records (batch) for approval process.
 <col style="width: 20%" />
 </colgroup>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>Parameter</p></td>
 <td style="text-align: left;"><p>Type</p></td>
 <td style="text-align: left;"><p>Description</p></td>
 <td style="text-align: left;"><p>Default</p></td>
 <td style="text-align: left;"><p>Required</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p>Body</p></td>
 <td style="text-align: left;"><p><code>ApprovalRequest</code> or
 <code>List&lt;ApprovalRequest&gt;</code></p></td>
@@ -1262,7 +1264,7 @@ process</p></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>Approval.</code></p></td>
 <td style="text-align: left;"><p>Prefixed headers or endpoint options in
 lieu of passing an <code>ApprovalRequest</code> in the body.</p></td>
@@ -1325,7 +1327,7 @@ You could send a record for approval using:
     
     final ApprovalResult result = template.requestBody("direct:example1", body, ApprovalResult.class);
 
-### Get Approvals
+#### Get Approvals
 
 `approvals`
 
@@ -1335,7 +1337,7 @@ Returns a list of all approval processes.
 
 Type: `Approvals`
 
-### Composite
+#### Composite
 
 `composite`
 
@@ -1356,14 +1358,14 @@ provided *reference*.
 <col style="width: 20%" />
 </colgroup>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>Parameter</p></td>
 <td style="text-align: left;"><p>Type</p></td>
 <td style="text-align: left;"><p>Description</p></td>
 <td style="text-align: left;"><p>Default</p></td>
 <td style="text-align: left;"><p>Required</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p>Body</p></td>
 <td style="text-align: left;"><p><code>SObjectComposite</code></p></td>
 <td style="text-align: left;"><p>Contains REST API sub-requests to be
@@ -1371,7 +1373,7 @@ executed.</p></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"><p>x</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>rawPayload</code></p></td>
 <td style="text-align: left;"><p><code>Boolean</code></p></td>
 <td style="text-align: left;"><p>Any (un)marshaling of requests and
@@ -1379,7 +1381,7 @@ responses are assumed to be handled by the route</p></td>
 <td style="text-align: left;"><p>false</p></td>
 <td style="text-align: left;"><p>x</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>compositeMethod</code></p></td>
 <td style="text-align: left;"><p><code>String</code></p></td>
 <td style="text-align: left;"><p>HTTP method to use for rawPayload
@@ -1458,15 +1460,14 @@ For instance, you can have the following route:
 The route directly creates the body as JSON and directly submit to
 salesforce endpoint using `rawPayload=true` option.
 
-With this approach, you have the complete control on the Salesforce
-request.
+With this approach, you have complete control on the Salesforce request.
 
 `POST` is the default HTTP method used to send raw Composite requests to
 salesforce. Use the `compositeMethod` option to override to the other
 supported value, `GET`, which returns a list of other available
 composite resources.
 
-### Composite Tree
+#### Composite Tree
 
 `composite-tree`
 
@@ -1482,14 +1483,14 @@ levels) in one go.
 <col style="width: 20%" />
 </colgroup>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>Parameter</p></td>
 <td style="text-align: left;"><p>Type</p></td>
 <td style="text-align: left;"><p>Description</p></td>
 <td style="text-align: left;"><p>Default</p></td>
 <td style="text-align: left;"><p>Required</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p>Body</p></td>
 <td style="text-align: left;"><p><code>SObjectTree</code></p></td>
 <td style="text-align: left;"><p>Contains REST API sub-requests to be
@@ -1547,7 +1548,7 @@ Let’s look at an example:
     
     final String firstId = succeeded.get(0).getId();
 
-### Composite Batch
+#### Composite Batch
 
 `composite-batch`
 
@@ -1563,14 +1564,14 @@ sub-requests in a single request.
 <col style="width: 20%" />
 </colgroup>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>Parameter</p></td>
 <td style="text-align: left;"><p>Type</p></td>
 <td style="text-align: left;"><p>Description</p></td>
 <td style="text-align: left;"><p>Default</p></td>
 <td style="text-align: left;"><p>Required</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p>Body</p></td>
 <td style="text-align: left;"><p><code>SObjectBatch</code></p></td>
 <td style="text-align: left;"><p>Contains sub-requests to be
@@ -1639,7 +1640,7 @@ Let’s look at an example:
     final int updateStatus = deleteResult.getStatusCode(); // probably 204
     final Object updateResultData = deleteResult.getResult(); // probably null
 
-### Retrieve Multiple Records with Fewer Round-Trips
+#### Retrieve Multiple Records with Fewer Round-Trips
 
 `compositeRetrieveSObjectCollections`
 
@@ -1654,14 +1655,14 @@ Retrieve one or more records of the same object type.
 <col style="width: 20%" />
 </colgroup>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>Parameter</p></td>
 <td style="text-align: left;"><p>Type</p></td>
 <td style="text-align: left;"><p>Description</p></td>
 <td style="text-align: left;"><p>Default</p></td>
 <td style="text-align: left;"><p>Required</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p>sObjectIds</p></td>
 <td style="text-align: left;"><p>List of String or comma-separated
 string</p></td>
@@ -1670,7 +1671,7 @@ objects to return. All IDs must belong to the same object type.</p></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"><p>x</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>sObjectFields</p></td>
 <td style="text-align: left;"><p>List of String or comma-separated
 string</p></td>
@@ -1680,7 +1681,7 @@ read-level permissions to each field.</p></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"><p>x</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p>sObjectName</p></td>
 <td style="text-align: left;"><p>String</p></td>
 <td style="text-align: left;"><p>Type of SObject, e.g.
@@ -1688,7 +1689,7 @@ read-level permissions to each field.</p></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"><p>x</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>sObjectClass</p></td>
 <td style="text-align: left;"><p>String</p></td>
 <td style="text-align: left;"><p>Fully qualified class name of DTO class
@@ -1706,7 +1707,7 @@ specified by the <code>package</code> option.</p></td>
 Type: `List` of class determined by `sObjectName` or `sObjectClass`
 header
 
-### Create SObject Collections
+#### Create SObject Collections
 
 `compositeCreateSObjectCollections`
 
@@ -1721,21 +1722,21 @@ Add up to 200 records. Mixed SObject types is supported.
 <col style="width: 20%" />
 </colgroup>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>Parameter</p></td>
 <td style="text-align: left;"><p>Type</p></td>
 <td style="text-align: left;"><p>Description</p></td>
 <td style="text-align: left;"><p>Default</p></td>
 <td style="text-align: left;"><p>Required</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p>Body</p></td>
 <td style="text-align: left;"><p>List of <code>SObject</code></p></td>
 <td style="text-align: left;"><p>A list of SObjects to create</p></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"><p>x</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>allOrNone</code></p></td>
 <td style="text-align: left;"><p>boolean</p></td>
 <td style="text-align: left;"><p>Indicates whether to roll back the
@@ -1752,7 +1753,7 @@ request.</p></td>
 
 Type: `List<SaveSObjectResult>`
 
-### Update SObject Collections
+#### Update SObject Collections
 
 `compositeUpdateSObjectCollections`
 
@@ -1767,21 +1768,21 @@ Update up to 200 records. Mixed SObject types is supported.
 <col style="width: 20%" />
 </colgroup>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>Parameter</p></td>
 <td style="text-align: left;"><p>Type</p></td>
 <td style="text-align: left;"><p>Description</p></td>
 <td style="text-align: left;"><p>Default</p></td>
 <td style="text-align: left;"><p>Required</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p>Body</p></td>
 <td style="text-align: left;"><p>List of <code>SObject</code></p></td>
 <td style="text-align: left;"><p>A list of SObjects to update</p></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"><p>x</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>allOrNone</code></p></td>
 <td style="text-align: left;"><p><code>boolean</code></p></td>
 <td style="text-align: left;"><p>Indicates whether to roll back the
@@ -1797,7 +1798,7 @@ with the independent update of other objects in the request.</p></td>
 
 Type: `List<SaveSObjectResult>`
 
-### Upsert SObject Collections
+#### Upsert SObject Collections
 
 `compositeUpsertSObjectCollections`
 
@@ -1813,21 +1814,21 @@ field. Mixed SObject types is not supported.
 <col style="width: 20%" />
 </colgroup>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>Parameter</p></td>
 <td style="text-align: left;"><p>Type</p></td>
 <td style="text-align: left;"><p>Description</p></td>
 <td style="text-align: left;"><p>Default</p></td>
 <td style="text-align: left;"><p>Required</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p>Body</p></td>
 <td style="text-align: left;"><p>List of <code>SObject</code></p></td>
 <td style="text-align: left;"><p>A list of SObjects to upsert</p></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"><p>x</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>allOrNone</code></p></td>
 <td style="text-align: left;"><p><code>boolean</code></p></td>
 <td style="text-align: left;"><p>Indicates whether to roll back the
@@ -1836,7 +1837,7 @@ with the independent upsert of other objects in the request.</p></td>
 <td style="text-align: left;"><p>false</p></td>
 <td style="text-align: left;"></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>sObjectName</code></p></td>
 <td style="text-align: left;"><p><code>String</code></p></td>
 <td style="text-align: left;"><p>Type of SObject, e.g.
@@ -1844,7 +1845,7 @@ with the independent upsert of other objects in the request.</p></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"><p>x</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>sObjectIdName</code></p></td>
 <td style="text-align: left;"><p><code>String</code></p></td>
 <td style="text-align: left;"><p>Name of External ID field</p></td>
@@ -1858,7 +1859,7 @@ with the independent upsert of other objects in the request.</p></td>
 
 Type: `List<UpsertSObjectResult>`
 
-### Delete SObject Collections
+#### Delete SObject Collections
 
 `compositeDeleteSObjectCollections`
 
@@ -1873,14 +1874,14 @@ Delete up to 200 records. Mixed SObject types is supported.
 <col style="width: 20%" />
 </colgroup>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>Parameter</p></td>
 <td style="text-align: left;"><p>Type</p></td>
 <td style="text-align: left;"><p>Description</p></td>
 <td style="text-align: left;"><p>Default</p></td>
 <td style="text-align: left;"><p>Required</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>sObjectIds</code> or request
 body</p></td>
 <td style="text-align: left;"><p>List of String or comma-separated
@@ -1890,7 +1891,7 @@ be deleted.</p></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"><p>x</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>allOrNone</code></p></td>
 <td style="text-align: left;"><p>boolean</p></td>
 <td style="text-align: left;"><p>Indicates whether to roll back the
@@ -1907,7 +1908,7 @@ request.</p></td>
 
 Type: `List<DeleteSObjectResult>`
 
-### Get Event Schema
+#### Get Event Schema
 
 `getEventSchema`
 
@@ -1925,14 +1926,14 @@ later.
 <col style="width: 20%" />
 </colgroup>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>Parameter</p></td>
 <td style="text-align: left;"><p>Type</p></td>
 <td style="text-align: left;"><p>Description</p></td>
 <td style="text-align: left;"><p>Default</p></td>
 <td style="text-align: left;"><p>Required</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>eventName</code></p></td>
 <td style="text-align: left;"><p>String</p></td>
 <td style="text-align: left;"><p>Name of event</p></td>
@@ -1940,7 +1941,7 @@ later.
 <td style="text-align: left;"><p><code>eventName</code> or
 <code>eventSchemaId</code> is required</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>eventSchemaId</code></p></td>
 <td style="text-align: left;"><p>String</p></td>
 <td style="text-align: left;"><p>ID of a schema</p></td>
@@ -1948,7 +1949,7 @@ later.
 <td style="text-align: left;"><p><code>eventName</code> or
 <code>eventSchemaId</code> is required</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>eventSchemaFormat</code></p></td>
 <td style="text-align: left;"><p>EventSchemaFormatEnum</p></td>
 <td style="text-align: left;"><p><code>EXPANDED</code>: Apache Avro
@@ -1966,9 +1967,9 @@ later.</p></td>
 
 Type: `InputStream`
 
-## Apex REST API
+### Apex REST API
 
-### Invoke an Apex REST Web Service method
+#### Invoke an Apex REST Web Service method
 
 `apexCall`
 
@@ -1999,14 +2000,14 @@ response.
 <col style="width: 20%" />
 </colgroup>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>Parameter</p></td>
 <td style="text-align: left;"><p>Type</p></td>
 <td style="text-align: left;"><p>Description</p></td>
 <td style="text-align: left;"><p>Default</p></td>
 <td style="text-align: left;"><p>Required</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p>Body</p></td>
 <td style="text-align: left;"><p><code>Map&lt;String, Object&gt;</code>
 if <code>GET</code>, otherwise <code>String</code> or
@@ -2017,7 +2018,7 @@ For other HTTP methods, the body is used for the HTTP body.</p></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>apexUrl</code></p></td>
 <td style="text-align: left;"><p><code>String</code></p></td>
 <td style="text-align: left;"><p>The portion of the endpoint URL after
@@ -2027,7 +2028,7 @@ For other HTTP methods, the body is used for the HTTP body.</p></td>
 <td style="text-align: left;"><p>Yes, unless supplied in
 endpoint</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>apexMethod</code></p></td>
 <td style="text-align: left;"><p><code>String</code></p></td>
 <td style="text-align: left;"><p>The HTTP method (e.g. <code>GET</code>,
@@ -2035,7 +2036,7 @@ endpoint</p></td>
 <td style="text-align: left;"><p><code>GET</code></p></td>
 <td style="text-align: left;"></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>rawPayload</code></p></td>
 <td style="text-align: left;"><p><code>Boolean</code></p></td>
 <td style="text-align: left;"><p>If true, Camel will not serialize the
@@ -2043,7 +2044,7 @@ request or response bodies.</p></td>
 <td style="text-align: left;"><p>false</p></td>
 <td style="text-align: left;"></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p>Header:
 <code>apexQueryParam.[paramName]</code></p></td>
 <td style="text-align: left;"><p>Object</p></td>
@@ -2052,7 +2053,7 @@ passed in the endpoint.</p></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>sObjectName</code></p></td>
 <td style="text-align: left;"><p><code>String</code></p></td>
 <td style="text-align: left;"><p>Name of sObject (e.g.
@@ -2060,7 +2061,7 @@ passed in the endpoint.</p></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>sObjectClass</code></p></td>
 <td style="text-align: left;"><p><code>String</code></p></td>
 <td style="text-align: left;"><p>Fully qualified class name used to
@@ -2075,7 +2076,7 @@ deserialize the response</p></td>
 
 Type: Instance of class supplied in `sObjectClass` input header.
 
-## Bulk 2.0 API
+### Bulk 2.0 API
 
 The Bulk 2.0 API has a simplified model over the original Bulk API. Use
 it to quickly load a large amount of data into salesforce, or query a
@@ -2124,7 +2125,7 @@ following operations are supported:
 
 -   [bulk2GetAllQueryJobs](#bulk2GetAllQueryJobs) - Gets all query jobs.
 
-### Create a Job
+#### Create a Job
 
 `bulk2CreateJob` Creates a bulk ingest job.
 
@@ -2137,14 +2138,14 @@ following operations are supported:
 <col style="width: 20%" />
 </colgroup>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>Parameter</p></td>
 <td style="text-align: left;"><p>Type</p></td>
 <td style="text-align: left;"><p>Description</p></td>
 <td style="text-align: left;"><p>Default</p></td>
 <td style="text-align: left;"><p>Required</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p>Body</p></td>
 <td style="text-align: left;"><p><code>Job</code></p></td>
 <td style="text-align: left;"><p>Job to create</p></td>
@@ -2158,7 +2159,7 @@ following operations are supported:
 
 Type: `Job`
 
-### Upload a Batch of Job Data
+#### Upload a Batch of Job Data
 
 `bulk2CreateBatch`
 
@@ -2173,14 +2174,14 @@ Adds a batch of data to an ingest job.
 <col style="width: 20%" />
 </colgroup>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>Parameter</p></td>
 <td style="text-align: left;"><p>Type</p></td>
 <td style="text-align: left;"><p>Description</p></td>
 <td style="text-align: left;"><p>Default</p></td>
 <td style="text-align: left;"><p>Required</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p>Body</p></td>
 <td style="text-align: left;"><p><code>InputStream</code> or
 <code>String</code></p></td>
@@ -2190,7 +2191,7 @@ headers.</p></td>
 <td style="text-align: left;"><p>Required if <code>jobId</code> not
 supplied</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>jobId</code></p></td>
 <td style="text-align: left;"><p><code>String</code></p></td>
 <td style="text-align: left;"><p>Id of Job to create batch
@@ -2201,7 +2202,7 @@ under</p></td>
 </tbody>
 </table>
 
-### Close a Job
+#### Close a Job
 
 `bulk2CloseJob`
 
@@ -2217,14 +2218,14 @@ processed or aborted/deleted.
 <col style="width: 20%" />
 </colgroup>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>Parameter</p></td>
 <td style="text-align: left;"><p>Type</p></td>
 <td style="text-align: left;"><p>Description</p></td>
 <td style="text-align: left;"><p>Default</p></td>
 <td style="text-align: left;"><p>Required</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>jobId</code></p></td>
 <td style="text-align: left;"><p><code>String</code></p></td>
 <td style="text-align: left;"><p>Id of Job to close</p></td>
@@ -2238,7 +2239,7 @@ processed or aborted/deleted.
 
 Type: `Job`
 
-### Abort a Job
+#### Abort a Job
 
 `bulk2AbortJob`
 
@@ -2253,14 +2254,14 @@ Aborts an ingest job.
 <col style="width: 20%" />
 </colgroup>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>Parameter</p></td>
 <td style="text-align: left;"><p>Type</p></td>
 <td style="text-align: left;"><p>Description</p></td>
 <td style="text-align: left;"><p>Default</p></td>
 <td style="text-align: left;"><p>Required</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>jobId</code></p></td>
 <td style="text-align: left;"><p><code>String</code></p></td>
 <td style="text-align: left;"><p>Id of Job to abort</p></td>
@@ -2274,7 +2275,7 @@ Aborts an ingest job.
 
 Type: `Job`
 
-### Delete a Job
+#### Delete a Job
 
 `bulk2DeleteJob`
 
@@ -2289,14 +2290,14 @@ Deletes an ingest job.
 <col style="width: 20%" />
 </colgroup>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>Parameter</p></td>
 <td style="text-align: left;"><p>Type</p></td>
 <td style="text-align: left;"><p>Description</p></td>
 <td style="text-align: left;"><p>Default</p></td>
 <td style="text-align: left;"><p>Required</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>jobId</code></p></td>
 <td style="text-align: left;"><p><code>String</code></p></td>
 <td style="text-align: left;"><p>Id of Job to delete</p></td>
@@ -2306,7 +2307,7 @@ Deletes an ingest job.
 </tbody>
 </table>
 
-### Get Job Successful Record Results
+#### Get Job Successful Record Results
 
 `bulk2GetSuccessfulResults`
 
@@ -2321,14 +2322,14 @@ Gets successful results for an ingest job.
 <col style="width: 20%" />
 </colgroup>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>Parameter</p></td>
 <td style="text-align: left;"><p>Type</p></td>
 <td style="text-align: left;"><p>Description</p></td>
 <td style="text-align: left;"><p>Default</p></td>
 <td style="text-align: left;"><p>Required</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>jobId</code></p></td>
 <td style="text-align: left;"><p><code>String</code></p></td>
 <td style="text-align: left;"><p>Id of Job to get results for</p></td>
@@ -2343,7 +2344,7 @@ Gets successful results for an ingest job.
 Type: `InputStream`  
 Contents: CSV data
 
-### Get Job Failed Record Results
+#### Get Job Failed Record Results
 
 `bulk2GetFailedResults`
 
@@ -2358,14 +2359,14 @@ Gets failed results for an ingest job.
 <col style="width: 20%" />
 </colgroup>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>Parameter</p></td>
 <td style="text-align: left;"><p>Type</p></td>
 <td style="text-align: left;"><p>Description</p></td>
 <td style="text-align: left;"><p>Default</p></td>
 <td style="text-align: left;"><p>Required</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>jobId</code></p></td>
 <td style="text-align: left;"><p><code>String</code></p></td>
 <td style="text-align: left;"><p>Id of Job to get results for</p></td>
@@ -2380,7 +2381,7 @@ Gets failed results for an ingest job.
 Type: `InputStream`  
 Contents: CSV data
 
-### Get Job Unprocessed Record Results
+#### Get Job Unprocessed Record Results
 
 `bulk2GetUnprocessedRecords`
 
@@ -2395,14 +2396,14 @@ Gets unprocessed records for an ingest job.
 <col style="width: 20%" />
 </colgroup>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>Parameter</p></td>
 <td style="text-align: left;"><p>Type</p></td>
 <td style="text-align: left;"><p>Description</p></td>
 <td style="text-align: left;"><p>Default</p></td>
 <td style="text-align: left;"><p>Required</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>jobId</code></p></td>
 <td style="text-align: left;"><p><code>String</code></p></td>
 <td style="text-align: left;"><p>Id of Job to get records for</p></td>
@@ -2416,7 +2417,7 @@ Gets unprocessed records for an ingest job.
 
 Type: `InputStream` Contents: CSV data
 
-### Get Job Info
+#### Get Job Info
 
 `bulk2GetJob`
 
@@ -2431,14 +2432,14 @@ Gets an ingest Job.
 <col style="width: 20%" />
 </colgroup>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>Parameter</p></td>
 <td style="text-align: left;"><p>Type</p></td>
 <td style="text-align: left;"><p>Description</p></td>
 <td style="text-align: left;"><p>Default</p></td>
 <td style="text-align: left;"><p>Required</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p>Body</p></td>
 <td style="text-align: left;"><p><code>Job</code></p></td>
 <td style="text-align: left;"><p>Will use Id of supplied Job to retrieve
@@ -2447,7 +2448,7 @@ Job</p></td>
 <td style="text-align: left;"><p>Required if <code>jobId</code> not
 supplied</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>jobId</code></p></td>
 <td style="text-align: left;"><p><code>String</code></p></td>
 <td style="text-align: left;"><p>Id of Job to retrieve</p></td>
@@ -2462,7 +2463,7 @@ supplied in body</p></td>
 
 Type: `Job`
 
-### Get All Jobs
+#### Get All Jobs
 
 `bulk2GetAllJobs`
 
@@ -2477,14 +2478,14 @@ Gets all ingest jobs.
 <col style="width: 20%" />
 </colgroup>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>Parameter</p></td>
 <td style="text-align: left;"><p>Type</p></td>
 <td style="text-align: left;"><p>Description</p></td>
 <td style="text-align: left;"><p>Default</p></td>
 <td style="text-align: left;"><p>Required</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>queryLocator</code></p></td>
 <td style="text-align: left;"><p><code>String</code></p></td>
 <td style="text-align: left;"><p>Used in subsequent calls if results
@@ -2503,7 +2504,7 @@ If the `done` property of the `Jobs` instance is false, there are
 additional pages to fetch, and the `nextRecordsUrl` property contains
 the value to be set in the `queryLocator` parameter on subsequent calls.
 
-### Create a Query Job
+#### Create a Query Job
 
 `bulk2CreateQueryJob`
 
@@ -2518,14 +2519,14 @@ Gets a query job.
 <col style="width: 20%" />
 </colgroup>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>Parameter</p></td>
 <td style="text-align: left;"><p>Type</p></td>
 <td style="text-align: left;"><p>Description</p></td>
 <td style="text-align: left;"><p>Default</p></td>
 <td style="text-align: left;"><p>Required</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p>Body</p></td>
 <td style="text-align: left;"><p><code>QueryJob</code></p></td>
 <td style="text-align: left;"><p>QueryJob to create</p></td>
@@ -2539,7 +2540,7 @@ Gets a query job.
 
 Type: `QueryJob`
 
-### Get Results for a Query Job
+#### Get Results for a Query Job
 
 `bulk2GetQueryJobResults`
 
@@ -2555,21 +2556,21 @@ Get bulk query job results. `jobId` parameter is required. Accepts
 <col style="width: 20%" />
 </colgroup>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>Parameter</p></td>
 <td style="text-align: left;"><p>Type</p></td>
 <td style="text-align: left;"><p>Description</p></td>
 <td style="text-align: left;"><p>Default</p></td>
 <td style="text-align: left;"><p>Required</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>jobId</code></p></td>
 <td style="text-align: left;"><p><code>String</code></p></td>
 <td style="text-align: left;"><p>Id of Job to get results for</p></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"><p>x</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>maxRecords</code></p></td>
 <td style="text-align: left;"><p><code>Integer</code></p></td>
 <td style="text-align: left;"><p>The maximum number of records to
@@ -2583,7 +2584,7 @@ size.</p></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>locator</code></p></td>
 <td style="text-align: left;"><p><code>locator</code></p></td>
 <td style="text-align: left;"><p>A string that identifies a specific set
@@ -2604,7 +2605,7 @@ Response message headers include `Sforce-NumberOfRecords` and
 `Sforce-Locator` headers. The value of `Sforce-Locator` can be passed
 into subsequent calls via the `locator` parameter.
 
-### Abort a Query Job
+#### Abort a Query Job
 
 `bulk2AbortQueryJob`
 
@@ -2619,14 +2620,14 @@ Aborts a query job.
 <col style="width: 20%" />
 </colgroup>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>Parameter</p></td>
 <td style="text-align: left;"><p>Type</p></td>
 <td style="text-align: left;"><p>Description</p></td>
 <td style="text-align: left;"><p>Default</p></td>
 <td style="text-align: left;"><p>Required</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>jobId</code></p></td>
 <td style="text-align: left;"><p><code>String</code></p></td>
 <td style="text-align: left;"><p>Id of Job to abort</p></td>
@@ -2640,7 +2641,7 @@ Aborts a query job.
 
 Type: `QueryJob`
 
-### Delete a Query Job
+#### Delete a Query Job
 
 `bulk2DeleteQueryJob`
 
@@ -2655,14 +2656,14 @@ Deletes a query job.
 <col style="width: 20%" />
 </colgroup>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>Parameter</p></td>
 <td style="text-align: left;"><p>Type</p></td>
 <td style="text-align: left;"><p>Description</p></td>
 <td style="text-align: left;"><p>Default</p></td>
 <td style="text-align: left;"><p>Required</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>jobId</code></p></td>
 <td style="text-align: left;"><p><code>String</code></p></td>
 <td style="text-align: left;"><p>Id of Job to delete</p></td>
@@ -2672,7 +2673,7 @@ Deletes a query job.
 </tbody>
 </table>
 
-### Get Information About a Query Job
+#### Get Information About a Query Job
 
 `bulk2GetQueryJob`
 
@@ -2687,14 +2688,14 @@ Gets a query job.
 <col style="width: 20%" />
 </colgroup>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>Parameter</p></td>
 <td style="text-align: left;"><p>Type</p></td>
 <td style="text-align: left;"><p>Description</p></td>
 <td style="text-align: left;"><p>Default</p></td>
 <td style="text-align: left;"><p>Required</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>jobId</code></p></td>
 <td style="text-align: left;"><p><code>String</code></p></td>
 <td style="text-align: left;"><p>Id of Job to retrieve</p></td>
@@ -2708,7 +2709,7 @@ Gets a query job.
 
 Type: `QueryJob`
 
-### Get Information About All Query Jobs
+#### Get Information About All Query Jobs
 
 `bulk2GetAllQueryJobs`
 
@@ -2723,14 +2724,14 @@ Gets all query jobs.
 <col style="width: 20%" />
 </colgroup>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>Parameter</p></td>
 <td style="text-align: left;"><p>Type</p></td>
 <td style="text-align: left;"><p>Description</p></td>
 <td style="text-align: left;"><p>Default</p></td>
 <td style="text-align: left;"><p>Required</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>queryLocator</code></p></td>
 <td style="text-align: left;"><p><code>String</code></p></td>
 <td style="text-align: left;"><p>Used in subsequent calls if results
@@ -2749,7 +2750,7 @@ If the `done` property of the `QueryJobs` instance is false, there are
 additional pages to fetch, and the `nextRecordsUrl` property contains
 the value to be set in the `queryLocator` parameter on subsequent calls.
 
-## Bulk (original) API
+### Bulk (original) API
 
 Producer endpoints can use the following APIs. All Job data formats,
 i.e. xml, csv, zip/xml, and zip/csv are supported.  
@@ -2787,7 +2788,7 @@ The following operations are supported:
 
 -   [getQueryResult](#getQueryResult) - Gets results for a Result Id
 
-### Create a Job
+#### Create a Job
 
 `createJob`
 
@@ -2804,28 +2805,28 @@ pkChunking\* options. See an explanation
 <col style="width: 20%" />
 </colgroup>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>Parameter</p></td>
 <td style="text-align: left;"><p>Type</p></td>
 <td style="text-align: left;"><p>Description</p></td>
 <td style="text-align: left;"><p>Default</p></td>
 <td style="text-align: left;"><p>Required</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p>Body</p></td>
 <td style="text-align: left;"><p><code>JobInfo</code></p></td>
 <td style="text-align: left;"><p>Job to create</p></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"><p>x</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>pkChunking</code></p></td>
 <td style="text-align: left;"><p><code>Boolean</code></p></td>
 <td style="text-align: left;"><p>Whether to use PK Chunking</p></td>
 <td style="text-align: left;"><p>false</p></td>
 <td style="text-align: left;"></td>
 </tr>
-<tr>
+<tr class="even">
 <td
 style="text-align: left;"><p><code>pkChunkingChunkSize</code></p></td>
 <td style="text-align: left;"><p><code>Integer</code></p></td>
@@ -2833,7 +2834,7 @@ style="text-align: left;"><p><code>pkChunkingChunkSize</code></p></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"></td>
 </tr>
-<tr>
+<tr class="odd">
 <td
 style="text-align: left;"><p><code>pkChunkingStartRow</code></p></td>
 <td style="text-align: left;"><p><code>Integer</code></p></td>
@@ -2841,7 +2842,7 @@ style="text-align: left;"><p><code>pkChunkingStartRow</code></p></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>pkChunkingParent</code></p></td>
 <td style="text-align: left;"><p><code>String</code></p></td>
 <td style="text-align: left;"></td>
@@ -2855,7 +2856,7 @@ style="text-align: left;"><p><code>pkChunkingStartRow</code></p></td>
 
 Type: `JobInfo`
 
-### Get Job Details
+#### Get Job Details
 
 `getJob`
 
@@ -2870,21 +2871,21 @@ Gets a Job
 <col style="width: 20%" />
 </colgroup>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>Parameter</p></td>
 <td style="text-align: left;"><p>Type</p></td>
 <td style="text-align: left;"><p>Description</p></td>
 <td style="text-align: left;"><p>Default</p></td>
 <td style="text-align: left;"><p>Required</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>jobId</code></p></td>
 <td style="text-align: left;"><p><code>String</code></p></td>
 <td style="text-align: left;"><p>Id of Job to get</p></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"><p>Required if body not supplied</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>Body</p></td>
 <td style="text-align: left;"><p><code>JobInfo</code></p></td>
 <td style="text-align: left;"><p><code>JobInfo</code> instance from
@@ -2900,7 +2901,7 @@ supplied</p></td>
 
 Type: `JobInfo`
 
-### Close a Job
+#### Close a Job
 
 `closeJob`
 
@@ -2915,21 +2916,21 @@ Closes a Job
 <col style="width: 20%" />
 </colgroup>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>Parameter</p></td>
 <td style="text-align: left;"><p>Type</p></td>
 <td style="text-align: left;"><p>Description</p></td>
 <td style="text-align: left;"><p>Default</p></td>
 <td style="text-align: left;"><p>Required</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>jobId</code></p></td>
 <td style="text-align: left;"><p><code>String</code></p></td>
 <td style="text-align: left;"><p>Id of Job</p></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"><p>Required if body not supplied</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>Body</p></td>
 <td style="text-align: left;"><p><code>JobInfo</code></p></td>
 <td style="text-align: left;"><p><code>JobInfo</code> instance from
@@ -2945,7 +2946,7 @@ supplied</p></td>
 
 Type: `JobInfo`
 
-### Abort a Job
+#### Abort a Job
 
 `abortJob`
 
@@ -2960,21 +2961,21 @@ Aborts a Job
 <col style="width: 20%" />
 </colgroup>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>Parameter</p></td>
 <td style="text-align: left;"><p>Type</p></td>
 <td style="text-align: left;"><p>Description</p></td>
 <td style="text-align: left;"><p>Default</p></td>
 <td style="text-align: left;"><p>Required</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>jobId</code></p></td>
 <td style="text-align: left;"><p><code>String</code></p></td>
 <td style="text-align: left;"><p>Id of Job</p></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"><p>Required if body not supplied</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>Body</p></td>
 <td style="text-align: left;"><p><code>JobInfo</code></p></td>
 <td style="text-align: left;"><p><code>JobInfo</code> instance from
@@ -2990,7 +2991,7 @@ supplied</p></td>
 
 Type: `JobInfo`
 
-### Add a Batch to a Job
+#### Add a Batch to a Job
 
 `createBatch`
 
@@ -3005,21 +3006,21 @@ Submits a Batch within a Bulk Job
 <col style="width: 20%" />
 </colgroup>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>Parameter</p></td>
 <td style="text-align: left;"><p>Type</p></td>
 <td style="text-align: left;"><p>Description</p></td>
 <td style="text-align: left;"><p>Default</p></td>
 <td style="text-align: left;"><p>Required</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>jobId</code></p></td>
 <td style="text-align: left;"><p><code>String</code></p></td>
 <td style="text-align: left;"><p>Id of Job</p></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"><p>x</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>contentType</code></p></td>
 <td style="text-align: left;"><p><code>String</code></p></td>
 <td style="text-align: left;"><p>Content type of body. Can be XML, CSV,
@@ -3027,7 +3028,7 @@ ZIP_XML or ZIP_CSV</p></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"><p>x</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>Body</code></p></td>
 <td style="text-align: left;"><p><code>InputStream</code> or
 <code>String</code></p></td>
@@ -3042,7 +3043,7 @@ ZIP_XML or ZIP_CSV</p></td>
 
 Type: `BatchInfo`
 
-### Get Information for a Batch
+#### Get Information for a Batch
 
 `getBatch`
 
@@ -3057,28 +3058,28 @@ Get a Batch
 <col style="width: 20%" />
 </colgroup>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>Parameter</p></td>
 <td style="text-align: left;"><p>Type</p></td>
 <td style="text-align: left;"><p>Description</p></td>
 <td style="text-align: left;"><p>Default</p></td>
 <td style="text-align: left;"><p>Required</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>jobId</code></p></td>
 <td style="text-align: left;"><p><code>String</code></p></td>
 <td style="text-align: left;"><p>Id of Job</p></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"><p>Required if body not supplied</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>batchId</code></p></td>
 <td style="text-align: left;"><p><code>String</code></p></td>
 <td style="text-align: left;"><p>Id of Batch</p></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"><p>Required if body not supplied</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p>Body</p></td>
 <td style="text-align: left;"><p><code>BatchInfo</code></p></td>
 <td style="text-align: left;"><p><code>JobInfo</code> instance from
@@ -3094,7 +3095,7 @@ which <code>jobId</code> and <code>batchId</code> will be used</p></td>
 
 Type: `BatchInfo`
 
-### Get Information for All Batches in a Job
+#### Get Information for All Batches in a Job
 
 `getAllBatches`
 
@@ -3109,21 +3110,21 @@ Gets all Batches for a Bulk Job Id
 <col style="width: 20%" />
 </colgroup>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>Parameter</p></td>
 <td style="text-align: left;"><p>Type</p></td>
 <td style="text-align: left;"><p>Description</p></td>
 <td style="text-align: left;"><p>Default</p></td>
 <td style="text-align: left;"><p>Required</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>jobId</code></p></td>
 <td style="text-align: left;"><p><code>String</code></p></td>
 <td style="text-align: left;"><p>Id of Job</p></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"><p>Required if body not supplied</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>Body</p></td>
 <td style="text-align: left;"><p><code>JobInfo</code></p></td>
 <td style="text-align: left;"><p><code>JobInfo</code> instance from
@@ -3139,7 +3140,7 @@ supplied</p></td>
 
 Type: `List<JobInfo>`
 
-### Get a Batch Request
+#### Get a Batch Request
 
 `getRequest`
 
@@ -3154,28 +3155,28 @@ Gets Request data (XML/CSV) for a Batch
 <col style="width: 20%" />
 </colgroup>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>Parameter</p></td>
 <td style="text-align: left;"><p>Type</p></td>
 <td style="text-align: left;"><p>Description</p></td>
 <td style="text-align: left;"><p>Default</p></td>
 <td style="text-align: left;"><p>Required</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>jobId</code></p></td>
 <td style="text-align: left;"><p><code>String</code></p></td>
 <td style="text-align: left;"><p>Id of Job</p></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"><p>Required if body not supplied</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>batchId</code></p></td>
 <td style="text-align: left;"><p><code>String</code></p></td>
 <td style="text-align: left;"><p>Id of Batch</p></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"><p>Required if body not supplied</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p>Body</p></td>
 <td style="text-align: left;"><p><code>BatchInfo</code></p></td>
 <td style="text-align: left;"><p><code>JobInfo</code> instance from
@@ -3191,7 +3192,7 @@ which <code>jobId</code> and <code>batchId</code> will be used</p></td>
 
 Type: `InputStream`
 
-### Get Batch Results
+#### Get Batch Results
 
 `getResults`
 
@@ -3206,28 +3207,28 @@ Gets the results of the Batch when it’s complete
 <col style="width: 20%" />
 </colgroup>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>Parameter</p></td>
 <td style="text-align: left;"><p>Type</p></td>
 <td style="text-align: left;"><p>Description</p></td>
 <td style="text-align: left;"><p>Default</p></td>
 <td style="text-align: left;"><p>Required</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>jobId</code></p></td>
 <td style="text-align: left;"><p><code>String</code></p></td>
 <td style="text-align: left;"><p>Id of Job</p></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"><p>Required if body not supplied</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>batchId</code></p></td>
 <td style="text-align: left;"><p><code>String</code></p></td>
 <td style="text-align: left;"><p>Id of Batch</p></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"><p>Required if body not supplied</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p>Body</p></td>
 <td style="text-align: left;"><p><code>BatchInfo</code></p></td>
 <td style="text-align: left;"><p><code>JobInfo</code> instance from
@@ -3243,7 +3244,7 @@ which <code>jobId</code> and <code>batchId</code> will be used</p></td>
 
 Type: `InputStream`
 
-### Create Bulk Query Batch
+#### Create Bulk Query Batch
 
 `createBatchQuery`
 
@@ -3258,21 +3259,21 @@ Creates a Batch from an SOQL query
 <col style="width: 20%" />
 </colgroup>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>Parameter</p></td>
 <td style="text-align: left;"><p>Type</p></td>
 <td style="text-align: left;"><p>Description</p></td>
 <td style="text-align: left;"><p>Default</p></td>
 <td style="text-align: left;"><p>Required</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>jobId</code></p></td>
 <td style="text-align: left;"><p><code>String</code></p></td>
 <td style="text-align: left;"><p>Id of Job</p></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"><p>Required if body not supplied</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>contentType</code></p></td>
 <td style="text-align: left;"><p><code>String</code></p></td>
 <td style="text-align: left;"><p>Content type of body. Can be XML, CSV,
@@ -3281,7 +3282,7 @@ ZIP_XML or ZIP_CSV</p></td>
 <td style="text-align: left;"><p>Required if <code>JobInfo</code>
 instance not supplied in body</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>sObjectQuery</code></p></td>
 <td style="text-align: left;"><p><code>String</code></p></td>
 <td style="text-align: left;"><p>SOQL query to be used for this
@@ -3290,7 +3291,7 @@ batch</p></td>
 <td style="text-align: left;"><p>Required if not supplied in
 body</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>Body</p></td>
 <td style="text-align: left;"><p><code>JobInfo</code> or
 <code>String</code></p></td>
@@ -3308,7 +3309,7 @@ or <code>String</code> to be used as the Batch query</p></td>
 
 Type: `BatchInfo`
 
-### Get Batch Results
+#### Get Batch Results
 
 `getQueryResultIds`
 
@@ -3323,28 +3324,28 @@ Gets a list of Result Ids for a Batch Query
 <col style="width: 20%" />
 </colgroup>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>Parameter</p></td>
 <td style="text-align: left;"><p>Type</p></td>
 <td style="text-align: left;"><p>Description</p></td>
 <td style="text-align: left;"><p>Default</p></td>
 <td style="text-align: left;"><p>Required</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>jobId</code></p></td>
 <td style="text-align: left;"><p><code>String</code></p></td>
 <td style="text-align: left;"><p>Id of Job</p></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"><p>Required if body not supplied</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>batchId</code></p></td>
 <td style="text-align: left;"><p><code>String</code></p></td>
 <td style="text-align: left;"><p>Id of Batch</p></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"><p>Required if body not supplied</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p>Body</p></td>
 <td style="text-align: left;"><p><code>BatchInfo</code></p></td>
 <td style="text-align: left;"><p><code>JobInfo</code> instance from
@@ -3360,7 +3361,7 @@ which <code>jobId</code> and <code>batchId</code> will be used</p></td>
 
 Type: `List<String>`
 
-### Get Bulk Query Results
+#### Get Bulk Query Results
 
 `getQueryResult`
 
@@ -3375,35 +3376,35 @@ Gets results for a Result Id
 <col style="width: 20%" />
 </colgroup>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>Parameter</p></td>
 <td style="text-align: left;"><p>Type</p></td>
 <td style="text-align: left;"><p>Description</p></td>
 <td style="text-align: left;"><p>Default</p></td>
 <td style="text-align: left;"><p>Required</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>jobId</code></p></td>
 <td style="text-align: left;"><p><code>String</code></p></td>
 <td style="text-align: left;"><p>Id of Job</p></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"><p>Required if body not supplied</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>batchId</code></p></td>
 <td style="text-align: left;"><p><code>String</code></p></td>
 <td style="text-align: left;"><p>Id of Batch</p></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"><p>Required if body not supplied</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>resultId</code></p></td>
 <td style="text-align: left;"><p><code>String</code></p></td>
 <td style="text-align: left;"><p>Id of Result</p></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"><p>If not passed in body</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>Body</p></td>
 <td style="text-align: left;"><p><code>BatchInfo</code> or
 <code>String</code></p></td>
@@ -3432,14 +3433,14 @@ put message body will contain `BatchInfo` on success, or throw a
 
     ...to("salesforce:createBatch")..
 
-## Pub/Sub API
+### Pub/Sub API
 
 The Pub/Sub API allows you to publish and subscribe to platform events,
 including real-time event monitoring events, and change data capture
 events. This API is based on gRPC and HTTP/2, and event payloads are
 delivered in Apache Avro format.
 
-### Publishing Events
+#### Publishing Events
 
 The URI format for publishing events is:
 
@@ -3449,7 +3450,7 @@ For example:
 
     .to("salesforce:pubsubPublish:/event/MyCustomPlatformEvent__e")
 
-### Publish an Event
+#### Publish an Event
 
 `pubSubPublish`
 
@@ -3462,14 +3463,14 @@ For example:
 <col style="width: 20%" />
 </colgroup>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>Parameter</p></td>
 <td style="text-align: left;"><p>Type</p></td>
 <td style="text-align: left;"><p>Description</p></td>
 <td style="text-align: left;"><p>Default</p></td>
 <td style="text-align: left;"><p>Required</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p>Body</p></td>
 <td style="text-align: left;"><p><code>List</code>. List can contained
 mixed types (see description below).</p></td>
@@ -3519,7 +3520,7 @@ Type:
 The order of the items in the returned `List` correlates to the order of
 the items in the input `List`.
 
-### Subscribing
+#### Subscribing
 
 The URI format for subscribing to a Pub/Sub topic is:
 
@@ -3538,14 +3539,14 @@ For example:
 <col style="width: 20%" />
 </colgroup>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>Parameter</p></td>
 <td style="text-align: left;"><p>Type</p></td>
 <td style="text-align: left;"><p>Description</p></td>
 <td style="text-align: left;"><p>Default</p></td>
 <td style="text-align: left;"><p>Required</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>replayPreset</code></p></td>
 <td style="text-align: left;"><p><code>ReplayPreset</code></p></td>
 <td style="text-align: left;"><p>Values: <code>LATEST</code>,
@@ -3553,7 +3554,7 @@ For example:
 <td style="text-align: left;"><p><code>LATEST</code></p></td>
 <td style="text-align: left;"></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>pubSubReplayId</code></p></td>
 <td style="text-align: left;"><p><code>String</code></p></td>
 <td style="text-align: left;"><p>When <code>replayPreset</code> is set
@@ -3562,7 +3563,7 @@ topic.</p></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>pubSubBatchSize</code></p></td>
 <td style="text-align: left;"><p>int</p></td>
 <td style="text-align: left;"><p>Max number of events to receive at a
@@ -3570,7 +3571,7 @@ time. Values &gt;100 will be normalized to 100 by salesforce.</p></td>
 <td style="text-align: left;"><p>100</p></td>
 <td style="text-align: left;"><p>X</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td
 style="text-align: left;"><p><code>pubSubDeserializeType</code></p></td>
 <td
@@ -3583,7 +3584,7 @@ style="text-align: left;"><p><code>PubSubDeserializeType</code></p></td>
 <td style="text-align: left;"><p><code>AVRO</code></p></td>
 <td style="text-align: left;"><p>X</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>pubSubPojoClass</code></p></td>
 <td style="text-align: left;"><p>Fully qualified class name to
 deserialize Pub/Sub API event to.</p></td>
@@ -3601,7 +3602,7 @@ Type: Determined by the `pubSubDeserializeType` option.
 
 Headers: `CamelSalesforcePubSubReplayId`
 
-## Streaming API
+### Streaming API
 
 The Streaming API enables streaming of events using push technology and
 provides a subscription mechanism for receiving events in near real
@@ -3609,7 +3610,7 @@ time. The Streaming API subscription mechanism supports multiple types
 of events, including PushTopic events, generic events, platform events,
 and Change Data Capture events.
 
-### Push Topics
+#### Push Topics
 
 The URI format for consuming Push Topics is:
 
@@ -3632,21 +3633,21 @@ To subscribe to an existing topic
 <col style="width: 20%" />
 </colgroup>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>Parameter</p></td>
 <td style="text-align: left;"><p>Type</p></td>
 <td style="text-align: left;"><p>Description</p></td>
 <td style="text-align: left;"><p>Default</p></td>
 <td style="text-align: left;"><p>Required</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>sObjectName</code></p></td>
 <td style="text-align: left;"><p><code>String</code></p></td>
 <td style="text-align: left;"><p>SObject to monitor</p></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"><p>x</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>sObjectQuery</code></p></td>
 <td style="text-align: left;"><p><code>String</code></p></td>
 <td style="text-align: left;"><p>SOQL query used to create Push
@@ -3655,7 +3656,7 @@ Topic</p></td>
 <td style="text-align: left;"><p>Required for creating new
 topics</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>updateTopic</code></p></td>
 <td style="text-align: left;"><p><code>Boolean</code></p></td>
 <td style="text-align: left;"><p>Whether to update an existing Push
@@ -3663,7 +3664,7 @@ Topic if exists</p></td>
 <td style="text-align: left;"><p>false</p></td>
 <td style="text-align: left;"></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>notifyForFields</code></p></td>
 <td
 style="text-align: left;"><p><code>NotifyForFieldsEnum</code></p></td>
@@ -3672,7 +3673,7 @@ against the PushTopic query.</p></td>
 <td style="text-align: left;"><p>Referenced</p></td>
 <td style="text-align: left;"></td>
 </tr>
-<tr>
+<tr class="even">
 <td
 style="text-align: left;"><p><code>notifyForOperationCreate</code></p></td>
 <td style="text-align: left;"><p><code>Boolean</code></p></td>
@@ -3681,7 +3682,7 @@ generate a notification.</p></td>
 <td style="text-align: left;"><p>false</p></td>
 <td style="text-align: left;"></td>
 </tr>
-<tr>
+<tr class="odd">
 <td
 style="text-align: left;"><p><code>notifyForOperationDelete</code></p></td>
 <td style="text-align: left;"><p><code>Boolean</code></p></td>
@@ -3690,7 +3691,7 @@ generate a notification.</p></td>
 <td style="text-align: left;"><p>false</p></td>
 <td style="text-align: left;"></td>
 </tr>
-<tr>
+<tr class="even">
 <td
 style="text-align: left;"><p><code>notifyForOperationUndelete</code></p></td>
 <td style="text-align: left;"><p><code>Boolean</code></p></td>
@@ -3699,7 +3700,7 @@ generate a notification.</p></td>
 <td style="text-align: left;"><p>false</p></td>
 <td style="text-align: left;"></td>
 </tr>
-<tr>
+<tr class="odd">
 <td
 style="text-align: left;"><p><code>notifyForOperationUpdate</code></p></td>
 <td style="text-align: left;"><p><code>Boolean</code></p></td>
@@ -3708,7 +3709,7 @@ generate a notification.</p></td>
 <td style="text-align: left;"><p>false</p></td>
 <td style="text-align: left;"></td>
 </tr>
-<tr>
+<tr class="even">
 <td
 style="text-align: left;"><p><code>notifyForOperations</code></p></td>
 <td
@@ -3718,7 +3719,7 @@ generate a notification. Only for use in API version &lt; 29.0</p></td>
 <td style="text-align: left;"><p>All</p></td>
 <td style="text-align: left;"></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>replayId</code></p></td>
 <td style="text-align: left;"><p><code>int</code></p></td>
 <td style="text-align: left;"><p>The replayId value to use when
@@ -3726,7 +3727,7 @@ subscribing.</p></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>defaultReplayId</code></p></td>
 <td style="text-align: left;"><p><code>int</code></p></td>
 <td style="text-align: left;"><p>Default replayId setting if no value is
@@ -3734,7 +3735,7 @@ found in initialReplayIdMap.</p></td>
 <td style="text-align: left;"><p>-1</p></td>
 <td style="text-align: left;"></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>fallBackReplayId</code></p></td>
 <td style="text-align: left;"><p><code>int</code></p></td>
 <td style="text-align: left;"><p>ReplayId to fall back to after an
@@ -3749,7 +3750,7 @@ Invalid Replay Id response.</p></td>
 
 Type: Class passed via `sObjectName` parameter
 
-### Platform Events
+#### Platform Events
 
 To emit a platform event use the [createSObject](#createSObject)
 operation, passing an instance of a platform event, e.g.
@@ -3773,14 +3774,14 @@ For example, to receive platform events use for the event type
 <col style="width: 20%" />
 </colgroup>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>Parameter</p></td>
 <td style="text-align: left;"><p>Type</p></td>
 <td style="text-align: left;"><p>Description</p></td>
 <td style="text-align: left;"><p>Default</p></td>
 <td style="text-align: left;"><p>Required</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>rawPayload</code></p></td>
 <td style="text-align: left;"><p><code>Boolean</code></p></td>
 <td style="text-align: left;"><p>If false, operation returns a
@@ -3789,7 +3790,7 @@ Message</p></td>
 <td style="text-align: left;"><p>false</p></td>
 <td style="text-align: left;"></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>replayId</code></p></td>
 <td style="text-align: left;"><p><code>int</code></p></td>
 <td style="text-align: left;"><p>The replayId value to use when
@@ -3797,7 +3798,7 @@ subscribing.</p></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>defaultReplayId</code></p></td>
 <td style="text-align: left;"><p><code>int</code></p></td>
 <td style="text-align: left;"><p>Default replayId setting if no value is
@@ -3805,7 +3806,7 @@ found in initialReplayIdMap.</p></td>
 <td style="text-align: left;"><p>-1</p></td>
 <td style="text-align: left;"></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>fallBackReplayId</code></p></td>
 <td style="text-align: left;"><p><code>int</code></p></td>
 <td style="text-align: left;"><p>ReplayId to fall back to after an
@@ -3820,7 +3821,7 @@ Invalid Replay Id response.</p></td>
 
 Type: `PlatformEvent` or `org.cometd.bayeux.Message`
 
-### Change Data Capture Events
+#### Change Data Capture Events
 
 Change Data Capture (CDC) allows you to receive near-real-time changes
 of Salesforce records, and synchronize corresponding records in an
@@ -3869,14 +3870,14 @@ considerations could be of interest.
 <col style="width: 20%" />
 </colgroup>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>Parameter</p></td>
 <td style="text-align: left;"><p>Type</p></td>
 <td style="text-align: left;"><p>Description</p></td>
 <td style="text-align: left;"><p>Default</p></td>
 <td style="text-align: left;"><p>Required</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>rawPayload</code></p></td>
 <td style="text-align: left;"><p><code>Boolean</code></p></td>
 <td style="text-align: left;"><p>If false, operation returns a
@@ -3885,7 +3886,7 @@ considerations could be of interest.
 <td style="text-align: left;"><p>false</p></td>
 <td style="text-align: left;"></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>replayId</code></p></td>
 <td style="text-align: left;"><p><code>int</code></p></td>
 <td style="text-align: left;"><p>The replayId value to use when
@@ -3893,7 +3894,7 @@ subscribing.</p></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>defaultReplayId</code></p></td>
 <td style="text-align: left;"><p><code>int</code></p></td>
 <td style="text-align: left;"><p>Default replayId setting if no value is
@@ -3901,7 +3902,7 @@ found in initialReplayIdMap.</p></td>
 <td style="text-align: left;"><p>-1</p></td>
 <td style="text-align: left;"></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>fallBackReplayId</code></p></td>
 <td style="text-align: left;"><p><code>int</code></p></td>
 <td style="text-align: left;"><p>ReplayId to fall back to after an
@@ -3924,11 +3925,11 @@ Headers
 <col style="width: 50%" />
 </colgroup>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>Name</p></td>
 <td style="text-align: left;"><p>Description</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td
 style="text-align: left;"><p><code>CamelSalesforceChangeType</code></p></td>
 <td style="text-align: left;"><p><code>CREATE</code>,
@@ -3938,7 +3939,7 @@ style="text-align: left;"><p><code>CamelSalesforceChangeType</code></p></td>
 </tbody>
 </table>
 
-## Reports API
+### Reports API
 
 -   [getRecentReports](#getRecentReports) - Gets up to 200 of the
     reports you most recently viewed.
@@ -3958,7 +3959,7 @@ style="text-align: left;"><p><code>CamelSalesforceChangeType</code></p></td>
 -   [getReportResults](#getReportResults) - Retrieves results for an
     instance of a report run asynchronously.
 
-### Report List
+#### Report List
 
 `getRecentReports`
 
@@ -3968,7 +3969,7 @@ Gets up to 200 of the reports you most recently viewed.
 
 Type: `List<RecentReport>`
 
-### Describe Report
+#### Describe Report
 
 `getReportDescription`
 
@@ -3984,14 +3985,14 @@ either in a tabular or summary or matrix format.
 <col style="width: 20%" />
 </colgroup>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>Parameter</p></td>
 <td style="text-align: left;"><p>Type</p></td>
 <td style="text-align: left;"><p>Description</p></td>
 <td style="text-align: left;"><p>Default</p></td>
 <td style="text-align: left;"><p>Required</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>reportId</code></p></td>
 <td style="text-align: left;"><p><code>String</code></p></td>
 <td style="text-align: left;"><p>Id of Report</p></td>
@@ -3999,7 +4000,7 @@ either in a tabular or summary or matrix format.
 <td style="text-align: left;"><p>Required if not supplied in
 body</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>Body</p></td>
 <td style="text-align: left;"><p><code>String</code></p></td>
 <td style="text-align: left;"><p>Id of Report</p></td>
@@ -4014,7 +4015,7 @@ body</p></td>
 
 Type: `ReportDescription`
 
-### Execute Sync
+#### Execute Sync
 
 `executeSyncReport`
 
@@ -4030,14 +4031,14 @@ the latest summary data.
 <col style="width: 20%" />
 </colgroup>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>Parameter</p></td>
 <td style="text-align: left;"><p>Type</p></td>
 <td style="text-align: left;"><p>Description</p></td>
 <td style="text-align: left;"><p>Default</p></td>
 <td style="text-align: left;"><p>Required</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>reportId</code></p></td>
 <td style="text-align: left;"><p><code>String</code></p></td>
 <td style="text-align: left;"><p>Id of Report</p></td>
@@ -4045,14 +4046,14 @@ the latest summary data.
 <td style="text-align: left;"><p>Required if not supplied in
 body</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>includeDetails</code></p></td>
 <td style="text-align: left;"><p><code>Boolean</code></p></td>
 <td style="text-align: left;"><p>Whether to include details</p></td>
 <td style="text-align: left;"><p>false</p></td>
 <td style="text-align: left;"></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>reportMetadata</code></p></td>
 <td style="text-align: left;"><p><code>ReportMetadata</code></p></td>
 <td style="text-align: left;"><p>Optionally, pass ReportMetadata here
@@ -4060,7 +4061,7 @@ instead of body</p></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>Body</p></td>
 <td style="text-align: left;"><p><code>ReportMetadata</code></p></td>
 <td style="text-align: left;"><p>If supplied, will use instead of
@@ -4076,7 +4077,7 @@ instead of body</p></td>
 
 Type: `AbstractReportResultsBase`
 
-### Execute Async
+#### Execute Async
 
 `executeAsyncReport`
 
@@ -4092,14 +4093,14 @@ returns the summary data with or without details.
 <col style="width: 20%" />
 </colgroup>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>Parameter</p></td>
 <td style="text-align: left;"><p>Type</p></td>
 <td style="text-align: left;"><p>Description</p></td>
 <td style="text-align: left;"><p>Default</p></td>
 <td style="text-align: left;"><p>Required</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>reportId</code></p></td>
 <td style="text-align: left;"><p><code>String</code></p></td>
 <td style="text-align: left;"><p>Id of Report</p></td>
@@ -4107,14 +4108,14 @@ returns the summary data with or without details.
 <td style="text-align: left;"><p>Required if not supplied in
 body</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>includeDetails</code></p></td>
 <td style="text-align: left;"><p><code>Boolean</code></p></td>
 <td style="text-align: left;"><p>Whether to include details</p></td>
 <td style="text-align: left;"><p>false</p></td>
 <td style="text-align: left;"></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>reportMetadata</code></p></td>
 <td style="text-align: left;"><p><code>ReportMetadata</code></p></td>
 <td style="text-align: left;"><p>Optionally, pass ReportMetadata here
@@ -4122,7 +4123,7 @@ instead of body</p></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>Body</p></td>
 <td style="text-align: left;"><p><code>ReportMetadata</code></p></td>
 <td style="text-align: left;"><p>If supplied, will use instead of
@@ -4138,7 +4139,7 @@ instead of body</p></td>
 
 Type: `ReportInstance`
 
-### Instances List
+#### Instances List
 
 `getReportInstances`
 
@@ -4155,14 +4156,14 @@ of the report.
 <col style="width: 20%" />
 </colgroup>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>Parameter</p></td>
 <td style="text-align: left;"><p>Type</p></td>
 <td style="text-align: left;"><p>Description</p></td>
 <td style="text-align: left;"><p>Default</p></td>
 <td style="text-align: left;"><p>Required</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>reportId</code></p></td>
 <td style="text-align: left;"><p><code>String</code></p></td>
 <td style="text-align: left;"><p>Id of Report</p></td>
@@ -4170,7 +4171,7 @@ of the report.
 <td style="text-align: left;"><p>Required if not supplied in
 body</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>Body</p></td>
 <td style="text-align: left;"><p><code>String</code></p></td>
 <td style="text-align: left;"><p>If supplied, will use instead of
@@ -4186,7 +4187,7 @@ body</p></td>
 
 Type: `List<ReportInstance>`
 
-### Instance Results
+#### Instance Results
 
 `getReportResults`
 
@@ -4201,14 +4202,14 @@ Contains the results of running a report.
 <col style="width: 20%" />
 </colgroup>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>Parameter</p></td>
 <td style="text-align: left;"><p>Type</p></td>
 <td style="text-align: left;"><p>Description</p></td>
 <td style="text-align: left;"><p>Default</p></td>
 <td style="text-align: left;"><p>Required</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>reportId</code></p></td>
 <td style="text-align: left;"><p><code>String</code></p></td>
 <td style="text-align: left;"><p>Id of Report</p></td>
@@ -4216,14 +4217,14 @@ Contains the results of running a report.
 <td style="text-align: left;"><p>Required if not supplied in
 body</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>instanceId</code></p></td>
 <td style="text-align: left;"><p><code>String</code></p></td>
 <td style="text-align: left;"><p>Id of Report instance</p></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"><p>x</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p>Body</p></td>
 <td style="text-align: left;"><p><code>String</code></p></td>
 <td style="text-align: left;"><p>If supplied, will use instead of
@@ -4239,12 +4240,12 @@ body</p></td>
 
 Type: `AbstractReportResultsBase`
 
-# Miscellaneous Operations
+## Miscellaneous Operations
 
 -   [raw](#raw) - Send requests to salesforce and have full, raw control
     over endpoint, parameters, body, etc.
 
-## Raw
+### Raw
 
 `raw`
 
@@ -4263,14 +4264,14 @@ can be overridden with the `rawHttpHeaders` option.
 <col style="width: 20%" />
 </colgroup>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>Parameter</p></td>
 <td style="text-align: left;"><p>Type</p></td>
 <td style="text-align: left;"><p>Description</p></td>
 <td style="text-align: left;"><p>Default</p></td>
 <td style="text-align: left;"><p>Required</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p>Body</p></td>
 <td style="text-align: left;"><p><code>String</code> or
 <code>InputStream</code></p></td>
@@ -4278,7 +4279,7 @@ can be overridden with the `rawHttpHeaders` option.
 <td style="text-align: left;"></td>
 <td style="text-align: left;"></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>rawPath</code></p></td>
 <td style="text-align: left;"><p><code>String</code></p></td>
 <td style="text-align: left;"><p>The portion of the endpoint URL after
@@ -4287,14 +4288,14 @@ the domain name, e.g.,
 <td style="text-align: left;"></td>
 <td style="text-align: left;"><p>x</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>rawMethod</code></p></td>
 <td style="text-align: left;"><p><code>String</code></p></td>
 <td style="text-align: left;"><p>The HTTP method</p></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"><p>x</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td
 style="text-align: left;"><p><code>rawQueryParameters</code></p></td>
 <td style="text-align: left;"><p><code>String</code></p></td>
@@ -4304,7 +4305,7 @@ done automatically.</p></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>rawHttpHeaders</code></p></td>
 <td style="text-align: left;"><p><code>String</code></p></td>
 <td style="text-align: left;"><p>Comma separated list of message headers
@@ -4319,7 +4320,7 @@ to include as HTTP headers</p></td>
 
 Type: `InputStream`
 
-### Query example
+#### Query example
 
 In this example we’ll send a query to the REST API. The query must be
 passed in a URL parameter called "q", so we’ll create a message header
@@ -4331,7 +4332,7 @@ URL parameter:
       .to("salesforce:raw?format=JSON&rawMethod=GET&rawQueryParameters=q&rawPath=/services/data/v51.0/query")
       // deserialize JSON results or handle in some other way
 
-### SObject example
+#### SObject example
 
 In this example, we’ll pass a Contact the REST API in a `create`
 operation. Since the `raw` operation does not perform any serialization,
@@ -4349,7 +4350,7 @@ The response is:
         <success>true</success>
     </Result>
 
-# Uploading a document to a ContentWorkspace
+## Uploading a document to a ContentWorkspace
 
 Create the ContentVersion in Java, using a Processor instance:
 
@@ -4383,16 +4384,16 @@ Give the output from the processor to the Salesforce component:
                                         // for the salesforce component
         .to("salesforce:createSObject");
 
-# Generating SOQL query strings
+## Generating SOQL query strings
 
 `org.apache.camel.component.salesforce.api.utils.QueryHelper` contains
-helper methods to generate SOQL queries. For instance to fetch all
-custom fields from *Account* SObject you can simply generate the SOQL
-SELECT by invoking:
+helper methods to generate SOQL queries. For instance, to fetch all
+custom fields from *Account* SObject, you can generate the SOQL SELECT
+by invoking:
 
     String allCustomFieldsQuery = QueryHelper.queryToFetchFilteredFieldsOf(new Account(), SObjectField::isCustom);
 
-# Camel Salesforce Maven Plugin
+## Camel Salesforce Maven Plugin
 
 The Maven plugin generates Java DTOs to represent salesforce objects.
 

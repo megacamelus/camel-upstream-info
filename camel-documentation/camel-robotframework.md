@@ -31,7 +31,7 @@ Where **templateName** is the classpath-local URI of the template to
 invoke; or the complete URL of the remote template (eg:
 file://folder/myfile.robot).
 
-# Samples
+# Examples
 
 For example, you could use something like:
 

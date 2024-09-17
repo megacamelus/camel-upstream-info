@@ -29,15 +29,15 @@ You have to provide the amazonSQSClient in the Registry or your
 accessKey and secretKey to access the [Amazon’s
 SQS](https://aws.amazon.com/sqs).
 
-# Batch Consumer
+# Usage
+
+## Batch Consumer
 
 This component implements the Batch Consumer.
 
 This allows you, for instance, to know how many messages exist in this
 batch and for instance, let the Aggregator aggregate this number of
 messages.
-
-# Usage
 
 ## Static credentials, Default Credential Provider and Profile Credentials Provider
 
@@ -72,6 +72,8 @@ same time.
 
 For more information about this you can look at [AWS credentials
 documentation](https://docs.aws.amazon.com/sdk-for-java/latest/developer-guide/credentials.html)
+
+# Examples
 
 ## Advanced AmazonSQS configuration
 
@@ -121,7 +123,7 @@ related option are: `serverSideEncryptionEnabled`, `keyMasterKeyId` and
 explicitly set the option to true and set the related parameters as
 queue attributes.
 
-# JMS-style Selectors
+## JMS-style Selectors
 
 SQS does not allow selectors, but you can effectively achieve this by
 using the Camel Filter EIP and setting an appropriate
@@ -146,7 +148,7 @@ consumers.
 Note we must set the property `Sqs2Constants.SQS_DELETE_FILTERED` to
 `true` to instruct Camel to send the DeleteMessage, if being filtered.
 
-# Available Producer Operations
+## Available Producer Operations
 
 -   single message (default)
 
@@ -156,13 +158,13 @@ Note we must set the property `Sqs2Constants.SQS_DELETE_FILTERED` to
 
 -   listQueues
 
-# Send Message
+## Send Message
 
     from("direct:start")
       .setBody(constant("Camel rocks!"))
       .to("aws2-sqs://camel-1?accessKey=RAW(xxx)&secretKey=RAW(xxx)&region=eu-west-1");
 
-# Send Batch Message
+## Send Batch Message
 
 You can set a `SendMessageBatchRequest` or an `Iterable`
 
@@ -186,7 +188,7 @@ As result, you’ll get an exchange containing a
 messages were successful and what not. The id set on each message of the
 batch will be a Random UUID.
 
-# Delete single Message
+## Delete single Message
 
 Use deleteMessage operation to delete a single message. You’ll need to
 set a receipt handle header for the message you want to delete.
@@ -199,7 +201,7 @@ set a receipt handle header for the message you want to delete.
 As result, you’ll get an exchange containing a `DeleteMessageResponse`
 instance, that you can use to check if the message was deleted or not.
 
-# List Queues
+## List Queues
 
 Use listQueues operation to list queues.
 
@@ -210,7 +212,7 @@ Use listQueues operation to list queues.
 As result, you’ll get an exchange containing a `ListQueuesResponse`
 instance, that you can examine to check the actual queues.
 
-# Purge Queue
+## Purge Queue
 
 Use purgeQueue operation to purge queue.
 
@@ -221,7 +223,7 @@ Use purgeQueue operation to purge queue.
 As result you’ll get an exchange containing a `PurgeQueueResponse`
 instance.
 
-# Queue Auto-creation
+## Queue Auto-creation
 
 With the option `autoCreateQueue` users are able to avoid the
 autocreation of an SQS Queue in case it doesn’t exist. The default for
@@ -229,7 +231,7 @@ this option is `false`. If set to *false*, any operation on a
 non-existent queue in AWS won’t be successful and an error will be
 returned.
 
-# Send Batch Message and Message Deduplication Strategy
+## Send Batch Message and Message Deduplication Strategy
 
 In case you’re using a SendBatchMessage Operation, you can set two
 different kinds of Message Deduplication Strategy: - useExchangeId -
@@ -275,6 +277,7 @@ Camel.
 |attributeNames|A list of attribute names to receive when consuming. Multiple names can be separated by comma.||string|
 |bridgeErrorHandler|Allows for bridging the consumer to the Camel routing Error Handler, which mean any exceptions (if possible) occurred while the Camel consumer is trying to pickup incoming messages, or the likes, will now be processed as a message and handled by the routing Error Handler. Important: This is only possible if the 3rd party component allows Camel to be alerted if an exception was thrown. Some components handle this internally only, and therefore bridgeErrorHandler is not possible. In other situations we may improve the Camel component to hook into the 3rd party component and make this possible for future releases. By default the consumer will use the org.apache.camel.spi.ExceptionHandler to deal with exceptions, that will be logged at WARN or ERROR level and ignored.|false|boolean|
 |concurrentConsumers|Allows you to use multiple threads to poll the sqs queue to increase throughput|1|integer|
+|concurrentRequestLimit|The maximum number of concurrent receive request send to AWS in single consumer polling.|50|integer|
 |defaultVisibilityTimeout|The default visibility timeout (in seconds)||integer|
 |deleteAfterRead|Delete message from SQS after it has been read|true|boolean|
 |deleteIfFiltered|Whether to send the DeleteMessage to the SQS queue if the exchange has property with key Sqs2Constants#SQS\_DELETE\_FILTERED (CamelAwsSqsDeleteFiltered) set to true.|true|boolean|
@@ -283,6 +286,7 @@ Camel.
 |kmsMasterKeyId|The ID of an AWS-managed customer master key (CMK) for Amazon SQS or a custom CMK.||string|
 |messageAttributeNames|A list of message attribute names to receive when consuming. Multiple names can be separated by comma.||string|
 |serverSideEncryptionEnabled|Define if Server Side Encryption is enabled or not on the queue|false|boolean|
+|sortAttributeName|The name of the message attribute used for sorting the messages. When specified, the messages polled by the consumer will be sorted by this attribute. This configuration may be of importance when you configure maxMessagesPerPoll parameter exceeding 10. In such cases, the messages will be fetched concurrently so the ordering is not guaranteed.||string|
 |visibilityTimeout|The duration (in seconds) that the received messages are hidden from subsequent retrieve requests after being retrieved by a ReceiveMessage request to set in the com.amazonaws.services.sqs.model.SetQueueAttributesRequest. This only makes sense if it's different from defaultVisibilityTimeout. It changes the queue visibility timeout attribute permanently.||integer|
 |waitTimeSeconds|Duration in seconds (0 to 20) that the ReceiveMessage action call will wait until a message is in the queue to include in the response.||integer|
 |batchSeparator|Set the separator when passing a String to send batch message operation|,|string|
@@ -331,6 +335,7 @@ Camel.
 |uriEndpointOverride|Set the overriding uri endpoint. This option needs to be used in combination with overrideEndpoint option||string|
 |attributeNames|A list of attribute names to receive when consuming. Multiple names can be separated by comma.||string|
 |concurrentConsumers|Allows you to use multiple threads to poll the sqs queue to increase throughput|1|integer|
+|concurrentRequestLimit|The maximum number of concurrent receive request send to AWS in single consumer polling.|50|integer|
 |defaultVisibilityTimeout|The default visibility timeout (in seconds)||integer|
 |deleteAfterRead|Delete message from SQS after it has been read|true|boolean|
 |deleteIfFiltered|Whether to send the DeleteMessage to the SQS queue if the exchange has property with key Sqs2Constants#SQS\_DELETE\_FILTERED (CamelAwsSqsDeleteFiltered) set to true.|true|boolean|
@@ -341,6 +346,7 @@ Camel.
 |messageAttributeNames|A list of message attribute names to receive when consuming. Multiple names can be separated by comma.||string|
 |sendEmptyMessageWhenIdle|If the polling consumer did not poll any files, you can enable this option to send an empty message (no body) instead.|false|boolean|
 |serverSideEncryptionEnabled|Define if Server Side Encryption is enabled or not on the queue|false|boolean|
+|sortAttributeName|The name of the message attribute used for sorting the messages. When specified, the messages polled by the consumer will be sorted by this attribute. This configuration may be of importance when you configure maxMessagesPerPoll parameter exceeding 10. In such cases, the messages will be fetched concurrently so the ordering is not guaranteed.||string|
 |visibilityTimeout|The duration (in seconds) that the received messages are hidden from subsequent retrieve requests after being retrieved by a ReceiveMessage request to set in the com.amazonaws.services.sqs.model.SetQueueAttributesRequest. This only makes sense if it's different from defaultVisibilityTimeout. It changes the queue visibility timeout attribute permanently.||integer|
 |waitTimeSeconds|Duration in seconds (0 to 20) that the ReceiveMessage action call will wait until a message is in the queue to include in the response.||integer|
 |bridgeErrorHandler|Allows for bridging the consumer to the Camel routing Error Handler, which mean any exceptions (if possible) occurred while the Camel consumer is trying to pickup incoming messages, or the likes, will now be processed as a message and handled by the routing Error Handler. Important: This is only possible if the 3rd party component allows Camel to be alerted if an exception was thrown. Some components handle this internally only, and therefore bridgeErrorHandler is not possible. In other situations we may improve the Camel component to hook into the 3rd party component and make this possible for future releases. By default the consumer will use the org.apache.camel.spi.ExceptionHandler to deal with exceptions, that will be logged at WARN or ERROR level and ignored.|false|boolean|

@@ -8,23 +8,27 @@ The Kubernetes Resources Quota component is one of [Kubernetes
 Components](#kubernetes-summary.adoc) which provides a producer to
 execute Kubernetes Resource Quota operations.
 
-# Supported producer operation
+# Usage
 
--   listResourcesQuota
+## Supported producer operation
 
--   listResourcesQuotaByLabels
+-   `listResourcesQuota`
 
--   getResourcesQuota
+-   `listResourcesQuotaByLabels`
 
--   createResourcesQuota
+-   `getResourcesQuota`
 
--   updateResourceQuota
+-   `createResourcesQuota`
 
--   deleteResourcesQuota
+-   `updateResourceQuota`
 
-# Kubernetes Resource Quota Producer Examples
+-   `deleteResourcesQuota`
 
--   listResourcesQuota: this operation lists the Resource Quotas on a
+# Examples
+
+## Kubernetes Resource Quota Producer Examples
+
+-   `listResourcesQuota`: this operation lists the resource quotas on a
     kubernetes cluster
 
 <!-- -->
@@ -33,10 +37,10 @@ execute Kubernetes Resource Quota operations.
         toF("kubernetes-resources-quota:///?kubernetesClient=#kubernetesClient&operation=listResourcesQuota").
         to("mock:result");
 
-This operation returns a List of Resource Quotas from your cluster
+This operation returns a list of resource quotas from your cluster
 
--   listResourcesQuotaByLabels: this operation lists the Resource Quotas
-    by labels on a kubernetes cluster
+-   `listResourcesQuotaByLabels`: this operation lists the resource
+    quotas by labels on a kubernetes cluster
 
 <!-- -->
 
@@ -52,9 +56,8 @@ This operation returns a List of Resource Quotas from your cluster
         toF("kubernetes-resources-quota:///?kubernetesClient=#kubernetesClient&operation=listResourcesQuotaByLabels").
         to("mock:result");
 
-This operation returns a List of Resource Quotas from your cluster,
-using a label selector (with key1 and key2, with value value1 and
-value2)
+This operation returns a list of resource quotas from your cluster using
+a label selector (with key1 and key2, with value value1 and value2)
 
 ## Component Configurations
 

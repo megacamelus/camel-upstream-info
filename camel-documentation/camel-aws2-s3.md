@@ -28,21 +28,15 @@ Required S3 component options
 You have to provide the amazonS3Client in the Registry or your accessKey
 and secretKey to access the [Amazon’s S3](https://aws.amazon.com/s3).
 
-# Batch Consumer
+# Usage
+
+## Batch Consumer
 
 This component implements the Batch Consumer.
 
 This allows you, for instance, to know how many messages exist in this
 batch and for instance, let the Aggregator aggregate this number of
 messages.
-
-# Usage
-
-For example, to read file `hello.txt` from bucket `helloBucket`, use the
-following snippet:
-
-    from("aws2-s3://helloBucket?accessKey=yourAccessKey&secretKey=yourSecretKey&prefix=hello.txt")
-      .to("file:/var/downloaded");
 
 ## S3 Producer operations
 
@@ -70,6 +64,14 @@ If you don’t specify an operation, explicitly the producer will do:
 -   a single file upload
 
 -   a multipart upload if multiPartUpload option is enabled
+
+# Examples
+
+For example, to read file `hello.txt` from bucket `helloBucket`, use the
+following snippet:
+
+    from("aws2-s3://helloBucket?accessKey=yourAccessKey&secretKey=yourSecretKey&prefix=hello.txt")
+      .to("file:/var/downloaded");
 
 ## Advanced AmazonS3 configuration
 
@@ -301,7 +303,84 @@ If checksum validations are enabled, the url will no longer be browser
 compatible because it adds a signed header that must be included in the
 HTTP request.
 
-# Streaming Upload mode
+## AWS S3 Producer minimum permissions
+
+For making the producer work, you’ll need at least PutObject and
+ListBuckets permissions. The following policy will be enough:
+
+    {
+        "Version": "2012-10-17",
+        "Statement": [
+            {
+                "Effect": "Allow",
+                "Action": "s3:PutObject",
+                "Resource": "arn:aws:s3:::*/*"
+            },
+            {
+                "Effect": "Allow",
+                "Action": "s3:ListBucket",
+                "Resource": "arn:aws:s3:::*"
+            }
+        ]
+    }
+
+A variation to the minimum permissions is related to the usage of Bucket
+autocreation. In that case the permissions will need to be increased
+with CreateBucket permission
+
+    {
+        "Version": "2012-10-17",
+        "Statement": [
+            {
+                "Effect": "Allow",
+                "Action": "s3:PutObject",
+                "Resource": "arn:aws:s3:::*/*"
+            },
+            {
+                "Effect": "Allow",
+                "Action": "s3:ListBucket",
+                "Resource": "arn:aws:s3:::*"
+            },
+            {
+                "Effect": "Allow",
+                "Action": "s3:CreateBucket",
+                "Resource": "arn:aws:s3:::*"
+            }
+        ]
+    }
+
+## AWS S3 Consumer minimum permissions
+
+For making the producer work, you’ll need at least GetObject,
+ListBuckets and DeleteObject permissions. The following policy will be
+enough:
+
+    {
+        "Version": "2012-10-17",
+        "Statement": [
+            {
+                "Effect": "Allow",
+                "Action": "s3:ListBucket",
+                "Resource": "arn:aws:s3:::*"
+            },
+            {
+                "Effect": "Allow",
+                "Action": "s3:GetObject",
+                "Resource": "arn:aws:s3:::*/*"
+            },
+            {
+                "Effect": "Allow",
+                "Action": "s3:DeleteObject",
+                "Resource": "arn:aws:s3:::*/*"
+            }
+        ]
+    }
+
+By Default the consumer will use the deleteAfterRead option, this means
+the object will be deleted once consumed, this is why the DeleteObject
+permission is required.
+
+## Streaming Upload mode
 
 With the stream mode enabled, users will be able to upload data to S3
 without knowing ahead of time the dimension of the data, by leveraging
@@ -373,14 +452,14 @@ As an example:
 
 In this case, the upload will be completed after 10 seconds.
 
-# Bucket Auto-creation
+## Bucket Auto-creation
 
 With the option `autoCreateBucket` users are able to avoid the
 auto-creation of an S3 Bucket in case it doesn’t exist. The default for
 this option is `false`. If set to false, any operation on a not-existent
 bucket in AWS won’t be successful and an error will be returned.
 
-# Moving stuff between a bucket and another bucket
+## Moving stuff between a bucket and another bucket
 
 Some users like to consume stuff from a bucket and move the content in a
 different one without using the copyObject feature of this component. If
@@ -388,7 +467,7 @@ this is case for you, remember to remove the bucketName header from the
 incoming exchange of the consumer, otherwise the file will always be
 overwritten on the same original bucket.
 
-# MoveAfterRead consumer option
+## MoveAfterRead consumer option
 
 In addition to deleteAfterRead, it has been added another option,
 moveAfterRead. With this option enabled, the consumed object will be
@@ -418,7 +497,7 @@ to true as default).
 So if the file name is test, in the *myothercamelbucket* you should see
 a file called pre-test-suff.
 
-# Using customer key as encryption
+## Using the customer key as encryption
 
 We introduced also the customer key support (an alternative of using
 KMS). The following code shows an example.
@@ -435,7 +514,7 @@ KMS). The following code shows an example.
         .setBody(constant("Test"))
         .to(awsEndpoint);
 
-# Using a POJO as body
+## Using a POJO as body
 
 Sometimes building an AWS Request can be complex because of multiple
 options. We introduce the possibility to use a POJO as the body. In AWS
@@ -449,7 +528,7 @@ brokers request, you can do something like:
 In this way, you’ll pass the request directly without the need of
 passing headers and options specifically related to this operation.
 
-# Create S3 client and add component to registry
+## Create S3 client and add component to registry
 
 Sometimes you would want to perform some advanced configuration using
 AWS2S3Configuration, which also allows to set the S3 client. You can
@@ -504,6 +583,7 @@ Camel.
 |configuration|The component configuration||object|
 |delimiter|The delimiter which is used in the com.amazonaws.services.s3.model.ListObjectsRequest to only consume objects we are interested in.||string|
 |forcePathStyle|Set whether the S3 client should use path-style URL instead of virtual-hosted-style|false|boolean|
+|ignoreBody|If it is true, the S3 Object Body will be ignored completely if it is set to false, the S3 Object will be put in the body. Setting this to true will override any behavior defined by includeBody option.|false|boolean|
 |overrideEndpoint|Set the need for overriding the endpoint. This option needs to be used in combination with the uriEndpointOverride option|false|boolean|
 |pojoRequest|If we want to use a POJO request as body or not|false|boolean|
 |policy|The policy for this queue to set in the com.amazonaws.services.s3.AmazonS3#setBucketPolicy() method.||string|
@@ -520,7 +600,6 @@ Camel.
 |destinationBucketSuffix|Define the destination bucket suffix to use when an object must be moved, and moveAfterRead is set to true.||string|
 |doneFileName|If provided, Camel will only consume files if a done file exists.||string|
 |fileName|To get the object from the bucket with the given file name||string|
-|ignoreBody|If it is true, the S3 Object Body will be ignored completely if it is set to false, the S3 Object will be put in the body. Setting this to true will override any behavior defined by includeBody option.|false|boolean|
 |includeBody|If it is true, the S3Object exchange will be consumed and put into the body and closed. If false, the S3Object stream will be put raw into the body and the headers will be set with the S3 object metadata. This option is strongly related to the autocloseBody option. In case of setting includeBody to true because the S3Object stream will be consumed then it will also be closed, while in case of includeBody false then it will be up to the caller to close the S3Object stream. However, setting autocloseBody to true when includeBody is false it will schedule to close the S3Object stream automatically on exchange completion.|true|boolean|
 |includeFolders|If it is true, the folders/directories will be consumed. If it is false, they will be ignored, and Exchanges will not be created for those|true|boolean|
 |moveAfterRead|Move objects from S3 bucket to a different bucket after they have been retrieved. To accomplish the operation, the destinationBucket option must be set. The copy bucket operation is only performed if the Exchange is committed. If a rollback occurs, the object is not moved.|false|boolean|
@@ -569,6 +648,7 @@ Camel.
 |autoCreateBucket|Setting the autocreation of the S3 bucket bucketName. This will apply also in case of moveAfterRead option enabled, and it will create the destinationBucket if it doesn't exist already.|false|boolean|
 |delimiter|The delimiter which is used in the com.amazonaws.services.s3.model.ListObjectsRequest to only consume objects we are interested in.||string|
 |forcePathStyle|Set whether the S3 client should use path-style URL instead of virtual-hosted-style|false|boolean|
+|ignoreBody|If it is true, the S3 Object Body will be ignored completely if it is set to false, the S3 Object will be put in the body. Setting this to true will override any behavior defined by includeBody option.|false|boolean|
 |overrideEndpoint|Set the need for overriding the endpoint. This option needs to be used in combination with the uriEndpointOverride option|false|boolean|
 |pojoRequest|If we want to use a POJO request as body or not|false|boolean|
 |policy|The policy for this queue to set in the com.amazonaws.services.s3.AmazonS3#setBucketPolicy() method.||string|
@@ -584,7 +664,6 @@ Camel.
 |destinationBucketSuffix|Define the destination bucket suffix to use when an object must be moved, and moveAfterRead is set to true.||string|
 |doneFileName|If provided, Camel will only consume files if a done file exists.||string|
 |fileName|To get the object from the bucket with the given file name||string|
-|ignoreBody|If it is true, the S3 Object Body will be ignored completely if it is set to false, the S3 Object will be put in the body. Setting this to true will override any behavior defined by includeBody option.|false|boolean|
 |includeBody|If it is true, the S3Object exchange will be consumed and put into the body and closed. If false, the S3Object stream will be put raw into the body and the headers will be set with the S3 object metadata. This option is strongly related to the autocloseBody option. In case of setting includeBody to true because the S3Object stream will be consumed then it will also be closed, while in case of includeBody false then it will be up to the caller to close the S3Object stream. However, setting autocloseBody to true when includeBody is false it will schedule to close the S3Object stream automatically on exchange completion.|true|boolean|
 |includeFolders|If it is true, the folders/directories will be consumed. If it is false, they will be ignored, and Exchanges will not be created for those|true|boolean|
 |maxConnections|Set the maxConnections parameter in the S3 client configuration|60|integer|

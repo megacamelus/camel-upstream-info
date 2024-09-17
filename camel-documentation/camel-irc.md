@@ -18,9 +18,11 @@ for this component:
         <!-- use the same version as your Camel core version -->
     </dependency>
 
-# SSL Support
+# Usage
 
-## Using the JSSE Configuration Utility
+## SSL Support
+
+### Using the JSSE Configuration Utility
 
 The IRC component supports SSL/TLS configuration through the [Camel JSSE
 Configuration Utility](#manual::camel-configuration-utilities.adoc).
@@ -76,7 +78,9 @@ If you need to provide your own custom trust manager, use the
 
     ircs:host[:port]/#room?username=user&password=pass&trustManager=#referenceToMyTrustManagerBean
 
-# Using keys
+# Examples
+
+## Using keys
 
 Some IRC rooms require you to provide a key to be able to join that
 channel. The key is just a secret word.
@@ -86,7 +90,7 @@ key.
 
     irc:nick@irc.server.org?channels=#chan1,#chan2,#chan3&keys=chan1Key,,chan3key
 
-# Getting a list of channel users
+## Getting a list of channel users
 
 Using the `namesOnJoin` option one can invoke the IRC-`NAMES` command
 after the component has joined a channel. The server will reply with
@@ -103,7 +107,7 @@ the channel:
                             .filter(header("irc.num").isEqualTo("353"))
                             .to("mock:result").stop();
 
-# Sending to a different channel or a person
+## Sending to a different channel or a person
 
 If you need to send messages to a different channel (or a person) which
 is not defined on IRC endpoint, you can specify a different destination
@@ -118,14 +122,14 @@ You can specify the destination in the following header:
 <col style="width: 79%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Header</th>
 <th style="text-align: left;">Type</th>
 <th style="text-align: left;">Description</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>irc.sendTo</code></p></td>
 <td style="text-align: left;"><p><code>String</code></p></td>
 <td style="text-align: left;"><p>The channel (or the person)

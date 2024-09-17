@@ -65,7 +65,9 @@ options from [Netty](#netty-component.adoc) are not applicable when
 using this Netty HTTP component, such as options related to UDP
 transport.
 
-# Access to Netty types
+# Usage
+
+## Access to Netty types
 
 This component uses the
 `org.apache.camel.component.netty.http.NettyHttpMessage` as the message
@@ -75,26 +77,22 @@ Mind that the original response may not be accessible at all times.
 
     io.netty.handler.codec.http.HttpRequest request = exchange.getIn(NettyHttpMessage.class).getHttpRequest();
 
-# Using HTTP Basic Authentication
+## Using HTTP Basic Authentication
 
 The Netty HTTP consumer supports HTTP basic authentication by specifying
 the security realm name to use, as shown below
 
     <route>
-       <from uri="netty-http:http://0.0.0.0:{{port}}/foo?securityConfiguration.realm=karaf"/>
+       <from uri="netty-http:http://0.0.0.0:{{port}}/foo?securityConfiguration.realm=someRealm"/>
        ...
     </route>
 
 The realm name is mandatory to enable basic authentication. By default,
 the JAAS based authenticator is used, which will use the realm name
-specified (karaf in the example above) and use the JAAS realm and the
-`JAAS \{{LoginModule}}s` of this realm for authentication.
+specified (`_someRealm_` in the example above) and use the JAAS realm
+and the `JAAS \{{LoginModule}}s` of this realm for authentication.
 
-End user of Apache Karaf / ServiceMix has a karaf realm out of the box,
-and hence why the example above would work out of the box in these
-containers.
-
-## Specifying ACL on web resources
+### Specifying ACL on web resources
 
 The `org.apache.camel.component.netty.http.SecurityConstraint` allows to
 define constraints on web resources. And the
@@ -133,13 +131,13 @@ The constraint above is defined so that
 -   access to /guest/\* requires the admin or guest role
 
 -   access to /public/\* is an exclusion that means no authentication is
-    needed, and is therefore public for everyone without logging in
+    necessary, and is therefore public for everyone without logging in
 
 To use this constraint, we just need to refer to the bean id as shown
 below:
 
     <route>
-       <from uri="netty-http:http://0.0.0.0:{{port}}/foo?matchOnUriPrefix=true&amp;securityConfiguration.realm=karaf&amp;securityConfiguration.securityConstraint=#constraint"/>
+       <from uri="netty-http:http://0.0.0.0:{{port}}/foo?matchOnUriPrefix=true&amp;securityConfiguration.realm=someRealm&amp;securityConfiguration.securityConstraint=#constraint"/>
        ...
     </route>
 
@@ -257,11 +255,6 @@ And in the routes you refer to this option as shown below
       <from uri="netty-http:http://0.0.0.0:{{port}}/beer?bootstrapConfiguration=#nettyHttpBootstrapOptions"/>
       ...
     </route>
-
-## Reusing the same server bootstrap configuration with multiple routes across multiple bundles in OSGi container
-
-See the Netty HTTP Server Example for more details and example how to do
-that.
 
 ## Implementing a reverse proxy
 

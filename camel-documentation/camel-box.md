@@ -27,12 +27,14 @@ for this component:
         <version>${camel-version}</version>
     </dependency>
 
-# Connection Authentication Types
+# Usage
+
+## Connection Authentication Types
 
 The Box component supports three different types of authenticated
 connections.
 
-## Standard Authentication
+### Standard Authentication
 
 **Standard Authentication** uses the **OAuth 2.0 three-legged
 authentication process** to authenticate its connections with Box.com.
@@ -40,7 +42,7 @@ This type of authentication enables Box **managed users** and **external
 users** to access, edit, and save their Box content through the Box
 component.
 
-## App Enterprise Authentication
+### App Enterprise Authentication
 
 **App Enterprise Authentication** uses the **OAuth 2.0 with JSON Web
 Tokens (JWT)** to authenticate its connections as a **Service Account**
@@ -48,7 +50,7 @@ for a **Box Application**. This type of authentication enables a service
 account to access, edit, and save the Box content of its **Box
 Application** through the Box component.
 
-## App User Authentication
+### App User Authentication
 
 **App User Authentication** uses the **OAuth 2.0 with JSON Web Tokens
 (JWT)** to authenticate its connections as an **App User** for a **Box
@@ -56,7 +58,7 @@ Application**. This type of authentication enables app users to access,
 edit, and save their Box content in its **Box Application** through the
 Box component.
 
-# Samples
+# Examples
 
 The following route uploads new files to the user’s root folder:
 

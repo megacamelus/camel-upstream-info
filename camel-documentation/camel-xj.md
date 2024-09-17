@@ -35,15 +35,15 @@ XML2JSON or JSON2XML.
 The **templateName** parameter allows using *identify transforma* by
 specifying the name `identity`.
 
-# Using XJ endpoints
+# Usage
 
 ## Converting JSON to XML
 
 The following route does an "identity" transform of the message because
-no xslt stylesheet is given. In the context of xml to xml
+no xslt stylesheet is given. In the context of XML to XML
 transformations, "Identity" transform means that the output document is
 just a copy of the input document. In the case of XJ, it means it
-transforms the json document to an equivalent xml representation.
+transforms the JSON document to an equivalent XML representation.
 
     from("direct:start").
       to("xj:identity?transformDirection=JSON2XML");
@@ -193,15 +193,15 @@ will result in
       }
     }
 
-You may have noted that the input xml and output json are very similar
+You may have noted that the input XML and output JSON are very similar
 to the examples above when converting from json to xml, although nothing
 special is done here. We only transformed an arbitrary XML document to
-json. XJ uses the following rules by default:
+JSON. XJ uses the following rules by default:
 
 -   The XML root element can be named somehow, it will always end in a
-    json root object declaration `{}`
+    JSON root object declaration `{}`
 
--   The json key name is the name of the xml element
+-   The JSON key name is the name of the XML element
 
 -   If there is a name clash as in `<roles>` above where two `<entry>`
     elements exist a json array will be generated.
@@ -300,10 +300,10 @@ and get the following output:
       }
     }
 
-Note, this transformation resulted in exactly the same json document as
+Note, this transformation resulted in exactly the same JSON document as
 we used as input to the *json2xml* conversion. What did the stylesheet
-do? We just gave some hints to XJ on how to write the json document. The
-following XML document is that what is passed to XJ after xsl
+do? We just gave some hints to XJ on how to write the JSON document. The
+following XML document is that what is passed to XJ after XSL
 transformation:
 
     <?xml version="1.0" encoding="UTF-8"?>
@@ -326,10 +326,10 @@ transformation:
 
 In the stylesheet we just provided the minimal required type hints to
 get the same result. The supported type hints are exactly the same as XJ
-writes to a XML document when converting from json to xml.
+writes to an XML document when converting from json to xml.
 
 In the end, that means that we can feed back in the result document from
-the json to xml transformation sample above:
+the JSON to XML transformation sample above:
 
     <?xml version="1.0" encoding="UTF-8"?>
     <object xmlns:xj="http://camel.apache.org/component/xj" xj:type="object">
@@ -372,7 +372,7 @@ As seen in the example above:
 
 -   xj:type lets you specify exactly the desired output type
 
--   xj:name lets you overrule the json key name.
+-   xj:name lets you overrule the JSON key name.
 
 This is required when you want to generate key names that contain chars
 that aren’t allowed in XML element names.
@@ -385,40 +385,40 @@ that aren’t allowed in XML element names.
 <col style="width: 66%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">@xj:type=</th>
 <th style="text-align: left;">Description</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td style="text-align: left;"><p>object</p></td>
-<td style="text-align: left;"><p>Generate a json object</p></td>
+<tr class="odd">
+<td style="text-align: left;"><p><code>object</code></p></td>
+<td style="text-align: left;"><p>Generate a JSON object</p></td>
 </tr>
-<tr>
-<td style="text-align: left;"><p>array</p></td>
-<td style="text-align: left;"><p>Generate a json array</p></td>
+<tr class="even">
+<td style="text-align: left;"><p><code>array</code></p></td>
+<td style="text-align: left;"><p>Generate a JSON array</p></td>
 </tr>
-<tr>
-<td style="text-align: left;"><p>string</p></td>
-<td style="text-align: left;"><p>Generate a json string</p></td>
+<tr class="odd">
+<td style="text-align: left;"><p><code>string</code></p></td>
+<td style="text-align: left;"><p>Generate a JSON string</p></td>
 </tr>
-<tr>
-<td style="text-align: left;"><p>int</p></td>
-<td style="text-align: left;"><p>Generate a json number without
+<tr class="even">
+<td style="text-align: left;"><p><code>int</code></p></td>
+<td style="text-align: left;"><p>Generate a JSON number without
 fractional part</p></td>
 </tr>
-<tr>
-<td style="text-align: left;"><p>float</p></td>
-<td style="text-align: left;"><p>Generate a json number with fractional
+<tr class="odd">
+<td style="text-align: left;"><p><code>float</code></p></td>
+<td style="text-align: left;"><p>Generate a JSON number with fractional
 part</p></td>
 </tr>
-<tr>
-<td style="text-align: left;"><p>boolean</p></td>
-<td style="text-align: left;"><p>Generate a json boolean</p></td>
+<tr class="even">
+<td style="text-align: left;"><p><code>boolean</code></p></td>
+<td style="text-align: left;"><p>Generate a JSON boolean</p></td>
 </tr>
-<tr>
-<td style="text-align: left;"><p>null</p></td>
+<tr class="odd">
+<td style="text-align: left;"><p><code>null</code></p></td>
 <td style="text-align: left;"><p>Generate an empty value using the word
 null</p></td>
 </tr>

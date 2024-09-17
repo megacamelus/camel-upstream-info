@@ -10,7 +10,7 @@ folder. It is based on the project
 
 # URI Options
 
-# Examples:
+# Examples
 
 ## Recursive watch all events (file creation, file deletion, file modification):
 

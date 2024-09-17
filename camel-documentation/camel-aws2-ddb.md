@@ -91,7 +91,7 @@ URI:
 
 The `#client` refers to a `DynamoDbClient` in the Registry.
 
-# Supported producer operations
+## Supported producer operations
 
 -   BatchGetItems
 

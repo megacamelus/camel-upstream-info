@@ -13,11 +13,19 @@ either doesn’t support concurrent consumption or due to commercial or
 stability reasons, you can only have a single connection at any point in
 time.
 
-# Using the master endpoint
+# URI format
 
-Just prefix any camel endpoint with **master:someName:** where
-*someName* is a logical name and is used to acquire the master lock.
-e.g.
+    master:namespace:endpoint[?options]
+
+Where endpoint is any Camel endpoint, you want to run in master/slave
+mode.
+
+# Usage
+
+## Using the master endpoint
+
+Prefix any camel endpoint with **master:someName:** where *someName* is
+a logical name and is used to acquire the master lock. For instance:
 
     from("master:cheese:jms:foo")
       .to("activemq:wine");
@@ -33,13 +41,6 @@ become active and start consuming messages from `jms:foo`.
 
 Apache ActiveMQ 5.x has such a feature out of the box called [Exclusive
 Consumers](https://activemq.apache.org/exclusive-consumer.html).
-
-# URI format
-
-    master:namespace:endpoint[?options]
-
-Where endpoint is any Camel endpoint, you want to run in master/slave
-mode.
 
 # Example
 
@@ -69,7 +70,7 @@ using
         
         context.addService(service)
 
--   **Xml (Spring/Blueprint)**
+-   **Xml (Spring)**
     
         <beans xmlns="http://www.springframework.org/schema/beans"
            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"

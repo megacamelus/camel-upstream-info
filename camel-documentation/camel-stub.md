@@ -10,6 +10,14 @@ run a route without needing to actually connect to a specific
 [SMTP](#mail-component.adoc) or [Http](#http-component.adoc) endpoint.
 Add **stub:** in front of any endpoint URI to stub out the endpoint.
 
+# URI format
+
+    stub:someUri
+
+Where **`someUri`** can be any URI with any query parameters.
+
+# Usage
+
 Internally, the Stub component creates [Seda](#seda-component.adoc)
 endpoints. The main difference between [Stub](#stub-component.adoc) and
 [Seda](#seda-component.adoc) is that [Seda](#seda-component.adoc) will
@@ -17,12 +25,6 @@ validate the URI and parameters you give it, so putting seda: in front
 of a typical URI with query arguments will usually fail. Stub won’t,
 though, as it basically ignores all query parameters to let you quickly
 stub out one or more endpoints in your route temporarily.
-
-# URI format
-
-    stub:someUri
-
-Where **`someUri`** can be any URI with any query parameters.
 
 # Examples
 
@@ -43,7 +45,7 @@ Here are a few samples of stubbing endpoint uris
 |defaultPollTimeout|The timeout (in milliseconds) used when polling. When a timeout occurs, the consumer can check whether it is allowed to continue running. Setting a lower value allows the consumer to react more quickly upon shutdown.|1000|integer|
 |defaultBlockWhenFull|Whether a thread that sends messages to a full SEDA queue will block until the queue's capacity is no longer exhausted. By default, an exception will be thrown stating that the queue is full. By enabling this option, the calling thread will instead block and wait until the message can be accepted.|false|boolean|
 |defaultDiscardWhenFull|Whether a thread that sends messages to a full SEDA queue will be discarded. By default, an exception will be thrown stating that the queue is full. By enabling this option, the calling thread will give up sending and continue, meaning that the message was not sent to the SEDA queue.|false|boolean|
-|defaultOfferTimeout|Whether a thread that sends messages to a full SEDA queue will block until the queue's capacity is no longer exhausted. By default, an exception will be thrown stating that the queue is full. By enabling this option, where a configured timeout can be added to the block case. Utilizing the .offer(timeout) method of the underlining java queue||integer|
+|defaultOfferTimeout|Whether a thread that sends messages to a full SEDA queue will block until the queue's capacity is no longer exhausted. By default, an exception will be thrown stating that the queue is full. By enabling this option, where a configured timeout can be added to the block case. Using the .offer(timeout) method of the underlining java queue||integer|
 |lazyStartProducer|Whether the producer should be started lazy (on the first message). By starting lazy you can use this to allow CamelContext and routes to startup in situations where a producer may otherwise fail during starting and cause the route to fail being started. By deferring this startup to be lazy then the startup failure can be handled during routing messages via Camel's routing error handlers. Beware that when the first message is processed then creating and starting the producer may take a little time and prolong the total processing time of the processing.|false|boolean|
 |autowiredEnabled|Whether autowiring is enabled. This is used for automatic autowiring options (the option must be marked as autowired) by looking up in the registry to find if there is a single instance of matching type, which then gets configured on the component. This can be used for automatic configuring JDBC data sources, JMS connection factories, AWS Clients, etc.|true|boolean|
 |defaultQueueFactory|Sets the default queue factory.||object|

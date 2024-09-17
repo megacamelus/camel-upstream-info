@@ -36,68 +36,68 @@ The queue producer provides 12 operations:
 
 -   retainAll
 
-## Sample for **add**:
+## Example for **add**:
 
     from("direct:add")
     .setHeader(HazelcastConstants.OPERATION, constant(HazelcastOperation.ADD))
     .toF("hazelcast-%sbar", HazelcastConstants.QUEUE_PREFIX);
 
-## Sample for **put**:
+## Example for **put**:
 
     from("direct:put")
     .setHeader(HazelcastConstants.OPERATION, constant(HazelcastOperation.PUT))
     .toF("hazelcast-%sbar", HazelcastConstants.QUEUE_PREFIX);
 
-## Sample for **poll**:
+## Example for **poll**:
 
     from("direct:poll")
     .setHeader(HazelcastConstants.OPERATION, constant(HazelcastOperation.POLL))
     .toF("hazelcast:%sbar", HazelcastConstants.QUEUE_PREFIX);
 
-## Sample for **peek**:
+## Example for **peek**:
 
     from("direct:peek")
     .setHeader(HazelcastConstants.OPERATION, constant(HazelcastOperation.PEEK))
     .toF("hazelcast:%sbar", HazelcastConstants.QUEUE_PREFIX);
 
-## Sample for **offer**:
+## Example for **offer**:
 
     from("direct:offer")
     .setHeader(HazelcastConstants.OPERATION, constant(HazelcastOperation.OFFER))
     .toF("hazelcast:%sbar", HazelcastConstants.QUEUE_PREFIX);
 
-## Sample for **removevalue**:
+## Example for **removevalue**:
 
     from("direct:removevalue")
     .setHeader(HazelcastConstants.OPERATION, constant(HazelcastOperation.REMOVE_VALUE))
     .toF("hazelcast-%sbar", HazelcastConstants.QUEUE_PREFIX);
 
-## Sample for **remaining capacity**:
+## Example for **remaining capacity**:
 
     from("direct:remaining-capacity").setHeader(HazelcastConstants.OPERATION, constant(HazelcastOperation.REMAINING_CAPACITY)).to(
     String.format("hazelcast-%sbar", HazelcastConstants.QUEUE_PREFIX));
 
-## Sample for **remove all**:
+## Example for **remove all**:
 
     from("direct:removeAll").setHeader(HazelcastConstants.OPERATION, constant(HazelcastOperation.REMOVE_ALL)).to(
     String.format("hazelcast-%sbar", HazelcastConstants.QUEUE_PREFIX));
 
-## Sample for **remove if**:
+## Example for **remove if**:
 
     from("direct:removeIf").setHeader(HazelcastConstants.OPERATION, constant(HazelcastOperation.REMOVE_IF)).to(
     String.format("hazelcast-%sbar", HazelcastConstants.QUEUE_PREFIX));
 
-## Sample for **drain to**:
+## Example for **drain to**:
 
     from("direct:drainTo").setHeader(HazelcastConstants.OPERATION, constant(HazelcastOperation.DRAIN_TO)).to(
     String.format("hazelcast-%sbar", HazelcastConstants.QUEUE_PREFIX));
 
-## Sample for **take**:
+## Example for **take**:
 
     from("direct:take").setHeader(HazelcastConstants.OPERATION, constant(HazelcastOperation.TAKE)).to(
     String.format("hazelcast-%sbar", HazelcastConstants.QUEUE_PREFIX));
 
-## Sample for **retain all**:
+## Example for **retain all**:
 
     from("direct:retainAll").setHeader(HazelcastConstants.OPERATION, constant(HazelcastOperation.RETAIN_ALL)).to(
     String.format("hazelcast-%sbar", HazelcastConstants.QUEUE_PREFIX));

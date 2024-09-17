@@ -16,7 +16,7 @@ class name.
 Where `className` is the fully qualified class name to create and use as
 bean.
 
-# Using
+# Usage
 
 You simply use the **class** component just as the
 [Bean](#bean-component.adoc) component but by specifying the fully
@@ -34,7 +34,9 @@ example `hello`:
         .to("class:org.apache.camel.component.bean.MyFooBean?method=hello")
         .to("mock:result");
 
-# Setting properties on the created instance
+# Examples
+
+## Setting properties on the created instance
 
 In the endpoint uri you can specify properties to set on the created
 instance, for example, if it has a `setPrefix` method:

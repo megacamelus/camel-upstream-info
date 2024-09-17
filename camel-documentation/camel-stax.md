@@ -33,7 +33,9 @@ using the # syntax as shown:
 
     stax:#myHandler
 
-# Usage of a content handler as StAX parser
+# Usage
+
+## Usage of a content handler as StAX parser
 
 The message body after the handling is the handler itself.
 
@@ -50,7 +52,7 @@ Here is an example:
         }
       });
 
-# Iterate over a collection using JAXB and StAX
+## Iterate over a collection using JAXB and StAX
 
 First, we suppose you have JAXB objects.
 
@@ -139,9 +141,8 @@ parameter to false, as shown below:
         .split(stax(Record.class, false)).streaming()
             .to("mock:records");
 
-## The previous example with XML DSL
-
-The example above could be implemented as follows in Spring XML
+Alternatively, the example above could be implemented as follows in
+Spring XML
 
       <!-- use STaXBuilder to create the expression we want to use in the route below for splitting the XML file -->
       <!-- notice we use the factory-method to define the stax method, and to pass in the parameter as a constructor-arg -->

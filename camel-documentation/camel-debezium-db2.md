@@ -48,7 +48,7 @@ the state of the row after the event occurred as `Struct` format or
 `Map` format if you use the included Type Converter from `Struct` to
 `Map` (please look below for more explanation).
 
-# Samples
+# Examples
 
 ## Consuming events
 

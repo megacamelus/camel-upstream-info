@@ -30,7 +30,9 @@ means that you cannot use the JDBC component in a `from()` statement.
 
     jdbc:dataSourceName[?options]
 
-# Result
+# Usage
+
+## Result
 
 By default, the result is returned in the OUT body as an
 `ArrayList<HashMap<String, Object>>`. The `List` object contains the
@@ -41,7 +43,7 @@ the result.
 **Note:** This component fetches `ResultSetMetaData` to be able to
 return the column name as the key in the `Map`.
 
-# Generated keys
+## Generated keys
 
 If you insert data using SQL INSERT, then the RDBMS may support auto
 generated keys. You can instruct the [JDBC](#jdbc-component.adoc)
@@ -52,7 +54,7 @@ table above.
 
 Using generated keys does not work together with named parameters.
 
-# Using named parameters
+## Using named parameters
 
 In the given route below, we want to get all the projects from the
 `projects` table. Notice the SQL query has two named parameters, `:?lic`
@@ -69,7 +71,7 @@ value for the named parameters:
 You can also store the header values in a `java.util.Map` and store the
 map on the headers with the key `CamelJdbcParameters`.
 
-# Samples
+# Examples
 
 In the following example, we set up the DataSource that camel-jdbc
 requires. First we register our datasource in the Camel registry as

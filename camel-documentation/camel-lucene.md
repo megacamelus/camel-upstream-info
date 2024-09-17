@@ -37,7 +37,7 @@ for this component:
     lucene:searcherName:insert[?options]
     lucene:searcherName:query[?options]
 
-# Sending/Receiving Messages to/from the cache
+# Usage
 
 ## Lucene Producers
 
@@ -58,7 +58,9 @@ syntax](https://lucene.apache.org/core/8_4_1/queryparser/org/apache/lucene/query
 There is a processor called LuceneQueryProcessor available to perform
 queries against lucene without the need to create a producer.
 
-# Lucene Usage Samples
+# Examples
+
+Lucene usage samples.
 
 ## Example 1: Creating a Lucene index
 

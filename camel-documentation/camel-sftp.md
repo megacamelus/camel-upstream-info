@@ -17,7 +17,9 @@ for this component:
         <!-- use the same version as your Camel core version -->
     </dependency>
 
-# Restoring Deprecated Key Types and Algorithms
+# Usage
+
+## Restoring Deprecated Key Types and Algorithms
 
 As of Camel 3.17.0, key types and algorithms that use SHA1 have been
 deprecated. These can be restored, if necessary, by setting JSch

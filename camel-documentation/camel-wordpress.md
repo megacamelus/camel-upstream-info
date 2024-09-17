@@ -17,7 +17,9 @@ the following `Consumer` as example:
 
     wordpress:post?criteria.perPage=10&criteria.orderBy=author&criteria.categories=camel,dozer,json
 
-# Configuring WordPress component
+# Usage
+
+## Configuring WordPress component
 
 The `WordpressConfiguration` class can be used to set initial properties
 configuration to the component instead of passing it as query parameter.
@@ -36,7 +38,9 @@ routes.
           .to("mock:result");
     }
 
-# Consumer Example
+# Examples
+
+## Consumer Example
 
 Consumer polls from the API from time to time domain objects from
 WordPress. Following, an example using the `Post` operation:
@@ -45,7 +49,7 @@ WordPress. Following, an example using the `Post` operation:
 
 -   `wordpress:post?id=1` search for a specific post
 
-# Producer Example
+## Producer Example
 
 Producer performs write operations on WordPress like adding a new user
 or update a post. To be able to write, you must have an authorized user
@@ -61,7 +65,7 @@ credentials (see Authentication).
 
 -   `wordpress:post:delete?id=1` deletes a specific post
 
-# Authentication
+## Authentication
 
 Producers that perform write operations, e.g., creating a new post,
 [must have an authenticated

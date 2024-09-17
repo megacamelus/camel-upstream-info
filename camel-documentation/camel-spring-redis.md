@@ -39,7 +39,7 @@ command execution is returned in the message body.
 <col style="width: 9%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Hash Commands</th>
 <th style="text-align: left;">Description</th>
 <th style="text-align: left;">Parameters</th>
@@ -47,7 +47,7 @@ command execution is returned in the message body.
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>HSET</code></p></td>
 <td style="text-align: left;"><p>Set the string value of a hash
 field</p></td>
@@ -57,7 +57,7 @@ style="text-align: left;"><p><code>RedisConstants.KEY</code>/"CamelRedis.Key"
 <code>RedisConstants.VALUE</code>/"CamelRedis.Value" (Object)</p></td>
 <td style="text-align: left;"><p>void</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>HGET</code></p></td>
 <td style="text-align: left;"><p>Get the value of a hash field</p></td>
 <td
@@ -66,7 +66,7 @@ style="text-align: left;"><p><code>RedisConstants.KEY</code>/"CamelRedis.Key"
 (String)</p></td>
 <td style="text-align: left;"><p>String</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>HSETNX</code></p></td>
 <td style="text-align: left;"><p>Set the value of a hash field only if
 the field does not exist</p></td>
@@ -76,7 +76,7 @@ style="text-align: left;"><p><code>RedisConstants.KEY</code>/"CamelRedis.Key"
 <code>RedisConstants.VALUE</code>/"CamelRedis.Value" (Object)</p></td>
 <td style="text-align: left;"><p>void</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>HMSET</code></p></td>
 <td style="text-align: left;"><p>Set multiple hash fields to multiple
 values</p></td>
@@ -86,7 +86,7 @@ style="text-align: left;"><p><code>RedisConstants.KEY</code>/"CamelRedis.Key"
 (Map&lt;String, Object&gt;)</p></td>
 <td style="text-align: left;"><p>void</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>HMGET</code></p></td>
 <td style="text-align: left;"><p>Get the values of all the given hash
 fields</p></td>
@@ -96,7 +96,7 @@ style="text-align: left;"><p><code>RedisConstants.KEY</code>/"CamelRedis.Key"
 (Collection&lt;String&gt;)</p></td>
 <td style="text-align: left;"><p>Collection&lt;Object&gt;</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>HINCRBY</code></p></td>
 <td style="text-align: left;"><p>Increment the integer value of a hash
 field by the given number</p></td>
@@ -106,7 +106,7 @@ style="text-align: left;"><p><code>RedisConstants.KEY</code>/"CamelRedis.Key"
 <code>RedisConstants.VALUE</code>/"CamelRedis.Value" (Long)</p></td>
 <td style="text-align: left;"><p>Long</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>HEXISTS</code></p></td>
 <td style="text-align: left;"><p>Determine if a hash field
 exists</p></td>
@@ -116,7 +116,7 @@ style="text-align: left;"><p><code>RedisConstants.KEY</code>/"CamelRedis.Key"
 (String)</p></td>
 <td style="text-align: left;"><p>Boolean</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>HDEL</code></p></td>
 <td style="text-align: left;"><p>Delete one or more hash fields</p></td>
 <td
@@ -125,7 +125,7 @@ style="text-align: left;"><p><code>RedisConstants.KEY</code>/"CamelRedis.Key"
 (String)</p></td>
 <td style="text-align: left;"><p>void</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>HLEN</code></p></td>
 <td style="text-align: left;"><p>Get the number of fields in a
 hash</p></td>
@@ -134,7 +134,7 @@ style="text-align: left;"><p><code>RedisConstants.KEY</code>/"CamelRedis.Key"
 (String)</p></td>
 <td style="text-align: left;"><p>Long</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>HKEYS</code></p></td>
 <td style="text-align: left;"><p>Get all the fields in a hash</p></td>
 <td
@@ -142,7 +142,7 @@ style="text-align: left;"><p><code>RedisConstants.KEY</code>/"CamelRedis.Key"
 (String)</p></td>
 <td style="text-align: left;"><p>Set&lt;String&gt;</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>HVALS</code></p></td>
 <td style="text-align: left;"><p>Get all the values in a hash</p></td>
 <td
@@ -150,7 +150,7 @@ style="text-align: left;"><p><code>RedisConstants.KEY</code>/"CamelRedis.Key"
 (String)</p></td>
 <td style="text-align: left;"><p>Collection&lt;Object&gt;</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>HGETALL</code></p></td>
 <td style="text-align: left;"><p>Get all the fields and values in a
 hash</p></td>
@@ -170,7 +170,7 @@ style="text-align: left;"><p><code>RedisConstants.KEY</code>/"CamelRedis.Key"
 <col style="width: 9%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">List Commands</th>
 <th style="text-align: left;">Description</th>
 <th style="text-align: left;">Parameters</th>
@@ -178,7 +178,7 @@ style="text-align: left;"><p><code>RedisConstants.KEY</code>/"CamelRedis.Key"
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>RPUSH</code></p></td>
 <td style="text-align: left;"><p>Append one or multiple values to a
 list</p></td>
@@ -188,7 +188,7 @@ style="text-align: left;"><p><code>RedisConstants.KEY</code>/"CamelRedis.Key"
 (Object)</p></td>
 <td style="text-align: left;"><p>Long</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>RPUSHX</code></p></td>
 <td style="text-align: left;"><p>Append a value to a list only if the
 list exists</p></td>
@@ -198,7 +198,7 @@ style="text-align: left;"><p><code>RedisConstants.KEY</code>/"CamelRedis.Key"
 (Object)</p></td>
 <td style="text-align: left;"><p>Long</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>LPUSH</code></p></td>
 <td style="text-align: left;"><p>Prepend one or multiple values to a
 list</p></td>
@@ -208,7 +208,7 @@ style="text-align: left;"><p><code>RedisConstants.KEY</code>/"CamelRedis.Key"
 (Object)</p></td>
 <td style="text-align: left;"><p>Long</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>LLEN</code></p></td>
 <td style="text-align: left;"><p>Get the length of a list</p></td>
 <td
@@ -216,7 +216,7 @@ style="text-align: left;"><p><code>RedisConstants.KEY</code>/"CamelRedis.Key"
 (String)</p></td>
 <td style="text-align: left;"><p>Long</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>LRANGE</code></p></td>
 <td style="text-align: left;"><p>Get a range of elements from a
 list</p></td>
@@ -226,7 +226,7 @@ style="text-align: left;"><p><code>RedisConstants.KEY</code>/"CamelRedis.Key"
 <code>RedisConstants.END</code>/"CamelRedis.End" (Long)</p></td>
 <td style="text-align: left;"><p>List&lt;Object&gt;</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>LTRIM</code></p></td>
 <td style="text-align: left;"><p>Trim a list to the specified
 range</p></td>
@@ -236,7 +236,7 @@ style="text-align: left;"><p><code>RedisConstants.KEY</code>/"CamelRedis.Key"
 <code>RedisConstants.END</code>/"CamelRedis.End" (Long)</p></td>
 <td style="text-align: left;"><p>void</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>LINDEX</code></p></td>
 <td style="text-align: left;"><p>Get an element from a list by its
 index</p></td>
@@ -246,7 +246,7 @@ style="text-align: left;"><p><code>RedisConstants.KEY</code>/"CamelRedis.Key"
 (Long)</p></td>
 <td style="text-align: left;"><p>String</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>LINSERT</code></p></td>
 <td style="text-align: left;"><p>Insert an element before or after
 another element in a list</p></td>
@@ -258,7 +258,7 @@ style="text-align: left;"><p><code>RedisConstants.KEY</code>/"CamelRedis.Key"
 (String)</p></td>
 <td style="text-align: left;"><p>Long</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>LSET</code></p></td>
 <td style="text-align: left;"><p>Set the value of an element in a list
 by its index</p></td>
@@ -268,7 +268,7 @@ style="text-align: left;"><p><code>RedisConstants.KEY</code>/"CamelRedis.Key"
 <code>RedisConstants.INDEX</code>/"CamelRedis.Index" (Long)</p></td>
 <td style="text-align: left;"><p>void</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>LREM</code></p></td>
 <td style="text-align: left;"><p>Remove elements from a list</p></td>
 <td
@@ -277,7 +277,7 @@ style="text-align: left;"><p><code>RedisConstants.KEY</code>/"CamelRedis.Key"
 <code>RedisConstants.COUNT</code>/"CamelRedis.Count" (Long)</p></td>
 <td style="text-align: left;"><p>Long</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>LPOP</code></p></td>
 <td style="text-align: left;"><p>Remove and get the first element in a
 list</p></td>
@@ -286,7 +286,7 @@ style="text-align: left;"><p><code>RedisConstants.KEY</code>/"CamelRedis.Key"
 (String)</p></td>
 <td style="text-align: left;"><p>Object</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>RPOP</code></p></td>
 <td style="text-align: left;"><p>Remove and get the last element in a
 list</p></td>
@@ -295,7 +295,7 @@ style="text-align: left;"><p><code>RedisConstants.KEY</code>/"CamelRedis.Key"
 (String)</p></td>
 <td style="text-align: left;"><p>String</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>RPOPLPUSH</code></p></td>
 <td style="text-align: left;"><p>Remove the last element in a list,
 append it to another list and return it</p></td>
@@ -306,7 +306,7 @@ style="text-align: left;"><p><code>RedisConstants.KEY</code>/"CamelRedis.Key"
 (String)</p></td>
 <td style="text-align: left;"><p>Object</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>BRPOPLPUSH</code></p></td>
 <td style="text-align: left;"><p>Pop a value from a list, push it to
 another list and return it; or block until one is available</p></td>
@@ -318,7 +318,7 @@ style="text-align: left;"><p><code>RedisConstants.KEY</code>/"CamelRedis.Key"
 (Long)</p></td>
 <td style="text-align: left;"><p>Object</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>BLPOP</code></p></td>
 <td style="text-align: left;"><p>Remove and get the first element in a
 list, or block until one is available</p></td>
@@ -328,7 +328,7 @@ style="text-align: left;"><p><code>RedisConstants.KEY</code>/"CamelRedis.Key"
 (Long)</p></td>
 <td style="text-align: left;"><p>Object</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>BRPOP</code></p></td>
 <td style="text-align: left;"><p>Remove and get the last element in a
 list, or block until one is available</p></td>
@@ -349,7 +349,7 @@ style="text-align: left;"><p><code>RedisConstants.KEY</code>/"CamelRedis.Key"
 <col style="width: 9%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Set Commands</th>
 <th style="text-align: left;">Description</th>
 <th style="text-align: left;">Parameters</th>
@@ -357,7 +357,7 @@ style="text-align: left;"><p><code>RedisConstants.KEY</code>/"CamelRedis.Key"
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>SADD</code></p></td>
 <td style="text-align: left;"><p>Add one or more members to a
 set</p></td>
@@ -367,7 +367,7 @@ style="text-align: left;"><p><code>RedisConstants.KEY</code>/"CamelRedis.Key"
 (Object)</p></td>
 <td style="text-align: left;"><p>Boolean</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>SMEMBERS</code></p></td>
 <td style="text-align: left;"><p>Get all the members in a set</p></td>
 <td
@@ -375,7 +375,7 @@ style="text-align: left;"><p><code>RedisConstants.KEY</code>/"CamelRedis.Key"
 (String)</p></td>
 <td style="text-align: left;"><p>Set&lt;Object&gt;</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>SREM</code></p></td>
 <td style="text-align: left;"><p>Remove one or more members from a
 set</p></td>
@@ -385,7 +385,7 @@ style="text-align: left;"><p><code>RedisConstants.KEY</code>/"CamelRedis.Key"
 (Object)</p></td>
 <td style="text-align: left;"><p>Boolean</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>SPOP</code></p></td>
 <td style="text-align: left;"><p>Remove and return a random member from
 a set</p></td>
@@ -394,7 +394,7 @@ style="text-align: left;"><p><code>RedisConstants.KEY</code>/"CamelRedis.Key"
 (String)</p></td>
 <td style="text-align: left;"><p>String</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>SMOVE</code></p></td>
 <td style="text-align: left;"><p>Move a member from one set to
 another</p></td>
@@ -405,7 +405,7 @@ style="text-align: left;"><p><code>RedisConstants.KEY</code>/"CamelRedis.Key"
 (String)</p></td>
 <td style="text-align: left;"><p>Boolean</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>SCARD</code></p></td>
 <td style="text-align: left;"><p>Get the number of members in a
 set</p></td>
@@ -414,7 +414,7 @@ style="text-align: left;"><p><code>RedisConstants.KEY</code>/"CamelRedis.Key"
 (String)</p></td>
 <td style="text-align: left;"><p>Long</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>SISMEMBER</code></p></td>
 <td style="text-align: left;"><p>Determine if a given value is a member
 of a set</p></td>
@@ -424,7 +424,7 @@ style="text-align: left;"><p><code>RedisConstants.KEY</code>/"CamelRedis.Key"
 (Object)</p></td>
 <td style="text-align: left;"><p>Boolean</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>SINTER</code></p></td>
 <td style="text-align: left;"><p>Intersect multiple sets</p></td>
 <td
@@ -433,7 +433,7 @@ style="text-align: left;"><p><code>RedisConstants.KEY</code>/"CamelRedis.Key"
 (String)</p></td>
 <td style="text-align: left;"><p>Set&lt;Object&gt;</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>SINTERSTORE</code></p></td>
 <td style="text-align: left;"><p>Intersect multiple sets and store the
 resulting set in a key</p></td>
@@ -444,7 +444,7 @@ style="text-align: left;"><p><code>RedisConstants.KEY</code>/"CamelRedis.Key"
 (String)</p></td>
 <td style="text-align: left;"><p>void</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>SUNION</code></p></td>
 <td style="text-align: left;"><p>Add multiple sets</p></td>
 <td
@@ -453,7 +453,7 @@ style="text-align: left;"><p><code>RedisConstants.KEY</code>/"CamelRedis.Key"
 (String)</p></td>
 <td style="text-align: left;"><p>Set&lt;Object&gt;</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>SUNIONSTORE</code></p></td>
 <td style="text-align: left;"><p>Add multiple sets and store the
 resulting set in a key</p></td>
@@ -464,7 +464,7 @@ style="text-align: left;"><p><code>RedisConstants.KEY</code>/"CamelRedis.Key"
 (String)</p></td>
 <td style="text-align: left;"><p>void</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>SDIFF</code></p></td>
 <td style="text-align: left;"><p>Subtract multiple sets</p></td>
 <td
@@ -473,7 +473,7 @@ style="text-align: left;"><p><code>RedisConstants.KEY</code>/"CamelRedis.Key"
 (String)</p></td>
 <td style="text-align: left;"><p>Set&lt;Object&gt;</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>SDIFFSTORE</code></p></td>
 <td style="text-align: left;"><p>Subtract multiple sets and store the
 resulting set in a key</p></td>
@@ -484,7 +484,7 @@ style="text-align: left;"><p><code>RedisConstants.KEY</code>/"CamelRedis.Key"
 (String)</p></td>
 <td style="text-align: left;"><p>void</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>SRANDMEMBER</code></p></td>
 <td style="text-align: left;"><p>Get one or multiple random members from
 a set</p></td>
@@ -504,7 +504,7 @@ style="text-align: left;"><p><code>RedisConstants.KEY</code>/"CamelRedis.Key"
 <col style="width: 9%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Ordered set Commands</th>
 <th style="text-align: left;">Description</th>
 <th style="text-align: left;">Parameters</th>
@@ -512,7 +512,7 @@ style="text-align: left;"><p><code>RedisConstants.KEY</code>/"CamelRedis.Key"
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>ZADD</code></p></td>
 <td style="text-align: left;"><p>Add one or more members to a sorted
 set, or update its score if it already exists</p></td>
@@ -522,7 +522,7 @@ style="text-align: left;"><p><code>RedisConstants.KEY</code>/"CamelRedis.Key"
 <code>RedisConstants.SCORE</code>/"CamelRedis.Score" (Double)</p></td>
 <td style="text-align: left;"><p>Boolean</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>ZRANGE</code></p></td>
 <td style="text-align: left;"><p>Return a range of members in a sorted
 set, by index</p></td>
@@ -534,7 +534,7 @@ style="text-align: left;"><p><code>RedisConstants.KEY</code>/"CamelRedis.Key"
 (Boolean)</p></td>
 <td style="text-align: left;"><p>Object</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>ZREM</code></p></td>
 <td style="text-align: left;"><p>Remove one or more members from a
 sorted set</p></td>
@@ -544,7 +544,7 @@ style="text-align: left;"><p><code>RedisConstants.KEY</code>/"CamelRedis.Key"
 (Object)</p></td>
 <td style="text-align: left;"><p>Boolean</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>ZINCRBY</code></p></td>
 <td style="text-align: left;"><p>Increment the score of a member in a
 sorted set</p></td>
@@ -555,7 +555,7 @@ style="text-align: left;"><p><code>RedisConstants.KEY</code>/"CamelRedis.Key"
 (Double)</p></td>
 <td style="text-align: left;"><p>Double</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>ZRANK</code></p></td>
 <td style="text-align: left;"><p>Determine the index of a member in a
 sorted set</p></td>
@@ -565,7 +565,7 @@ style="text-align: left;"><p><code>RedisConstants.KEY</code>/"CamelRedis.Key"
 (Object)</p></td>
 <td style="text-align: left;"><p>Long</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>ZREVRANK</code></p></td>
 <td style="text-align: left;"><p>Determine the index of a member in a
 sorted set, with scores ordered from high to low</p></td>
@@ -575,7 +575,7 @@ style="text-align: left;"><p><code>RedisConstants.KEY</code>/"CamelRedis.Key"
 (Object)</p></td>
 <td style="text-align: left;"><p>Long</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>ZREVRANGE</code></p></td>
 <td style="text-align: left;"><p>Return a range of members in a sorted
 set, by index, with scores ordered from high to low</p></td>
@@ -587,7 +587,7 @@ style="text-align: left;"><p><code>RedisConstants.KEY</code>/"CamelRedis.Key"
 (Boolean)</p></td>
 <td style="text-align: left;"><p>Object</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>ZCARD</code></p></td>
 <td style="text-align: left;"><p>Get the number of members in a sorted
 set</p></td>
@@ -596,7 +596,7 @@ style="text-align: left;"><p><code>RedisConstants.KEY</code>/"CamelRedis.Key"
 (String)</p></td>
 <td style="text-align: left;"><p>Long</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>ZCOUNT</code></p></td>
 <td style="text-align: left;"><p>Count the members in a sorted set with
 scores within the given values</p></td>
@@ -606,7 +606,7 @@ style="text-align: left;"><p><code>RedisConstants.KEY</code>/"CamelRedis.Key"
 <code>RedisConstants.MAX</code>/"CamelRedis.Max" (Double)</p></td>
 <td style="text-align: left;"><p>Long</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>ZRANGEBYSCORE</code></p></td>
 <td style="text-align: left;"><p>Return a range of members in a sorted
 set, by score</p></td>
@@ -616,7 +616,7 @@ style="text-align: left;"><p><code>RedisConstants.KEY</code>/"CamelRedis.Key"
 <code>RedisConstants.MAX</code>/"CamelRedis.Max" (Double)</p></td>
 <td style="text-align: left;"><p>Set&lt;Object&gt;</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>ZREVRANGEBYSCORE</code></p></td>
 <td style="text-align: left;"><p>Return a range of members in a sorted
 set, by score, with scores ordered from high to low</p></td>
@@ -626,7 +626,7 @@ style="text-align: left;"><p><code>RedisConstants.KEY</code>/"CamelRedis.Key"
 <code>RedisConstants.MAX</code>/"CamelRedis.Max" (Double)</p></td>
 <td style="text-align: left;"><p>Set&lt;Object&gt;</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>ZREMRANGEBYRANK</code></p></td>
 <td style="text-align: left;"><p>Remove all members in a sorted set
 within the given indexes</p></td>
@@ -636,7 +636,7 @@ style="text-align: left;"><p><code>RedisConstants.KEY</code>/"CamelRedis.Key"
 <code>RedisConstants.END</code>/"CamelRedis.End" (Long)</p></td>
 <td style="text-align: left;"><p>void</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>ZREMRANGEBYSCORE</code></p></td>
 <td style="text-align: left;"><p>Remove all members in a sorted set
 within the given scores</p></td>
@@ -646,7 +646,7 @@ style="text-align: left;"><p><code>RedisConstants.KEY</code>/"CamelRedis.Key"
 <code>RedisConstants.END</code>/"CamelRedis.End" (Long)</p></td>
 <td style="text-align: left;"><p>void</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>ZUNIONSTORE</code></p></td>
 <td style="text-align: left;"><p>Add multiple sorted sets and store the
 resulting-sorted set in a new key</p></td>
@@ -657,7 +657,7 @@ style="text-align: left;"><p><code>RedisConstants.KEY</code>/"CamelRedis.Key"
 (String)</p></td>
 <td style="text-align: left;"><p>void</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>ZINTERSTORE</code></p></td>
 <td style="text-align: left;"><p>Intersect multiple sorted sets and
 store the resulting sorted set in a new key</p></td>
@@ -679,7 +679,7 @@ style="text-align: left;"><p><code>RedisConstants.KEY</code>/"CamelRedis.Key"
 <col style="width: 9%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">String Commands</th>
 <th style="text-align: left;">Description</th>
 <th style="text-align: left;">Parameters</th>
@@ -687,7 +687,7 @@ style="text-align: left;"><p><code>RedisConstants.KEY</code>/"CamelRedis.Key"
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>SET</code></p></td>
 <td style="text-align: left;"><p>Set the string value of a key</p></td>
 <td
@@ -696,7 +696,7 @@ style="text-align: left;"><p><code>RedisConstants.KEY</code>/"CamelRedis.Key"
 (Object)</p></td>
 <td style="text-align: left;"><p>void</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>GET</code></p></td>
 <td style="text-align: left;"><p>Get the value of a key</p></td>
 <td
@@ -704,7 +704,7 @@ style="text-align: left;"><p><code>RedisConstants.KEY</code>/"CamelRedis.Key"
 (String)</p></td>
 <td style="text-align: left;"><p>Object</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>STRLEN</code></p></td>
 <td style="text-align: left;"><p>Get the length of the value stored in a
 key</p></td>
@@ -713,7 +713,7 @@ style="text-align: left;"><p><code>RedisConstants.KEY</code>/"CamelRedis.Key"
 (String)</p></td>
 <td style="text-align: left;"><p>Long</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>APPEND</code></p></td>
 <td style="text-align: left;"><p>Append a value to a key</p></td>
 <td
@@ -722,7 +722,7 @@ style="text-align: left;"><p><code>RedisConstants.KEY</code>/"CamelRedis.Key"
 (String)</p></td>
 <td style="text-align: left;"><p>Integer</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>SETBIT</code></p></td>
 <td style="text-align: left;"><p>Sets or clears the bit at offset in the
 string value stored at key</p></td>
@@ -732,7 +732,7 @@ style="text-align: left;"><p><code>RedisConstants.KEY</code>/"CamelRedis.Key"
 <code>RedisConstants.VALUE</code>/"CamelRedis.Value" (Boolean)</p></td>
 <td style="text-align: left;"><p>void</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>GETBIT</code></p></td>
 <td style="text-align: left;"><p>Returns the bit value at offset in the
 string value stored at key</p></td>
@@ -742,7 +742,7 @@ style="text-align: left;"><p><code>RedisConstants.KEY</code>/"CamelRedis.Key"
 (Long)</p></td>
 <td style="text-align: left;"><p>Boolean</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>SETRANGE</code></p></td>
 <td style="text-align: left;"><p>Overwrite part of a string at key
 starting at the specified offset</p></td>
@@ -752,7 +752,7 @@ style="text-align: left;"><p><code>RedisConstants.KEY</code>/"CamelRedis.Key"
 <code>RedisConstants.OFFSET</code>/"CamelRedis.Offset" (Long)</p></td>
 <td style="text-align: left;"><p>void</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>GETRANGE</code></p></td>
 <td style="text-align: left;"><p>Get a substring of the string stored at
 a key</p></td>
@@ -762,7 +762,7 @@ style="text-align: left;"><p><code>RedisConstants.KEY</code>/"CamelRedis.Key"
 <code>RedisConstants.END</code>/"CamelRedis.End" (Long)</p></td>
 <td style="text-align: left;"><p>String</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>SETNX</code></p></td>
 <td style="text-align: left;"><p>Set the value of a key only if the key
 does not exist</p></td>
@@ -772,7 +772,7 @@ style="text-align: left;"><p><code>RedisConstants.KEY</code>/"CamelRedis.Key"
 (Object)</p></td>
 <td style="text-align: left;"><p>Boolean</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>SETEX</code></p></td>
 <td style="text-align: left;"><p>Set the value and expiration of a
 key</p></td>
@@ -783,7 +783,7 @@ style="text-align: left;"><p><code>RedisConstants.KEY</code>/"CamelRedis.Key"
 SECONDS</p></td>
 <td style="text-align: left;"><p>void</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>DECRBY</code></p></td>
 <td style="text-align: left;"><p>Decrement the integer value of a key by
 the given number</p></td>
@@ -793,7 +793,7 @@ style="text-align: left;"><p><code>RedisConstants.KEY</code>/"CamelRedis.Key"
 (Long)</p></td>
 <td style="text-align: left;"><p>Long</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>DECR</code></p></td>
 <td style="text-align: left;"><p>Decrement the integer value of a key by
 one</p></td>
@@ -802,7 +802,7 @@ style="text-align: left;"><p><code>RedisConstants.KEY</code>/"CamelRedis.Key"
 (String),</p></td>
 <td style="text-align: left;"><p>Long</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>INCRBY</code></p></td>
 <td style="text-align: left;"><p>Increment the integer value of a key by
 the given amount</p></td>
@@ -812,7 +812,7 @@ style="text-align: left;"><p><code>RedisConstants.KEY</code>/"CamelRedis.Key"
 (Long)</p></td>
 <td style="text-align: left;"><p>Long</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>INCR</code></p></td>
 <td style="text-align: left;"><p>Increment the integer value of a key by
 one</p></td>
@@ -821,7 +821,7 @@ style="text-align: left;"><p><code>RedisConstants.KEY</code>/"CamelRedis.Key"
 (String)</p></td>
 <td style="text-align: left;"><p>Long</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>MGET</code></p></td>
 <td style="text-align: left;"><p>Get the values of all the given
 keys</p></td>
@@ -830,7 +830,7 @@ style="text-align: left;"><p><code>RedisConstants.FIELDS</code>/"CamelRedis.Fiel
 (Collection&lt;String&gt;)</p></td>
 <td style="text-align: left;"><p>List&lt;Object&gt;</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>MSET</code></p></td>
 <td style="text-align: left;"><p>Set multiple keys to multiple
 values</p></td>
@@ -839,7 +839,7 @@ style="text-align: left;"><p><code>RedisConstants.VALUES</code>/"CamelRedis.Valu
 (Map&lt;String, Object&gt;)</p></td>
 <td style="text-align: left;"><p>void</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>MSETNX</code></p></td>
 <td style="text-align: left;"><p>Set multiple keys to multiple values
 only if none of the keys exist</p></td>
@@ -849,7 +849,7 @@ style="text-align: left;"><p><code>RedisConstants.KEY</code>/"CamelRedis.Key"
 (Object)</p></td>
 <td style="text-align: left;"><p>void</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>GETSET</code></p></td>
 <td style="text-align: left;"><p>Set the string value of a key and
 return its old value</p></td>
@@ -870,7 +870,7 @@ style="text-align: left;"><p><code>RedisConstants.KEY</code>/"CamelRedis.Key"
 <col style="width: 9%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Key Commands</th>
 <th style="text-align: left;">Description</th>
 <th style="text-align: left;">Parameters</th>
@@ -878,7 +878,7 @@ style="text-align: left;"><p><code>RedisConstants.KEY</code>/"CamelRedis.Key"
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>EXISTS</code></p></td>
 <td style="text-align: left;"><p>Determine if a key exists</p></td>
 <td
@@ -886,7 +886,7 @@ style="text-align: left;"><p><code>RedisConstants.KEY</code>/"CamelRedis.Key"
 (String)</p></td>
 <td style="text-align: left;"><p>Boolean</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>DEL</code></p></td>
 <td style="text-align: left;"><p>Delete a key</p></td>
 <td
@@ -894,7 +894,7 @@ style="text-align: left;"><p><code>RedisConstants.KEYS</code>/"CamelRedis.Keys"
 (String)</p></td>
 <td style="text-align: left;"><p>void</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>TYPE</code></p></td>
 <td style="text-align: left;"><p>Determine the type stored at
 key</p></td>
@@ -903,7 +903,7 @@ style="text-align: left;"><p><code>RedisConstants.KEY</code>/"CamelRedis.Key"
 (String)</p></td>
 <td style="text-align: left;"><p>DataType</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>KEYS</code></p></td>
 <td style="text-align: left;"><p>Find all keys matching the given
 pattern</p></td>
@@ -912,7 +912,7 @@ style="text-align: left;"><p><code>RedisConstants.PATERN</code>/"CamelRedis.Patt
 (String)</p></td>
 <td style="text-align: left;"><p>Collection&lt;String&gt;</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>RANDOMKEY</code></p></td>
 <td style="text-align: left;"><p>Return a random key from the
 keyspace</p></td>
@@ -922,7 +922,7 @@ style="text-align: left;"><p><code>RedisConstants.PATERN</code>/"CamelRedis.Patt
 (String)</p></td>
 <td style="text-align: left;"><p>String</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>RENAME</code></p></td>
 <td style="text-align: left;"><p>Rename a key</p></td>
 <td
@@ -930,7 +930,7 @@ style="text-align: left;"><p><code>RedisConstants.KEY</code>/"CamelRedis.Key"
 (String)</p></td>
 <td style="text-align: left;"><p>void</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>RENAMENX</code></p></td>
 <td style="text-align: left;"><p>Rename a key, only if the new key does
 not exist</p></td>
@@ -940,7 +940,7 @@ style="text-align: left;"><p><code>RedisConstants.KEY</code>/"CamelRedis.Key"
 (String)</p></td>
 <td style="text-align: left;"><p>Boolean</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>EXPIRE</code></p></td>
 <td style="text-align: left;"><p>Set a key’s time to live in
 seconds</p></td>
@@ -950,7 +950,7 @@ style="text-align: left;"><p><code>RedisConstants.KEY</code>/"CamelRedis.Key"
 (Long)</p></td>
 <td style="text-align: left;"><p>Boolean</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>SORT</code></p></td>
 <td style="text-align: left;"><p>Sort the elements in a list, set or
 sorted set</p></td>
@@ -959,7 +959,7 @@ style="text-align: left;"><p><code>RedisConstants.KEY</code>/"CamelRedis.Key"
 (String)</p></td>
 <td style="text-align: left;"><p>List&lt;Object&gt;</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>PERSIST</code></p></td>
 <td style="text-align: left;"><p>Remove the expiration from a
 key</p></td>
@@ -968,7 +968,7 @@ style="text-align: left;"><p><code>RedisConstants.KEY</code>/"CamelRedis.Key"
 (String)</p></td>
 <td style="text-align: left;"><p>Boolean</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>EXPIREAT</code></p></td>
 <td style="text-align: left;"><p>Set the expiration for a key as a UNIX
 timestamp</p></td>
@@ -978,7 +978,7 @@ style="text-align: left;"><p><code>RedisConstants.KEY</code>/"CamelRedis.Key"
 (Long)</p></td>
 <td style="text-align: left;"><p>Boolean</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>PEXPIRE</code></p></td>
 <td style="text-align: left;"><p>Set a key’s time to live in
 milliseconds</p></td>
@@ -988,7 +988,7 @@ style="text-align: left;"><p><code>RedisConstants.KEY</code>/"CamelRedis.Key"
 (Long)</p></td>
 <td style="text-align: left;"><p>Boolean</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>PEXPIREAT</code></p></td>
 <td style="text-align: left;"><p>Set the expiration for a key as a UNIX
 timestamp specified in milliseconds</p></td>
@@ -998,7 +998,7 @@ style="text-align: left;"><p><code>RedisConstants.KEY</code>/"CamelRedis.Key"
 (Long)</p></td>
 <td style="text-align: left;"><p>Boolean</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>TTL</code></p></td>
 <td style="text-align: left;"><p>Get the time to live for a key</p></td>
 <td
@@ -1006,7 +1006,7 @@ style="text-align: left;"><p><code>RedisConstants.KEY</code>/"CamelRedis.Key"
 (String)</p></td>
 <td style="text-align: left;"><p>Long</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>MOVE</code></p></td>
 <td style="text-align: left;"><p>Move a key to another database</p></td>
 <td
@@ -1026,7 +1026,7 @@ style="text-align: left;"><p><code>RedisConstants.KEY</code>/"CamelRedis.Key"
 <col style="width: 9%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Geo Commands</th>
 <th style="text-align: left;">Description</th>
 <th style="text-align: left;">Parameters</th>
@@ -1034,7 +1034,7 @@ style="text-align: left;"><p><code>RedisConstants.KEY</code>/"CamelRedis.Key"
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>GEOADD</code></p></td>
 <td style="text-align: left;"><p>Adds the specified geospatial items
 (latitude, longitude, name) to the specified key</p></td>
@@ -1046,7 +1046,7 @@ style="text-align: left;"><p><code>RedisConstants.KEY</code>/"CamelRedis.Key"
 (Object)</p></td>
 <td style="text-align: left;"><p>Long</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>GEODIST</code></p></td>
 <td style="text-align: left;"><p>Return the distance between two members
 in the geospatial index for the specified key</p></td>
@@ -1056,7 +1056,7 @@ style="text-align: left;"><p><code>RedisConstants.KEY</code>/"CamelRedis.Key"
 (Object[])</p></td>
 <td style="text-align: left;"><p>Distance</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>GEOHASH</code></p></td>
 <td style="text-align: left;"><p>Return valid Geohash strings
 representing the position of an element in the geospatial index for the
@@ -1067,7 +1067,7 @@ style="text-align: left;"><p><code>RedisConstants.KEY</code>/"CamelRedis.Key"
 (Object)</p></td>
 <td style="text-align: left;"><p>List&lt;String&gt;</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>GEOPOS</code></p></td>
 <td style="text-align: left;"><p>Return the positions (longitude,
 latitude) of an element in the geospatial index for the specified
@@ -1078,7 +1078,7 @@ style="text-align: left;"><p><code>RedisConstants.KEY</code>/"CamelRedis.Key"
 (Object)</p></td>
 <td style="text-align: left;"><p>List&lt;Point&gt;</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>GEORADIUS</code></p></td>
 <td style="text-align: left;"><p>Return the element in the geospatial
 index for the specified key which is within the borders of the area
@@ -1093,7 +1093,7 @@ style="text-align: left;"><p><code>RedisConstants.KEY</code>/"CamelRedis.Key"
 (Integer)</p></td>
 <td style="text-align: left;"><p>GeoResults</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>GEORADIUSBYMEMBER</code></p></td>
 <td style="text-align: left;"><p>This command is exactly like GEORADIUS
 with the sole difference that instead of taking, as the center of the
@@ -1118,34 +1118,34 @@ style="text-align: left;"><p><code>RedisConstants.KEY</code>/"CamelRedis.Key"
 <col style="width: 25%" />
 </colgroup>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>Other Command</p></td>
 <td style="text-align: left;"><p>Description</p></td>
 <td style="text-align: left;"><p>Parameters</p></td>
 <td style="text-align: left;"><p>Result</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>MULTI</code></p></td>
 <td style="text-align: left;"><p>Mark the start of a transaction
 block</p></td>
 <td style="text-align: left;"><p>none</p></td>
 <td style="text-align: left;"><p>void</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>DISCARD</code></p></td>
 <td style="text-align: left;"><p>Discard all commands issued after
 MULTI</p></td>
 <td style="text-align: left;"><p>none</p></td>
 <td style="text-align: left;"><p>void</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>EXEC</code></p></td>
 <td style="text-align: left;"><p>Execute all commands issued after
 MULTI</p></td>
 <td style="text-align: left;"><p>none</p></td>
 <td style="text-align: left;"><p>void</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>WATCH</code></p></td>
 <td style="text-align: left;"><p>Watch the given keys to determine
 execution of the MULTI/EXEC block</p></td>
@@ -1154,13 +1154,13 @@ style="text-align: left;"><p><code>RedisConstants.KEYS</code>/"CamelRedis.Keys"
 (String)</p></td>
 <td style="text-align: left;"><p>void</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>UNWATCH</code></p></td>
 <td style="text-align: left;"><p>Forget about all watched keys</p></td>
 <td style="text-align: left;"><p>none</p></td>
 <td style="text-align: left;"><p>void</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>ECHO</code></p></td>
 <td style="text-align: left;"><p>Echo the given string</p></td>
 <td
@@ -1168,19 +1168,19 @@ style="text-align: left;"><p><code>RedisConstants.VALUE</code>/"CamelRedis.Value
 (String)</p></td>
 <td style="text-align: left;"><p>String</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>PING</code></p></td>
 <td style="text-align: left;"><p>Ping the server</p></td>
 <td style="text-align: left;"><p>none</p></td>
 <td style="text-align: left;"><p>String</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>QUIT</code></p></td>
 <td style="text-align: left;"><p>Close the connection</p></td>
 <td style="text-align: left;"><p>none</p></td>
 <td style="text-align: left;"><p>void</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>PUBLISH</code></p></td>
 <td style="text-align: left;"><p>Post a message to a channel</p></td>
 <td

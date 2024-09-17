@@ -10,17 +10,17 @@ execute kubernetes CronJob operations.
 
 # Supported producer operation
 
--   listCronJob
+-   `listCronJob`
 
--   listCronJobByLabels
+-   `listCronJobByLabels`
 
--   getCronJob
+-   `getCronJob`
 
--   createCronJob
+-   `createCronJob`
 
--   updateCronJob
+-   `updateCronJob`
 
--   deleteCronJob
+-   `deleteCronJob`
 
 ## Component Configurations
 

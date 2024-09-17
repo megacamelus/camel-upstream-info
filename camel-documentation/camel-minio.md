@@ -27,10 +27,12 @@ the following snippet:
     from("minio://helloBucket?accessKey=yourAccessKey&secretKey=yourSecretKey&objectName=hello.txt")
       .to("file:/var/downloaded");
 
-You have to provide the minioClient in the Registry or your accessKey
-and secretKey to access the [Minio](https://min.io/).
+You have to provide the minioClient in the Registry or your `accessKey`
+and `secretKey` to access the [Minio](https://min.io/).
 
-# Batch Consumer
+# Usage
+
+## Batch Consumer
 
 This component implements the Batch Consumer.
 
@@ -43,25 +45,25 @@ messages.
 Camel-Minio component provides the following operation on the producer
 side:
 
--   copyObject
+-   `copyObject`
 
--   deleteObject
+-   `deleteObject`
 
--   deleteObjects
+-   `deleteObjects`
 
--   listBuckets
+-   `listBuckets`
 
--   deleteBucket
+-   `deleteBucket`
 
--   listObjects
+-   `listObjects`
 
--   getObject (this will return a MinioObject instance)
+-   `getObject` (this will return a \`MinioObject instance)
 
--   getObjectRange (this will return a MinioObject instance)
+-   `getObjectRange` (this will return a \`MinioObject instance)
 
--   createDownloadLink (this will return a Presigned download Url)
+-   `createDownloadLink` (this will return a Presigned download Url)
 
--   createUploadLink (this will return a Presigned upload url)
+-   `createUploadLink` (this will return a Presigned upload url)
 
 ## Advanced Minio configuration
 
@@ -75,7 +77,7 @@ configuration:
 
 ## Minio Producer Operation examples
 
--   CopyObject: this operation copies an object from one bucket to a
+-   `CopyObject`: this operation copies an object from one bucket to a
     different one
 
 <!-- -->
@@ -96,7 +98,7 @@ This operation will copy the object with the name expressed in the
 header camelDestinationKey to the camelDestinationBucket bucket, from
 the bucket mycamelbucket.
 
--   DeleteObject: this operation deletes an object from a bucket
+-   `DeleteObject`: this operation deletes an object from a bucket
 
 <!-- -->
 
@@ -113,7 +115,7 @@ the bucket mycamelbucket.
 This operation will delete the object camelKey from the bucket
 mycamelbucket.
 
--   ListBuckets: this operation lists the buckets for this account in
+-   `ListBuckets`: this operation lists the buckets for this account in
     this region
 
 <!-- -->
@@ -124,7 +126,7 @@ mycamelbucket.
 
 This operation will list the buckets for this account
 
--   DeleteBucket: this operation deletes the bucket specified as URI
+-   `DeleteBucket`: this operation deletes the bucket specified as URI
     parameter or header
 
 <!-- -->
@@ -135,7 +137,7 @@ This operation will list the buckets for this account
 
 This operation will delete the bucket mycamelbucket
 
--   ListObjects: this operation list object in a specific bucket
+-   `ListObjects`: this operation list object in a specific bucket
 
 <!-- -->
 
@@ -145,7 +147,8 @@ This operation will delete the bucket mycamelbucket
 
 This operation will list the objects in the mycamelbucket bucket
 
--   GetObject: this operation gets a single object in a specific bucket
+-   `GetObject`: this operation gets a single object in a specific
+    bucket
 
 <!-- -->
 
@@ -162,7 +165,7 @@ This operation will list the objects in the mycamelbucket bucket
 This operation will return a MinioObject instance related to the
 camelKey object in `mycamelbucket` bucket.
 
--   GetObjectRange: this operation gets a single object range in a
+-   `GetObjectRange`: this operation gets a single object range in a
     specific bucket
 
 <!-- -->
@@ -182,7 +185,7 @@ camelKey object in `mycamelbucket` bucket.
 This operation will return a MinioObject instance related to the
 camelKey object in `mycamelbucket` bucket, containing bytes from 0 to 9.
 
--   createDownloadLink: this operation will return a presigned url
+-   `createDownloadLink`: this operation will return a presigned url
     through which a file can be downloaded using GET method
 
 <!-- -->
@@ -198,8 +201,8 @@ camelKey object in `mycamelbucket` bucket, containing bytes from 0 to 9.
       .to("minio://mycamelbucket?minioClient=#minioClient&operation=createDownloadLink")
       .to("mock:result");
 
--   createUploadLink: this operation will return a presigned url through
-    which a file can be uploaded using PUT method
+-   `createUploadLink`: this operation will return a presigned url
+    through which a file can be uploaded using PUT method
 
 <!-- -->
 
@@ -214,18 +217,19 @@ camelKey object in `mycamelbucket` bucket, containing bytes from 0 to 9.
       .to("minio://mycamelbucket?minioClient=#minioClient&operation=createUploadLink")
       .to("mock:result");
 
-createDownLink and createUploadLink have a default expiry of 3600s which
-can be overridden by setting the header
-MinioConstants.PRESIGNED\_URL\_EXPIRATION\_TIME (value in seconds)
+`createDownLink` and `createUploadLink` have a default expiry of 3600s
+which can be overridden by setting the header
+`MinioConstants.PRESIGNED_URL_EXPIRATION_TIME` (value in seconds)
 
-# Bucket Auto-creation
+## Bucket Auto-creation
 
 With the option `autoCreateBucket` users are able to avoid the
-autocreation of a Minio Bucket in case it doesn’t exist. The default for
-this option is `true`. If set to false, any operation on a not-existent
-bucket in Minio won’t be successful, and an error will be returned.
+auto-creation of a Minio Bucket in case it doesn’t exist. The default
+for this option is `true`. If set to false, any operation on a
+not-existent bucket in Minio won’t be successful, and an error will be
+returned.
 
-# Automatic detection of a Minio client in registry
+## Automatic detection of a Minio client in registry
 
 The component is capable of detecting the presence of a Minio bean into
 the registry. If it’s the only instance of that type, it will be used as
@@ -233,7 +237,7 @@ the client, and you won’t have to define it as uri parameter, like the
 example above. This may be really useful for smarter configuration of
 the endpoint.
 
-# Moving stuff between a bucket and another bucket
+## Moving stuff between a bucket and another bucket
 
 Some users like to consume stuff from a bucket and move the content in a
 different one without using the `copyObject` feature of this component.
@@ -241,7 +245,7 @@ If this is the case for you, remember to remove the `bucketName` header
 from the incoming exchange of the consumer. Otherwise, the file will
 always be overwritten on the same original bucket.
 
-# MoveAfterRead consumer option
+## MoveAfterRead consumer option
 
 In addition to `deleteAfterRead`, it has been added another option,
 `moveAfterRead`. With this option enabled, the consumed object will be
@@ -255,7 +259,7 @@ In this case, the objects consumed will be moved to `myothercamelbucket`
 bucket and deleted from the original one (because of `deleteAfterRead`
 set to true as default).
 
-# Using a POJO as body
+## Using a POJO as body
 
 Sometimes build a Minio Request can be complex because of multiple
 options. We introduce the possibility to use a POJO as the body. In
@@ -265,15 +269,16 @@ List brokers request, you can do something like:
     from("direct:minio")
          .setBody(ListObjectsArgs.builder()
                         .bucket(bucketName)
-                        .recursive(getConfiguration().isRecursive())))
-         .to("minio://test?minioClient=#minioClient&operation=listObjects&pojoRequest=true")
+                        .recursive(getConfiguration().isRecursive()))
+         .to("minio://test?minioClient=#minioClient&operation=listObjects&pojoRequest=true");
 
 In this way, you’ll pass the request directly without the need of
 passing headers and options specifically related to this operation.
 
 # Dependencies
 
-Maven users will need to add the following dependency to their pom.xml.
+Maven users will need to add the following dependency to their
+`pom.xml`.
 
 **pom.xml**
 

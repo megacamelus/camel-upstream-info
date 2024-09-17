@@ -16,7 +16,9 @@ but not always, the Spring registry). If you are using the Spring
 registry, `someName` would be the bean ID of an endpoint in the Spring
 registry.
 
-# Runtime lookup
+# Usage
+
+## Runtime lookup
 
 This component can be used when you need dynamic discovery of endpoints
 in the Registry where you can compute the URI at runtime. Then you can
@@ -40,7 +42,7 @@ Registry such as:
         <endpoint id="bigspenderOrder" uri="activemq:order.high"/>
     </camelContext>
 
-# Sample
+# Example
 
 Bind endpoints to the Camel registry:
 

@@ -37,14 +37,14 @@ RAW(base64\_value) to avoid encoding issue.
 <col style="width: 79%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Header</th>
 <th style="text-align: left;">Type</th>
 <th style="text-align: left;">Description</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td
 style="text-align: left;"><p><code>CamelHwCloudFrsImageBase64</code></p></td>
 <td style="text-align: left;"><p><code>String</code></p></td>
@@ -52,7 +52,7 @@ style="text-align: left;"><p><code>CamelHwCloudFrsImageBase64</code></p></td>
 from an image. This property can be used when the operation is
 faceDetection or faceVerification.</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td
 style="text-align: left;"><p><code>CamelHwCloudFrsImageUrl</code></p></td>
 <td style="text-align: left;"><p><code>String</code></p></td>
@@ -60,7 +60,7 @@ style="text-align: left;"><p><code>CamelHwCloudFrsImageUrl</code></p></td>
 be used when the operation is faceDetection or
 faceVerification.</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td
 style="text-align: left;"><p><code>CamelHwCloudFrsImageFilePath</code></p></td>
 <td style="text-align: left;"><p><code>String</code></p></td>
@@ -68,7 +68,7 @@ style="text-align: left;"><p><code>CamelHwCloudFrsImageFilePath</code></p></td>
 property can be used when the operation is faceDetection or
 faceVerification.</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td
 style="text-align: left;"><p><code>CamelHwCloudFrsAnotherImageBase64</code></p></td>
 <td style="text-align: left;"><p><code>String</code></p></td>
@@ -76,14 +76,14 @@ style="text-align: left;"><p><code>CamelHwCloudFrsAnotherImageBase64</code></p><
 from another image. This property can be used when the operation is
 faceVerification.</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td
 style="text-align: left;"><p><code>CamelHwCloudFrsAnotherImageUrl</code></p></td>
 <td style="text-align: left;"><p><code>String</code></p></td>
 <td style="text-align: left;"><p>The URL of another image. This property
 can be used when the operation is faceVerification.</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td
 style="text-align: left;"><p><code>CamelHwCloudFrsAnotherImageFilePath</code></p></td>
 <td style="text-align: left;"><p><code>String</code></p></td>
@@ -91,7 +91,7 @@ style="text-align: left;"><p><code>CamelHwCloudFrsAnotherImageFilePath</code></p
 This property can be used when the operation is
 faceVerification.</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td
 style="text-align: left;"><p><code>CamelHwCloudFrsVideoBase64</code></p></td>
 <td style="text-align: left;"><p><code>String</code></p></td>
@@ -99,28 +99,28 @@ style="text-align: left;"><p><code>CamelHwCloudFrsVideoBase64</code></p></td>
 from a video. This property can be used when the operation is
 faceLiveDetection.</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td
 style="text-align: left;"><p><code>CamelHwCloudFrsVideoUrl</code></p></td>
 <td style="text-align: left;"><p><code>String</code></p></td>
 <td style="text-align: left;"><p>The URL of a video. This property can
 be used when the operation is faceLiveDetection.</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td
 style="text-align: left;"><p><code>CamelHwCloudFrsVideoFilePath</code></p></td>
 <td style="text-align: left;"><p><code>String</code></p></td>
 <td style="text-align: left;"><p>The local file path of a video. This
 property can be used when the operation is faceLiveDetection.</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td
 style="text-align: left;"><p><code>CamelHwCloudFrsVideoActions</code></p></td>
 <td style="text-align: left;"><p><code>String</code></p></td>
 <td style="text-align: left;"><p>The action code sequence list. This
 property can be used when the operation is faceLiveDetection.</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td
 style="text-align: left;"><p><code>CamelHwCloudFrsVideoActionTimes</code></p></td>
 <td style="text-align: left;"><p><code>String</code></p></td>
@@ -130,7 +130,7 @@ used when the operation is faceLiveDetection.</p></td>
 </tbody>
 </table>
 
-# List of Supported Operations
+## List of Supported Operations
 
 -   faceDetection - detect, locate, and analyze the face in an input
     image, and output the key facial points and attributes.
@@ -142,9 +142,9 @@ used when the operation is faceLiveDetection.</p></td>
     by checking whether the person’s actions in the video are consistent
     with those in the input action list
 
-# Inline Configuration of route
+## Inline Configuration of route
 
-## faceDetection
+### faceDetection
 
 Java DSL
 

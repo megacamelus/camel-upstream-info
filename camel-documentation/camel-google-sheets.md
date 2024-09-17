@@ -61,19 +61,19 @@ header, with one of the enum values:
 <col style="width: 33%" />
 </colgroup>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><strong>Header</strong></p></td>
 <td style="text-align: left;"><p><strong>Enum</strong></p></td>
 <td style="text-align: left;"><p><strong>Description</strong></p></td>
 </tr>
-<tr>
+<tr class="even">
 <td
 style="text-align: left;"><p><code>CamelGoogleSheets.ValueInputOption</code></p></td>
 <td style="text-align: left;"><p><code>RAW</code></p></td>
 <td style="text-align: left;"><p>The values the user has entered will
 not be parsed and will be stored as-is.</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td
 style="text-align: left;"><p><code>CamelGoogleSheets.ValueInputOption</code></p></td>
 <td style="text-align: left;"><p><code>USER_ENTERED</code></p></td>

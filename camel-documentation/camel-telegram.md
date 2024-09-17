@@ -43,16 +43,16 @@ The Telegram component supports both consumer and producer endpoints. It
 can also be used in **reactive chatbot mode** (to consume, then produce
 messages).
 
-# Producer Example
+## Producer
 
 The following is a basic example of how to send a message to a Telegram
 chat through the Telegram Bot API.
 
-in Java DSL
+**Telegram producer example in Java DSL**
 
     from("direct:start").to("telegram:bots?authorizationToken=123456789:insertYourAuthorizationTokenHere");
 
-or in Spring XML
+**Telegram producer example in Spring XML**
 
     <route>
         <from uri="direct:start"/>
@@ -74,112 +74,112 @@ belong to the package `org.apache.camel.component.telegram.model`)
 <col style="width: 60%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Java Type</th>
 <th style="text-align: left;">Description</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td
 style="text-align: left;"><p><code>OutgoingTextMessage</code></p></td>
 <td style="text-align: left;"><p>To send a text message to a
 chat</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td
 style="text-align: left;"><p><code>OutgoingPhotoMessage</code></p></td>
 <td style="text-align: left;"><p>To send a photo (JPG, PNG) to a
 chat</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td
 style="text-align: left;"><p><code>OutgoingAudioMessage</code></p></td>
 <td style="text-align: left;"><p>To send a mp3 audio to a chat</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td
 style="text-align: left;"><p><code>OutgoingVideoMessage</code></p></td>
 <td style="text-align: left;"><p>To send a mp4 video to a chat</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td
 style="text-align: left;"><p><code>OutgoingDocumentMessage</code></p></td>
 <td style="text-align: left;"><p>To send a file to a chat (any media
 type)</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td
 style="text-align: left;"><p><code>OutgoingStickerMessage</code></p></td>
 <td style="text-align: left;"><p>To send a sticker to a chat
 (WEBP)</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td
 style="text-align: left;"><p><code>OutgoingAnswerInlineQuery</code></p></td>
 <td style="text-align: left;"><p>To send answers to an inline
 query</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td
 style="text-align: left;"><p><code>EditMessageTextMessage</code></p></td>
 <td style="text-align: left;"><p>To edit text and game messages
 (editMessageText)</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td
 style="text-align: left;"><p><code>EditMessageCaptionMessage</code></p></td>
 <td style="text-align: left;"><p>To edit captions of messages
 (editMessageCaption)</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td
 style="text-align: left;"><p><code>EditMessageMediaMessage</code></p></td>
 <td style="text-align: left;"><p>To edit animation, audio, document,
 photo, or video messages. (editMessageMedia)</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td
 style="text-align: left;"><p><code>EditMessageReplyMarkupMessage</code></p></td>
 <td style="text-align: left;"><p>To edit only the reply markup of a
 message. (editMessageReplyMarkup)</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>EditMessageDelete</code></p></td>
 <td style="text-align: left;"><p>To delete a message, including service
 messages. (deleteMessage)</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td
 style="text-align: left;"><p><code>SendLocationMessage</code></p></td>
 <td style="text-align: left;"><p>To send a location
 (setSendLocation)</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td
 style="text-align: left;"><p><code>EditMessageLiveLocationMessage</code></p></td>
 <td style="text-align: left;"><p>To send changes to a live location
 (editMessageLiveLocation)</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td
 style="text-align: left;"><p><code>StopMessageLiveLocationMessage</code></p></td>
 <td style="text-align: left;"><p>To stop updating a live location
 message sent by the bot or via the bot (for inline bots) before
 live_period expires (stopMessageLiveLocation)</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>SendVenueMessage</code></p></td>
 <td style="text-align: left;"><p>To send information about a venue
 (sendVenue)</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>byte[]</code></p></td>
 <td style="text-align: left;"><p>To send any media type supported. It
 requires the <code>CamelTelegramMediaType</code> header to be set to the
 appropriate media type</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>String</code></p></td>
 <td style="text-align: left;"><p>To send a text message to a chat. It
 gets converted automatically into a
@@ -188,15 +188,17 @@ gets converted automatically into a
 </tbody>
 </table>
 
-# Consumer Example
+## Consumer
 
 The following is a basic example of how to receive all messages that
 telegram users are sending to the configured Bot. In Java DSL
 
+**Telegram consumer example in Java DSL**
+
     from("telegram:bots?authorizationToken=123456789:insertYourAuthorizationTokenHere")
     .bean(ProcessorBean.class)
 
-or in Spring XML
+**Telegram producer example in Spring XML**
 
     <route>
         <from uri="telegram:bots?authorizationToken=123456789:insertYourAuthorizationTokenHere"/>
@@ -225,18 +227,18 @@ Supported types for incoming messages are
 <col style="width: 60%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Java Type</th>
 <th style="text-align: left;">Description</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>IncomingMessage</code></p></td>
 <td style="text-align: left;"><p>The full object representation of an
 incoming message</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>String</code></p></td>
 <td style="text-align: left;"><p>The content of the message, for text
 messages only</p></td>
@@ -244,7 +246,7 @@ messages only</p></td>
 </tbody>
 </table>
 
-# Reactive Chat-Bot Example
+## Reactive Chat-Bot Example
 
 The reactive chatbot mode is a simple way of using the Camel component
 to build a simple chatbot that replies directly to chat messages
@@ -252,11 +254,13 @@ received from the Telegram users.
 
 The following is a basic configuration of the chatbot in Java DSL
 
+**Telegram reactive example in Java**
+
     from("telegram:bots?authorizationToken=123456789:insertYourAuthorizationTokenHere")
     .bean(ChatBotLogic.class)
     .to("telegram:bots?authorizationToken=123456789:insertYourAuthorizationTokenHere");
 
-or in Spring XML
+**Telegram reactive example in Spring XML**
 
     <route>
         <from uri="telegram:bots?authorizationToken=123456789:insertYourAuthorizationTokenHere"/>
@@ -285,7 +289,7 @@ Every non-null string returned by the `chatBotProcess` method is
 automatically routed to the chat that originated the request (as the
 `CamelTelegramChatId` header is used to route the message).
 
-# Getting the Chat ID
+## Getting the Chat ID
 
 If you want to push messages to a specific Telegram chat when an event
 occurs, you need to retrieve the corresponding chat ID. The chat ID is
@@ -310,7 +314,7 @@ a message to it.
 
 Note that the corresponding URI parameter is simply `chatId`.
 
-# Customizing keyboard
+## Customizing keyboard
 
 You can customize the user keyboard instead of asking him to write an
 option. `OutgoingTextMessage` has the property `ReplyMarkup` which can
@@ -364,7 +368,7 @@ If you want to disable it, the next message must have the property
         })
         .to("telegram:bots?authorizationToken=123456789:insertYourAuthorizationTokenHere");
 
-# Webhook Mode
+## Webhook Mode
 
 The Telegram component supports usage in the **webhook mode** using the
 **camel-webhook** component.

@@ -8,31 +8,6 @@ The Camel Component for PLC4X allows you to create routes using the
 PLC4X API to read from a Programmable Logic Controllers (PLC) device or
 write to it.
 
-It supports various protocols by adding the driver dependencies:
-
--   Allen Bradley ETH
-
--   Automation Device Specification (ADS)
-
--   CANopen
-
--   EtherNet/IP
-
--   Firmata
-
--   KNXnet/IP
-
--   Modbus (TCP/UDP/Serial)
-
--   Open Platform Communications Unified Architecture (OPC UA)
-
--   Step7 (S7)
-
-The list of supported protocols is growing in
-[PLC4X](https://plc4x.apache.org). There are good chance that they will
-work out of the box just by adding the driver dependency. You can check
-[here](https://plc4x.apache.org/users/protocols/index.html).
-
 # URI Format
 
     plc4x://driver[?options]
@@ -58,7 +33,35 @@ Maven users will need to add the following dependency to their
 where `${camel-version}` must be replaced by the actual version of
 Camel.
 
-# Consumer
+# Usage
+
+The Camel PLC4X component supports various protocols by adding the
+driver dependencies:
+
+-   Allen Bradley ETH
+
+-   Automation Device Specification (ADS)
+
+-   CANopen
+
+-   EtherNet/IP
+
+-   Firmata
+
+-   KNXnet/IP
+
+-   Modbus (TCP/UDP/Serial)
+
+-   Open Platform Communications Unified Architecture (OPC UA)
+
+-   Step7 (S7)
+
+The list of supported protocols is growing in
+[PLC4X](https://plc4x.apache.org). There are good chances that they will
+work out of the box just by adding the driver dependency. You can check
+[here](https://plc4x.apache.org/users/protocols/index.html).
+
+## Consumer
 
 The consumer supports one-time reading or Triggered Reading. To read
 from the PLC, use a `Map<String,String>` containing the Alias and
@@ -70,12 +73,12 @@ can repeat this for multiple tags.
 The Body created by the Consumer will be a `Map<String,Object>`
 containing the Aliases and their associated value read from the PLC.
 
-# Polling Consumer
+## Polling Consumer
 
 The polling consumer supports consecutive reading. The input and output
 are the same as for the regular consumer.
 
-# Producer
+## Producer
 
 To write data to the PLC, we also use a `Map`. The difference with the
 Producer is that the `Value` of the Map has also to be a `Map`. Also,

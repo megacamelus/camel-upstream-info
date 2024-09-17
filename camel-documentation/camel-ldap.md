@@ -30,12 +30,14 @@ bean in the registry. The LDAP component only supports producer
 endpoints, which means that an `ldap` URI cannot appear in the `from` at
 the start of a route.
 
-# Result
+# Usage
+
+## Result
 
 The result is returned to Out body as a
 `List<javax.naming.directory.SearchResult>` object.
 
-# DirContext
+## DirContext
 
 The URI, `ldap:ldapserver`, references a bean with the ID `ldapserver`.
 The `ldapserver` bean may be defined as follows:
@@ -84,7 +86,7 @@ concurrency guarantees as Spring’s `prototype` scope. This ensures that
 each part of your application interacts with a separate and isolated
 `DirContext` instance, preventing unintended thread interference.
 
-# Security concerns related to LDAP injection
+## Security concerns related to LDAP injection
 
 The camel-ldap component uses the message body to filter the search
 results. Therefore, the message body should be protected from LDAP
@@ -95,7 +97,7 @@ method(s) to escape string values to be LDAP injection safe.
 See the following link for information about [LDAP
 Injection](https://cheatsheetseries.owasp.org/cheatsheets/LDAP_Injection_Prevention_Cheat_Sheet.html).
 
-# Samples
+# Examples
 
 Following on from the configuration above, the code sample below sends
 an LDAP request to filter search a group for a member. The Common Name
@@ -118,9 +120,9 @@ is then extracted from the response.
       // ...
     }
 
-If no specific filter is required - for example, you just need to look
-up a single entry - specify a wildcard filter expression. For example,
-if the LDAP entry has a Common Name, use a filter expression like:
+If no specific filter is required (for example, you need to look up a
+single entry), specify a wildcard filter expression. If the LDAP entry
+has a Common Name, use a filter expression like:
 
     (cn=*)
 
@@ -170,7 +172,7 @@ server using credentials.
 # Configuring SSL
 
 All that is required is to create a custom socket factory and reference
-it in the InitialDirContext bean - see below sample.
+it in the `InitialDirContext` bean. See the sample below.
 
 **SSL Configuration**
 

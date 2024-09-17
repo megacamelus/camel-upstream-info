@@ -36,35 +36,35 @@ To send a notification.
 <col style="width: 79%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Header</th>
 <th style="text-align: left;">Type</th>
 <th style="text-align: left;">Description</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td
 style="text-align: left;"><p><code>CamelHwCloudSmnSubject</code></p></td>
 <td style="text-align: left;"><p><code>String</code></p></td>
 <td style="text-align: left;"><p>Subject tag for the outgoing
 notification</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td
 style="text-align: left;"><p><code>CamelHwCloudSmnTopic</code></p></td>
 <td style="text-align: left;"><p><code>String</code></p></td>
 <td style="text-align: left;"><p>Smn topic into which the message is to
 be posted</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td
 style="text-align: left;"><p><code>CamelHwCloudSmnMessageTtl</code></p></td>
 <td style="text-align: left;"><p><code>Integer</code></p></td>
 <td style="text-align: left;"><p>Validity of the posted notification
 message</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td
 style="text-align: left;"><p><code>CamelHwCloudSmnTemplateTags</code></p></td>
 <td
@@ -73,7 +73,7 @@ style="text-align: left;"><p><code>Map&lt;String, String&gt;</code></p></td>
 and values when using operation
 <code>publishAsTemplatedMessage</code></p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td
 style="text-align: left;"><p><code>CamelHwCloudSmnTemplateName</code></p></td>
 <td style="text-align: left;"><p><code>String</code></p></td>
@@ -92,21 +92,21 @@ operation <code>publishAsTemplatedMessage</code></p></td>
 <col style="width: 79%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Header</th>
 <th style="text-align: left;">Type</th>
 <th style="text-align: left;">Description</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td
 style="text-align: left;"><p><code>CamelHwCloudSmnMesssageId</code></p></td>
 <td style="text-align: left;"><p><code>String</code></p></td>
 <td style="text-align: left;"><p>Unique message id returned by Simple
 Message Notification server after processing the request</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td
 style="text-align: left;"><p><code>CamelHwCloudSmnRequestId</code></p></td>
 <td style="text-align: left;"><p><code>String</code></p></td>
@@ -116,7 +116,7 @@ Message Notification server after processing the request</p></td>
 </tbody>
 </table>
 
-# Supported list of smn services and corresponding operations
+## Supported list of smn services and corresponding operations
 
 <table>
 <colgroup>
@@ -124,13 +124,13 @@ Message Notification server after processing the request</p></td>
 <col style="width: 50%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Service</th>
 <th style="text-align: left;">Operations</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td
 style="text-align: left;"><p><code>publishMessageService</code></p></td>
 <td style="text-align: left;"><p>publishAsTextMessage,
@@ -139,9 +139,9 @@ publishAsTemplatedMessage</p></td>
 </tbody>
 </table>
 
-# Inline Configuration of route
+## Inline Configuration of route
 
-## publishAsTextMessage
+### publishAsTextMessage
 
 Java DSL
 
@@ -179,7 +179,7 @@ Java DSL
     .setProperty("CamelHwCloudSmnTemplateName", constant("hello-template"))
     .to("hwcloud-smn:publishMessageService?operation=publishAsTemplatedMessage&accessKey=*********&secretKey=********&projectId=9071a38e7f6a4ba7b7bcbeb7d4ea6efc&region=cn-north-4")
 
-# Using ServiceKey configuration Bean
+## Using ServiceKey configuration Bean
 
 Access key and secret keys are required to authenticate against cloud
 smn service. You can avoid having them being exposed and scattered over

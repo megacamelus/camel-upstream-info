@@ -80,7 +80,9 @@ side:
 
 -   enableKey
 
-# Producer Examples
+# Examples
+
+## Producer Examples
 
 -   listKeys: this operation will list the available keys in KMS
 
@@ -112,7 +114,7 @@ side:
           .setHeader(KMS2Constants.KEY_ID, constant("123")
           .to("aws2-kms://test?kmsClient=#amazonKmsClient&operation=enableKey")
 
-# Using a POJO as body
+## Using a POJO as body
 
 Sometimes building an AWS Request can be complex because of multiple
 options. We introduce the possibility to use a POJO as the body. In AWS

@@ -14,7 +14,7 @@ distributed topic.
 
 The topic producer provides only one operation (publish).
 
-## Sample for **publish**:
+## Example for **publish**:
 
     from("direct:add")
     .setHeader(HazelcastConstants.OPERATION, constant(HazelcastOperation.PUBLISH))

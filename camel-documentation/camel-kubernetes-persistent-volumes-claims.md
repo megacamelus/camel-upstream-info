@@ -6,25 +6,29 @@
 
 The Kubernetes Persistent Volume Claim component is one of [Kubernetes
 Components](#kubernetes-summary.adoc) which provides a producer to
-execute Kubernetes Persistent Volume Claims operations.
+execute Kubernetes Persistent Volume Claims (PVC) operations.
 
-# Supported producer operation
+# Usage
 
--   listPersistentVolumesClaims
+## Supported producer operation
 
--   listPersistentVolumesClaimsByLabels
+-   `listPersistentVolumesClaims`
 
--   getPersistentVolumeClaim
+-   `listPersistentVolumesClaimsByLabels`
 
--   createPersistentVolumeClaim
+-   `getPersistentVolumeClaim`
 
--   updatePersistentVolumeClaim
+-   `createPersistentVolumeClaim`
 
--   deletePersistentVolumeClaim
+-   `updatePersistentVolumeClaim`
 
-# Kubernetes Persistent Volume Claims Producer Examples
+-   `deletePersistentVolumeClaim`
 
--   listPersistentVolumesClaims: this operation lists the pvc on a
+# Example
+
+## Kubernetes Persistent Volume Claims Producer Examples
+
+-   `listPersistentVolumesClaims`: this operation lists the PVCs on a
     kubernetes cluster
 
 <!-- -->
@@ -33,10 +37,10 @@ execute Kubernetes Persistent Volume Claims operations.
         toF("kubernetes-persistent-volumes-claims:///?kubernetesClient=#kubernetesClient&operation=listPersistentVolumesClaims").
         to("mock:result");
 
-This operation returns a List of pvc from your cluster
+This operation returns a list of PVC from your cluster
 
--   listPersistentVolumesClaimsByLabels: this operation lists the pvc by
-    labels on a kubernetes cluster
+-   `listPersistentVolumesClaimsByLabels`: this operation lists the PVCs
+    by labels on a kubernetes cluster
 
 <!-- -->
 
@@ -52,7 +56,7 @@ This operation returns a List of pvc from your cluster
         toF("kubernetes-persistent-volumes-claims:///?kubernetesClient=#kubernetesClient&operation=listPersistentVolumesClaimsByLabels").
         to("mock:result");
 
-This operation returns a List of pvc from your cluster, using a label
+This operation returns a list of PVCs from your cluster using a label
 selector (with key1 and key2, with value value1 and value2)
 
 ## Component Configurations

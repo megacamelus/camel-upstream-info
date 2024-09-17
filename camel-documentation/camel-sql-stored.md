@@ -36,8 +36,8 @@ system or classpath such as:
 
     sql-stored:classpath:sql/myprocedure.sql[?options]
 
-Where sql/myprocedure.sql is a plain text file in the classpath with the
-template, as show:
+Where `sql/myprocedure.sql` is a plain text file in the classpath with
+the template, as show:
 
     SUBNUMBERS(
       INTEGER ${headers.num1},
@@ -46,7 +46,9 @@ template, as show:
       OUT INTEGER out2
     )
 
-# Declaring the stored procedure template
+# Usage
+
+## Declaring the stored procedure template
 
 The template is declared using a syntax that would be similar to a Java
 method signature. The name of the stored procedure, and then the
@@ -56,16 +58,16 @@ arguments enclosed in parentheses. An example explains this well:
 
 The arguments are declared by a type and then a mapping to the Camel
 message using simple expression. So, in this example, the first two
-parameters are IN values of INTEGER type, mapped to the message headers.
-The third parameter is INOUT, meaning it accepts an INTEGER and then
-returns a different INTEGER result. The last parameter is the OUT value,
-also an INTEGER type.
+parameters are `IN` values of `INTEGER` type, mapped to the message
+headers. The third parameter is `INOUT`, meaning it accepts an `INTEGER`
+and then returns a different `INTEGER` result. The last parameter is the
+`OUT` value, also an `INTEGER` type.
 
 In SQL terms, the stored procedure could be declared as:
 
     CREATE PROCEDURE STOREDSAMPLE(VALUE1 INTEGER, VALUE2 INTEGER, INOUT RESULT1 INTEGER, OUT RESULT2 INTEGER)
 
-## IN Parameters
+### IN Parameters
 
 IN parameters take four parts separated by a space: parameter name, SQL
 type (with scale), type name, and value source.
@@ -76,10 +78,10 @@ It must be given between quotes(').
 SQL type is required and can be an integer (positive or negative) or
 reference to integer field in some class. If SQL type contains a dot,
 then the component tries to resolve that class and read the given field.
-For example, SQL type `com.Foo.INTEGER` is read from the field INTEGER
+For example, SQL type `com.Foo.INTEGER` is read from the field `INTEGER`
 of class `com.Foo`. If the type doesn’t contain comma then class to
 resolve the integer value will be `java.sql.Types`. Type can be
-postfixed by scale for example DECIMAL(10) would mean
+postfixed by scale for example `DECIMAL(10)` would mean
 `java.sql.Types.DECIMAL` with scale 10.
 
 Type name is optional and must be given between quotes(').
@@ -94,9 +96,9 @@ effect.
     <to uri="sql-stored:MYFUNC('param1' org.example.Types.INTEGER(10) ${header.srcValue})"/>
 
 URI means that the stored procedure will be called with parameter name
-*param1*, it’s SQL type is read from field INTEGER of class
-`org.example.Types` and scale will be set to 10. Input value for the
-parameter is passed from the header *srcValue*.
+`param1`, it’s SQL type is read from field `INTEGER` of class
+`org.example.Types` and scale will be set to 10. The input value for the
+parameter is passed from the header `srcValue`.
 
     <to uri="sql-stored:MYFUNC('param1' 100 'mytypename' ${header.srcValue})"/>
 
@@ -106,7 +108,7 @@ URI is identical to previous on except SQL-type is 100 and type name is
 Actual call will be done using
 org.springframework.jdbc.core.SqlParameter.
 
-## OUT Parameters
+### OUT Parameters
 
 OUT parameters work similarly IN parameters and contain three parts: SQL
 type(with scale), type name, and output parameter name.
@@ -130,7 +132,7 @@ This is identical to previous one but type name will be `mytype`.
 Actual call will be done using
 `org.springframework.jdbc.core.SqlOutParameter`.
 
-## INOUT Parameters
+### INOUT Parameters
 
 INOUT parameters are a combination of all of the above. They receive a
 value from the exchange, as well as store a result as a message header.
@@ -143,7 +145,7 @@ result header name.
 Actual call will be done using
 org.springframework.jdbc.core.SqlInOutParameter.
 
-## Query Timeout
+### Query Timeout
 
 You can configure query timeout (via `template.queryTimeout`) on
 statements used for query processing as shown:
@@ -154,7 +156,7 @@ This will be overridden by the remaining transaction timeout when
 executing within a transaction that has a timeout specified at the
 transaction level.
 
-# Camel SQL Starter
+## Camel SQL Starter
 
 A starter module is available to spring-boot users. When using the
 starter, the `DataSource` can be directly configured using spring-boot

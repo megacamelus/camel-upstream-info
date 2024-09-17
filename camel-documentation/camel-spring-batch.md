@@ -77,12 +77,12 @@ Batch API directly.
     JobExecution jobExecution = mockEndpoint.getExchanges().get(0).getIn().getBody(JobExecution.class);
     BatchStatus currentJobStatus = jobExecution.getStatus();
 
-# Support classes
+## Support classes
 
 Apart from the Component, Camel Spring Batch provides also support
 classes, which can be used to hook into Spring Batch infrastructure.
 
-## CamelItemReader
+### CamelItemReader
 
 `CamelItemReader` can be used to read batch data directly from the Camel
 infrastructure.
@@ -103,7 +103,7 @@ from JMS queue.
       </batch:step>
     </batch:job>
 
-## CamelItemWriter
+### CamelItemWriter
 
 `CamelItemWriter` has similar purpose as `CamelItemReader`, but it is
 dedicated to write chunk of the processed data.
@@ -124,7 +124,7 @@ from JMS queue.
       </batch:step>
     </batch:job>
 
-## CamelItemProcessor
+### CamelItemProcessor
 
 `CamelItemProcessor` is the implementation of Spring Batch
 `org.springframework.batch.item.ItemProcessor` interface. The latter
@@ -161,7 +161,7 @@ language](http://camel.apache.org/simple.html).
       </batch:step>
     </batch:job>
 
-## CamelJobExecutionListener
+### CamelJobExecutionListener
 
 `CamelJobExecutionListener` is the implementation of the
 `org.springframework.batch.core.JobExecutionListener` interface sending

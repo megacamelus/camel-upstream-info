@@ -22,7 +22,9 @@ for this component:
 
     splunk://[endpoint]?[options]
 
-# Producer Endpoints:
+# Usage
+
+## Producer Endpoints
 
 <table>
 <colgroup>
@@ -30,27 +32,27 @@ for this component:
 <col style="width: 89%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Endpoint</th>
 <th style="text-align: left;">Description</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td style="text-align: left;"><p>stream</p></td>
+<tr class="odd">
+<td style="text-align: left;"><p><code>stream</code></p></td>
 <td style="text-align: left;"><p>Streams data to a named index or the
 default if not specified. When using stream mode, be aware of that
 Splunk has some internal buffer (about 1MB or so) before events get to
 the index. If you need realtime, better use submit or tcp mode.</p></td>
 </tr>
-<tr>
-<td style="text-align: left;"><p>submit</p></td>
+<tr class="even">
+<td style="text-align: left;"><p><code>submit</code></p></td>
 <td style="text-align: left;"><p>submit mode. Uses Splunk rest api to
 publish events to a named index or the default if not
 specified.</p></td>
 </tr>
-<tr>
-<td style="text-align: left;"><p>tcp</p></td>
+<tr class="odd">
+<td style="text-align: left;"><p><code>tcp</code></p></td>
 <td style="text-align: left;"><p>tcp mode. Streams data to a tcp port,
 and requires an open receiver port in Splunk.</p></td>
 </tr>
@@ -68,7 +70,7 @@ See comment under message body.
 In this example, a converter is required to convert to a SplunkEvent
 class.
 
-# Consumer Endpoints:
+## Consumer Endpoints
 
 <table>
 <colgroup>
@@ -76,24 +78,24 @@ class.
 <col style="width: 89%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Endpoint</th>
 <th style="text-align: left;">Description</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td style="text-align: left;"><p>normal</p></td>
+<tr class="odd">
+<td style="text-align: left;"><p><code>normal</code></p></td>
 <td style="text-align: left;"><p>Performs normal search and requires a
 search query in the search option.</p></td>
 </tr>
-<tr>
-<td style="text-align: left;"><p>realtime</p></td>
+<tr class="even">
+<td style="text-align: left;"><p><code>realtime</code></p></td>
 <td style="text-align: left;"><p>Performs realtime search on live data
 and requires a search query in the search option.</p></td>
 </tr>
-<tr>
-<td style="text-align: left;"><p>savedsearch</p></td>
+<tr class="odd">
+<td style="text-align: left;"><p><code>savedsearch</code></p></td>
 <td style="text-align: left;"><p>Performs search based on a search query
 saved in splunk and requires the name of the query in the savedSearch
 option.</p></td>
@@ -106,12 +108,12 @@ option.</p></td>
           from("splunk://normal?delay=5000&username=user&password=123&initEarliestTime=-10s&search=search index=myindex sourcetype=someSourcetype")
               .to("direct:search-result");
 
-camel-splunk creates a route exchange per search result with a
+Camel Splunk component creates a route exchange per search result with a
 SplunkEvent in the body.
 
-# Message body
+## Message body
 
-Splunk operates on data in key/value pairs. The SplunkEvent class is a
+Splunk operates on data in key/value pairs. The `SplunkEvent` class is a
 placeholder for such data, and should be in the message body for the
 producer. Likewise, it will be returned in the body per search result
 for the consumer.
@@ -120,7 +122,7 @@ You can send raw data to Splunk by setting the raw option on the
 producer endpoint. This is useful for e.g., json/xml and other payloads
 where Splunk has built in support.
 
-# Use Cases
+## Use Cases
 
 Search Twitter for tweets with music and publish events to Splunk
 
@@ -160,7 +162,7 @@ Search Splunk for tweets:
           from("splunk://normal?username=foo&password=bar&initEarliestTime=-2m&search=search index=camel-tweets sourcetype=twitter")
               .log("${body}");
 
-# Other comments
+## Other comments
 
 Splunk comes with a variety of options for leveraging machine generated
 data with prebuilt apps for analyzing and displaying this. For example,
@@ -230,3 +232,4 @@ metrics to Splunk, and display this on a dashboard.
 |token|User's token for Splunk. This takes precedence over password when both are set||string|
 |username|Username for Splunk||string|
 |useSunHttpsHandler|Use sun.net.www.protocol.https.Handler Https handler to establish the Splunk Connection. Can be useful when running in application servers to avoid app. server https handling.|false|boolean|
+|validateCertificates|Sets client's certificate validation mode. Value false makes SSL vulnerable and is not recommended for the production environment.|true|boolean|

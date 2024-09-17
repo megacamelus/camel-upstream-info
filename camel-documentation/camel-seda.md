@@ -29,7 +29,9 @@ invocation of any consumers when a producer sends a message exchange.
 Where *someId* can be any string that uniquely identifies the endpoint
 within the current CamelContext.
 
-# Choosing BlockingQueue implementation
+# Usage
+
+## Choosing BlockingQueue implementation
 
 By default, the SEDA component always instantiates a
 `LinkedBlockingQueue`, but you can use different implementation, you can
@@ -64,7 +66,7 @@ implementations are provided:
     <!-- ... and later -->
     <from>seda:priority?queueFactory=#priorityQueueFactory&size=100</from>
 
-# Use of Request Reply
+## Use of Request Reply
 
 The [SEDA](#seda-component.adoc) component supports using Request Reply,
 where the caller will wait for the Async route to complete. For
@@ -80,7 +82,7 @@ it is a Request Reply message, we wait for the response. When the
 consumer on the `seda:input` queue is complete, it copies the response
 to the original message response.
 
-# Concurrent consumers
+## Concurrent consumers
 
 By default, the SEDA endpoint uses a single consumer thread, but you can
 configure it to use concurrent consumer threads. So instead of thread
@@ -92,7 +94,7 @@ As for the difference between the two, note a *thread pool* can
 increase/shrink dynamically at runtime depending on load, whereas the
 number of concurrent consumers is always fixed.
 
-# Thread pools
+## Thread pools
 
 Be aware that adding a thread pool to a SEDA endpoint by doing something
 like:
@@ -110,7 +112,7 @@ synchronously and asynchronously. For example:
 You can also directly configure number of threads that process messages
 on a SEDA endpoint using the `concurrentConsumers` option.
 
-# Sample
+# Examples
 
 In the route below, we use the SEDA queue to send the request to this
 async queue. As such, it is able to send a *fire-and-forget* message for
@@ -154,7 +156,7 @@ another thread for further processing. Since this is from a unit test,
 it will be sent to a `mock` endpoint where we can do assertions in the
 unit test.
 
-# Using multipleConsumers
+## Using multipleConsumers
 
 In this example, we have defined two consumers.
 
@@ -186,7 +188,7 @@ message as a kind of *publish/subscribe* style messaging.
 As the beans are part of a unit test, they simply send the message to a
 mock endpoint.
 
-# Extracting queue information.
+## Extracting queue information.
 
 If needed, information such as queue size, etc. can be obtained without
 using JMX in this fashion:
@@ -204,7 +206,7 @@ using JMX in this fashion:
 |defaultPollTimeout|The timeout (in milliseconds) used when polling. When a timeout occurs, the consumer can check whether it is allowed to continue running. Setting a lower value allows the consumer to react more quickly upon shutdown.|1000|integer|
 |defaultBlockWhenFull|Whether a thread that sends messages to a full SEDA queue will block until the queue's capacity is no longer exhausted. By default, an exception will be thrown stating that the queue is full. By enabling this option, the calling thread will instead block and wait until the message can be accepted.|false|boolean|
 |defaultDiscardWhenFull|Whether a thread that sends messages to a full SEDA queue will be discarded. By default, an exception will be thrown stating that the queue is full. By enabling this option, the calling thread will give up sending and continue, meaning that the message was not sent to the SEDA queue.|false|boolean|
-|defaultOfferTimeout|Whether a thread that sends messages to a full SEDA queue will block until the queue's capacity is no longer exhausted. By default, an exception will be thrown stating that the queue is full. By enabling this option, where a configured timeout can be added to the block case. Utilizing the .offer(timeout) method of the underlining java queue||integer|
+|defaultOfferTimeout|Whether a thread that sends messages to a full SEDA queue will block until the queue's capacity is no longer exhausted. By default, an exception will be thrown stating that the queue is full. By enabling this option, where a configured timeout can be added to the block case. Using the .offer(timeout) method of the underlining java queue||integer|
 |lazyStartProducer|Whether the producer should be started lazy (on the first message). By starting lazy you can use this to allow CamelContext and routes to startup in situations where a producer may otherwise fail during starting and cause the route to fail being started. By deferring this startup to be lazy then the startup failure can be handled during routing messages via Camel's routing error handlers. Beware that when the first message is processed then creating and starting the producer may take a little time and prolong the total processing time of the processing.|false|boolean|
 |autowiredEnabled|Whether autowiring is enabled. This is used for automatic autowiring options (the option must be marked as autowired) by looking up in the registry to find if there is a single instance of matching type, which then gets configured on the component. This can be used for automatic configuring JDBC data sources, JMS connection factories, AWS Clients, etc.|true|boolean|
 |defaultQueueFactory|Sets the default queue factory.||object|

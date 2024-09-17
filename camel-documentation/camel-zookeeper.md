@@ -33,7 +33,7 @@ for this component:
 The path from the URI specifies the node in the ZooKeeper server (a.k.a.
 *znode*) that will be the target of the endpoint:
 
-# Use cases
+# Usage
 
 ## Reading from a *znode*
 
@@ -103,7 +103,7 @@ or equivalently:
       <to uri="zookeeper://localhost:39913/somepath/somenode" />
     </route>
 
-ZooKeeper nodes can have different types; they can be *Ephemeral* or
+ZooKeeper’s nodes can have different types; they can be *Ephemeral* or
 *Persistent* and *Sequenced* or *Unsequenced*. For further information
 of each type, you can check
 [here](http://zookeeper.apache.org/doc/trunk/zookeeperProgrammers.html#Ephemeral+Nodes).

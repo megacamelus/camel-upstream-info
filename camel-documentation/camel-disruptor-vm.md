@@ -100,7 +100,7 @@ information.
 |Name|Description|Default|Type|
 |---|---|---|---|
 |name|Name of queue||string|
-|size|The maximum capacity of the Disruptors ringbuffer Will be effectively increased to the nearest power of two. Notice: Mind if you use this option, then its the first endpoint being created with the queue name, that determines the size. To make sure all endpoints use same size, then configure the size option on all of them, or the first endpoint being created.|1024|integer|
+|size|The maximum capacity of the Disruptors ringbuffer Will be effectively increased to the nearest power of two. Notice: Mind if you use this option, then it's the first endpoint being created with the queue name that determines the size. To make sure all endpoints use the same size, then configure the size option on all of them, or the first endpoint being created.|1024|integer|
 |concurrentConsumers|Number of concurrent threads processing exchanges.|1|integer|
 |multipleConsumers|Specifies whether multiple consumers are allowed. If enabled, you can use Disruptor for Publish-Subscribe messaging. That is, you can send a message to the queue and have each consumer receive a copy of the message. When enabled, this option should be specified on every consumer endpoint.|false|boolean|
 |waitStrategy|Defines the strategy used by consumer threads to wait on new exchanges to be published. The options allowed are:Blocking, Sleeping, BusySpin and Yielding.|Blocking|object|

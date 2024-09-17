@@ -28,42 +28,42 @@ Each operation expects the indicated types:
 <col style="width: 80%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Operation</th>
 <th style="text-align: left;">Expected payloads</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>CALL</p></td>
 <td style="text-align: left;"><p>Collection of IgniteCallable, or a
 single IgniteCallable.</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p>BROADCAST</p></td>
 <td style="text-align: left;"><p>IgniteCallable, IgniteRunnable,
 IgniteClosure.</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>APPLY</p></td>
 <td style="text-align: left;"><p>IgniteClosure.</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p>EXECUTE</p></td>
 <td style="text-align: left;"><p>ComputeTask, Class&lt;? extends
 ComputeTask&gt; or an object representing parameters if the taskName
 option is not null.</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>RUN</p></td>
 <td style="text-align: left;"><p>A Collection of IgniteRunnables, or a
 single IgniteRunnable.</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p>AFFINITY_CALL</p></td>
 <td style="text-align: left;"><p>IgniteCallable.</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>AFFINITY_RUN</p></td>
 <td style="text-align: left;"><p>IgniteRunnable.</p></td>
 </tr>

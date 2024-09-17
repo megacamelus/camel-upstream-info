@@ -24,7 +24,7 @@ The ringbuffer producer provides 5 operations:
 
 -   capacity
 
-## Sample for **put**:
+## Example for **put**:
 
 Java DSL  
 from("direct:put")
@@ -41,7 +41,7 @@ Spring XML
 <to uri="hazelcast-ringbuffer:foo" />  
 </route>
 
-## Sample for **readonce from head**:
+## Example for **readonce from head**:
 
 Java DSL:
 

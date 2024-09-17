@@ -9,21 +9,25 @@ Components](#kubernetes-summary.adoc) which provides a producer to
 execute Kubernetes Service operations and a consumer to consume events
 related to Service objects.
 
-# Supported producer operation
+# Usage
 
--   listServices
+## Supported producer operation
 
--   listServicesByLabels
+-   `listServices`
 
--   getService
+-   `listServicesByLabels`
 
--   createService
+-   `getService`
 
--   deleteService
+-   `createService`
 
-# Kubernetes Services Producer Examples
+-   `deleteService`
 
--   listServices: this operation list the services on a kubernetes
+# Examples
+
+## Kubernetes Services Producer Examples
+
+-   `listServices`: this operation lists the services on a kubernetes
     cluster
 
 <!-- -->
@@ -32,10 +36,10 @@ related to Service objects.
         toF("kubernetes-services:///?kubernetesClient=#kubernetesClient&operation=listServices").
         to("mock:result");
 
-This operation return a List of services from your cluster
+This operation returns a List of services from your cluster
 
--   listServicesByLabels: this operation list the deployments by labels
-    on a kubernetes cluster
+-   `listServicesByLabels`: this operation lists the deployments by
+    labels on a kubernetes cluster
 
 <!-- -->
 
@@ -51,10 +55,10 @@ This operation return a List of services from your cluster
         toF("kubernetes-services:///?kubernetesClient=#kubernetesClient&operation=listServicesByLabels").
         to("mock:result");
 
-This operation return a List of Services from your cluster, using a
+This operation returns a list of services from your cluster using a
 label selector (with key1 and key2, with value value1 and value2)
 
-# Kubernetes Services Consumer Example
+## Kubernetes Services Consumer Example
 
     fromF("kubernetes-services://%s?oauthToken=%s&namespace=default&resourceName=test", host, authToken).process(new KubernertesProcessor()).to("mock:result");
     

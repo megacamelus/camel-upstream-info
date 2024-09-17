@@ -85,7 +85,7 @@ side:
     from("direct:listClusters")
         .to("aws2-ecs://test?ecsClient=#amazonEcsClient&operation=listClusters")
 
-# Using a POJO as body
+## Using a POJO as body
 
 Sometimes building an AWS Request can be complex because of multiple
 options. We introduce the possibility to use a POJO as a body. In AWS

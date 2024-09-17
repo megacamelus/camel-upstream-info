@@ -11,6 +11,18 @@ Constrained Application Protocol is a specialized web transfer protocol
 for use with constrained nodes and constrained networks, and it is based
 on RFC 7252.
 
+Maven users will need to add the following dependency to their pom.xml
+for this component:
+
+    <dependency>
+     <groupId>org.apache.camel</groupId>
+     <artifactId>camel-coap</artifactId>
+     <version>x.x.x</version>
+     <!-- use the same version as your Camel core version -->
+    </dependency>
+
+# Usage
+
 Camel supports the DTLS, TCP and TLS protocols via the following URI
 schemes:
 
@@ -20,25 +32,25 @@ schemes:
 <col style="width: 71%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Scheme</th>
 <th style="text-align: left;">Protocol</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>coap</p></td>
 <td style="text-align: left;"><p>UDP</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p>coaps</p></td>
 <td style="text-align: left;"><p>UDP + DTLS</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>coap+tcp</p></td>
 <td style="text-align: left;"><p>TCP</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p>coaps+tcp</p></td>
 <td style="text-align: left;"><p>TCP + TLS</p></td>
 </tr>
@@ -54,28 +66,18 @@ two alternative configuration mechanisms. To use a pre-shared key,
 configure a pskStore, and to work with raw public keys, configure
 privateKey + publicKey objects.
 
-Maven users will need to add the following dependency to their pom.xml
-for this component:
-
-    <dependency>
-     <groupId>org.apache.camel</groupId>
-     <artifactId>camel-coap</artifactId>
-     <version>x.x.x</version>
-     <!-- use the same version as your Camel core version -->
-    </dependency>
-
-# Configuring the CoAP producer request method
+## Configuring the CoAP producer request method
 
 The following rules determine which request method the CoAP producer
 will use to invoke the target URI:
 
 1.  The value of the `CamelCoapMethod` header
 
-2.  **GET** if a query string is provided on the target CoAP server URI.
+2.  `GE` if a query string is provided on the target CoAP server URI.
 
-3.  **POST** if the message exchange body is not null.
+3.  `POST` if the message exchange body is not null.
 
-4.  **GET** otherwise.
+4.  `GET` otherwise.
 
 ## Component Configurations
 

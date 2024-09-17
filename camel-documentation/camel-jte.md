@@ -29,7 +29,9 @@ Where **templateName** is the classpath-local URI of the template to
 invoke; or the complete URL of the remote template (e.g.:
 `\file://folder/myfile.jte`).
 
-# JTE Context
+# Usage
+
+## JTE Context
 
 Camel will provide exchange information in the JTE context, as a
 `org.apache.camel.component.jte.Model` class with the following
@@ -41,38 +43,38 @@ information:
 <col style="width: 50%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">key</th>
 <th style="text-align: left;">value</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>exchange</code></p></td>
 <td style="text-align: left;"><p>The <code>Exchange</code> itself (only
 if allowContextMapAll=true).</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>headers</code></p></td>
 <td style="text-align: left;"><p>The headers of the message as
 <code>java.util.Map</code>.</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>body</code></p></td>
 <td style="text-align: left;"><p>The message body as
 <code>Object</code>.</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>strBody()</code></p></td>
 <td style="text-align: left;"><p>The message body converted to a
 String</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>header("key")</code></p></td>
 <td style="text-align: left;"><p>Message header with the given key
 converted to a String value.</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td
 style="text-align: left;"><p><code>exchangeProperty("key")</code></p></td>
 <td style="text-align: left;"><p>Exchange property with the given key
@@ -84,14 +86,14 @@ converted to a String value (only if allowContextMapAll=true).</p></td>
 You can set up your custom JTE data model in the message header with the
 key "**CamelJteDataModel**" just like this
 
-# Dynamic templates
+## Dynamic templates
 
 Camel provides two headers by which you can define a different resource
 location for a template or the template content itself. If any of these
 headers is set, then Camel uses this over the endpoint configured
 resource. This allows you to provide a dynamic template at runtime.
 
-# Samples
+# Examples
 
 For example, you could use something like:
 

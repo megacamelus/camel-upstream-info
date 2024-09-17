@@ -17,7 +17,9 @@ API](https://docs.docker.com/reference/api/docker_remote_api).
 
 Where **operation** is the specific action to perform on Docker.
 
-# Header Strategy
+# Usage
+
+## Header Strategy
 
 All URI options can be passed as Header properties. Values found in a
 message header take precedence over URI parameters. A header property
@@ -30,13 +32,13 @@ below
 <col style="width: 50%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">URI Option</th>
 <th style="text-align: left;">Header Property</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>containerId</p></td>
 <td style="text-align: left;"><p>CamelDockerContainerId</p></td>
 </tr>

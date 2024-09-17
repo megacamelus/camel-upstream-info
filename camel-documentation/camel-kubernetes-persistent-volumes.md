@@ -6,20 +6,24 @@
 
 The Kubernetes Persistent Volume component is one of [Kubernetes
 Components](#kubernetes-summary.adoc) which provides a producer to
-execute Kubernetes Persistent Volume operations.
+execute Kubernetes Persistent Volume (PV) operations.
 
-# Supported producer operation
+# Usage
 
--   listPersistentVolumes
+## Supported producer operation
 
--   listPersistentVolumesByLabels
+-   `listPersistentVolumes`
 
--   getPersistentVolume
+-   `listPersistentVolumesByLabels`
 
-# Kubernetes Persistent Volumes Producer Examples
+-   `getPersistentVolume`
 
--   listPersistentVolumes: this operation lists the pv on a kubernetes
-    cluster
+# Examples
+
+## Kubernetes Persistent Volumes Producer Examples
+
+-   `listPersistentVolumes`: this operation lists the PVs on a
+    kubernetes cluster
 
 <!-- -->
 
@@ -27,10 +31,10 @@ execute Kubernetes Persistent Volume operations.
         toF("kubernetes-persistent-volumes:///?kubernetesClient=#kubernetesClient&operation=listPersistentVolumes").
         to("mock:result");
 
-This operation returns a List of pv from your cluster
+This operation returns a list of PVs from your cluster
 
--   listPersistentVolumesByLabels: this operation lists the pv by labels
-    on a kubernetes cluster
+-   `listPersistentVolumesByLabels`: this operation lists the PVs by
+    labels on a kubernetes cluster
 
 <!-- -->
 
@@ -46,7 +50,7 @@ This operation returns a List of pv from your cluster
         toF("kubernetes-persistent-volumes:///?kubernetesClient=#kubernetesClient&operation=listPersistentVolumesByLabels").
         to("mock:result");
 
-This operation returns a List of pv from your cluster, using a label
+This operation returns a list of PVs from your cluster using a label
 selector (with key1 and key2, with value value1 and value2)
 
 ## Component Configurations

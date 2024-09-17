@@ -69,7 +69,9 @@ within the current CamelContext.
 
 # Options
 
-# Wait strategies
+# Usage
+
+## Wait strategies
 
 The wait strategy effects the type of waiting performed by the consumer
 threads that are currently waiting for the next exchange to be
@@ -82,14 +84,14 @@ published. The following strategies can be chosen:
 <col style="width: 44%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Name</th>
 <th style="text-align: left;">Description</th>
 <th style="text-align: left;">Advice</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>Blocking</p></td>
 <td style="text-align: left;"><p>Blocking strategy that uses a lock and
 condition variable for Consumers waiting on a barrier.</p></td>
@@ -97,7 +99,7 @@ condition variable for Consumers waiting on a barrier.</p></td>
 throughput and low latency are not as important as CPU
 resource.</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p>Sleeping</p></td>
 <td style="text-align: left;"><p>Sleeping strategy that initially spins
 then uses a <code>Thread.yield()</code>, and eventually for the minimum
@@ -107,7 +109,7 @@ waiting on a barrier.</p></td>
 between performance and CPU resource. Latency spikes can occur after
 quiet periods.</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>BusySpin</p></td>
 <td style="text-align: left;"><p>Busy Spin strategy that uses a busy
 spin loop for Consumers waiting on a barrier.</p></td>
@@ -115,7 +117,7 @@ spin loop for Consumers waiting on a barrier.</p></td>
 avoid <em>syscalls</em> which can introduce latency jitter. It is best
 used when threads can be bound to specific CPU cores.</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p>Yielding</p></td>
 <td style="text-align: left;"><p>Yielding strategy that uses a
 <code>Thread.yield()</code> for Consumers waiting on a barrier after an
@@ -127,11 +129,13 @@ latency spikes.</p></td>
 </tbody>
 </table>
 
-# Use of Request Reply
+## Using Request/Reply
 
-The Disruptor component supports using [Request
-Reply](#eips:requestReply-eip.adoc), where the caller will wait for the
-Async route to complete. For instance:
+The Disruptor component supports using
+[Request/Reply](#eips:requestReply-eip.adoc), where the caller will wait
+for the Async route to complete. For instance:
+
+**Request/Reply example with disruptor**
 
     from("mina:tcp://0.0.0.0:9876?textline=true&sync=true").to("disruptor:input");
     from("disruptor:input").to("bean:processInput").to("bean:createResponse");
@@ -142,11 +146,13 @@ buffer. As it is a Request Reply message, we wait for the response. When
 the consumer on the *disruptor:input* buffer is complete, it copies the
 response to the original message response.
 
-# Concurrent consumers
+## Concurrent consumers
 
 By default, the Disruptor endpoint uses a single consumer thread, but
 you can configure it to use concurrent consumer threads. So instead of
-thread pools you can use:
+thread pools, you can use:
+
+**Concurrent consumers example**
 
     from("disruptor:stageName?concurrentConsumers=5").process(...)
 
@@ -155,7 +161,7 @@ increase/shrink dynamically at runtime depending on load. Whereas the
 number of concurrent consumers is always fixed and supported by the
 Disruptor internally, so performance will be higher.
 
-# Thread pools
+## Thread pools
 
 Be aware that adding a thread pool to a Disruptor endpoint by doing
 something like:
@@ -169,7 +175,9 @@ of the performance gains achieved by using the Disruptor. Instead, it is
 advices to directly configure the number of threads that process
 messages on a Disruptor endpoint using the concurrentConsumers option.
 
-# Sample
+# Examples
+
+## Requests to async queue
 
 In the route below, we use the Disruptor to send the request to this
 async queue. As such, it is able to send a *fire-and-forget* message for
@@ -196,7 +204,7 @@ another thread for further processing. Since this is from a unit test,
 it will be sent to a mock endpoint where we can do assertions in the
 unit test.
 
-# Using multipleConsumers
+## Using multipleConsumers
 
 In this example, we have defined two consumers and registered them as
 spring beans.
@@ -230,7 +238,7 @@ Disruptor.
     
     }
 
-# Extracting disruptor information
+## Extracting disruptor information
 
 If needed, information such as buffer size, etc. can be obtained without
 using JMX in this fashion:
@@ -259,7 +267,7 @@ using JMX in this fashion:
 |Name|Description|Default|Type|
 |---|---|---|---|
 |name|Name of queue||string|
-|size|The maximum capacity of the Disruptors ringbuffer Will be effectively increased to the nearest power of two. Notice: Mind if you use this option, then its the first endpoint being created with the queue name, that determines the size. To make sure all endpoints use same size, then configure the size option on all of them, or the first endpoint being created.|1024|integer|
+|size|The maximum capacity of the Disruptors ringbuffer Will be effectively increased to the nearest power of two. Notice: Mind if you use this option, then it's the first endpoint being created with the queue name that determines the size. To make sure all endpoints use the same size, then configure the size option on all of them, or the first endpoint being created.|1024|integer|
 |concurrentConsumers|Number of concurrent threads processing exchanges.|1|integer|
 |multipleConsumers|Specifies whether multiple consumers are allowed. If enabled, you can use Disruptor for Publish-Subscribe messaging. That is, you can send a message to the queue and have each consumer receive a copy of the message. When enabled, this option should be specified on every consumer endpoint.|false|boolean|
 |waitStrategy|Defines the strategy used by consumer threads to wait on new exchanges to be published. The options allowed are:Blocking, Sleeping, BusySpin and Yielding.|Blocking|object|

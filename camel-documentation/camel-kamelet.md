@@ -17,7 +17,9 @@ accepts additional parameters that are passed to the [Route
 Template](#manual::route-template.adoc) engine and consumed upon route
 materialization.
 
-# Discovery
+# Usage
+
+## Discovery
 
 If a [Route Template](#manual::route-template.adoc) is not found, the
 **kamelet** endpoint tries to load the related **kamelet** definition
@@ -25,7 +27,7 @@ from the file system (by default `classpath:kamelets`). The default
 resolution mechanism expects *Kamelets* files to have the extension
 `.kamelet.yaml`.
 
-# Samples
+# Examples
 
 *Kamelets* can be used as if they were standard Camel components. For
 example, suppose that we have created a Route Template as follows:

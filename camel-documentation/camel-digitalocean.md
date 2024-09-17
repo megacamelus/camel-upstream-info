@@ -34,19 +34,21 @@ enumeration.
 All **header** names used by the component are defined in
 `DigitalOceanHeaders` enumeration.
 
-# Message body result
+# Usage
+
+## Message body result
 
 All message bodies returned are using objects provided by the
 **digitalocean-api-java** library.
 
-# API Rate Limits
+## API Rate Limits
 
 DigitalOcean REST API encapsulated by camel-digitalocean component is
 subjected to API Rate Limiting. ou can find the per-method limits in the
 [API Rate Limits
 documentation](https://developers.digitalocean.com/documentation/v2/#rate-limit).
 
-# Account endpoint
+## Account endpoint
 
 <table>
 <colgroup>
@@ -56,7 +58,7 @@ documentation](https://developers.digitalocean.com/documentation/v2/#rate-limit)
 <col style="width: 19%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">operation</th>
 <th style="text-align: left;">Description</th>
 <th style="text-align: center;">Headers</th>
@@ -64,7 +66,7 @@ documentation](https://developers.digitalocean.com/documentation/v2/#rate-limit)
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>get</code></p></td>
 <td style="text-align: left;"><p>get account info</p></td>
 <td style="text-align: center;"></td>
@@ -74,7 +76,7 @@ style="text-align: left;"><p><code>com.myjeeva.digitalocean.pojo.Account</code><
 </tbody>
 </table>
 
-# BlockStorages endpoint
+## BlockStorages endpoint
 
 <table>
 <colgroup>
@@ -84,7 +86,7 @@ style="text-align: left;"><p><code>com.myjeeva.digitalocean.pojo.Account</code><
 <col style="width: 7%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">operation</th>
 <th style="text-align: left;">Description</th>
 <th style="text-align: center;">Headers</th>
@@ -92,7 +94,7 @@ style="text-align: left;"><p><code>com.myjeeva.digitalocean.pojo.Account</code><
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>list</code></p></td>
 <td style="text-align: left;"><p>list all the Block Storage volumes
 available on your account</p></td>
@@ -100,7 +102,7 @@ available on your account</p></td>
 <td
 style="text-align: left;"><p><code>List&lt;com.myjeeva.digitalocean.pojo.Volume&gt;</code></p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>get</code></p></td>
 <td style="text-align: left;"><p>show information about a Block Storage
 volume</p></td>
@@ -108,7 +110,7 @@ volume</p></td>
 <td
 style="text-align: left;"><p><code>com.myjeeva.digitalocean.pojo.Volume</code></p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>get</code></p></td>
 <td style="text-align: left;"><p>show information about a Block Storage
 volume by name</p></td>
@@ -117,7 +119,7 @@ volume by name</p></td>
 <td
 style="text-align: left;"><p><code>com.myjeeva.digitalocean.pojo.Volume</code></p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>listSnapshots</code></p></td>
 <td style="text-align: left;"><p>retrieve the snapshots that have been
 created from a volume</p></td>
@@ -125,7 +127,7 @@ created from a volume</p></td>
 <td
 style="text-align: left;"><p><code>List&lt;com.myjeeva.digitalocean.pojo.Snapshot&gt;</code></p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>create</code></p></td>
 <td style="text-align: left;"><p>create a new volume</p></td>
 <td style="text-align: center;"><pre><code>`CamelDigitalOceanVolumeSizeGigabytes` _Integer_, +
@@ -135,7 +137,7 @@ style="text-align: left;"><p><code>List&lt;com.myjeeva.digitalocean.pojo.Snapsho
 <td
 style="text-align: left;"><p><code>com.myjeeva.digitalocean.pojo.Volume</code></p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>delete</code></p></td>
 <td style="text-align: left;"><p>delete a Block Storage volume,
 destroying all data and removing it from your account</p></td>
@@ -143,7 +145,7 @@ destroying all data and removing it from your account</p></td>
 <td
 style="text-align: left;"><p><code>com.myjeeva.digitalocean.pojo.Delete</code></p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>delete</code></p></td>
 <td style="text-align: left;"><p>delete a Block Storage volume by
 name</p></td>
@@ -152,7 +154,7 @@ name</p></td>
 <td
 style="text-align: left;"><p><code>com.myjeeva.digitalocean.pojo.Delete</code></p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>attach</code></p></td>
 <td style="text-align: left;"><p>attach a Block Storage volume to a
 Droplet</p></td>
@@ -162,7 +164,7 @@ Droplet</p></td>
 <td
 style="text-align: left;"><p><code>com.myjeeva.digitalocean.pojo.Action</code></p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>attach</code></p></td>
 <td style="text-align: left;"><p>attach a Block Storage volume to a
 Droplet by name</p></td>
@@ -172,7 +174,7 @@ Droplet by name</p></td>
 <td
 style="text-align: left;"><p><code>com.myjeeva.digitalocean.pojo.Action</code></p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>detach</code></p></td>
 <td style="text-align: left;"><p>detach a Block Storage volume from a
 Droplet</p></td>
@@ -182,7 +184,7 @@ Droplet</p></td>
 <td
 style="text-align: left;"><p><code>com.myjeeva.digitalocean.pojo.Action</code></p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>attach</code></p></td>
 <td style="text-align: left;"><p>detach a Block Storage volume from a
 Droplet by name</p></td>
@@ -192,7 +194,7 @@ Droplet by name</p></td>
 <td
 style="text-align: left;"><p><code>com.myjeeva.digitalocean.pojo.Action</code></p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>resize</code></p></td>
 <td style="text-align: left;"><p>resize a Block Storage volume</p></td>
 <td style="text-align: center;"><pre><code>`CamelDigitalOceanVolumeSizeGigabytes` _Integer_, +
@@ -200,7 +202,7 @@ style="text-align: left;"><p><code>com.myjeeva.digitalocean.pojo.Action</code></
 <td
 style="text-align: left;"><p><code>com.myjeeva.digitalocean.pojo.Action</code></p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>listActions</code></p></td>
 <td style="text-align: left;"><p>retrieve all actions that have been
 executed on a volume</p></td>
@@ -211,7 +213,7 @@ style="text-align: left;"><p><code>List&lt;com.myjeeva.digitalocean.pojo.Action&
 </tbody>
 </table>
 
-# Droplets endpoint
+## Droplets endpoint
 
 <table>
 <colgroup>
@@ -221,7 +223,7 @@ style="text-align: left;"><p><code>List&lt;com.myjeeva.digitalocean.pojo.Action&
 <col style="width: 19%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">operation</th>
 <th style="text-align: left;">Description</th>
 <th style="text-align: center;">Headers</th>
@@ -229,7 +231,7 @@ style="text-align: left;"><p><code>List&lt;com.myjeeva.digitalocean.pojo.Action&
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>list</code></p></td>
 <td style="text-align: left;"><p>list all Droplets in your
 account</p></td>
@@ -237,7 +239,7 @@ account</p></td>
 <td
 style="text-align: left;"><p><code>List&lt;com.myjeeva.digitalocean.pojo.Droplet&gt;</code></p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>get</code></p></td>
 <td style="text-align: left;"><p>show an individual droplet</p></td>
 <td style="text-align: center;"><p><code>CamelDigitalOceanId</code>
@@ -245,7 +247,7 @@ style="text-align: left;"><p><code>List&lt;com.myjeeva.digitalocean.pojo.Droplet
 <td
 style="text-align: left;"><p><code>com.myjeeva.digitalocean.pojo.Droplet</code></p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>create</code></p></td>
 <td style="text-align: left;"><p>create a new Droplet</p></td>
 <td style="text-align: center;"><p><code>CamelDigitalOceanName</code>
@@ -268,7 +270,7 @@ style="text-align: left;"><p><code>com.myjeeva.digitalocean.pojo.Droplet</code><
 <td
 style="text-align: left;"><p><code>com.myjeeva.digitalocean.pojo.Droplet</code></p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>create</code></p></td>
 <td style="text-align: left;"><p>create multiple Droplets</p></td>
 <td style="text-align: center;"><p><code>CamelDigitalOceanNames</code>
@@ -291,7 +293,7 @@ style="text-align: left;"><p><code>com.myjeeva.digitalocean.pojo.Droplet</code><
 <td
 style="text-align: left;"><p><code>com.myjeeva.digitalocean.pojo.Droplet</code></p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>delete</code></p></td>
 <td style="text-align: left;"><p>delete a Droplet,</p></td>
 <td style="text-align: center;"><p><code>CamelDigitalOceanId</code>
@@ -299,7 +301,7 @@ style="text-align: left;"><p><code>com.myjeeva.digitalocean.pojo.Droplet</code><
 <td
 style="text-align: left;"><p><code>com.myjeeva.digitalocean.pojo.Delete</code></p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>enableBackups</code></p></td>
 <td style="text-align: left;"><p>enable backups on an existing
 Droplet</p></td>
@@ -308,7 +310,7 @@ Droplet</p></td>
 <td
 style="text-align: left;"><p><code>com.myjeeva.digitalocean.pojo.Action</code></p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>disableBackups</code></p></td>
 <td style="text-align: left;"><p>disable backups on an existing
 Droplet</p></td>
@@ -317,7 +319,7 @@ Droplet</p></td>
 <td
 style="text-align: left;"><p><code>com.myjeeva.digitalocean.pojo.Action</code></p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>enableIpv6</code></p></td>
 <td style="text-align: left;"><p>enable IPv6 networking on an existing
 Droplet</p></td>
@@ -326,7 +328,7 @@ Droplet</p></td>
 <td
 style="text-align: left;"><p><code>com.myjeeva.digitalocean.pojo.Action</code></p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td
 style="text-align: left;"><p><code>enablePrivateNetworking</code></p></td>
 <td style="text-align: left;"><p>enable private networking on an
@@ -336,7 +338,7 @@ existing Droplet</p></td>
 <td
 style="text-align: left;"><p><code>com.myjeeva.digitalocean.pojo.Action</code></p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>reboot</code></p></td>
 <td style="text-align: left;"><p>reboot a Droplet</p></td>
 <td style="text-align: center;"><p><code>CamelDigitalOceanId</code>
@@ -344,7 +346,7 @@ style="text-align: left;"><p><code>com.myjeeva.digitalocean.pojo.Action</code></
 <td
 style="text-align: left;"><p><code>com.myjeeva.digitalocean.pojo.Action</code></p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>powerCycle</code></p></td>
 <td style="text-align: left;"><p>power cycle a Droplet</p></td>
 <td style="text-align: center;"><p><code>CamelDigitalOceanId</code>
@@ -352,7 +354,7 @@ style="text-align: left;"><p><code>com.myjeeva.digitalocean.pojo.Action</code></
 <td
 style="text-align: left;"><p><code>com.myjeeva.digitalocean.pojo.Action</code></p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>shutdown</code></p></td>
 <td style="text-align: left;"><p>shutdown a Droplet</p></td>
 <td style="text-align: center;"><p><code>CamelDigitalOceanId</code>
@@ -360,7 +362,7 @@ style="text-align: left;"><p><code>com.myjeeva.digitalocean.pojo.Action</code></
 <td
 style="text-align: left;"><p><code>com.myjeeva.digitalocean.pojo.Action</code></p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>powerOff</code></p></td>
 <td style="text-align: left;"><p>power off a Droplet</p></td>
 <td style="text-align: center;"><p><code>CamelDigitalOceanId</code>
@@ -368,7 +370,7 @@ style="text-align: left;"><p><code>com.myjeeva.digitalocean.pojo.Action</code></
 <td
 style="text-align: left;"><p><code>com.myjeeva.digitalocean.pojo.Action</code></p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>powerOn</code></p></td>
 <td style="text-align: left;"><p>power on a Droplet</p></td>
 <td style="text-align: center;"><p><code>CamelDigitalOceanId</code>
@@ -376,7 +378,7 @@ style="text-align: left;"><p><code>com.myjeeva.digitalocean.pojo.Action</code></
 <td
 style="text-align: left;"><p><code>com.myjeeva.digitalocean.pojo.Action</code></p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>restore</code></p></td>
 <td style="text-align: left;"><p>shutdown a Droplet</p></td>
 <td style="text-align: center;"><p><code>CamelDigitalOceanId</code>
@@ -385,7 +387,7 @@ style="text-align: left;"><p><code>com.myjeeva.digitalocean.pojo.Action</code></
 <td
 style="text-align: left;"><p><code>com.myjeeva.digitalocean.pojo.Action</code></p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>passwordReset</code></p></td>
 <td style="text-align: left;"><p>reset the password for a
 Droplet</p></td>
@@ -394,7 +396,7 @@ Droplet</p></td>
 <td
 style="text-align: left;"><p><code>com.myjeeva.digitalocean.pojo.Action</code></p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>resize</code></p></td>
 <td style="text-align: left;"><p>resize a Droplet</p></td>
 <td style="text-align: center;"><p><code>CamelDigitalOceanId</code>
@@ -403,7 +405,7 @@ style="text-align: left;"><p><code>com.myjeeva.digitalocean.pojo.Action</code></
 <td
 style="text-align: left;"><p><code>com.myjeeva.digitalocean.pojo.Action</code></p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>rebuild</code></p></td>
 <td style="text-align: left;"><p>rebuild a Droplet</p></td>
 <td style="text-align: center;"><p><code>CamelDigitalOceanId</code>
@@ -412,7 +414,7 @@ style="text-align: left;"><p><code>com.myjeeva.digitalocean.pojo.Action</code></
 <td
 style="text-align: left;"><p><code>com.myjeeva.digitalocean.pojo.Action</code></p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>rename</code></p></td>
 <td style="text-align: left;"><p>rename a Droplet</p></td>
 <td style="text-align: center;"><p><code>CamelDigitalOceanId</code>
@@ -421,7 +423,7 @@ style="text-align: left;"><p><code>com.myjeeva.digitalocean.pojo.Action</code></
 <td
 style="text-align: left;"><p><code>com.myjeeva.digitalocean.pojo.Action</code></p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>changeKernel</code></p></td>
 <td style="text-align: left;"><p>change the kernel of a Droplet</p></td>
 <td style="text-align: center;"><p><code>CamelDigitalOceanId</code>
@@ -430,7 +432,7 @@ style="text-align: left;"><p><code>com.myjeeva.digitalocean.pojo.Action</code></
 <td
 style="text-align: left;"><p><code>com.myjeeva.digitalocean.pojo.Action</code></p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>takeSnapshot</code></p></td>
 <td style="text-align: left;"><p>snapshot a Droplet</p></td>
 <td style="text-align: center;"><p><code>CamelDigitalOceanId</code>
@@ -439,7 +441,7 @@ style="text-align: left;"><p><code>com.myjeeva.digitalocean.pojo.Action</code></
 <td
 style="text-align: left;"><p><code>com.myjeeva.digitalocean.pojo.Action</code></p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>tag</code></p></td>
 <td style="text-align: left;"><p>tag a Droplet</p></td>
 <td style="text-align: center;"><p><code>CamelDigitalOceanId</code>
@@ -448,7 +450,7 @@ style="text-align: left;"><p><code>com.myjeeva.digitalocean.pojo.Action</code></
 <td
 style="text-align: left;"><p><code>com.myjeeva.digitalocean.pojo.Response</code></p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>untag</code></p></td>
 <td style="text-align: left;"><p>untag a Droplet</p></td>
 <td style="text-align: center;"><p><code>CamelDigitalOceanId</code>
@@ -457,7 +459,7 @@ style="text-align: left;"><p><code>com.myjeeva.digitalocean.pojo.Response</code>
 <td
 style="text-align: left;"><p><code>com.myjeeva.digitalocean.pojo.Response</code></p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>listKernels</code></p></td>
 <td style="text-align: left;"><p>retrieve a list of all kernels
 available to a Droplet</p></td>
@@ -466,7 +468,7 @@ available to a Droplet</p></td>
 <td
 style="text-align: left;"><p><code>List&lt;com.myjeeva.digitalocean.pojo.Kernel&gt;</code></p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>listSnapshots</code></p></td>
 <td style="text-align: left;"><p>retrieve the snapshots that have been
 created from a Droplet</p></td>
@@ -475,7 +477,7 @@ created from a Droplet</p></td>
 <td
 style="text-align: left;"><p><code>List&lt;com.myjeeva.digitalocean.pojo.Snapshot&gt;</code></p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>listBackups</code></p></td>
 <td style="text-align: left;"><p>retrieve any backups associated with a
 Droplet</p></td>
@@ -484,7 +486,7 @@ Droplet</p></td>
 <td
 style="text-align: left;"><p><code>List&lt;com.myjeeva.digitalocean.pojo.Backup&gt;</code></p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>listActions</code></p></td>
 <td style="text-align: left;"><p>retrieve all actions that have been
 executed on a Droplet</p></td>
@@ -493,7 +495,7 @@ executed on a Droplet</p></td>
 <td
 style="text-align: left;"><p><code>List&lt;com.myjeeva.digitalocean.pojo.Action&gt;</code></p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>listNeighbors</code></p></td>
 <td style="text-align: left;"><p>retrieve a list of droplets that are
 running on the same physical server</p></td>
@@ -502,7 +504,7 @@ running on the same physical server</p></td>
 <td
 style="text-align: left;"><p><code>List&lt;com.myjeeva.digitalocean.pojo.Droplet&gt;</code></p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>listAllNeighbors</code></p></td>
 <td style="text-align: left;"><p>retrieve a list of any droplets that
 are running on the same physical hardware</p></td>
@@ -513,7 +515,7 @@ style="text-align: left;"><p><code>List&lt;com.myjeeva.digitalocean.pojo.Droplet
 </tbody>
 </table>
 
-# Images endpoint
+## Images endpoint
 
 <table>
 <colgroup>
@@ -523,7 +525,7 @@ style="text-align: left;"><p><code>List&lt;com.myjeeva.digitalocean.pojo.Droplet
 <col style="width: 19%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">operation</th>
 <th style="text-align: left;">Description</th>
 <th style="text-align: center;">Headers</th>
@@ -531,7 +533,7 @@ style="text-align: left;"><p><code>List&lt;com.myjeeva.digitalocean.pojo.Droplet
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>list</code></p></td>
 <td style="text-align: left;"><p>list images available on your
 account</p></td>
@@ -540,7 +542,7 @@ account</p></td>
 <td
 style="text-align: left;"><p><code>List&lt;com.myjeeva.digitalocean.pojo.Image&gt;</code></p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>ownList</code></p></td>
 <td style="text-align: left;"><p>retrieve only the private images of a
 user</p></td>
@@ -548,7 +550,7 @@ user</p></td>
 <td
 style="text-align: left;"><p><code>List&lt;com.myjeeva.digitalocean.pojo.Image&gt;</code></p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>listActions</code></p></td>
 <td style="text-align: left;"><p>retrieve all actions that have been
 executed on an Image</p></td>
@@ -557,7 +559,7 @@ executed on an Image</p></td>
 <td
 style="text-align: left;"><p><code>List&lt;com.myjeeva.digitalocean.pojo.Action&gt;</code></p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>get</code></p></td>
 <td style="text-align: left;"><p>retrieve information about an image
 (public or private) by id</p></td>
@@ -566,7 +568,7 @@ style="text-align: left;"><p><code>List&lt;com.myjeeva.digitalocean.pojo.Action&
 <td
 style="text-align: left;"><p><code>com.myjeeva.digitalocean.pojo.Image</code></p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>get</code></p></td>
 <td style="text-align: left;"><p>retrieve information about a public
 image by slug</p></td>
@@ -576,7 +578,7 @@ style="text-align: center;"><p><code>CamelDigitalOceanDropletImage</code>
 <td
 style="text-align: left;"><p><code>com.myjeeva.digitalocean.pojo.Image</code></p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>update</code></p></td>
 <td style="text-align: left;"><p>update an image</p></td>
 <td style="text-align: center;"><p><code>CamelDigitalOceanId</code>
@@ -585,7 +587,7 @@ style="text-align: left;"><p><code>com.myjeeva.digitalocean.pojo.Image</code></p
 <td
 style="text-align: left;"><p><code>com.myjeeva.digitalocean.pojo.Image</code></p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>delete</code></p></td>
 <td style="text-align: left;"><p>delete an image</p></td>
 <td style="text-align: center;"><p><code>CamelDigitalOceanId</code>
@@ -593,7 +595,7 @@ style="text-align: left;"><p><code>com.myjeeva.digitalocean.pojo.Image</code></p
 <td
 style="text-align: left;"><p><code>com.myjeeva.digitalocean.pojo.Delete</code></p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>transfer</code></p></td>
 <td style="text-align: left;"><p>transfer an image to another
 region</p></td>
@@ -603,7 +605,7 @@ region</p></td>
 <td
 style="text-align: left;"><p><code>com.myjeeva.digitalocean.pojo.Action</code></p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>convert</code></p></td>
 <td style="text-align: left;"><p>convert an image, for example, a backup
 to a snapshot</p></td>
@@ -615,7 +617,7 @@ style="text-align: left;"><p><code>com.myjeeva.digitalocean.pojo.Action</code></
 </tbody>
 </table>
 
-# Snapshots endpoint
+## Snapshots endpoint
 
 <table>
 <colgroup>
@@ -625,7 +627,7 @@ style="text-align: left;"><p><code>com.myjeeva.digitalocean.pojo.Action</code></
 <col style="width: 19%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">operation</th>
 <th style="text-align: left;">Description</th>
 <th style="text-align: center;">Headers</th>
@@ -633,7 +635,7 @@ style="text-align: left;"><p><code>com.myjeeva.digitalocean.pojo.Action</code></
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>list</code></p></td>
 <td style="text-align: left;"><p>list all the snapshots available on
 your account</p></td>
@@ -642,7 +644,7 @@ your account</p></td>
 <td
 style="text-align: left;"><p><code>List&lt;com.myjeeva.digitalocean.pojo.Snapshot&gt;</code></p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>get</code></p></td>
 <td style="text-align: left;"><p>retrieve information about a
 snapshot</p></td>
@@ -651,7 +653,7 @@ snapshot</p></td>
 <td
 style="text-align: left;"><p><code>com.myjeeva.digitalocean.pojo.Snapshot</code></p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>delete</code></p></td>
 <td style="text-align: left;"><p>delete an snapshot</p></td>
 <td style="text-align: center;"><p><code>CamelDigitalOceanId</code>
@@ -662,7 +664,7 @@ style="text-align: left;"><p><code>com.myjeeva.digitalocean.pojo.Delete</code></
 </tbody>
 </table>
 
-# Keys endpoint
+## Keys endpoint
 
 <table>
 <colgroup>
@@ -672,7 +674,7 @@ style="text-align: left;"><p><code>com.myjeeva.digitalocean.pojo.Delete</code></
 <col style="width: 19%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">operation</th>
 <th style="text-align: left;">Description</th>
 <th style="text-align: center;">Headers</th>
@@ -680,7 +682,7 @@ style="text-align: left;"><p><code>com.myjeeva.digitalocean.pojo.Delete</code></
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>list</code></p></td>
 <td style="text-align: left;"><p>list all the keys in your
 account</p></td>
@@ -688,7 +690,7 @@ account</p></td>
 <td
 style="text-align: left;"><p><code>List&lt;com.myjeeva.digitalocean.pojo.Key&gt;</code></p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>get</code></p></td>
 <td style="text-align: left;"><p>retrieve information about a key by
 id</p></td>
@@ -697,7 +699,7 @@ id</p></td>
 <td
 style="text-align: left;"><p><code>com.myjeeva.digitalocean.pojo.Key</code></p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>get</code></p></td>
 <td style="text-align: left;"><p>retrieve information about a key by
 fingerprint</p></td>
@@ -707,7 +709,7 @@ style="text-align: center;"><p><code>CamelDigitalOceanKeyFingerprint</code>
 <td
 style="text-align: left;"><p><code>com.myjeeva.digitalocean.pojo.Key</code></p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>update</code></p></td>
 <td style="text-align: left;"><p>update a key by id</p></td>
 <td style="text-align: center;"><p><code>CamelDigitalOceanId</code>
@@ -716,7 +718,7 @@ style="text-align: left;"><p><code>com.myjeeva.digitalocean.pojo.Key</code></p><
 <td
 style="text-align: left;"><p><code>com.myjeeva.digitalocean.pojo.Key</code></p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>update</code></p></td>
 <td style="text-align: left;"><p>update a key by fingerprint</p></td>
 <td
@@ -726,7 +728,7 @@ style="text-align: center;"><p><code>CamelDigitalOceanKeyFingerprint</code>
 <td
 style="text-align: left;"><p><code>com.myjeeva.digitalocean.pojo.Key</code></p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>delete</code></p></td>
 <td style="text-align: left;"><p>delete a key by id</p></td>
 <td style="text-align: center;"><p><code>CamelDigitalOceanId</code>
@@ -734,7 +736,7 @@ style="text-align: left;"><p><code>com.myjeeva.digitalocean.pojo.Key</code></p><
 <td
 style="text-align: left;"><p><code>com.myjeeva.digitalocean.pojo.Delete</code></p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>delete</code></p></td>
 <td style="text-align: left;"><p>delete a key by fingerprint</p></td>
 <td
@@ -746,7 +748,7 @@ style="text-align: left;"><p><code>com.myjeeva.digitalocean.pojo.Delete</code></
 </tbody>
 </table>
 
-# Regions endpoint
+## Regions endpoint
 
 <table>
 <colgroup>
@@ -756,7 +758,7 @@ style="text-align: left;"><p><code>com.myjeeva.digitalocean.pojo.Delete</code></
 <col style="width: 19%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">operation</th>
 <th style="text-align: left;">Description</th>
 <th style="text-align: center;">Headers</th>
@@ -764,7 +766,7 @@ style="text-align: left;"><p><code>com.myjeeva.digitalocean.pojo.Delete</code></
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>list</code></p></td>
 <td style="text-align: left;"><p>list all the regions that are
 available</p></td>
@@ -775,7 +777,7 @@ style="text-align: left;"><p><code>List&lt;com.myjeeva.digitalocean.pojo.Region&
 </tbody>
 </table>
 
-# Sizes endpoint
+## Sizes endpoint
 
 <table>
 <colgroup>
@@ -785,7 +787,7 @@ style="text-align: left;"><p><code>List&lt;com.myjeeva.digitalocean.pojo.Region&
 <col style="width: 19%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">operation</th>
 <th style="text-align: left;">Description</th>
 <th style="text-align: center;">Headers</th>
@@ -793,7 +795,7 @@ style="text-align: left;"><p><code>List&lt;com.myjeeva.digitalocean.pojo.Region&
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>list</code></p></td>
 <td style="text-align: left;"><p>list all the sizes that are
 available</p></td>
@@ -804,7 +806,7 @@ style="text-align: left;"><p><code>List&lt;com.myjeeva.digitalocean.pojo.Size&gt
 </tbody>
 </table>
 
-# Floating IPs endpoint
+## Floating IPs endpoint
 
 <table>
 <colgroup>
@@ -814,7 +816,7 @@ style="text-align: left;"><p><code>List&lt;com.myjeeva.digitalocean.pojo.Size&gt
 <col style="width: 19%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">operation</th>
 <th style="text-align: left;">Description</th>
 <th style="text-align: center;">Headers</th>
@@ -822,7 +824,7 @@ style="text-align: left;"><p><code>List&lt;com.myjeeva.digitalocean.pojo.Size&gt
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>list</code></p></td>
 <td style="text-align: left;"><p>list all the Floating IPs available on
 your account</p></td>
@@ -830,7 +832,7 @@ your account</p></td>
 <td
 style="text-align: left;"><p><code>List&lt;com.myjeeva.digitalocean.pojo.FloatingIP&gt;</code></p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>create</code></p></td>
 <td style="text-align: left;"><p>create a new Floating IP assigned to a
 Droplet</p></td>
@@ -839,7 +841,7 @@ Droplet</p></td>
 <td
 style="text-align: left;"><p><code>List&lt;com.myjeeva.digitalocean.pojo.FloatingIP&gt;</code></p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>create</code></p></td>
 <td style="text-align: left;"><p>create a new Floating IP assigned to a
 Region</p></td>
@@ -848,7 +850,7 @@ Region</p></td>
 <td
 style="text-align: left;"><p><code>List&lt;com.myjeeva.digitalocean.pojo.FloatingIP&gt;</code></p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>get</code></p></td>
 <td style="text-align: left;"><p>retrieve information about a Floating
 IP</p></td>
@@ -858,7 +860,7 @@ style="text-align: center;"><p><code>CamelDigitalOceanFloatingIPAddress</code>
 <td
 style="text-align: left;"><p><code>com.myjeeva.digitalocean.pojo.Key</code></p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>delete</code></p></td>
 <td style="text-align: left;"><p>delete a Floating IP and remove it from
 your account</p></td>
@@ -868,7 +870,7 @@ style="text-align: center;"><p><code>CamelDigitalOceanFloatingIPAddress</code>
 <td
 style="text-align: left;"><p><code>com.myjeeva.digitalocean.pojo.Delete</code></p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>assign</code></p></td>
 <td style="text-align: left;"><p>assign a Floating IP to a
 Droplet</p></td>
@@ -879,7 +881,7 @@ style="text-align: center;"><p><code>CamelDigitalOceanFloatingIPAddress</code>
 <td
 style="text-align: left;"><p><code>com.myjeeva.digitalocean.pojo.Action</code></p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>unassign</code></p></td>
 <td style="text-align: left;"><p>un-assign a Floating IP</p></td>
 <td
@@ -888,7 +890,7 @@ style="text-align: center;"><p><code>CamelDigitalOceanFloatingIPAddress</code>
 <td
 style="text-align: left;"><p><code>com.myjeeva.digitalocean.pojo.Action</code></p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>listActions</code></p></td>
 <td style="text-align: left;"><p>retrieve all actions that have been
 executed on a Floating IP</p></td>
@@ -901,7 +903,7 @@ style="text-align: left;"><p><code>List&lt;com.myjeeva.digitalocean.pojo.Action&
 </tbody>
 </table>
 
-# Tags endpoint
+## Tags endpoint
 
 <table>
 <colgroup>
@@ -911,7 +913,7 @@ style="text-align: left;"><p><code>List&lt;com.myjeeva.digitalocean.pojo.Action&
 <col style="width: 15%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">operation</th>
 <th style="text-align: left;">Description</th>
 <th style="text-align: center;">Headers</th>
@@ -919,14 +921,14 @@ style="text-align: left;"><p><code>List&lt;com.myjeeva.digitalocean.pojo.Action&
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>list</code></p></td>
 <td style="text-align: left;"><p>list all of your tags</p></td>
 <td style="text-align: center;"></td>
 <td
 style="text-align: left;"><p><code>List&lt;com.myjeeva.digitalocean.pojo.Tag&gt;</code></p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>create</code></p></td>
 <td style="text-align: left;"><p>create a Tag</p></td>
 <td style="text-align: center;"><p><code>CamelDigitalOceanName</code>
@@ -934,7 +936,7 @@ style="text-align: left;"><p><code>List&lt;com.myjeeva.digitalocean.pojo.Tag&gt;
 <td
 style="text-align: left;"><p><code>com.myjeeva.digitalocean.pojo.Tag</code></p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>get</code></p></td>
 <td style="text-align: left;"><p>retrieve an individual tag</p></td>
 <td style="text-align: center;"><p><code>CamelDigitalOceanName</code>
@@ -942,7 +944,7 @@ style="text-align: left;"><p><code>com.myjeeva.digitalocean.pojo.Tag</code></p><
 <td
 style="text-align: left;"><p><code>com.myjeeva.digitalocean.pojo.Tag</code></p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>delete</code></p></td>
 <td style="text-align: left;"><p>delete a tag</p></td>
 <td style="text-align: center;"><p><code>CamelDigitalOceanName</code>
@@ -950,7 +952,7 @@ style="text-align: left;"><p><code>com.myjeeva.digitalocean.pojo.Tag</code></p><
 <td
 style="text-align: left;"><p><code>com.myjeeva.digitalocean.pojo.Delete</code></p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>update</code></p></td>
 <td style="text-align: left;"><p>update a tag</p></td>
 <td style="text-align: center;"><p><code>CamelDigitalOceanName</code>
@@ -964,13 +966,13 @@ style="text-align: left;"><p><code>com.myjeeva.digitalocean.pojo.Tag</code></p><
 
 # Examples
 
-Get your account info
+**Get your account info**
 
     from("direct:getAccountInfo")
         .setHeader(DigitalOceanConstants.OPERATION, constant(DigitalOceanOperations.get))
         .to("digitalocean:account?oAuthToken=XXXXXX")
 
-Create a droplet
+**Create a droplet**
 
     from("direct:createDroplet")
         .setHeader(DigitalOceanConstants.OPERATION, constant("create"))
@@ -980,20 +982,20 @@ Create a droplet
         .setHeader(DigitalOceanHeaders.DROPLET_SIZE, constant("512mb"))
         .to("digitalocean:droplet?oAuthToken=XXXXXX")
 
-List all your droplets
+**List all your droplets**
 
     from("direct:getDroplets")
         .setHeader(DigitalOceanConstants.OPERATION, constant("list"))
         .to("digitalocean:droplets?oAuthToken=XXXXXX")
 
-Retrieve information for the Droplet (dropletId = 34772987)
+**Retrieve information for the Droplet (dropletId = 34772987)**
 
     from("direct:getDroplet")
         .setHeader(DigitalOceanConstants.OPERATION, constant("get"))
         .setHeader(DigitalOceanConstants.ID, 34772987)
         .to("digitalocean:droplet?oAuthToken=XXXXXX")
 
-Shutdown information for the Droplet (dropletId = 34772987)
+**Shutdown information for the Droplet (dropletId = 34772987)**
 
     from("direct:shutdown")
         .setHeader(DigitalOceanConstants.ID, 34772987)

@@ -361,12 +361,12 @@ Camel.
 |accessKey|Amazon AWS Access Key.||string|
 |encryptionOption|The encryption type to use when storing query results in S3. One of SSE\_S3, SSE\_KMS, or CSE\_KMS.||object|
 |kmsKey|For SSE-KMS and CSE-KMS, this is the KMS key ARN or ID.||string|
-|profileCredentialsName|If using a profile credentials provider this parameter will set the profile name||string|
+|profileCredentialsName|If using a profile credentials provider, this parameter will set the profile name||string|
 |secretKey|Amazon AWS Secret Key.||string|
 |sessionToken|Amazon AWS Session Token used when the user needs to assume an IAM role||string|
 |useDefaultCredentialsProvider|Set whether the Athena client should expect to load credentials through a default credentials provider or to expect static credentials to be passed in|false|boolean|
 |useProfileCredentialsProvider|Set whether the Athena client should expect to load credentials through a profile credentials provider.|false|boolean|
-|useSessionCredentials|Set whether the Athena client should expect to use Session Credentials. This is useful in a situation in which the user needs to assume a IAM role for doing operations in Athena.|false|boolean|
+|useSessionCredentials|Set whether the Athena client should expect to use Session Credentials. This is useful in a situation in which the user needs to assume an IAM role for doing operations in Athena.|false|boolean|
 
 ## Endpoint Configurations
 
@@ -400,9 +400,9 @@ Camel.
 |accessKey|Amazon AWS Access Key.||string|
 |encryptionOption|The encryption type to use when storing query results in S3. One of SSE\_S3, SSE\_KMS, or CSE\_KMS.||object|
 |kmsKey|For SSE-KMS and CSE-KMS, this is the KMS key ARN or ID.||string|
-|profileCredentialsName|If using a profile credentials provider this parameter will set the profile name||string|
+|profileCredentialsName|If using a profile credentials provider, this parameter will set the profile name||string|
 |secretKey|Amazon AWS Secret Key.||string|
 |sessionToken|Amazon AWS Session Token used when the user needs to assume an IAM role||string|
 |useDefaultCredentialsProvider|Set whether the Athena client should expect to load credentials through a default credentials provider or to expect static credentials to be passed in|false|boolean|
 |useProfileCredentialsProvider|Set whether the Athena client should expect to load credentials through a profile credentials provider.|false|boolean|
-|useSessionCredentials|Set whether the Athena client should expect to use Session Credentials. This is useful in a situation in which the user needs to assume a IAM role for doing operations in Athena.|false|boolean|
+|useSessionCredentials|Set whether the Athena client should expect to use Session Credentials. This is useful in a situation in which the user needs to assume an IAM role for doing operations in Athena.|false|boolean|

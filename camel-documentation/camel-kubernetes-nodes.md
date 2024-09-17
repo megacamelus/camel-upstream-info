@@ -9,23 +9,27 @@ Components](#kubernetes-summary.adoc) which provides a producer to
 execute Kubernetes Node operations and a consumer to consume events
 related to Node objects.
 
-# Supported producer operation
+# Usage
 
--   listNodes
+## Supported producer operation
 
--   listNodesByLabels
+-   `listNodes`
 
--   getNode
+-   `listNodesByLabels`
 
--   createNode
+-   `getNode`
 
--   updateNode
+-   `createNode`
 
--   deleteNode
+-   `updateNode`
 
-# Kubernetes Nodes Producer Examples
+-   `deleteNode`
 
--   listNodes: this operation lists the nodes on a kubernetes cluster
+# Examples
+
+## Kubernetes Nodes Producer Examples
+
+-   `listNodes`: this operation lists the nodes on a kubernetes cluster
 
 <!-- -->
 
@@ -35,7 +39,7 @@ related to Node objects.
 
 This operation returns a List of Nodes from your cluster
 
--   listNodesByLabels: this operation lists the nodes by labels on a
+-   `listNodesByLabels`: this operation lists the nodes by labels on a
     kubernetes cluster
 
 <!-- -->
@@ -52,10 +56,10 @@ This operation returns a List of Nodes from your cluster
         toF("kubernetes-deployments:///?kubernetesClient=#kubernetesClient&operation=listNodesByLabels").
         to("mock:result");
 
-This operation returns a List of Nodes from your cluster, using a label
+This operation returns a list of nodes from your cluster, using a label
 selector (with key1 and key2, with value value1 and value2)
 
-# Kubernetes Nodes Consumer Example
+## Kubernetes Nodes Consumer Example
 
     fromF("kubernetes-nodes://%s?oauthToken=%s&resourceName=test", host, authToken).process(new KubernertesProcessor()).to("mock:result");
         public class KubernertesProcessor implements Processor {

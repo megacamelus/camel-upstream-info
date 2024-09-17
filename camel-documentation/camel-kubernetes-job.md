@@ -8,23 +8,27 @@ The Kubernetes Job component is one of [Kubernetes
 Components](#kubernetes-summary.adoc) which provides a producer to
 execute kubernetes Job operations.
 
-# Supported producer operation
+# Usage
 
--   listJob
+## Supported producer operation
 
--   listJobByLabels
+-   `listJob`
 
--   getJob
+-   `listJobByLabels`
 
--   createJob
+-   `getJob`
 
--   updateJob
+-   `createJob`
 
--   deleteJob
+-   `updateJob`
 
-# Kubernetes Job Producer Examples
+-   `deleteJob`
 
--   listJob: this operation lists the jobs on a kubernetes cluster
+# Examples
+
+## Kubernetes Job Producer Examples
+
+-   `listJob`: this operation lists the jobs on a kubernetes cluster
 
 <!-- -->
 
@@ -32,9 +36,9 @@ execute kubernetes Job operations.
         toF("kubernetes-job:///?kubernetesClient=#kubernetesClient&operation=listJob").
         to("mock:result");
 
-This operation returns a List of Jobs from your cluster
+This operation returns a list of jobs from your cluster
 
--   listJobByLabels: this operation lists the jobs by labels on a
+-   `listJobByLabels`: this operation lists the jobs by labels on a
     kubernetes cluster
 
 <!-- -->
@@ -51,10 +55,10 @@ This operation returns a List of Jobs from your cluster
         toF("kubernetes-job:///?kubernetesClient=#kubernetesClient&operation=listJobByLabels").
         to("mock:result");
 
-This operation returns a List of Jobs from your cluster, using a label
+This operation returns a list of jobs from your cluster, using a label
 selector (with key1 and key2, with value value1 and value2)
 
--   createJob: This operation creates a job on a Kubernetes Cluster
+-   `createJob`: This operation creates a job on a Kubernetes Cluster
 
 We have a wonderful example of this operation thanks to [Emmerson
 Miranda](https://github.com/Emmerson-Miranda) from this [Java

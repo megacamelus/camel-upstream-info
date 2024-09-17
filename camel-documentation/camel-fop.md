@@ -22,7 +22,9 @@ for this component:
 
     fop://outputFormat?[options]
 
-# Output Formats
+# Usage
+
+## Output Formats
 
 The primary output format is PDF, but other output
 [formats](http://xmlgraphics.apache.org/fop/0.95/output.html) are also
@@ -35,59 +37,59 @@ supported:
 <col style="width: 79%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">name</th>
 <th style="text-align: left;">outputFormat</th>
 <th style="text-align: left;">description</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>PDF</p></td>
 <td style="text-align: left;"><p>application/pdf</p></td>
 <td style="text-align: left;"><p>Portable Document Format</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p>PS</p></td>
 <td style="text-align: left;"><p>application/postscript</p></td>
 <td style="text-align: left;"><p>Adobe Postscript</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>PCL</p></td>
 <td style="text-align: left;"><p>application/x-pcl</p></td>
 <td style="text-align: left;"><p>Printer Control Language</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p>PNG</p></td>
 <td style="text-align: left;"><p>image/png</p></td>
 <td style="text-align: left;"><p>PNG images</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>JPEG</p></td>
 <td style="text-align: left;"><p>image/jpeg</p></td>
 <td style="text-align: left;"><p>JPEG images</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p>SVG</p></td>
 <td style="text-align: left;"><p>image/svg+xml</p></td>
 <td style="text-align: left;"><p>Scalable Vector Graphics</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>XML</p></td>
 <td style="text-align: left;"><p>application/X-fop-areatree</p></td>
 <td style="text-align: left;"><p>Area tree representation</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p>MIF</p></td>
 <td style="text-align: left;"><p>application/mif</p></td>
 <td style="text-align: left;"><p>FrameMaker’s MIF</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>RTF</p></td>
 <td style="text-align: left;"><p>application/rtf</p></td>
 <td style="text-align: left;"><p>Rich Text Format</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p>TXT</p></td>
 <td style="text-align: left;"><p>text/plain</p></td>
 <td style="text-align: left;"><p>Text</p></td>
@@ -98,7 +100,7 @@ supported:
 The complete list of valid output formats can be found in the
 `MimeConstants.java` source file.
 
-# Configuration file
+## Configuration file
 
 The location of a configuration file with the following
 [structure](http://xmlgraphics.apache.org/fop/1.0/configuration.html).
@@ -106,7 +108,7 @@ The file is loaded from the classpath by default. You can use `file:`,
 or `classpath:` as prefix to load the resource from file or classpath.
 In previous releases, the file is always loaded from the file system.
 
-# Message Operations
+## Message Operations
 
 <table>
 <colgroup>
@@ -115,90 +117,101 @@ In previous releases, the file is always loaded from the file system.
 <col style="width: 79%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">name</th>
 <th style="text-align: left;">default value</th>
 <th style="text-align: left;">description</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td style="text-align: left;"><p>CamelFop.Output.Format</p></td>
+<tr class="odd">
+<td
+style="text-align: left;"><p><code>CamelFop.Output.Format</code></p></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"><p>Overrides the output format for that
 message</p></td>
 </tr>
-<tr>
-<td style="text-align: left;"><p>CamelFop.Encrypt.userPassword</p></td>
+<tr class="even">
+<td
+style="text-align: left;"><p><code>CamelFop.Encrypt.userPassword</code></p></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"><p>PDF user password</p></td>
 </tr>
-<tr>
-<td style="text-align: left;"><p>CamelFop.Encrypt.ownerPassword</p></td>
+<tr class="odd">
+<td
+style="text-align: left;"><p><code>CamelFop.Encrypt.ownerPassword</code></p></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"><p>PDF owner passoword</p></td>
 </tr>
-<tr>
-<td style="text-align: left;"><p>CamelFop.Encrypt.allowPrint</p></td>
-<td style="text-align: left;"><p>true</p></td>
+<tr class="even">
+<td
+style="text-align: left;"><p><code>CamelFop.Encrypt.allowPrint</code></p></td>
+<td style="text-align: left;"><p><code>true</code></p></td>
 <td style="text-align: left;"><p>Allows printing the PDF</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td
-style="text-align: left;"><p>CamelFop.Encrypt.allowCopyContent</p></td>
-<td style="text-align: left;"><p>true</p></td>
+style="text-align: left;"><p><code>CamelFop.Encrypt.allowCopyContent</code></p></td>
+<td style="text-align: left;"><p><code>true</code></p></td>
 <td style="text-align: left;"><p>Allows copying content of the
 PDF</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td
-style="text-align: left;"><p>CamelFop.Encrypt.allowEditContent</p></td>
-<td style="text-align: left;"><p>true</p></td>
+style="text-align: left;"><p><code>CamelFop.Encrypt.allowEditContent</code></p></td>
+<td style="text-align: left;"><p><code>true</code></p></td>
 <td style="text-align: left;"><p>Allows editing content of the
 PDF</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td
-style="text-align: left;"><p>CamelFop.Encrypt.allowEditAnnotations</p></td>
-<td style="text-align: left;"><p>true</p></td>
+style="text-align: left;"><p><code>CamelFop.Encrypt.allowEditAnnotations</code></p></td>
+<td style="text-align: left;"><p><code>true</code></p></td>
 <td style="text-align: left;"><p>Allows editing annotation of the
 PDF</p></td>
 </tr>
-<tr>
-<td style="text-align: left;"><p>CamelFop.Render.producer</p></td>
+<tr class="even">
+<td
+style="text-align: left;"><p><code>CamelFop.Render.producer</code></p></td>
 <td style="text-align: left;"><p>Apache FOP</p></td>
 <td style="text-align: left;"><p>Metadata element for the
 system/software that produces the document</p></td>
 </tr>
-<tr>
-<td style="text-align: left;"><p>CamelFop.Render.creator</p></td>
+<tr class="odd">
+<td
+style="text-align: left;"><p><code>CamelFop.Render.creator</code></p></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"><p>Metadata element for the user that
 created the document</p></td>
 </tr>
-<tr>
-<td style="text-align: left;"><p>CamelFop.Render.creationDate</p></td>
+<tr class="even">
+<td
+style="text-align: left;"><p><code>CamelFop.Render.creationDate</code></p></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"><p>Creation Date</p></td>
 </tr>
-<tr>
-<td style="text-align: left;"><p>CamelFop.Render.author</p></td>
+<tr class="odd">
+<td
+style="text-align: left;"><p><code>CamelFop.Render.author</code></p></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"><p>Author of the content of the
 document</p></td>
 </tr>
-<tr>
-<td style="text-align: left;"><p>CamelFop.Render.title</p></td>
+<tr class="even">
+<td
+style="text-align: left;"><p><code>CamelFop.Render.title</code></p></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"><p>Title of the document</p></td>
 </tr>
-<tr>
-<td style="text-align: left;"><p>CamelFop.Render.subject</p></td>
+<tr class="odd">
+<td
+style="text-align: left;"><p><code>CamelFop.Render.subject</code></p></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"><p>Subject of the document</p></td>
 </tr>
-<tr>
-<td style="text-align: left;"><p>CamelFop.Render.keywords</p></td>
+<tr class="even">
+<td
+style="text-align: left;"><p><code>CamelFop.Render.keywords</code></p></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"><p>Set of keywords applicable to this
 document</p></td>
@@ -206,9 +219,9 @@ document</p></td>
 </tbody>
 </table>
 
-# Example
+## Example
 
-Below is an example route that renders PDFs from xml data and xslt
+Below is an example route that renders PDFs from XML data and XSLT
 template and saves the PDF files in the target folder:
 
     from("file:source/data/xml")

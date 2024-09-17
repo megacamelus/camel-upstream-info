@@ -52,7 +52,7 @@ from Get Method, but also other HTTP methods.
 
 The Jetty component supports consumer endpoints.
 
-# Consumer Example
+## Consumer
 
 In this sample we define a route that exposes an HTTP service at
 `\http://localhost:8080/myapp/myservice`:
@@ -71,13 +71,13 @@ If you need to expose a Jetty endpoint on all network interfaces, the
 To listen across an entire URI prefix, see [How do I let Jetty match
 wildcards](#manual:faq:how-do-i-let-jetty-match-wildcards.adoc).
 
-# Servlets
+## Servlets
 
 If you actually want to expose routes by HTTP and already have a
 Servlet, you should instead refer to the [Servlet
 Transport](#servlet-component.adoc).
 
-# HTTP Request Parameters
+## HTTP Request Parameters
 
 So if a client sends the HTTP request, `\http://serverUri?one=hello`,
 the Jetty component will copy the HTTP request parameter, `one` to the
@@ -88,7 +88,7 @@ to another. If we used a language more powerful than
 [OGNL](#languages:ognl-language.adoc)), we could also test for the
 parameter value and do routing based on the header value as well.
 
-# Session Support
+## Session Support
 
 The session support option, `sessionSupport`, can be used to enable a
 `HttpSession` object and access the session object while processing the
@@ -111,7 +111,7 @@ follows:
         ...
     }
 
-# SSL Support (HTTPS)
+## SSL Support (HTTPS)
 
 Using the JSSE Configuration Utility
 
@@ -152,35 +152,6 @@ Spring DSL based configuration of endpoint
       </camel:sslContextParameters>
     
       <to uri="jetty:https://127.0.0.1/mail/?sslContextParameters=#sslContextParameters"/>
-
-Blueprint based configuration of endpoint
-
-Global configuration of sslContextParameters in a dedicated Blueprint
-XML file
-
-    <blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
-      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xsi:schemaLocation="http://www.osgi.org/xmlns/blueprint/v1.0.0 https://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd">
-    
-      <sslContextParameters id="sslContextParameters" xmlns="http://camel.apache.org/schema/blueprint">
-        <keyManagers keyPassword="keyPassword">
-          <keyStore resource="etc/keystore.p12" password="keystorePassword"/>
-          </keyManagers>
-      </sslContextParameters>
-    
-      <service ref="sslContextParameters" auto-export="all-classes"/>
-    </blueprint>
-
-Use of the global configuration in other Blueprint XML files with route
-definitions
-
-    ...
-    <reference id="sslContextParameters" interface="org.apache.camel.support.jsse.SSLContextParameters" ext:proxy-method="classes" />
-    
-      <camelContext xmlns="http://camel.apache.org/schema/blueprint">
-        <route>
-         <from uri="jetty:https://0.0.0.0/path?sslContextParameters=#sslContextParameters"/>
-    ...
 
 Configuring Jetty Directly
 
@@ -237,7 +208,7 @@ client doesn’t need a certificate but can have one.
 The value you use as keys in the above map is the port you configure
 Jetty to listen to.
 
-## Configuring general SSL properties
+### Configuring general SSL properties
 
 Instead of a per-port number specific SSL socket connector (as shown
 above), you can now configure general properties that apply for all SSL
@@ -256,7 +227,7 @@ port number as entry).
         </property>
     </bean>
 
-## How to obtain reference to the X509Certificate
+### How to obtain reference to the X509Certificate
 
 Jetty stores a reference to the certificate in the HttpServletRequest
 which you can access from code as follows:
@@ -264,7 +235,7 @@ which you can access from code as follows:
     HttpServletRequest req = exchange.getIn().getBody(HttpServletRequest.class);
     X509Certificate cert = (X509Certificate) req.getAttribute("javax.servlet.request.X509Certificate")
 
-## Configuring general HTTP properties
+### Configuring general HTTP properties
 
 Instead of a per-port number specific HTTP socket connector (as shown
 above), you can now configure general properties that apply for all HTTP
@@ -280,7 +251,7 @@ port number as entry).
         </property>
     </bean>
 
-## Obtaining X-Forwarded-For header with HttpServletRequest.getRemoteAddr()
+### Obtaining X-Forwarded-For header with HttpServletRequest.getRemoteAddr()
 
 If the HTTP requests are handled by an Apache server and forwarded to
 jetty with mod\_proxy, the original client IP address is in the
@@ -309,7 +280,7 @@ This is particularly useful when an existing Apache server handles TLS
 connections for a domain and proxies them to application servers
 internally.
 
-# Default behavior for returning HTTP status codes
+## Default behavior for returning HTTP status codes
 
 The default behavior of HTTP status codes is defined by the
 `org.apache.camel.component.http.DefaultHttpBinding` class, which
@@ -322,7 +293,7 @@ returned, and the stacktrace is returned in the body. If you want to
 specify which HTTP status code to return, set the code in the
 `Exchange.HTTP_RESPONSE_CODE` header of the OUT message.
 
-# Customizing HttpBinding
+## Customizing HttpBinding
 
 By default, Camel uses the
 `org.apache.camel.component.http.DefaultHttpBinding` to handle how a
@@ -345,7 +316,7 @@ And then we can reference this binding when we define the route:
       <to uri="bean:doSomething"/>
     </route>
 
-# Jetty handlers and security configuration
+## Jetty handlers and security configuration
 
 You can configure a list of Jetty handlers on the endpoint, which can be
 useful for enabling advanced Jetty security features. These handlers are
@@ -398,71 +369,12 @@ You can configure a list of Jetty handlers as follows:
 
 You can then define the endpoint as:
 
-    from("jetty:http://0.0.0.0:9080/myservice?handlers=securityHandler")
+    from("jetty:http://0.0.0.0:9080/myservice?handlers=securityHandler");
 
 If you need more handlers, set the `handlers` option equal to a
 comma-separated list of bean IDs.
 
-Blueprint-based definition of basic authentication (based on Jetty 12):
-
-    <blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
-      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xsi:schemaLocation="http://www.osgi.org/xmlns/blueprint/v1.0.0 https://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd"
-      xmlns:ext="http://aries.apache.org/blueprint/xmlns/blueprint-ext/v1.0.0">
-    
-      <bean id="constraint" class="org.eclipse.jetty.util.security.Constraint">
-        <property name="name" value="BASIC"/>
-        <property name="authenticate" value="true"/>
-          <property name="roles">
-            <list>
-              <value>rolename1</value>
-            </list>
-          </property>
-      </bean>
-    
-      <bean id="constraintMapping" class="org.eclipse.jetty.security.ConstraintMapping">
-        <property name="constraint" ref="constraint"/>
-        <property name="pathSpec" value="/path"/>
-      </bean>
-    
-      <bean id="securityHandler" class="org.eclipse.jetty.security.ConstraintSecurityHandler">
-        <property name="loginService">
-          <bean class="org.eclipse.jetty.security.HashLoginService">
-            <property name="config" value="/opt/apache-karaf/etc/roles.properties"/>
-            <property name="hotReload" value="true"/>
-          </bean>
-        </property>
-        <property name="authenticator">
-          <bean class="org.eclipse.jetty.security.authentication.BasicAuthenticator"/>
-        </property>
-        <property name="constraintMappings">
-          <list>
-            <ref component-id="constraintMapping"/>
-          </list>
-        </property>
-      </bean>
-    
-      <camelContext xmlns="http://camel.apache.org/schema/blueprint">
-    
-        <route>
-          <from uri="jetty:http://0.0.0.0/path?handlers=securityHandler"/>
-    ...
-
-The `roles.properties` files contain
-
-    username1=password1,rolename1
-    username2=password2,rolename1
-
-This file is located in the `etc` folder and will be reloaded when
-changed. The endpoint:
-
-    http://0.0.0.0/path
-
-It is now secured with basic authentication. Only `username1` with
-`password1` and `username2` with `password2` are able to access the
-endpoint.
-
-# How to return a custom HTTP 500 reply message
+## How to return a custom HTTP 500 reply message
 
 You may want to return a custom reply message when something goes wrong,
 instead of the default reply message Camel
@@ -472,7 +384,7 @@ be easier to use Camel’s Exception Clause to construct the custom reply
 message. For example, as show here, where we return
 `Dude something went wrong` with HTTP error code 500:
 
-# Multipart Form support
+## Multipart Form support
 
 The camel-jetty component supports multipart form post out of the box.
 The submitted form-data are mapped into the message header. Camel Jetty
@@ -480,7 +392,7 @@ creates an attachment for each uploaded file. The file name is mapped to
 the name of the attachment. The content type is set as the content type
 of the attachment file name. You can find the example here.
 
-# Jetty JMX support
+## Jetty JMX support
 
 The camel-jetty component supports the enabling of Jetty’s JMX
 capabilities at the component and endpoint level with the endpoint
@@ -556,7 +468,7 @@ collisions when registering Jetty MBeans.
 |headerFilterStrategy|To use a custom HeaderFilterStrategy to filter header to and from Camel message.||object|
 |httpBinding|To use a custom HttpBinding to control the mapping between Camel message and HttpClient.||object|
 |chunked|If this option is false the Servlet will disable the HTTP streaming and set the content-length header on the response|true|boolean|
-|disableStreamCache|Determines whether or not the raw input stream from Servlet is cached or not (Camel will read the stream into a in memory/overflow to file, Stream caching) cache. By default Camel will cache the Servlet input stream to support reading it multiple times to ensure it Camel can retrieve all data from the stream. However you can set this option to true when you for example need to access the raw stream, such as streaming it directly to a file or other persistent store. DefaultHttpBinding will copy the request input stream into a stream cache and put it into message body if this option is false to support reading the stream multiple times. If you use Servlet to bridge/proxy an endpoint then consider enabling this option to improve performance, in case you do not need to read the message payload multiple times. The http producer will by default cache the response body stream. If setting this option to true, then the producers will not cache the response body stream but use the response stream as-is as the message body.|false|boolean|
+|disableStreamCache|Determines whether or not the raw input stream is cached or not. The Camel consumer (camel-servlet, camel-jetty etc.) will by default cache the input stream to support reading it multiple times to ensure it Camel can retrieve all data from the stream. However you can set this option to true when you for example need to access the raw stream, such as streaming it directly to a file or other persistent store. DefaultHttpBinding will copy the request input stream into a stream cache and put it into message body if this option is false to support reading the stream multiple times. If you use Servlet to bridge/proxy an endpoint then consider enabling this option to improve performance, in case you do not need to read the message payload multiple times. The producer (camel-http) will by default cache the response body stream. If setting this option to true, then the producers will not cache the response body stream but use the response stream as-is (the stream can only be read once) as the message body.|false|boolean|
 |transferException|If enabled and an Exchange failed processing on the consumer side, and if the caused Exception was send back serialized in the response as a application/x-java-serialized-object content type. On the producer side the exception will be deserialized and thrown as is, instead of the HttpOperationFailedException. The caused exception is required to be serialized. This is by default turned off. If you enable this then be aware that Java will deserialize the incoming data from the request to Java and that can be a potential security risk.|false|boolean|
 |async|Configure the consumer to work in async mode|false|boolean|
 |continuationTimeout|Allows to set a timeout in millis when using Jetty as consumer (server). By default Jetty uses 30000. You can use a value of = 0 to never expire. If a timeout occurs then the request will be expired and Jetty will return back a http error 503 to the client. This option is only in use when using Jetty with the Asynchronous Routing Engine.|30000|integer|

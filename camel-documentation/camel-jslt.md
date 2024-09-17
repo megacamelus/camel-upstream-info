@@ -26,7 +26,9 @@ Where **specName** is the classpath-local URI of the specification to
 invoke; or the complete URL of the remote specification (e.g.:
 `\file://folder/myfile.vm`).
 
-# Passing values to JSLT
+# Usage
+
+## Passing values to JSLT
 
 Camel can supply exchange information as variables when applying a JSLT
 expression on the body. The available variables from the **Exchange**
@@ -38,22 +40,22 @@ are:
 <col style="width: 71%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">name</th>
 <th style="text-align: left;">value</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>headers</p></td>
 <td style="text-align: left;"><p>The headers of the In message as a json
 object</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p>variables</p></td>
 <td style="text-align: left;"><p>The variables</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>exchange.properties</p></td>
 <td style="text-align: left;"><p>The <strong>Exchange</strong>
 properties as a json object. <code>exchange</code> is the name of the
@@ -75,7 +77,7 @@ For example, the header named `type` and the exchange property
       "instance": $exchange.properties.instance
     }
 
-# Samples
+# Examples
 
 For example, you could use something like:
 

@@ -21,7 +21,9 @@ for this component:
 
     splunk-hec:[splunkURL]?[options]
 
-# Message body
+# Usage
+
+## Message body
 
 The body must be serializable to JSON, so it may be sent to Splunk.
 
@@ -34,7 +36,7 @@ ingestion.
 
 It is meant for high-volume ingestion of machine data.
 
-# Configuring the index time
+## Configuring the index time
 
 By default, the index time for an event is when the event makes it to
 the Splunk server.
@@ -60,6 +62,8 @@ could be skewed. If you want to override the index time, you can do so.
 |---|---|---|---|
 |lazyStartProducer|Whether the producer should be started lazy (on the first message). By starting lazy you can use this to allow CamelContext and routes to startup in situations where a producer may otherwise fail during starting and cause the route to fail being started. By deferring this startup to be lazy then the startup failure can be handled during routing messages via Camel's routing error handlers. Beware that when the first message is processed then creating and starting the producer may take a little time and prolong the total processing time of the processing.|false|boolean|
 |autowiredEnabled|Whether autowiring is enabled. This is used for automatic autowiring options (the option must be marked as autowired) by looking up in the registry to find if there is a single instance of matching type, which then gets configured on the component. This can be used for automatic configuring JDBC data sources, JMS connection factories, AWS Clients, etc.|true|boolean|
+|sslContextParameters|Sets the default SSL configuration to use for all the endpoints. You can also configure it directly at the endpoint level.||object|
+|useGlobalSslContextParameters|Enable usage of global SSL context parameters.|false|boolean|
 
 ## Endpoint Configurations
 
@@ -74,6 +78,7 @@ could be skewed. If you want to override the index time, you can do so.
 |source|Splunk source argument|camel|string|
 |sourceType|Splunk sourcetype argument|camel|string|
 |splunkEndpoint|Splunk endpoint Defaults to /services/collector/event To write RAW data like JSON use /services/collector/raw For a list of all endpoints refer to splunk documentation (HTTP Event Collector REST API endpoints) Example for Spunk 8.2.x: https://docs.splunk.com/Documentation/SplunkCloud/8.2.2203/Data/HECRESTendpoints To extract timestamps in Splunk8.0 /services/collector/eventauto\_extract\_timestamp=true Remember to utilize RAW{} for questionmarks or slashes in parameters.|/services/collector/event|string|
+|sslContextParameters|SSL configuration||object|
 |time|Time this even occurred. By default, the time will be when this event hits the splunk server.||integer|
 |lazyStartProducer|Whether the producer should be started lazy (on the first message). By starting lazy you can use this to allow CamelContext and routes to startup in situations where a producer may otherwise fail during starting and cause the route to fail being started. By deferring this startup to be lazy then the startup failure can be handled during routing messages via Camel's routing error handlers. Beware that when the first message is processed then creating and starting the producer may take a little time and prolong the total processing time of the processing.|false|boolean|
 |https|Contact HEC over https.|true|boolean|

@@ -24,7 +24,9 @@ for this component:
 
     ehcache://cacheName[?options]
 
-# Ehcache based idempotent repository example:
+# Examples
+
+## Ehcache based idempotent repository example:
 
     CacheManager manager = CacheManagerBuilder.newCacheManager(new XmlConfiguration("ehcache.xml"));
     EhcacheIdempotentRepository repo = new EhcacheIdempotentRepository(manager, "idempotent-cache");
@@ -33,7 +35,7 @@ for this component:
         .idempotentConsumer(header("messageId"), idempotentRepo)
         .to("mock:out");
 
-# Ehcache based aggregation repository example:
+## Ehcache based aggregation repository example:
 
     public class EhcacheAggregationRepositoryRoutesTest extends CamelTestSupport {
         private static final String ENDPOINT_MOCK = "mock:result";

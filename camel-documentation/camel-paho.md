@@ -26,7 +26,9 @@ for this component:
 
 Where `topic` is the name of the topic.
 
-# Default payload type
+# Usage
+
+## Default payload type
 
 By default, the Camel Paho component operates on the binary payloads
 extracted out of (or put into) the MQTT message:
@@ -50,7 +52,7 @@ converts binary payload into `String` (and conversely):
     String payload = "message";
     producerTemplate.sendBody("paho:topic", payload);
 
-# Samples
+# Examples
 
 For example, the following snippet reads messages from the MQTT broker
 installed on the same host as the Camel router:

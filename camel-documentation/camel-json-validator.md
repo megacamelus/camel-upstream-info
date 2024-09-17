@@ -99,6 +99,7 @@ for an example.
 |---|---|---|---|
 |lazyStartProducer|Whether the producer should be started lazy (on the first message). By starting lazy you can use this to allow CamelContext and routes to startup in situations where a producer may otherwise fail during starting and cause the route to fail being started. By deferring this startup to be lazy then the startup failure can be handled during routing messages via Camel's routing error handlers. Beware that when the first message is processed then creating and starting the producer may take a little time and prolong the total processing time of the processing.|false|boolean|
 |autowiredEnabled|Whether autowiring is enabled. This is used for automatic autowiring options (the option must be marked as autowired) by looking up in the registry to find if there is a single instance of matching type, which then gets configured on the component. This can be used for automatic configuring JDBC data sources, JMS connection factories, AWS Clients, etc.|true|boolean|
+|objectMapper|To use a custom ObjectMapper||object|
 
 ## Endpoint Configurations
 
@@ -115,4 +116,5 @@ for an example.
 |disabledDeserializationFeatures|Comma-separated list of Jackson DeserializationFeature enum values which will be disabled for parsing exchange body||string|
 |enabledDeserializationFeatures|Comma-separated list of Jackson DeserializationFeature enum values which will be enabled for parsing exchange body||string|
 |errorHandler|To use a custom ValidatorErrorHandler. The default error handler captures the errors and throws an exception.||object|
+|objectMapper|The used Jackson object mapper||object|
 |uriSchemaLoader|To use a custom schema loader allowing for adding custom format validation. The default implementation will create a schema loader that tries to determine the schema version from the $schema property of the specified schema.||object|

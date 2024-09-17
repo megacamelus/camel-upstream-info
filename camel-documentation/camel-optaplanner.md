@@ -4,13 +4,13 @@
 
 **Both producer and consumer are supported**
 
-The Optaplanner component solves the planning problem contained in a
-message with [OptaPlanner](http://www.optaplanner.org/).  
-For example, feed it an unsolved Vehicle Routing problem and it solves
-it.
+The [OptaPlanner](http://www.optaplanner.org/) component solves the
+planning problem contained in a message with
+[OptaPlanner](http://www.optaplanner.org/). For example, feed it an
+unsolved Vehicle Routing problem and it solves it.
 
-The component supports consumer listening for SloverManager results and
-producer for processing Solution and ProblemChange.
+The component supports consumer listening for `SolverManager` results
+and producer for processing Solution and ProblemChange.
 
 Maven users will need to add the following dependency to their `pom.xml`
 for this component:
@@ -30,8 +30,8 @@ You can append query options to the URI in the following format,
 
 # Message Body
 
-Camel takes the planning problem for the *IN* body, solves it and
-returns it on the *OUT* body. The *IN* body object supports the
+Camel takes the planning problem for the `IN` body, solves it and
+returns it on the *OUT* body. The `IN` body object supports the
 following use cases:
 
 -   If the body contains the `PlanningSolution` annotation, then it will
@@ -44,10 +44,10 @@ following use cases:
 -   If the body is none of the above types, then the producer will
     return the best result from the solver identified by `solverId`.
 
-## Samples
+## Examples
 
 Solve a planning problem on the ActiveMQ queue with OptaPlanner, passing
-the SolverManager:
+the `SolverManager`:
 
     from("activemq:My.Queue").
       .to("optaplanner:problemName?solverManager=#solverManager");

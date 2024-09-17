@@ -57,7 +57,9 @@ Or by setting the environment variable `GOOGLE_APPLICATION_CREDENTIALS`
 
     google-bigquery://project-id:datasetId[:tableId]?[options]
 
-# Producer Endpoints
+# Usage
+
+## Producer Endpoints
 
 Producer endpoints can accept and deliver to BigQuery individual and
 grouped exchanges alike. Grouped exchanges have
@@ -73,7 +75,7 @@ of maps. A payload containing a map will insert a single row, and a
 payload containing a list of maps will insert a row for each entry in
 the list.
 
-# Template tables
+## Template tables
 
 Reference:
 [https://cloud.google.com/bigquery/streaming-data-into-bigquery#template-tables](https://cloud.google.com/bigquery/streaming-data-into-bigquery#template-tables)
@@ -90,7 +92,7 @@ on a per-day basis:
 
 Note it is recommended to use partitioning for this use case.
 
-# Partitioning
+## Partitioning
 
 Reference:
 [https://cloud.google.com/bigquery/docs/creating-partitioned-tables](https://cloud.google.com/bigquery/docs/creating-partitioned-tables)
@@ -100,7 +102,7 @@ automatically partitioned into separate tables. When inserting data a
 specific partition can be specified by setting the
 `GoogleBigQueryConstants.PARTITION_DECORATOR` header on the exchange.
 
-# Ensuring data consistency
+## Ensuring data consistency
 
 Reference:
 [https://cloud.google.com/bigquery/streaming-data-into-bigquery#dataconsistency](https://cloud.google.com/bigquery/streaming-data-into-bigquery#dataconsistency)

@@ -27,7 +27,9 @@ The PDF component only supports producer endpoints.
 
     pdf:operation[?options]
 
-# Type converter
+# Usage
+
+## Type converter
 
 Since Camel 4.8, the component is capable of doing simple document
 conversions. For instance, suppose you are receiving a PDF byte as a

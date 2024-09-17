@@ -27,7 +27,7 @@ The operations for this producer are:
 
 -   getAndAdd
 
-## Sample for **set**:
+## Example for **set**:
 
 Java DSL  
 from("direct:set")
@@ -46,7 +46,7 @@ Spring XML
 Provide the value to set inside the message body (here the value is 10):
 `template.sendBody("direct:set", 10);`
 
-## Sample for **get**:
+## Example for **get**:
 
 Java DSL  
 from("direct:get")
@@ -65,7 +65,7 @@ Spring XML
 You can get the number with
 `long body = template.requestBody("direct:get", null, Long.class);`.
 
-## Sample for **increment**:
+## Example for **increment**:
 
 Java DSL  
 from("direct:increment")
@@ -84,7 +84,7 @@ Spring XML
 The actual value (after increment) will be provided inside the message
 body.
 
-## Sample for **decrement**:
+## Example for **decrement**:
 
 Java DSL  
 from("direct:decrement")
@@ -103,7 +103,7 @@ Spring XML
 The actual value (after decrement) will be provided inside the message
 body.
 
-## Sample for **destroy**
+## Example for **destroy**
 
 Java DSL  
 from("direct:destroy")

@@ -41,7 +41,9 @@ For more information about configuration:
 [https://debezium.io/documentation/reference/0.10/operations/embedded.html#engine-properties](https://debezium.io/documentation/reference/0.10/operations/embedded.html#engine-properties)
 [https://debezium.io/documentation/reference/0.10/connectors/sqlserver.html#connector-properties](https://debezium.io/documentation/reference/0.10/connectors/sqlserver.html#connector-properties)
 
-# Message body
+# Usage
+
+## Message body
 
 The message body if is not `null` (in case of tombstones), it contains
 the state of the row after the event occurred as `Struct` format or
@@ -50,7 +52,7 @@ the state of the row after the event occurred as `Struct` format or
 
 Check below for more details.
 
-# Samples
+# Examples
 
 ## Consuming events
 

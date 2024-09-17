@@ -149,7 +149,9 @@ producer side:
     
     -   cancelQuery
 
-# Producer Examples
+# Examples
+
+## Producer Examples
 
 -   Write Operation
     
@@ -172,7 +174,7 @@ producer side:
         .setHeader(Timestream2Constants.QUERY_STRING, constant("SELECT * FROM testDb.testTable ORDER BY time DESC LIMIT 10"))
         .to("aws2-timestream://query:test?awsTimestreamQueryClient=#awsTimestreamQueryClient&operation=query")
 
-# Using a POJO as body
+## Using a POJO as body
 
 Sometimes building an AWS Request can be complex because of multiple
 options. We introduce the possibility to use a POJO as the body. In AWS

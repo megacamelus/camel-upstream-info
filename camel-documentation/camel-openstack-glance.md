@@ -9,7 +9,8 @@ OpenStack image services.
 
 # Dependencies
 
-Maven users will need to add the following dependency to their pom.xml.
+Maven users will need to add the following dependency to their
+`pom.xml`.
 
 **pom.xml**
 
@@ -34,37 +35,37 @@ Camel.
 <col style="width: 80%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Operation</th>
 <th style="text-align: left;">Description</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>reserve</code></p></td>
 <td style="text-align: left;"><p>Reserve image.</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>create</code></p></td>
 <td style="text-align: left;"><p>Create a new image.</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>update</code></p></td>
 <td style="text-align: left;"><p>Update image.</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>upload</code></p></td>
 <td style="text-align: left;"><p>Upload image.</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>get</code></p></td>
 <td style="text-align: left;"><p>Get the image.</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>getAll</code></p></td>
 <td style="text-align: left;"><p>Get all images.</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>delete</code></p></td>
 <td style="text-align: left;"><p>Delete the image.</p></td>
 </tr>

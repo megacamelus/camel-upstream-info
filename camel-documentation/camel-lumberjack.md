@@ -6,8 +6,8 @@
 
 The Lumberjack component retrieves logs sent over the network using the
 Lumberjack protocol, from
-[Filebeat](https://www.elastic.co/fr/products/beats/filebeat), for
-instance. The network communication can be secured with SSL.
+[Filebeat](https://www.elastic.co/beats/filebeat/), for instance. The
+network communication can be secured with SSL.
 
 Maven users will need to add the following dependency to their `pom.xml`
 for this component:
@@ -24,11 +24,13 @@ for this component:
     lumberjack:host
     lumberjack:host:port
 
-# Result
+# Usage
 
 The result body is a `Map<String, Object>` object.
 
-# Lumberjack Usage Samples
+# Examples
+
+Lumberjack usage samples.
 
 ## Example 1: Streaming the log messages
 

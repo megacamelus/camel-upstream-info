@@ -55,12 +55,12 @@ are presumed to be text and sent to the queue as an informational
 message. Inquiry messages or messages requiring a message ID are not
 supported.
 
-# Connection pool
+## Connection pool
 
 You can explicitly configure a connection pool on the Jt400Component, or
 as an uri option on the endpoint.
 
-# Program call
+## Program call
 
 This endpoint expects the input to be an `Object[]`, whose object types
 are `int`, `long`, `CharSequence` (such as `String`), or `byte[]`. All

@@ -16,6 +16,8 @@ Vault](https://www.vaultproject.io/).
         <!-- use the same version as your Camel core version -->
     </dependency>
 
+# Examples
+
 ## Using Hashicorp Vault Property Function
 
 To use this function, you’ll need to provide credentials for Hashicorp
@@ -33,6 +35,11 @@ file such as:
     camel.vault.hashicorp.host = host
     camel.vault.hashicorp.port = port
     camel.vault.hashicorp.scheme = scheme
+
+`camel.vault.hashicorp` configuration only applies to the Hashicorp
+Vault properties function (E.g when resolving properties). When using
+the `operation` option to create, get, list secrets etc., you should
+provide the `host`, `port`, `scheme` (if required) \& `token` options.
 
 At this point, you’ll be able to reference a property in the following
 way:
@@ -78,7 +85,7 @@ engine, like for example:
     <camelContext>
         <route>
             <from uri="direct:start"/>
-            <log message="Username is {{hashicorp:secret:database/username}}"/>
+            <log message="Username is {{hashicorp:secret:database#username}}"/>
         </route>
     </camelContext>
 
@@ -90,7 +97,7 @@ is not present on Hashicorp Vault instance, in the *secret* engine:
     <camelContext>
         <route>
             <from uri="direct:start"/>
-            <log message="Username is {{hashicorp:secret:database/username:admin}}"/>
+            <log message="Username is {{hashicorp:secret:database#username:admin}}"/>
         </route>
     </camelContext>
 
@@ -126,7 +133,7 @@ exist (in the *secret* engine).
     <camelContext>
         <route>
             <from uri="direct:start"/>
-            <log message="Username is {{hashicorp:secret:database/username:admin@2}}"/>
+            <log message="Username is {{hashicorp:secret:database#username:admin@2}}"/>
         </route>
     </camelContext>
 

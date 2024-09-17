@@ -18,7 +18,7 @@ use. See the Data Format documentation for which options it supports.
 
 # DataFormat Options
 
-# Samples
+# Examples
 
 For example, to use the [JAXB](#dataformats:jaxb-dataformat.adoc) [Data
 Format](#manual::data-format.adoc), we can do as follows:

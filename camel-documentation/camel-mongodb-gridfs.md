@@ -18,37 +18,11 @@ for this component:
 
     mongodb-gridfs:connectionBean?database=databaseName&bucket=bucketName[&moreOptions...]
 
-# Configuration of a database in Spring XML
+# Usage
 
-The following Spring XML creates a bean defining the connection to a
-MongoDB instance.
+## GridFS operations - producer endpoint
 
-    <beans xmlns="http://www.springframework.org/schema/beans"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
-        <bean id="mongoBean" class="com.mongodb.Mongo">
-            <constructor-arg name="host" value="${mongodb.host}" />
-            <constructor-arg name="port" value="${mongodb.port}" />
-        </bean>
-    </beans>
-
-# Sample route
-
-The following route defined in Spring XML executes the operation
-[**findOne**](#mongodb-gridfs-component.adoc) on a collection.
-
-**Get a file from GridFS**
-
-    <route>
-      <from uri="direct:start" />
-      <!-- using bean 'mongoBean' defined above -->
-      <to uri="mongodb-gridfs:mongoBean?database=${mongodb.database}&amp;operation=findOne" />
-      <to uri="direct:result" />
-    </route>
-
-# GridFS operations - producer endpoint
-
-## count
+### count
 
 Returns the total number of files in the collection, returning an
 Integer as the OUT message body.
@@ -64,7 +38,7 @@ that filename.
     headers.put(Exchange.FILE_NAME, "filename.txt");
     Integer count = template.requestBodyAndHeaders("direct:count", query, headers);
 
-## listAll
+### listAll
 
 Returns a Reader that lists all the filenames and their IDs in a tab
 separated stream.
@@ -75,7 +49,7 @@ separated stream.
     filename1.txt   1252314321
     filename2.txt   2897651254
 
-## findOne
+### findOne
 
 Finds a file in the GridFS system and sets the body to an InputStream of
 the content. Also provides the metadata has headers. It uses
@@ -87,7 +61,7 @@ find.
     headers.put(Exchange.FILE_NAME, "filename.txt");
     InputStream result = template.requestBodyAndHeaders("direct:findOne", "irrelevantBody", headers);
 
-## create
+### create
 
 Create a new file in the GridFs database. It uses the
 `Exchange.FILE_NAME` from the incoming headers for the name and the body
@@ -99,7 +73,7 @@ contents (as an InputStream) as the content.
     InputStream stream = ... the data for the file ...
     template.requestBodyAndHeaders("direct:create", stream, headers);
 
-## remove
+### remove
 
 Removes a file from the GridFS database.
 
@@ -107,6 +81,36 @@ Removes a file from the GridFS database.
     Map<String, Object> headers = new HashMap<String, Object>();
     headers.put(Exchange.FILE_NAME, "filename.txt");
     template.requestBodyAndHeaders("direct:remove", "", headers);
+
+# Examples
+
+## Example route
+
+The following route defined in Spring XML executes the operation
+[**findOne**](#mongodb-gridfs-component.adoc) on a collection.
+
+**Get a file from GridFS**
+
+    <route>
+      <from uri="direct:start" />
+      <!-- using bean 'mongoBean' defined above -->
+      <to uri="mongodb-gridfs:mongoBean?database=${mongodb.database}&amp;operation=findOne" />
+      <to uri="direct:result" />
+    </route>
+
+## Configuration of a database in Spring XML
+
+The following Spring XML creates a bean defining the connection to a
+MongoDB instance.
+
+    <beans xmlns="http://www.springframework.org/schema/beans"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+        <bean id="mongoBean" class="com.mongodb.Mongo">
+            <constructor-arg name="host" value="${mongodb.host}" />
+            <constructor-arg name="port" value="${mongodb.port}" />
+        </bean>
+    </beans>
 
 ## Component Configurations
 

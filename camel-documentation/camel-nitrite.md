@@ -17,7 +17,9 @@ for this component.
         <!-- use the same version as your Camel core version -->
     </dependency>
 
-# Producer operations
+# Usage
+
+## Producer operations
 
 The following Operations are available to specify as
 `NitriteConstants.OPERATION` when producing to Nitrite.
@@ -30,7 +32,7 @@ The following Operations are available to specify as
 <col style="width: 50%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Class</th>
 <th style="text-align: left;">Type</th>
 <th style="text-align: left;">Parameters</th>
@@ -38,7 +40,7 @@ The following Operations are available to specify as
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td
 style="text-align: left;"><p><code>FindCollectionOperation</code></p></td>
 <td style="text-align: left;"><p><code>collection</code></p></td>
@@ -47,7 +49,7 @@ style="text-align: left;"><p><code>Filter(optional), FindOptions(optional)</code
 <td style="text-align: left;"><p>Find Documents in collection by Filter.
 If not specified, returns all documents</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td
 style="text-align: left;"><p><code>RemoveCollectionOperation</code></p></td>
 <td style="text-align: left;"><p><code>collection</code></p></td>
@@ -56,7 +58,7 @@ style="text-align: left;"><p><code>Filter(required), RemoveOptions(optional)</co
 <td style="text-align: left;"><p>Remove documents matching
 Filter</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td
 style="text-align: left;"><p><code>UpdateCollectionOperation</code></p></td>
 <td style="text-align: left;"><p><code>collection</code></p></td>
@@ -65,7 +67,7 @@ style="text-align: left;"><p><code>Filter(required), UpdateOptions(optional), Do
 <td style="text-align: left;"><p>Update documents matching Filter. If
 Document not specified, the message body is used</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td
 style="text-align: left;"><p><code>CreateIndexOperation</code></p></td>
 <td style="text-align: left;"><p><code>common</code></p></td>
@@ -74,7 +76,7 @@ style="text-align: left;"><p><code>field:String(required), IndexOptions(required
 <td style="text-align: left;"><p>Create index with IndexOptions on
 field</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td
 style="text-align: left;"><p><code>DropIndexOperation</code></p></td>
 <td style="text-align: left;"><p><code>common</code></p></td>
@@ -82,7 +84,7 @@ style="text-align: left;"><p><code>DropIndexOperation</code></p></td>
 style="text-align: left;"><p><code>field:String(required)</code></p></td>
 <td style="text-align: left;"><p>Drop index on field</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td
 style="text-align: left;"><p><code>ExportDatabaseOperation</code></p></td>
 <td style="text-align: left;"><p><code>common</code></p></td>
@@ -91,20 +93,20 @@ style="text-align: left;"><p><code>ExportOptions(optional)</code></p></td>
 <td style="text-align: left;"><p>Export full database to JSON and stores
 result in body - see Nitrite docs for details about format</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td
 style="text-align: left;"><p><code>GetAttributesOperation</code></p></td>
 <td style="text-align: left;"><p><code>common</code></p></td>
 <td style="text-align: left;"><p><code></code></p></td>
 <td style="text-align: left;"><p>Get attributes of a collection</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>GetByIdOperation</code></p></td>
 <td style="text-align: left;"><p><code>common</code></p></td>
 <td style="text-align: left;"><p><code>NitriteId</code></p></td>
 <td style="text-align: left;"><p>Get Document by _id</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td
 style="text-align: left;"><p><code>ImportDatabaseOperation</code></p></td>
 <td style="text-align: left;"><p><code>common</code></p></td>
@@ -112,7 +114,7 @@ style="text-align: left;"><p><code>ImportDatabaseOperation</code></p></td>
 <td style="text-align: left;"><p>Import the full database from JSON in
 body</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>InsertOperation</code></p></td>
 <td style="text-align: left;"><p><code>common</code></p></td>
 <td style="text-align: left;"><p><code>payload(optional)</code></p></td>
@@ -120,7 +122,7 @@ body</p></td>
 to ObjectRepository. If parameter is not specified, inserts message
 body</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td
 style="text-align: left;"><p><code>ListIndicesOperation</code></p></td>
 <td style="text-align: left;"><p><code>common</code></p></td>
@@ -128,7 +130,7 @@ style="text-align: left;"><p><code>ListIndicesOperation</code></p></td>
 <td style="text-align: left;"><p>List indexes in collection and stores
 <code>List&lt;Index&gt;</code> in message body</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td
 style="text-align: left;"><p><code>RebuildIndexOperation</code></p></td>
 <td style="text-align: left;"><p><code>common</code></p></td>
@@ -137,7 +139,7 @@ style="text-align: left;"><p><code>field (required), async (optional)</code></p>
 <td style="text-align: left;"><p>Rebuild existing index on
 field</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>UpdateOperation</code></p></td>
 <td style="text-align: left;"><p><code>common</code></p></td>
 <td style="text-align: left;"><p><code>payload(optional)</code></p></td>
@@ -145,7 +147,7 @@ field</p></td>
 in ObjectRepository. If parameter is not specified, updates document
 from message body</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>UpsertOperation</code></p></td>
 <td style="text-align: left;"><p><code>common</code></p></td>
 <td style="text-align: left;"><p><code>payload(optional)</code></p></td>
@@ -153,7 +155,7 @@ from message body</p></td>
 collection or object in ObjectRepository. If parameter is not specified,
 updates document from message body</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td
 style="text-align: left;"><p><code>FindRepositoryOperation</code></p></td>
 <td style="text-align: left;"><p><code>repository</code></p></td>
@@ -163,7 +165,7 @@ style="text-align: left;"><p><code>ObjectFilter(optional), FindOptions(optional)
 ObjectFilter. If not specified, returns all objects in
 repository</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td
 style="text-align: left;"><p><code>RemoveRepositoryOperation</code></p></td>
 <td style="text-align: left;"><p><code>repository</code></p></td>
@@ -172,7 +174,7 @@ style="text-align: left;"><p><code>ObjectFilter(required), RemoveOptions(optiona
 <td style="text-align: left;"><p>Remove objects in ObjectRepository
 matched by ObjectFilter</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td
 style="text-align: left;"><p><code>UpdateRepositoryOperation</code></p></td>
 <td style="text-align: left;"><p><code>repository</code></p></td>

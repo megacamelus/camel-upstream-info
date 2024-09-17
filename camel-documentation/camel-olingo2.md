@@ -37,7 +37,9 @@ for this component:
 
     olingo2://endpoint/<resource-path>?[options]
 
-# Endpoint HTTP Headers
+# Usage
+
+## Endpoint HTTP Headers
 
 The component level configuration property **httpHeaders** supplies
 static HTTP header information. However, some systems require dynamic
@@ -50,7 +52,7 @@ and the response headers will be returned in a
 **`CamelOlingo2.responseHttpHeaders`** property. Both properties are of
 the type `java.util.Map<String, String>`.
 
-# OData Resource Type Mapping
+## OData Resource Type Mapping
 
 The result of **read** endpoint and data type of **data** option depends
 on the OData resource being queried, created or modified.
@@ -62,7 +64,7 @@ on the OData resource being queried, created or modified.
 <col style="width: 79%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">OData Resource Type</th>
 <th style="text-align: left;">Resource URI from resourcePath and
 keyPredicate</th>
@@ -70,25 +72,25 @@ keyPredicate</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>Entity data model</p></td>
 <td style="text-align: left;"><p>$metadata</p></td>
 <td
 style="text-align: left;"><p><code>org.apache.olingo.odata2.api.edm.Edm</code></p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p>Service document</p></td>
 <td style="text-align: left;"><p>/</p></td>
 <td
 style="text-align: left;"><p><code>org.apache.olingo.odata2.api.servicedocument.ServiceDocument</code></p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>OData feed</p></td>
 <td style="text-align: left;"><p>&lt;entity-set&gt;</p></td>
 <td
 style="text-align: left;"><p><code>org.apache.olingo.odata2.api.ep.feed.ODataFeed</code></p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p>OData entry</p></td>
 <td
 style="text-align: left;"><p>&lt;entity-set&gt;(&lt;key-predicate&gt;)</p></td>
@@ -97,28 +99,28 @@ style="text-align: left;"><p><code>org.apache.olingo.odata2.api.ep.entry.ODataEn
 for Out body (response) <code>java.util.Map&lt;String, Object&gt;</code>
 for In body (request)</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>Simple property</p></td>
 <td
 style="text-align: left;"><p>&lt;entity-set&gt;(&lt;key-predicate&gt;)/&lt;simple-property&gt;</p></td>
 <td style="text-align: left;"><p>The appropriate Java data type as
 described by Olingo EdmProperty</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p>Simple property value</p></td>
 <td
 style="text-align: left;"><p>&lt;entity-set&gt;(&lt;key-predicate&gt;)/&lt;simple-property&gt;/$value</p></td>
 <td style="text-align: left;"><p>The appropriate Java data type as
 described by Olingo EdmProperty</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>Complex property</p></td>
 <td
 style="text-align: left;"><p>&lt;entity-set&gt;(&lt;key-predicate&gt;)/&lt;complex-property&gt;</p></td>
 <td style="text-align: left;"><p>java.util.Map&lt;String,
 Object&gt;</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p>Zero or one association link</p></td>
 <td
 style="text-align: left;"><p>&lt;entity-set&gt;(&lt;key-predicate&gt;/$link/&lt;one-to-one-entity-set-property&gt;</p></td>
@@ -126,7 +128,7 @@ style="text-align: left;"><p>&lt;entity-set&gt;(&lt;key-predicate&gt;/$link/&lt;
 <code>java.util.Map&lt;String, Object&gt;</code> with key property names
 and values for request</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>Zero or many association links</p></td>
 <td
 style="text-align: left;"><p>&lt;entity-set&gt;(&lt;key-predicate&gt;/$link/&lt;one-to-many-entity-set-property&gt;</p></td>
@@ -136,7 +138,7 @@ for response
 <code>java.util.List&lt;java.util.Map&lt;String, Object&gt;&gt;</code>
 containing a list of key property names and values for request</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p>Count</p></td>
 <td style="text-align: left;"><p>&lt;resource-uri&gt;/$count</p></td>
 <td style="text-align: left;"><p>java.lang.Long</p></td>
@@ -144,7 +146,7 @@ containing a list of key property names and values for request</p></td>
 </tbody>
 </table>
 
-# Samples
+# Examples
 
 The following route reads top 5 entries from the Manufacturer feed
 ordered by ascending Name property.

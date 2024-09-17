@@ -43,8 +43,8 @@ URI format:
     xmlsecurity-verify:name[?options]
 
 -   With the signer endpoint, you can generate a XML signature for the
-    body of the in-message which can be either a XML document or a plain
-    text. The enveloped, enveloping, or detached (as of 12.14) XML
+    body of the in-message, which can be either a XML document or a
+    plain text. The enveloped, enveloping, or detached (as of 12.14) XML
     signature(s) will be set to the body of the out-message.
 
 -   With the verifier endpoint, you can validate an enveloped or
@@ -190,8 +190,8 @@ In the example, the default signature algorithm
 `\http://www.w3.org/2000/09/xmldsig#rsa-sha1` is used. You can set the
 signature algorithm of your choice by the option `signatureAlgorithm`
 (see below). The signer endpoint creates an *enveloping* XML signature.
-If you want to create an *enveloped* XML signature then you must specify
-the parent element of the Signature element; see option
+If you want to create an *enveloped* XML signature, then you must
+specify the parent element of the Signature element; see option
 `parentLocalName` for more details.
 
 For creating *detached* XML signatures, see sub-chapter "Detached XML
@@ -340,7 +340,7 @@ you must overwrite either the method
 `DefaultXAdESSignatureProperties` overwrites the method
 `getSigningCertificate()` and allows you to specify the signing
 certificate via a keystore and alias. The following example shows all
-parameters you can specify. If you do not need certain parameters you
+parameters you can specify. If you do not need certain parameters, you
 can just omit them.
 
 **XAdES-BES/EPES Example in Java DSL**

@@ -9,25 +9,29 @@ Components](#kubernetes-summary.adoc) which provides a producer to
 execute Openshift Deployment Configs operations and a consumer to
 consume events related to Deployment Configs objects.
 
-# Supported producer operation
+# Usage
 
--   listDeploymentConfigs
+## Supported producer operation
 
--   listDeploymentsConfigsByLabels
+-   `listDeploymentConfigs`
 
--   getDeploymentConfig
+-   `listDeploymentsConfigsByLabels`
 
--   createDeploymentConfig
+-   `getDeploymentConfig`
 
--   updateDeploymentConfig
+-   `createDeploymentConfig`
 
--   deleteDeploymentConfig
+-   `updateDeploymentConfig`
 
--   scaleDeploymentConfig
+-   `deleteDeploymentConfig`
 
-# Openshift Deployment Configs Producer Examples
+-   `scaleDeploymentConfig`
 
--   listDeploymentConfigs: this operation lists the deployments on an
+# Examples
+
+## Openshift Deployment Configs Producer Examples
+
+-   `listDeploymentConfigs`: this operation lists the deployments on an
     Openshift cluster
 
 <!-- -->
@@ -36,9 +40,9 @@ consume events related to Deployment Configs objects.
         toF("openshift-deploymentconfigs:///?kubernetesClient=#kubernetesClient&operation=listDeploymentConfigs").
         to("mock:result");
 
-This operation returns a List of Deployment Configs from your cluster
+This operation returns a list of deployment configs from your cluster
 
--   listDeploymentConfigsByLabels: this operation lists the deployment
+-   `listDeploymentConfigsByLabels`: this operation lists the deployment
     configs by labels on an Openshift cluster
 
 <!-- -->
@@ -55,11 +59,11 @@ This operation returns a List of Deployment Configs from your cluster
         toF("openshift-deploymentconfigs:///?kubernetesClient=#kubernetesClient&operation=listDeploymentConfigsByLabels").
         to("mock:result");
 
-This operation returns a List of Deployment Configs from your cluster,
+This operation returns a list of deployment configs from your cluster
 using a label selector (with key1 and key2, with value value1 and
 value2)
 
-# Openshift Deployment Configs Consumer Example
+## Openshift Deployment Configs Consumer Example
 
     fromF("openshift-deploymentconfigs://%s?oauthToken=%s&namespace=default&resourceName=test", host, authToken).process(new OpenshiftProcessor()).to("mock:result");
         public class OpenshiftProcessor implements Processor {

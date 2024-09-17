@@ -70,7 +70,9 @@ Azure authentication information:
     
     azure-files://camelazurefiles/samples/inbox/spam?sharedKey=FAKE502UyuBD...3Z%2BASt9dCmJg%3D%3D&delete=true
 
-# Paths
+# Usage
+
+## Paths
 
 The path separator is `/`. The absolute paths start with the path
 separator. The absolute paths do not include the share name, and they
@@ -82,18 +84,18 @@ path separator appears, and the relative paths are relative to the share
 root (rather than to the current working directory or to the endpoint
 starting directory) so interpret them with a grain of salt.
 
-# Concurrency
+## Concurrency
 
 This component does not support concurrency on its endpoints.
 
-# More Information
+## More Information
 
 This component mimics the FTP component. So, there are more samples and
 details on the FTP component page.
 
 This component uses the Azure Java SDK libraries for the actual work.
 
-# Consuming Files
+## Consuming Files
 
 The remote consumer will by default leave the consumed files untouched
 on the remote cloud files server. You have to configure it explicitly if
@@ -108,7 +110,7 @@ to a `.camel` sub directory. The reason Camel does **not** do this by
 default for the remote consumer is that it may lack permissions by
 default to be able to move or delete files.
 
-## Body Type Options
+### Body Type Options
 
 For each matching file, the consumer sends to the Camel exchange a
 message with a selected body type:
@@ -122,7 +124,7 @@ message with a selected body type:
 The body type configuration should be tuned to fit available resources,
 performance targets, route processors, caching, resuming, etc.
 
-## Limitations
+### Limitations
 
 The option **readLock** can be used to force Camel **not** to consume
 files that are currently in the progress of being written. However, this
@@ -150,23 +152,23 @@ The consumer sets the following exchange properties
 <col style="width: 50%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Header</th>
 <th style="text-align: left;">Description</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>CamelBatchIndex</code></p></td>
 <td style="text-align: left;"><p>The current index out of total number
 of files being consumed in this batch.</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>CamelBatchSize</code></p></td>
 <td style="text-align: left;"><p>The total number of files being
 consumed in this batch.</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td
 style="text-align: left;"><p><code>CamelBatchComplete</code></p></td>
 <td style="text-align: left;"><p>True if there are no more files in this
@@ -175,7 +177,7 @@ batch.</p></td>
 </tbody>
 </table>
 
-# Producing Files
+## Producing Files
 
 The Files producer is optimized for two body types:
 
@@ -187,7 +189,7 @@ In either case, the remote file size is allocated and then rewritten
 with body content. Any inconsistency between declared file length and
 stream length results in a corrupted remote file.
 
-## Limitations
+### Limitations
 
 The underlying Azure Files service does not allow growing files. The
 file length must be known at its creation time, consequently:
@@ -197,7 +199,7 @@ file length must be known at its creation time, consequently:
 
 -   No appending mode is supported.
 
-# About Timeouts
+## About Timeouts
 
 You can use the `connectTimeout` option to set a timeout in millis to
 connect or disconnect.
@@ -211,7 +213,7 @@ For now, the file upload has no timeout. During the upload, the
 underlying library could log timeout warnings. They are recoverable and
 upload could continue.
 
-# Using Local Work Directory
+## Using Local Work Directory
 
 Camel supports consuming from remote files servers and downloading the
 files directly into a local work directory. This avoids reading the
@@ -238,7 +240,7 @@ directly on the work file `java.io.File` handle and perform a
 local work file, it can optimize and use a rename instead of a file
 copy, as the work file is meant to be deleted anyway.
 
-# Custom Filtering
+## Custom Filtering
 
 Camel supports pluggable filtering strategies. This strategy it to use
 the build in `org.apache.camel.component.file.GenericFileFilter` in
@@ -262,7 +264,7 @@ The accept(file) file argument has properties:
 
 -   file length: if not a directory, then a length of the file in bytes
 
-# Filtering using ANT path matcher
+## Filtering using ANT path matcher
 
 The ANT path matcher is a filter shipped out-of-the-box in the
 **camel-spring** jar. So you need to depend on **camel-spring** if you
@@ -283,13 +285,13 @@ The sample below demonstrates how to use it:
 
     from("azure-files://...&antInclude=**/*.txt").to("...");
 
-# Using a Proxy
+## Using a Proxy
 
 Consult the [underlying
 library](https://learn.microsoft.com/en-us/azure/developer/java/sdk/proxying)
 documentation.
 
-# Consuming a single file using a fixed name
+## Consuming a single file using a fixed name
 
 Unlike FTP component that features a special combination of options:
 
@@ -303,7 +305,7 @@ to optimize *the single file using a fixed name* use case, it is
 necessary to fall back to regular filters (i.e. the list permission is
 needed).
 
-# Debug logging
+## Debug logging
 
 This component has log level **TRACE** that can be helpful if you have
 problems.

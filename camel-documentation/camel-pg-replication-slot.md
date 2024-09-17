@@ -18,19 +18,16 @@ for this component:
         <!-- use the same version as your Camel core version -->
     </dependency>
 
-URI format
+# URI format
 
 The pg-replication-slot component uses the following two styles of
 endpoint URI notation:
 
     pg-replication-slot://host:port/database/slot:plugin[?parameters]
 
-# Examples
+# Usage
 
-    from("pg-replication-slot://localhost:5432/finance/sync_slot:test_decoding?user={{username}}&password={{password}}&slotOptions.skip-empty-xacts=true&slotOptions.include-xids=false")
-        .to("mock:result");
-
-# Tips
+## Tips
 
 PostgreSQL can generate a huge number of empty transactions on certain
 operations (e.g. `VACUUM`). These transactions can congest your route.
@@ -43,6 +40,13 @@ more than once. So, for example, if you’re using this component to sync
 data from PostgreSQL to another database, make sure your operations are
 idempotent (e.g., use `UPSERT` instead of `INSERT`, etc). This will make
 sure repeated messages won’t affect your system negatively.
+
+# Examples
+
+**Example route**
+
+    from("pg-replication-slot://localhost:5432/finance/sync_slot:test_decoding?user={{username}}&password={{password}}&slotOptions.skip-empty-xacts=true&slotOptions.include-xids=false")
+        .to("mock:result");
 
 ## Component Configurations
 

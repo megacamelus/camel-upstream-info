@@ -33,7 +33,7 @@ doesn’t support exclusive consumers.
 Where endpoint is any Camel endpoint, you want to run in master/slave
 mode.
 
-# Example
+# Examples
 
 You can protect a clustered Camel application to only consume files from
 one active node.
@@ -60,7 +60,7 @@ environment variables.
 
     export ZOOKEEPER_URL = "myzookeeper:2181"
 
-# Master RoutePolicy
+## Master RoutePolicy
 
 You can also use a `RoutePolicy` to control routes in master/slave mode.
 

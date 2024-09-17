@@ -6,25 +6,29 @@
 
 The Kubernetes Service Account component is one of [Kubernetes
 Components](#kubernetes-summary.adoc) which provides a producer to
-execute Kubernetes Service Account operations.
+execute Kubernetes Service Account (SA) operations.
 
-# Supported producer operation
+# Usage
 
--   listServiceAccounts
+## Supported producer operation
 
--   listServiceAccountsByLabels
+-   `listServiceAccounts`
 
--   getServiceAccount
+-   `listServiceAccountsByLabels`
 
--   createServiceAccount
+-   `getServiceAccount`
 
--   updateServiceAccount
+-   `createServiceAccount`
 
--   deleteServiceAccount
+-   `updateServiceAccount`
 
-# Kubernetes ServiceAccounts Produce Examples
+-   `deleteServiceAccount`
 
--   listServiceAccounts: this operation lists the sa on a kubernetes
+# Examples
+
+## Kubernetes ServiceAccounts Produce Examples
+
+-   `listServiceAccounts`: this operation lists the SAs on a kubernetes
     cluster
 
 <!-- -->
@@ -33,10 +37,10 @@ execute Kubernetes Service Account operations.
         toF("kubernetes-service-accounts:///?kubernetesClient=#kubernetesClient&operation=listServiceAccounts").
         to("mock:result");
 
-This operation returns a List of services from your cluster
+This operation returns a list of services from your cluster
 
--   listServiceAccountsByLabels: this operation lists the sa by labels
-    on a kubernetes cluster
+-   `listServiceAccountsByLabels`: this operation lists the SAs by
+    labels on a kubernetes cluster
 
 <!-- -->
 
@@ -52,7 +56,7 @@ This operation returns a List of services from your cluster
         toF("kubernetes-service-accounts:///?kubernetesClient=#kubernetesClient&operation=listServiceAccountsByLabels").
         to("mock:result");
 
-This operation returns a List of Services from your cluster, using a
+This operation returns a list of services from your cluster using a
 label selector (with key1 and key2, with value value1 and value2)
 
 ## Component Configurations

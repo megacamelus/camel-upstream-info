@@ -116,7 +116,7 @@ side:
         })
         .to("aws2-msk://test?mskClient=#amazonMskClient&operation=deleteCluster")
 
-# Using a POJO as body
+## Using a POJO as body
 
 Sometimes building an AWS Request can be complex because of multiple
 options. We introduce the possibility to use a POJO as the body. In AWS

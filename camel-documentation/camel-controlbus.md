@@ -47,18 +47,18 @@ use.
 <col style="width: 89%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Command</th>
 <th style="text-align: left;">Description</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>route</code></p></td>
 <td style="text-align: left;"><p>To control routes using the
 <code>routeId</code> and <code>action</code> parameter.</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>language</code></p></td>
 <td style="text-align: left;"><p>Allows you to specify a <a
 href="#language-component.adoc">Language</a> to use for evaluating the
@@ -68,7 +68,9 @@ result is put in the message body.</p></td>
 </tbody>
 </table>
 
-# Using route command
+# Examples
+
+## Using route command
 
 The route command allows you to do common tasks on a given route very
 easily. For example, to start a route, you can send an empty message to
@@ -80,7 +82,7 @@ To get the status of the route, you can do:
 
     String status = template.requestBody("controlbus:route?routeId=foo&action=status", null, String.class);
 
-# Getting performance statistics
+## Getting performance statistics
 
 This requires JMX to be enabled (it is enabled by default) then you can
 get the performance statics per route, or for the CamelContext. For
@@ -97,7 +99,7 @@ parameter as shown below:
 
     String xml = template.requestBody("controlbus:route?action=stats", null, String.class);
 
-# Using Simple language
+## Using Simple language
 
 You can use the [Simple](#languages:simple-language.adoc) language with
 the control bus. For example, to stop a specific route, you can send a

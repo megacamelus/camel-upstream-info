@@ -38,14 +38,14 @@ Currently, the component supports the following applications.
 <col style="width: 33%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Application</th>
 <th style="text-align: left;">Input types</th>
 <th style="text-align: left;">Output type</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td
 style="text-align: left;"><p><code>cv/image_classification</code></p></td>
 <td
@@ -53,7 +53,7 @@ style="text-align: left;"><p><code>ai.djl.modality.cv.Image + byte[] + InputStre
 <td
 style="text-align: left;"><p><code>ai.djl.modality.Classifications</code></p></td>
 </tr>
-<tr>
+<tr class="even">
 <td
 style="text-align: left;"><p><code>cv/object_detection</code></p></td>
 <td
@@ -61,7 +61,7 @@ style="text-align: left;"><p><code>ai.djl.modality.cv.Image + byte[] + InputStre
 <td
 style="text-align: left;"><p><code>ai.djl.modality.cv.output.DetectedObjects</code></p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td
 style="text-align: left;"><p><code>cv/semantic_segmentation</code></p></td>
 <td
@@ -69,7 +69,7 @@ style="text-align: left;"><p><code>ai.djl.modality.cv.Image + byte[] + InputStre
 <td
 style="text-align: left;"><p><code>ai.djl.modality.cv.output.CategoryMask</code></p></td>
 </tr>
-<tr>
+<tr class="even">
 <td
 style="text-align: left;"><p><code>cv/instance_segmentation</code></p></td>
 <td
@@ -77,7 +77,7 @@ style="text-align: left;"><p><code>ai.djl.modality.cv.Image + byte[] + InputStre
 <td
 style="text-align: left;"><p><code>ai.djl.modality.cv.output.DetectedObjects</code></p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td
 style="text-align: left;"><p><code>cv/pose_estimation</code></p></td>
 <td
@@ -85,7 +85,7 @@ style="text-align: left;"><p><code>ai.djl.modality.cv.Image + byte[] + InputStre
 <td
 style="text-align: left;"><p><code>ai.djl.modality.cv.output.Joints</code></p></td>
 </tr>
-<tr>
+<tr class="even">
 <td
 style="text-align: left;"><p><code>cv/action_recognition</code></p></td>
 <td
@@ -93,21 +93,21 @@ style="text-align: left;"><p><code>ai.djl.modality.cv.Image + byte[] + InputStre
 <td
 style="text-align: left;"><p><code>ai.djl.modality.Classifications</code></p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td
 style="text-align: left;"><p><code>cv/word_recognition</code></p></td>
 <td
 style="text-align: left;"><p><code>ai.djl.modality.cv.Image + byte[] + InputStream + File</code></p></td>
 <td style="text-align: left;"><p><code>String</code></p></td>
 </tr>
-<tr>
+<tr class="even">
 <td
 style="text-align: left;"><p><code>cv/image_generation</code></p></td>
 <td style="text-align: left;"><p><code>int[]</code></p></td>
 <td
 style="text-align: left;"><p><code>ai.djl.modality.cv.Image[]</code></p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td
 style="text-align: left;"><p><code>cv/image_enhancement</code></p></td>
 <td
@@ -115,71 +115,71 @@ style="text-align: left;"><p><code>ai.djl.modality.cv.Image + byte[] + InputStre
 <td
 style="text-align: left;"><p><code>ai.djl.modality.cv.Image</code></p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>nlp/fill_mask</code></p></td>
 <td style="text-align: left;"><p><code>String</code></p></td>
 <td style="text-align: left;"><p><code>String[]</code></p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td
 style="text-align: left;"><p><code>nlp/question_answer</code></p></td>
 <td
 style="text-align: left;"><p><code>ai.djl.modality.nlp.qa.QAInput + String[]</code></p></td>
 <td style="text-align: left;"><p><code>String</code></p></td>
 </tr>
-<tr>
+<tr class="even">
 <td
 style="text-align: left;"><p><code>nlp/text_classification</code></p></td>
 <td style="text-align: left;"><p><code>String</code></p></td>
 <td
 style="text-align: left;"><p><code>ai.djl.modality.Classifications</code></p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td
 style="text-align: left;"><p><code>nlp/sentiment_analysis</code></p></td>
 <td style="text-align: left;"><p><code>String</code></p></td>
 <td
 style="text-align: left;"><p><code>ai.djl.modality.Classifications</code></p></td>
 </tr>
-<tr>
+<tr class="even">
 <td
 style="text-align: left;"><p><code>nlp/token_classification</code></p></td>
 <td style="text-align: left;"><p><code>String</code></p></td>
 <td
 style="text-align: left;"><p><code>ai.djl.modality.Classifications</code></p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td
 style="text-align: left;"><p><code>nlp/text_generation</code></p></td>
 <td style="text-align: left;"><p><code>String</code></p></td>
 <td style="text-align: left;"><p><code>String</code></p></td>
 </tr>
-<tr>
+<tr class="even">
 <td
 style="text-align: left;"><p><code>nlp/machine_translation</code></p></td>
 <td style="text-align: left;"><p><code>String</code></p></td>
 <td style="text-align: left;"><p><code>String</code></p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td
 style="text-align: left;"><p><code>nlp/multiple_choice</code></p></td>
 <td style="text-align: left;"><p><code>String</code></p></td>
 <td style="text-align: left;"><p><code>String</code></p></td>
 </tr>
-<tr>
+<tr class="even">
 <td
 style="text-align: left;"><p><code>nlp/text_embedding</code></p></td>
 <td style="text-align: left;"><p><code>String</code></p></td>
 <td
 style="text-align: left;"><p><code>ai.djl.ndarray.NDArray</code></p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>audio</code></p></td>
 <td
 style="text-align: left;"><p><code>ai.djl.modality.audio.Audio + byte[] + InputStream + File</code></p></td>
 <td style="text-align: left;"><p><code>String</code></p></td>
 </tr>
-<tr>
+<tr class="even">
 <td
 style="text-align: left;"><p><code>timeseries/forecasting</code></p></td>
 <td
@@ -190,7 +190,9 @@ style="text-align: left;"><p><code>ai.djl.timeseries.Forecast</code></p></td>
 </tbody>
 </table>
 
-# Model Zoo
+# Usage
+
+## Model Zoo
 
 The following tables contain supported models in the model zoos per
 application.
@@ -200,7 +202,7 @@ models found for them from the basic, PyTorch, TensorFlow or MXNet DJL
 model zoos. You may still find more models for an application from other
 model zoos such as Hugging Face, ONNX, etc.
 
-## CV - Image Classification
+### CV - Image Classification
 
 Application: `cv/image_classification`
 
@@ -211,32 +213,32 @@ Application: `cv/image_classification`
 <col style="width: 41%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Model family</th>
 <th style="text-align: left;">Artifact ID</th>
 <th style="text-align: left;">Options</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>MLP</p></td>
 <td
 style="text-align: left;"><p><code>ai.djl.zoo:mlp:0.0.3</code></p></td>
 <td style="text-align: left;"><p>mnist</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p>MLP</p></td>
 <td
 style="text-align: left;"><p><code>ai.djl.mxnet:mlp:0.0.1</code></p></td>
 <td style="text-align: left;"><p>mnist</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>ResNet</p></td>
 <td
 style="text-align: left;"><p><code>ai.djl.zoo:resnet:0.0.2</code></p></td>
 <td style="text-align: left;"><p>50, flavor=v1, dataset=cifar10</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p>ResNet</p></td>
 <td
 style="text-align: left;"><p><code>ai.djl.pytorch:resnet:0.0.1</code></p></td>
@@ -244,14 +246,14 @@ style="text-align: left;"><p><code>ai.djl.pytorch:resnet:0.0.1</code></p></td>
 18, dataset=imagenet<br />
 101, dataset=imagenet</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>ResNet</p></td>
 <td
 style="text-align: left;"><p><code>ai.djl.tensorflow:resnet:0.0.1</code></p></td>
 <td style="text-align: left;"><p>v1, layers=50,
 dataset=imagenet</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p>ResNet</p></td>
 <td
 style="text-align: left;"><p><code>ai.djl.mxnet:resnet:0.0.1</code></p></td>
@@ -261,19 +263,19 @@ style="text-align: left;"><p><code>ai.djl.mxnet:resnet:0.0.1</code></p></td>
 152, flavor=v1d, dataset=imagenet<br />
 50, flavor=v1, dataset=cifar10</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>ResNet-18</p></td>
 <td
 style="text-align: left;"><p><code>ai.djl.pytorch:resnet18_embedding:0.0.1</code></p></td>
 <td style="text-align: left;"><p>{}</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p>SENet</p></td>
 <td
 style="text-align: left;"><p><code>ai.djl.mxnet:senet:0.0.1</code></p></td>
 <td style="text-align: left;"><p>154, dataset=imagenet</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>SE-ResNeXt</p></td>
 <td
 style="text-align: left;"><p><code>ai.djl.mxnet:se_resnext:0.0.1</code></p></td>
@@ -281,7 +283,7 @@ style="text-align: left;"><p><code>ai.djl.mxnet:se_resnext:0.0.1</code></p></td>
 dataset=imagenet<br />
 101, flavor=64x4d, dataset=imagenet</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p>ResNeSt</p></td>
 <td
 style="text-align: left;"><p><code>ai.djl.mxnet:resnest:0.0.1</code></p></td>
@@ -292,19 +294,19 @@ style="text-align: left;"><p><code>ai.djl.mxnet:resnest:0.0.1</code></p></td>
 200, dataset=imagenet<br />
 269, dataset=imagenet</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>SqueezeNet</p></td>
 <td
 style="text-align: left;"><p><code>ai.djl.mxnet:squeezenet:0.0.1</code></p></td>
 <td style="text-align: left;"><p>1.0, dataset=imagenet</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p>MobileNet</p></td>
 <td
 style="text-align: left;"><p><code>ai.djl.tensorflow:mobilenet:0.0.1</code></p></td>
 <td style="text-align: left;"><p>v2, dataset=imagenet</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>MobileNet</p></td>
 <td
 style="text-align: left;"><p><code>ai.djl.mxnet:mobilenet:0.0.1</code></p></td>
@@ -320,32 +322,32 @@ v2, multiplier=1.0, dataset=imagenet<br />
 v3_small, multiplier=1.0, dataset=imagenet<br />
 v3_large, multiplier=1.0, dataset=imagenet</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p>GoogLeNet</p></td>
 <td
 style="text-align: left;"><p><code>ai.djl.mxnet:googlenet:0.0.1</code></p></td>
 <td style="text-align: left;"><p>imagenet</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>Darknet</p></td>
 <td
 style="text-align: left;"><p><code>ai.djl.mxnet:darknet:0.0.1</code></p></td>
 <td style="text-align: left;"><p>53, flavor=v3,
 dataset=imagenet</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p>Inception v3</p></td>
 <td
 style="text-align: left;"><p><code>ai.djl.mxnet:inceptionv3:0.0.1</code></p></td>
 <td style="text-align: left;"><p>imagenet</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>AlexNet</p></td>
 <td
 style="text-align: left;"><p><code>ai.djl.mxnet:alexnet:0.0.1</code></p></td>
 <td style="text-align: left;"><p>imagenet</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p>VGGNet</p></td>
 <td
 style="text-align: left;"><p><code>ai.djl.mxnet:vgg:0.0.1</code></p></td>
@@ -358,7 +360,7 @@ batch_norm, layers=13, dataset=imagenet<br />
 batch_norm, layers=16, dataset=imagenet<br />
 batch_norm, layers=19, dataset=imagenet</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>DenseNet</p></td>
 <td
 style="text-align: left;"><p><code>ai.djl.mxnet:densenet:0.0.1</code></p></td>
@@ -367,7 +369,7 @@ style="text-align: left;"><p><code>ai.djl.mxnet:densenet:0.0.1</code></p></td>
 169, dataset=imagenet<br />
 201, dataset=imagenet</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p>Xception</p></td>
 <td
 style="text-align: left;"><p><code>ai.djl.mxnet:xception:0.0.1</code></p></td>
@@ -376,7 +378,7 @@ style="text-align: left;"><p><code>ai.djl.mxnet:xception:0.0.1</code></p></td>
 </tbody>
 </table>
 
-## CV - Object Detection
+### CV - Object Detection
 
 Application: `cv/object_detection`
 
@@ -387,34 +389,34 @@ Application: `cv/object_detection`
 <col style="width: 41%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Model family</th>
 <th style="text-align: left;">Artifact ID</th>
 <th style="text-align: left;">Options</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>SSD</p></td>
 <td
 style="text-align: left;"><p><code>ai.djl.zoo:ssd:0.0.2</code></p></td>
 <td style="text-align: left;"><p>tiny, dataset=pikachu</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p>SSD</p></td>
 <td
 style="text-align: left;"><p><code>ai.djl.pytorch:ssd:0.0.1</code></p></td>
 <td style="text-align: left;"><p>300, backbone=resnet50,
 dataset=coco</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>SSD</p></td>
 <td
 style="text-align: left;"><p><code>ai.djl.tensorflow:ssd:0.0.1</code></p></td>
 <td style="text-align: left;"><p>mobilenet_v2,
 dataset=openimages_v4</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p>SSD</p></td>
 <td
 style="text-align: left;"><p><code>ai.djl.mxnet:ssd:0.0.1</code></p></td>
@@ -424,7 +426,7 @@ dataset=voc<br />
 512, backbone=mobilenet1.0, dataset=voc<br />
 300, backbone=vgg16, flavor=atrous, dataset=voc</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>YOLO</p></td>
 <td
 style="text-align: left;"><p><code>ai.djl.mxnet:yolo:0.0.1</code></p></td>
@@ -440,13 +442,13 @@ coco, version=3, backbone=mobilenet1.0, imageSize=320<br />
 coco, version=3, backbone=mobilenet1.0, imageSize=416<br />
 coco, version=3, backbone=mobilenet1.0, imageSize=608</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p>YOLOv5</p></td>
 <td
 style="text-align: left;"><p><code>ai.djl.pytorch:yolo5s:0.0.1</code></p></td>
 <td style="text-align: left;"><p>{}</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>YOLOv8</p></td>
 <td
 style="text-align: left;"><p><code>ai.djl.pytorch:yolov8n:0.0.1</code></p></td>
@@ -455,7 +457,7 @@ style="text-align: left;"><p><code>ai.djl.pytorch:yolov8n:0.0.1</code></p></td>
 </tbody>
 </table>
 
-## CV - Semantic Segmentation
+### CV - Semantic Segmentation
 
 Application: `cv/semantic_segmentation`
 
@@ -466,14 +468,14 @@ Application: `cv/semantic_segmentation`
 <col style="width: 41%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Model family</th>
 <th style="text-align: left;">Artifact ID</th>
 <th style="text-align: left;">Options</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>DeepLabV3</p></td>
 <td
 style="text-align: left;"><p><code>ai.djl.pytorch:deeplabv3:0.0.1</code></p></td>
@@ -483,7 +485,7 @@ dataset=coco</p></td>
 </tbody>
 </table>
 
-## CV - Instance Segmentation
+### CV - Instance Segmentation
 
 Application: `cv/instance_segmentation`
 
@@ -494,14 +496,14 @@ Application: `cv/instance_segmentation`
 <col style="width: 41%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Model family</th>
 <th style="text-align: left;">Artifact ID</th>
 <th style="text-align: left;">Options</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>Mask R-CNN</p></td>
 <td
 style="text-align: left;"><p><code>ai.djl.mxnet:mask_rcnn:0.0.1</code></p></td>
@@ -512,7 +514,7 @@ resnet101, flavor=v1d, dataset=coco</p></td>
 </tbody>
 </table>
 
-## CV - Pose Estimation
+### CV - Pose Estimation
 
 Application: `cv/pose_estimation`
 
@@ -523,14 +525,14 @@ Application: `cv/pose_estimation`
 <col style="width: 41%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Model family</th>
 <th style="text-align: left;">Artifact ID</th>
 <th style="text-align: left;">Options</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>Simple Pose</p></td>
 <td
 style="text-align: left;"><p><code>ai.djl.mxnet:simple_pose:0.0.1</code></p></td>
@@ -544,7 +546,7 @@ resnet152, flavor=v1d, dataset=imagenet</p></td>
 </tbody>
 </table>
 
-## CV - Action Recognition
+### CV - Action Recognition
 
 Application: `cv/action_recognition`
 
@@ -555,14 +557,14 @@ Application: `cv/action_recognition`
 <col style="width: 41%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Model family</th>
 <th style="text-align: left;">Artifact ID</th>
 <th style="text-align: left;">Options</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>Action Recognition</p></td>
 <td
 style="text-align: left;"><p><code>ai.djl.mxnet:action_recognition:0.0.1</code></p></td>
@@ -572,7 +574,7 @@ inceptionv3, dataset=ucf101</p></td>
 </tbody>
 </table>
 
-## CV - Image Generation
+### CV - Image Generation
 
 Application: `cv/image_generation`
 
@@ -583,14 +585,14 @@ Application: `cv/image_generation`
 <col style="width: 41%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Model family</th>
 <th style="text-align: left;">Artifact ID</th>
 <th style="text-align: left;">Options</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>CycleGAN</p></td>
 <td
 style="text-align: left;"><p><code>ai.djl.pytorch:cyclegan:0.0.1</code></p></td>
@@ -599,7 +601,7 @@ monet<br />
 ukiyoe<br />
 vangogh</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p>BigGAN</p></td>
 <td
 style="text-align: left;"><p><code>ai.djl.pytorch:biggan-deep:0.0.1</code></p></td>
@@ -610,7 +612,7 @@ style="text-align: left;"><p><code>ai.djl.pytorch:biggan-deep:0.0.1</code></p></
 </tbody>
 </table>
 
-## NLP - Question Answer
+### NLP - Question Answer
 
 Application: `nlp/question_answer`
 
@@ -621,14 +623,14 @@ Application: `nlp/question_answer`
 <col style="width: 41%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Model family</th>
 <th style="text-align: left;">Artifact ID</th>
 <th style="text-align: left;">Options</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>BertQA</p></td>
 <td
 style="text-align: left;"><p><code>ai.djl.pytorch:bertqa:0.0.1</code></p></td>
@@ -639,7 +641,7 @@ bert, cased=false, dataset=SQuAD<br />
 bert, cased=true, dataset=SQuAD<br />
 distilbert, cased=true, dataset=SQuAD</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p>BertQA</p></td>
 <td
 style="text-align: left;"><p><code>ai.djl.mxnet:bertqa:0.0.1</code></p></td>
@@ -649,7 +651,7 @@ dataset=book_corpus_wiki_en_uncased</p></td>
 </tbody>
 </table>
 
-## NLP - Sentiment Analysis
+### NLP - Sentiment Analysis
 
 Application: `nlp/sentiment_analysis`
 
@@ -660,14 +662,14 @@ Application: `nlp/sentiment_analysis`
 <col style="width: 41%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Model family</th>
 <th style="text-align: left;">Artifact ID</th>
 <th style="text-align: left;">Options</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>DistilBERT</p></td>
 <td
 style="text-align: left;"><p><code>ai.djl.pytorch:distilbert:0.0.1</code></p></td>
@@ -676,7 +678,7 @@ style="text-align: left;"><p><code>ai.djl.pytorch:distilbert:0.0.1</code></p></t
 </tbody>
 </table>
 
-## NLP - Word Embedding
+### NLP - Word Embedding
 
 Application: `nlp/word_embedding`
 
@@ -687,14 +689,14 @@ Application: `nlp/word_embedding`
 <col style="width: 41%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Model family</th>
 <th style="text-align: left;">Artifact ID</th>
 <th style="text-align: left;">Options</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>GloVe</p></td>
 <td
 style="text-align: left;"><p><code>ai.djl.mxnet:glove:0.0.2</code></p></td>
@@ -703,7 +705,7 @@ style="text-align: left;"><p><code>ai.djl.mxnet:glove:0.0.2</code></p></td>
 </tbody>
 </table>
 
-## Time Series - Forecasting
+### Time Series - Forecasting
 
 Application: `timeseries/forecasting`
 
@@ -714,20 +716,20 @@ Application: `timeseries/forecasting`
 <col style="width: 41%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Model family</th>
 <th style="text-align: left;">Artifact ID</th>
 <th style="text-align: left;">Options</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>DeepAR</p></td>
 <td
 style="text-align: left;"><p><code>ai.djl.pytorch:deepar:0.0.1</code></p></td>
 <td style="text-align: left;"><p>m5forecast</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p>DeepAR</p></td>
 <td
 style="text-align: left;"><p><code>ai.djl.mxnet:deepar:0.0.1</code></p></td>
@@ -737,14 +739,14 @@ m5forecast</p></td>
 </tbody>
 </table>
 
-# DJL Engine implementation
+## DJL Engine implementation
 
 Because DJL is deep learning framework-agnostic, you don’t have to make
 a choice between frameworks when creating your projects. You can switch
 frameworks at any point. To ensure the best performance, DJL also
 provides automatic CPU/GPU choice based on hardware configuration.
 
-## PyTorch engine
+### PyTorch engine
 
 You can pull the PyTorch engine from the central Maven repository by
 including the following dependency:
@@ -765,7 +767,7 @@ jars for your system based on the platform and GPU support.
 More information about [PyTorch engine
 installation](https://docs.djl.ai/engines/pytorch/index.html)
 
-## TensorFlow engine
+### TensorFlow engine
 
 You can pull the TensorFlow engine from the central Maven repository by
 including the following dependency:
@@ -786,7 +788,7 @@ jars for your system based on the platform and GPU support.
 More information about [TensorFlow engine
 installation](https://docs.djl.ai/engines/tensorflow/index.html)
 
-## MXNet engine
+### MXNet engine
 
 You can pull the MXNet engine from the central Maven repository by
 including the following dependency:
@@ -809,17 +811,17 @@ installation](https://docs.djl.ai/engines/mxnet/index.html)
 
 # Examples
 
-## MNIST image classification from file
+**MNIST image classification from file**
 
     from("file:/data/mnist/0/10.png")
         .to("djl:cv/image_classification?artifactId=ai.djl.mxnet:mlp:0.0.1");
 
-## Object detection
+**Object detection**
 
     from("file:/data/mnist/0/10.png")
         .to("djl:cv/image_classification?artifactId=ai.djl.mxnet:mlp:0.0.1");
 
-## Custom deep learning model
+**Custom deep learning model**
 
     // create a deep learning model
     Model model = Model.newInstance();
@@ -856,5 +858,6 @@ installation](https://docs.djl.ai/engines/mxnet/index.html)
 |application|Application name||string|
 |artifactId|Model Artifact||string|
 |model|Model||string|
+|showProgress|Show progress while loading zoo models. This parameter takes effect only with zoo models|false|boolean|
 |translator|Translator||string|
 |lazyStartProducer|Whether the producer should be started lazy (on the first message). By starting lazy you can use this to allow CamelContext and routes to startup in situations where a producer may otherwise fail during starting and cause the route to fail being started. By deferring this startup to be lazy then the startup failure can be handled during routing messages via Camel's routing error handlers. Beware that when the first message is processed then creating and starting the producer may take a little time and prolong the total processing time of the processing.|false|boolean|

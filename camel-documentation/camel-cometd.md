@@ -34,7 +34,7 @@ Camel endpoints.
 
 where `cometds:` represents an SSL configured endpoint.
 
-# Samples
+# Examples
 
 Below, you can find some examples of how to pass the parameters.
 
@@ -45,15 +45,15 @@ For classpath, when, for example, the web resources are packaged inside
 the webapp folder -→
 `cometd://localhost:8080?resourceBase=classpath:webapp`
 
-# Authentication
+## Authentication
 
 You can configure custom `SecurityPolicy` and `Extension`'s to the
 `CometdComponent` which allows you to use authentication as [documented
 here](http://cometd.org/documentation/howtos/authentication)
 
-# Setting up SSL for Cometd Component
+## Setting up SSL for Cometd Component
 
-## Using the JSSE Configuration Utility
+### Using the JSSE Configuration Utility
 
 The Cometd component supports SSL/TLS configuration through the [Camel
 JSSE Configuration

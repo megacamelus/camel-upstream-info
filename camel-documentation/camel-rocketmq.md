@@ -30,7 +30,9 @@ be sent to. In the case of consumers, the topic name determines the
 topic will be subscribed. This component uses RocketMQ push consumer by
 default.
 
-# InOut Pattern
+# Usage
+
+## InOut Pattern
 
 InOut Pattern based on Message Key. When the producer sends the message,
 a messageKey will be generated and append to the message’s key.

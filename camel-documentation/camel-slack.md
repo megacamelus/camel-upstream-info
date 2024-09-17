@@ -7,10 +7,6 @@
 The Slack component allows you to connect to an instance of
 [Slack](http://www.slack.com/) and to send and receive the messages.
 
-To send a message contained in the message body, a pre-established
-[Slack incoming webhook](https://api.slack.com/incoming-webhooks) must
-be configured in Slack.
-
 Maven users will need to add the following dependency to their `pom.xml`
 for this component:
 
@@ -31,40 +27,26 @@ To send a direct message to a Slack user.
 
     slack:@userID[?options]
 
-# Configuring in Spring XML
+# Usage
 
-The SlackComponent with XML must be configured as a Spring or Blueprint
-bean that contains the incoming webhook url or the app token for the
-integration as a parameter.
+To send a message contained in the message body, a pre-established
+[Slack incoming webhook](https://api.slack.com/incoming-webhooks) must
+be configured in Slack.
+
+## Configuring in Spring XML
+
+The SlackComponent with XML must be configured as a Spring bean that
+contains the incoming webhook url or the app token for the integration
+as a parameter.
 
     <bean id="slack" class="org.apache.camel.component.slack.SlackComponent">
         <property name="webhookUrl" value="https://hooks.slack.com/services/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"/>
         <property name="token" value="xoxb-12345678901-1234567890123-xxxxxxxxxxxxxxxxxxxxxxxx"/>
     </bean>
 
-For Java, you can configure this using Java code.
+for Java, you can configure this using Java code.
 
-# Example
-
-A CamelContext with Blueprint could be as:
-
-    <?xml version="1.0" encoding="UTF-8"?>
-    <blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0" default-activation="lazy">
-    
-        <bean id="slack" class="org.apache.camel.component.slack.SlackComponent">
-            <property name="webhookUrl" value="https://hooks.slack.com/services/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"/>
-        </bean>
-    
-        <camelContext xmlns="http://camel.apache.org/schema/blueprint">
-            <route>
-                <from uri="direct:test"/>
-                <to uri="slack:#channel?iconEmoji=:camel:&amp;username=CamelTest"/>
-            </route>
-        </camelContext>
-    
-    </blueprint>
-
-# Producer
+## Producer
 
 You can now use a token to send a message instead of WebhookUrl
 
@@ -108,7 +90,7 @@ For User tokens, you’ll need the following permissions:
 
 -   chat:write
 
-# Consumer
+## Consumer
 
 You can also use a consumer for messages in a channel
 

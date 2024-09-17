@@ -30,7 +30,9 @@ for this component:
 
 # Options
 
-# Drill Producer
+# Usage
+
+## Drill Producer
 
 The producer executes a query using the **CamelDrillQuery** header and
 puts the results into the body.

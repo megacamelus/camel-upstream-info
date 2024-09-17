@@ -48,7 +48,9 @@ content—message headers and exchange properties are not sent.
 However, the option, **transferExchange**, does allow you to transfer
 the exchange itself over the wire. See options below.
 
-# Using a custom codec
+# Usage
+
+## Using a custom codec
 
 See the Mina how to write your own codec. To use your custom codec with
 `camel-mina`, you should register your codec in the Registry; for
@@ -56,7 +58,24 @@ example, by creating a bean in the Spring XML file. Then use the `codec`
 option to specify the bean ID of your codec. See
 [HL7](#dataformats:hl7-dataformat.adoc) that has a custom codec.
 
-## Sample with sync=false
+## Get the IoSession for message
+
+You can get the IoSession from the message header with this key
+`MinaConstants.MINA_IOSESSION`, and also get the local host address with
+the key `MinaConstants.MINA_LOCAL_ADDRESS` and remote host address with
+the key `MinaConstants.MINA_REMOTE_ADDRESS`.
+
+## Configuring Mina filters
+
+Filters permit you to use some Mina Filters, such as `SslFilter`. You
+can also implement some customized filters. Please note that `codec` and
+`logger` are also implemented as Mina filters of the type, `IoFilter`.
+Any filters you may define are appended to the end of the filter chain;
+that is, after `codec` and `logger`.
+
+# Examples
+
+## Example with sync=false
 
 In this sample, Camel exposes a service that listens for TCP connections
 on port 6200. We use the **textline** codec. In our route, we create a
@@ -74,14 +93,14 @@ it on port 6200.
     
     MockEndpoint.assertIsSatisfied(context);
 
-## Sample with sync=true
+## Example with sync=true
 
 In the next sample, we have a more common use case where we expose a TCP
-service on port 6201 also use the textline codec. However, this time we
-want to return a response, so we set the `sync` option to `true` on the
-consumer.
+service on port 6201 also use the `textline` codec. However, this time
+we want to return a response, so we set the `sync` option to `true` on
+the consumer.
 
-    from("mina:tcp://localhost:" + port2 + "?textline=true&sync=true").process(new Processor() {
+    fromF("mina:tcp://localhost:%d?textline=true&sync=true", port2).process(new Processor() {
         public void process(Exchange exchange) throws Exception {
             String body = exchange.getIn().getBody(String.class);
             exchange.getOut().setBody("Bye " + body);
@@ -96,7 +115,7 @@ fact, something we have dynamically set in our processor code logic.
     String response = (String)template.requestBody("mina:tcp://localhost:" + port2 + "?textline=true&sync=true", "World");
     assertEquals("Bye World", response);
 
-# Sample with Spring DSL
+## Example with Spring DSL
 
 Spring DSL can also be used for [MINA](#mina-component.adoc). In the
 sample below, we expose a TCP server on port 5555:
@@ -133,21 +152,6 @@ written the `bye` message back to the client:
                     exchange.getOut().setHeader(MinaConstants.MINA_CLOSE_SESSION_WHEN_COMPLETE, true);
                 }
             });
-
-# Get the IoSession for message
-
-You can get the IoSession from the message header with this key
-`MinaConstants.MINA_IOSESSION`, and also get the local host address with
-the key `MinaConstants.MINA_LOCAL_ADDRESS` and remote host address with
-the key `MinaConstants.MINA_REMOTE_ADDRESS`.
-
-# Configuring Mina filters
-
-Filters permit you to use some Mina Filters, such as `SslFilter`. You
-can also implement some customized filters. Please note that `codec` and
-`logger` are also implemented as Mina filters of the type, `IoFilter`.
-Any filters you may define are appended to the end of the filter chain;
-that is, after `codec` and `logger`.
 
 ## Component Configurations
 

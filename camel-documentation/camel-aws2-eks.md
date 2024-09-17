@@ -76,7 +76,9 @@ side:
 
 -   deleteCluster
 
-# Producer Examples
+# Examples
+
+## Producer Examples
 
 -   listClusters: this operation will list the available clusters in EKS
 
@@ -85,7 +87,7 @@ side:
     from("direct:listClusters")
         .to("aws2-eks://test?eksClient=#amazonEksClient&operation=listClusters")
 
-# Using a POJO as body
+## Using a POJO as body
 
 Sometimes building an AWS Request can be complex because of multiple
 options. We introduce the possibility to use a POJO as a body. In AWS

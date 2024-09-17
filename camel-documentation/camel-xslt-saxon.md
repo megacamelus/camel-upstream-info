@@ -30,26 +30,27 @@ You can append query options to the URI in the following format:
 <col style="width: 50%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">URI</th>
 <th style="text-align: left;">Description</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td
-style="text-align: left;"><p>xslt-saxon:com/acme/mytransform.xsl</p></td>
+style="text-align: left;"><p><code>xslt-saxon:com/acme/mytransform.xsl</code></p></td>
 <td style="text-align: left;"><p>Refers to the file
-com/acme/mytransform.xsl on the classpath</p></td>
+<code>com/acme/mytransform.xsl</code> on the classpath</p></td>
 </tr>
-<tr>
-<td style="text-align: left;"><p>xslt-saxon:file:///foo/bar.xsl</p></td>
-<td style="text-align: left;"><p>Refers to the file
-/foo/bar.xsl</p></td>
-</tr>
-<tr>
+<tr class="even">
 <td
-style="text-align: left;"><p>xslt-saxon:http://acme.com/cheese/foo.xsl</p></td>
+style="text-align: left;"><p><code>xslt-saxon:file:///foo/bar.xsl</code></p></td>
+<td style="text-align: left;"><p>Refers to the file
+<code>/foo/bar.xsl</code></p></td>
+</tr>
+<tr class="odd">
+<td
+style="text-align: left;"><p><code>xslt-saxon:http://acme.com/cheese/foo.xsl</code></p></td>
 <td style="text-align: left;"><p>Refers to the remote http
 resource</p></td>
 </tr>
@@ -58,7 +59,9 @@ resource</p></td>
 
 Example URIs
 
-# Using XSLT endpoints
+# Usage
+
+## Using XSLT endpoints
 
 The following format is an example of using an XSLT template to
 formulate a response for a message for InOut message exchanges (where
@@ -74,7 +77,7 @@ destination, you could use the following route:
       to("xslt-saxon:com/acme/mytransform.xsl").
       to("activemq:Another.Queue");
 
-# Getting Usable Parameters into the XSLT
+## Getting Usable Parameters into the XSLT
 
 By default, all headers are added as parameters which are then available
 in the XSLT.  
@@ -92,7 +95,7 @@ it to be available:
     
         <xsl:template ...>
 
-# Spring XML versions
+## Spring XML versions
 
 To use the above examples in Spring XML, you would use something like
 the following code:
@@ -105,7 +108,7 @@ the following code:
         </route>
       </camelContext>
 
-# Using xsl:include
+## Using `xsl:include`
 
 Camel provides its own implementation of `URIResolver`. This allows
 Camel to load included files from the classpath.
@@ -124,12 +127,12 @@ the prefix from the endpoint configuration. If no prefix is specified in
 the endpoint configuration, the default is `classpath:`.
 
 You can also refer backwards in the included paths. In the following
-example, the xsl file will be resolved under
+example, the XSL file will be resolved under
 `org/apache/camel/component`.
 
         <xsl:include href="../staff_other_template.xsl"/>
 
-# Using xsl:include and default prefix
+## Using `xsl:include` and default prefix
 
 Camel will use the prefix from the endpoint configuration as the default
 prefix.
@@ -137,7 +140,7 @@ prefix.
 You can explicitly specify `file:` or `classpath:` loading. The two
 loading types can be mixed in an XSLT script, if necessary.
 
-# Using Saxon extension functions
+## Using Saxon extension functions
 
 Since Saxon 9.2, writing extension functions has been supplemented by a
 new mechanism, referred to as [extension
@@ -169,12 +172,12 @@ With Spring XML:
       </route>
     </camelContext>
 
-# Dynamic stylesheets
+## Dynamic stylesheets
 
 To provide a dynamic stylesheet at runtime, you can either:
 
 -   Define a dynamic URI. See [How to use a dynamic URI in
-    to()](#manual:faq:how-to-use-a-dynamic-uri-in-to.adoc) for more
+    `to()`](#manual:faq:how-to-use-a-dynamic-uri-in-to.adoc) for more
     information.
 
 -   Use header with the stylesheet.
@@ -205,7 +208,7 @@ as this will tell Camel to not load `dummy.xsl` on startup but to load
 the stylesheet on demand. And because you provide the stylesheet via
 headers, then it is fully dynamic.
 
-# Accessing warnings, errors and fatalErrors from XSLT ErrorListener
+## Accessing warnings, errors and fatalErrors from XSLT ErrorListener
 
 Any warning/error or fatalError is stored on the current Exchange as a
 property with the keys `Exchange.XSLT_ERROR`,
@@ -214,7 +217,7 @@ users to get hold of any errors happening during transformation.
 
 For example, in the stylesheet below, we want to determinate whether a
 staff has an empty dob field. And to include a custom error message
-using xsl:message.
+using `xsl:message`.
 
     <xsl:template match="/">
       <html>

@@ -27,7 +27,9 @@ Where `executable` is the name, or file path, of the system command that
 will be executed. If executable name is used (e.g. `exec:java`), the
 executable must in the system path.
 
-# Message body
+# Usage
+
+## Message body
 
 If the component receives an `in` message body that is convertible to
 `java.io.InputStream`, it is used to feed input to the executable via
@@ -47,26 +49,26 @@ convenience:
 <col style="width: 50%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">From</th>
 <th style="text-align: left;">To</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>ExecResult</code></p></td>
 <td
 style="text-align: left;"><p><code>java.io.InputStream</code></p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>ExecResult</code></p></td>
 <td style="text-align: left;"><p><code>String</code></p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>ExecResult</code></p></td>
 <td style="text-align: left;"><p><code>byte []</code></p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>ExecResult</code></p></td>
 <td
 style="text-align: left;"><p><code>org.w3c.dom.Document</code></p></td>
@@ -81,7 +83,7 @@ then this component will convert the `stdout` of the process to the
 target type. For more details, please refer to the [usage
 examples](#exec-component.adoc) below.
 
-# Usage examples
+# Examples
 
 ## Executing word count (Linux)
 

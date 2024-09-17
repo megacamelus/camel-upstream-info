@@ -18,7 +18,7 @@ for this component:
         <!-- use the same version as your Camel core version -->
     </dependency>
 
-URI format
+# URI format
 
 The pgevent component uses the following two styles of endpoint URI
 notation:
@@ -26,9 +26,11 @@ notation:
     pgevent:datasource[?parameters]
     pgevent://host:port/database/channel[?parameters]
 
-# Common problems
+# Usage
 
-## Unable to connect to PostgreSQL database using DataSource
+## Common problems
+
+### Unable to connect to PostgreSQL database using DataSource
 
 Using the driver provided by PostgreSQL itself (`jdbc:postgresql:/...`)
 when using a DataSource to connect to a PostgreSQL database does not

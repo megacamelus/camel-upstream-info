@@ -43,7 +43,9 @@ The URI scheme for a netty component is as follows
 This component supports producer and consumer endpoints for both TCP and
 UDP.
 
-# Registry-based Options
+# Usage
+
+## Registry-based Options
 
 Codec Handlers and SSL Keystores can be enlisted in the Registry, such
 as in the Spring XML file. The values that could be passed in are the
@@ -55,39 +57,39 @@ following:
 <col style="width: 89%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Name</th>
 <th style="text-align: left;">Description</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>passphrase</code></p></td>
 <td style="text-align: left;"><p>password setting to use to
 encrypt/decrypt payloads sent using SSH</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>keyStoreFormat</code></p></td>
 <td style="text-align: left;"><p>keystore format to be used for payload
 encryption. Defaults to <code>JKS</code> if not set</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>securityProvider</code></p></td>
 <td style="text-align: left;"><p>Security provider to be used for
 payload encryption. Defaults to <code>SunX509</code> if not
 set.</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>keyStoreFile</code></p></td>
 <td style="text-align: left;"><p><strong>deprecated:</strong> Client
 side certificate keystore to be used for encryption</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>trustStoreFile</code></p></td>
 <td style="text-align: left;"><p><strong>deprecated:</strong> Server
 side certificate keystore to be used for encryption</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>keyStoreResource</code></p></td>
 <td style="text-align: left;"><p>Client side certificate keystore to be
 used for encryption. It is loaded by default from classpath, but you can
@@ -95,7 +97,7 @@ prefix with <code>"classpath:"</code>, <code>"file:"</code>, or
 <code>"http:"</code> to load the resource from different
 systems.</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td
 style="text-align: left;"><p><code>trustStoreResource</code></p></td>
 <td style="text-align: left;"><p>Server side certificate keystore to be
@@ -104,33 +106,33 @@ prefix with <code>"classpath:"</code>, <code>"file:"</code>, or
 <code>"http:"</code> to load the resource from different
 systems.</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>sslHandler</code></p></td>
 <td style="text-align: left;"><p>Reference to a class that could be used
 to return an SSL Handler</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>encoder</code></p></td>
 <td style="text-align: left;"><p>A custom <code>ChannelHandler</code>
 class that can be used to perform special marshalling of outbound
 payloads. Must override
 <code>io.netty.channel.ChannelInboundHandlerAdapter</code>.</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>encoders</code></p></td>
 <td style="text-align: left;"><p>A list of encoders to be used. You can
 use a string that has values separated by comma, and have the values be
 looked up in the Registry. Remember to prefix the value with
 <code>#</code> so Camel knows it should look up.</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>decoder</code></p></td>
 <td style="text-align: left;"><p>A custom <code>ChannelHandler</code>
 class that can be used to perform special marshalling of inbound
 payloads. Must override
 <code>io.netty.channel.ChannelOutboundHandlerAdapter</code>.</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>decoders</code></p></td>
 <td style="text-align: left;"><p>A list of decoders to be used. You can
 use a string that has values separated by comma, and have the values be
@@ -142,7 +144,7 @@ looked up in the Registry. Remember to prefix the value with
 
 Read below about using non-shareable encoders/decoders.
 
-## Using non-shareable encoders or decoders
+### Using non-shareable encoders or decoders
 
 If your encoders or decoders are not shareable (e.g., they don’t have
 the @Shareable class annotation), then your encoder/decoder must
@@ -156,9 +158,9 @@ The Netty component offers a
 `org.apache.camel.component.netty.ChannelHandlerFactories` factory
 class, that has a number of commonly used methods.
 
-# Sending Messages to/from a Netty endpoint
+## Sending Messages to/from a Netty endpoint
 
-## Netty Producer
+### Netty Producer
 
 In Producer mode, the component provides the ability to send payloads to
 a socket endpoint using either TCP or UDP protocols (with optional SSL
@@ -167,7 +169,7 @@ support).
 The producer mode supports both one-way and request-response based
 operations.
 
-## Netty Consumer
+### Netty Consumer
 
 In Consumer mode, the component provides the ability to:
 
@@ -182,7 +184,7 @@ In Consumer mode, the component provides the ability to:
 The consumer mode supports both one-way and request-response based
 operations.
 
-## Using Multiple Codecs
+### Using Multiple Codecs
 
 In certain cases, it may be necessary to add chains of encoders and
 decoders to the netty pipeline. To add multiple codecs to a Camel netty
@@ -277,7 +279,7 @@ XML
 </route>  
 </camelContext>
 
-# Closing Channel When Complete
+## Closing Channel When Complete
 
 When acting as a server, you sometimes want to close the channel when,
 for example, a client conversion is finished. You can do this by simply
@@ -303,7 +305,7 @@ written the bye message back to the client:
 Adding custom channel pipeline factories to gain complete control over a
 created pipeline
 
-# Custom pipeline
+## Custom pipeline
 
 Custom channel pipelines provide complete control to the user over the
 handler/interceptor chain by inserting custom handler(s), encoder(s) \&
@@ -330,7 +332,7 @@ A custom pipeline factory must be constructed as follows
 The example below shows how `ServerInitializerFactory` factory may be
 created
 
-## Using custom pipeline factory
+### Using custom pipeline factory
 
     public class SampleServerInitializerFactory extends ServerInitializerFactory {
         private int maxLineSize = 1024;
@@ -369,7 +371,7 @@ and instantiated/utilized on a Camel route in the following way
       }
     });
 
-# Reusing Netty boss and worker thread pools
+## Reusing Netty boss and worker thread pools
 
 Netty has two kinds of thread pools: boss and worker. By default, each
 Netty consumer and producer has their private thread pools. If you want
@@ -415,7 +417,7 @@ And if we have another route, we can refer to the shared worker pool:
 
 And so forth.
 
-# Multiplexing concurrent messages over a single connection with request/reply
+## Multiplexing concurrent messages over a single connection with request/reply
 
 When using Netty for request/reply messaging via the netty producer,
 then by default, each message is sent via a non-shared connection
@@ -446,7 +448,7 @@ You can find an example with the Apache Camel source code in the
 examples directory under the `camel-example-netty-custom-correlation`
 directory.
 
-# Native transport
+## Native transport
 
 To enable native transport, you need to add additional dependency for
 epoll or kqueue depending on your OS and CPU arch. To make it easier add

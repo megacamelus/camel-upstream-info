@@ -14,7 +14,7 @@ camel component.
 You must have a valid account. More information is available at [CM
 Telecom](https://www.cmtelecom.com/support).
 
-# Sample
+# Example
 
     cm-sms://sgw01.cm.nl/gateway.ashx?defaultFrom=DefaultSender&defaultMaxNumberOfParts=8&productToken=xxxxx
 

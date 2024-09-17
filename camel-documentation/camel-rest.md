@@ -38,7 +38,9 @@ The following components support the REST producer:
 
 -   camel-vertx-http
 
-# Path and uriTemplate syntax
+# Usage
+
+## Path and uriTemplate syntax
 
 The path and uriTemplate option is defined using a REST syntax where you
 define the REST context path using support for parameters.
@@ -69,7 +71,9 @@ have two REST services configured using uriTemplates.
     from("rest:get:hello:/french/{me}")
       .transform().simple("Bonjour ${header.me}");
 
-# Rest producer examples
+# Examples
+
+## Rest producer examples
 
 You can use the REST component to call REST services like any other
 Camel component.
@@ -107,7 +111,7 @@ use as the HTTP client, for example to use http, you can do:
     from("direct:start")
       .to("rest:get:hello/{me}");
 
-# Rest producer binding
+## Rest producer binding
 
 The REST producer supports binding using JSON or XML like the rest-dsl
 does.
@@ -150,7 +154,7 @@ For example, if the REST service returns a JSON payload that binds to
 You must configure `outType` option if you want POJO binding to happen
 for the response messages received from calling the REST service.
 
-# More examples
+## More examples
 
 See Rest DSL, which offers more examples and how you can use the Rest
 DSL to define those in a nicer, restful way.

@@ -186,7 +186,7 @@ Please refer to the [SMPP
 specification](http://smsforum.net/SMPP_v3_4_Issue1_2.zip) for the
 complete list of error codes and their meanings.
 
-# Samples
+# Examples
 
 A route which sends an SMS using the Java DSL:
 

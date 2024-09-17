@@ -18,7 +18,9 @@ for this component:
         <!-- use the same version as your Camel core version -->
     </dependency>
 
-# Platform HTTP Provider
+# Usage
+
+## Platform HTTP Provider
 
 To use Platform HTTP, a provider (engine) is required to be available on
 the classpath. The purpose is to have drivers for different runtimes
@@ -42,7 +44,7 @@ Spring Boot
 <!-- use the same version as your Camel version -->  
 </dependency>
 
-# Implementing a reverse proxy
+## Implementing a reverse proxy
 
 Platform HTTP component can act as a reverse proxy. In that case, some
 headers are populated from the absolute URL received on the request line
@@ -79,6 +81,7 @@ in `camel-platform-http-vertx` component.
 |matchOnUriPrefix|Whether or not the consumer should try to find a target consumer by matching the URI prefix if no exact match is found.|false|boolean|
 |muteException|If enabled and an Exchange failed processing on the consumer side the response's body won't contain the exception's stack trace.|true|boolean|
 |produces|The content type this endpoint produces, such as application/xml or application/json.||string|
+|returnHttpRequestHeaders|Whether to include HTTP request headers (Accept, User-Agent, etc.) into HTTP response produced by this endpoint.|false|boolean|
 |useCookieHandler|Whether to enable the Cookie Handler that allows Cookie addition, expiry, and retrieval (currently only supported by camel-platform-http-vertx)|false|boolean|
 |useStreaming|Whether to use streaming for large requests and responses (currently only supported by camel-platform-http-vertx)|false|boolean|
 |bridgeErrorHandler|Allows for bridging the consumer to the Camel routing Error Handler, which mean any exceptions (if possible) occurred while the Camel consumer is trying to pickup incoming messages, or the likes, will now be processed as a message and handled by the routing Error Handler. Important: This is only possible if the 3rd party component allows Camel to be alerted if an exception was thrown. Some components handle this internally only, and therefore bridgeErrorHandler is not possible. In other situations we may improve the Camel component to hook into the 3rd party component and make this possible for future releases. By default the consumer will use the org.apache.camel.spi.ExceptionHandler to deal with exceptions, that will be logged at WARN or ERROR level and ignored.|false|boolean|

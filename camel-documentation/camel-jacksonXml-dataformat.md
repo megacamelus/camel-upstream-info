@@ -1,0 +1,277 @@
+# JacksonXml-dataformat.md
+
+**Since Camel 2.16**
+
+Jackson XML is a Data Format that uses the [Jackson
+library](https://github.com/FasterXML/jackson/) with the [XMLMapper
+extension](https://github.com/FasterXML/jackson-dataformat-xml) to
+unmarshal an XML payload into Java objects or to marshal Java objects
+into an XML payload.
+
+If you are familiar with Jackson, this XML data format behaves in the
+same way as its JSON counterpart, and thus can be used with classes
+annotated for JSON serialization/deserialization.
+
+This extension also mimics [JAXB’s "Code first"
+approach](https://github.com/FasterXML/jackson-dataformat-xml/blob/master/README.md).
+
+This data format relies on
+[Woodstox](https://github.com/FasterXML/Woodstox) (especially for
+features like pretty printing), a fast and efficient XML processor.
+
+    from("activemq:My.Queue").
+      unmarshal().jacksonXml().
+      to("mqseries:Another.Queue");
+
+# JacksonXML Options
+
+# Usage
+
+## 2 and 4 bytes characters
+
+Jackson will default work with UTF-8 using an optimized generator that
+only supports UTF-8. For users that need 2-bytes or 4-bytes (such as
+Japanese) would need to turn on `useWriter=true` in the Camel
+dataformat, to use another generator that lets `java.io.Writer` handle
+character encodings.
+
+## Using Jackson XML in Spring DSL
+
+When using Data Format in Spring DSL, you need to declare the data
+formats first. This is done in the `dataFormats` XML tag:
+
+            <dataFormats>
+                <!-- here we define an XML data format with the id jack and that it should use the TestPojo as the class type when
+                     doing unmarshal. The unmarshalType is optional, if not provided Camel will use a Map as the type -->
+                <jacksonXml id="jack" unmarshalType="org.apache.camel.component.jacksonxml.TestPojo"/>
+            </dataFormats>
+
+And then you can refer to this id in the route:
+
+           <route>
+                <from uri="direct:back"/>
+                <unmarshal><custom ref="jack"/></unmarshal>
+                <to uri="mock:reverse"/>
+            </route>
+
+## Excluding POJO fields from marshalling
+
+When marshalling a POJO to XML, you might want to exclude certain fields
+from the XML output. With Jackson, you can use [JSON
+views](https://github.com/FasterXML/jackson-annotations/blob/master/src/main/java/com/fasterxml/jackson/annotation/JsonView.java)
+to accomplish this. First, create one or more marker classes.
+
+Use the marker classes with the `@JsonView` annotation to
+include/exclude certain fields. The annotation also works on getters.
+
+Finally, use the Camel `JacksonXMLDataFormat` to marshall the above POJO
+to XML.
+
+Note that the weight field is missing in the resulting XML:
+
+    <pojo age="30" weight="70"/>
+
+## Include/Exclude fields using the `jsonView` attribute with \`\`JacksonXML\`\`DataFormat
+
+As an example of using this attribute, you can instead of:
+
+    JacksonXMLDataFormat ageViewFormat = new JacksonXMLDataFormat(TestPojoView.class, Views.Age.class);
+    
+    from("direct:inPojoAgeView")
+      .marshal(ageViewFormat);
+
+Directly specify your [JSON
+view](https://github.com/FasterXML/jackson-annotations/blob/master/src/main/java/com/fasterxml/jackson/annotation/JsonView.java)
+inside the Java DSL as:
+
+    from("direct:inPojoAgeView")
+      .marshal().jacksonXml(TestPojoView.class, Views.Age.class);
+
+And the same in XML DSL:
+
+    <route>
+    <from uri="direct:inPojoAgeView"/>
+        <marshal>
+          <jacksonXml unmarshalType="org.apache.camel.component.jacksonxml.TestPojoView" jsonView="org.apache.camel.component.jacksonxml.Views$Age"/>
+        </marshal>
+    </route>
+
+## Setting serialization include option
+
+If you want to marshal a POJO to XML, and the POJO has some fields with
+null values. And you want to skip these null values, then you need to
+set either an annotation on the POJO:
+
+    @JsonInclude(Include.NON_NULL)
+    public class MyPojo {
+       ...
+    }
+
+But this requires you to include that annotation in your POJO source
+code. You can also configure the Camel JacksonXMLDataFormat to set the
+`include` option, as shown below:
+
+    JacksonXMLDataFormat format = new JacksonXMLDataFormat();
+    format.setInclude("NON_NULL");
+
+Or from XML DSL you configure this as
+
+    <dataFormats>
+      <jacksonXml id="jacksonxml" include="NON_NULL"/>
+    </dataFormats>
+
+## Unmarshalling from XML to POJO with dynamic class name
+
+If you use Jackson to unmarshal XML to POJO, then you can now specify a
+header in the message that indicates which class name to unmarshal to.
+The header has key `CamelJacksonUnmarshalType` if that header is present
+in the message, then Jackson will use that as FQN for the POJO class to
+unmarshal the XML payload as.
+
+For JMS end users, there is the `JMSType` header from the JMS spec that
+indicates that also. To enable support for `JMSType` you would need to
+turn that on, on the Jackson data format as shown:
+
+    JacksonDataFormat format = new JacksonDataFormat();
+    format.setAllowJmsType(true);
+
+Or from XML DSL you configure this as:
+
+    <dataFormats>
+      <jacksonXml id="jacksonxml" allowJmsType="true"/>
+    </dataFormats>
+
+## Unmarshalling from XML to `List<Map>` or `List<POJO>`
+
+If you are using Jackson to unmarshal XML to a list of map/POJO, you can
+now specify this by setting `useList="true"` or use the
+`org.apache.camel.component.jacksonxml.ListJacksonXMLDataFormat`. For
+example, with Java, you can do as shown below:
+
+    JacksonXMLDataFormat format = new ListJacksonXMLDataFormat();
+    // or
+    JacksonXMLDataFormat format = new JacksonXMLDataFormat();
+    format.useList();
+    // and you can specify the POJO class type also
+    format.setUnmarshalType(MyPojo.class);
+
+And if you use XML DSL then you configure to use a list using `useList`
+attribute as shown below:
+
+    <dataFormats>
+        <jacksonXml id="jack" useList="true"/>
+    </dataFormats>
+
+And you can specify the POJO type also
+
+    <dataFormats>
+        <jacksonXml id="jack" useList="true" unmarshalType="com.foo.MyPojo"/>
+    </dataFormats>
+
+## Using custom Jackson modules
+
+You can use custom Jackson modules by specifying the class names of
+those using the moduleClassNames option as shown below.
+
+    <dataFormats>
+        <jacksonXml id="jack" useList="true" unmarshalType="com.foo.MyPojo" moduleClassNames="com.foo.MyModule,com.foo.MyOtherModule"/>
+    </dataFormats>
+
+When using `moduleClassNames` then the custom Jackson modules are not
+configured, by created using default constructor and used as-is. If a
+custom module needs any custom configuration, then an instance of the
+module can be created and configured, and then use modulesRefs to refer
+to the module as shown below:
+
+    <bean id="myJacksonModule" class="com.foo.MyModule">
+      ... // configure the module as you want
+    </bean>
+    
+    <dataFormats>
+        <jacksonXml id="jacksonxml" useList="true" unmarshalType="com.foo.MyPojo" moduleRefs="myJacksonModule"/>
+    </dataFormats>
+
+Multiple modules can be specified separated by comma, such as
+`moduleRefs="myJacksonModule,myOtherModule"`.
+
+## Enabling or disable features using Jackson
+
+Jackson XML has a number of features you can enable or disable, which
+its XmlMapper uses. For example, to disable failing on unknown
+properties when marshalling, you can configure this using the
+disableFeatures:
+
+    <dataFormats>
+        <jacksonXml id="jacksonxml" unmarshalType="com.foo.MyPojo" disableFeatures="FAIL_ON_UNKNOWN_PROPERTIES"/>
+    </dataFormats>
+
+You can disable multiple features by separating the values using comma.
+The values for the features must be the name of the enums from Jackson
+from the following enum classes:
+
+-   `com.fasterxml.jackson.databind.SerializationFeature`
+
+-   `com.fasterxml.jackson.databind.DeserializationFeature`
+
+-   `com.fasterxml.jackson.databind.MapperFeature`
+
+-   `com.fasterxml.jackson.dataformat.xml.deser.FromXmlParser.Feature`
+
+To enable a feature, use the enableFeatures options instead.
+
+From Java code, you can use the type safe methods from camel-jackson
+module:
+
+    JacksonDataFormat df = new JacksonDataFormat(MyPojo.class);
+    df.disableFeature(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
+    df.disableFeature(DeserializationFeature.FAIL_ON_NULL_FOR_PRIMITIVES);
+
+## Converting Maps to POJO using Jackson
+
+Jackson `XmlMapper` can be used to convert maps to POJO objects. Jackson
+component comes with the data converter that can be used to convert
+`java.util.Map` instance to non-String, non-primitive and non-Number
+objects.
+
+    Map<String, Object> invoiceData = new HashMap<String, Object>();
+    invoiceData.put("netValue", 500);
+    producerTemplate.sendBody("direct:mapToInvoice", invoiceData);
+    ...
+    // Later in the processor
+    Invoice invoice = exchange.getIn().getBody(Invoice.class);
+
+If there is a single `XmlMapper` instance available in the Camel
+registry, it will be used by the converter to perform the conversion.
+Otherwise, the default mapper will be used.
+
+## Formatted XML marshalling (pretty-printing)
+
+Using the `prettyPrint` option one can output a well-formatted XML while
+marshalling:
+
+    <dataFormats>
+        <jacksonXml id="jack" prettyPrint="true"/>
+    </dataFormats>
+
+And in Java DSL:
+
+    from("direct:inPretty").marshal().jacksonXml(true);
+
+Please note that there are 5 different overloaded `jacksonXml()` DSL
+methods which support the `prettyPrint` option in combination with other
+settings for `unmarshalType`, `jsonView` etc.
+
+# Dependencies
+
+To use Jackson XML in your Camel routes, you need to add the dependency
+on **camel-jacksonxml** which implements this data format.
+
+If you use Maven, you could add the following to your `pom.xml`,
+substituting the version number for the latest \& greatest release.
+
+    <dependency>
+      <groupId>org.apache.camel</groupId>
+      <artifactId>camel-jacksonxml</artifactId>
+      <version>x.x.x</version>
+      <!-- use the same version as your Camel core version -->
+    </dependency>

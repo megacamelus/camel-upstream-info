@@ -21,7 +21,9 @@ for this component:
 
     etcd3:path[?options]
 
-# Producer Operations (Since 3.20)
+# Usage
+
+## Producer Operations (Since 3.20)
 
 Apache Camel supports different etcd operations.
 
@@ -36,7 +38,7 @@ To define the operation, set the exchange header with a key of
 <col style="width: 69%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">operation</th>
 <th style="text-align: left;">input message body</th>
 <th style="text-align: left;">output message body</th>
@@ -44,7 +46,7 @@ To define the operation, set the exchange header with a key of
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>set</p></td>
 <td style="text-align: left;"><p><strong>String</strong> value of the
 key-value pair to put</p></td>
@@ -58,7 +60,7 @@ setting the exchange header with the key
 setting the exchange header with the key
 <code>CamelEtcdValueCharset</code>.</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p>get</p></td>
 <td style="text-align: left;"><p>None</p></td>
 <td style="text-align: left;"><p><code>GetResponse</code> result of the
@@ -71,7 +73,7 @@ by setting the exchange header with the key
 setting the exchange header with the key <code>CamelEtcdIsPrefix</code>
 to <code>true</code>.</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>delete</p></td>
 <td style="text-align: left;"><p>None</p></td>
 <td style="text-align: left;"><p><code>DeleteResponse</code> result of
@@ -83,7 +85,7 @@ by setting the exchange header with the key
 <code>CamelEtcdKeyCharset</code>. You indicate if the key is a prefix by
 setting the exchange header with the key <code>CamelEtcdIsPrefix</code>
 to <code>true</code>.</p>
-<p>== Consumer (Since 3.20)</p>
+<p>=== Consumer (Since 3.20)</p>
 <p>The consumer of the etcd components allows watching changes on the
 matching key-value pair(s). One exchange is created per event with the
 header <code>CamelEtcdPath</code> set to the path of the corresponding
@@ -96,10 +98,10 @@ prefix by setting the exchange header with the key
 also possible to start watching events from a specific revision by
 setting the option <code>fromIndex</code> to the expected starting
 index.</p>
-<p>== AggregationRepository</p>
+<p>=== AggregationRepository</p>
 <p>The Etcd v3 component provides an <code>AggregationStrategy</code> to
 use etcd as the backend datastore.</p>
-<p>== RoutePolicy (Since 3.20)</p>
+<p>=== RoutePolicy (Since 3.20)</p>
 <p>The Etcd v3 component provides a <code>RoutePolicy</code> to use etcd
 as clustered lock.</p></td>
 </tr>

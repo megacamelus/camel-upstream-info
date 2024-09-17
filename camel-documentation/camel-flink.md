@@ -30,7 +30,9 @@ DataSet, DataStream jobs.
     flink:dataset?dataset=#myDataSet&dataSetCallback=#dataSetCallback
     flink:datastream?datastream=#myDataStream&dataStreamCallback=#dataStreamCallback
 
-# Flink DataSet Callback
+# Examples
+
+## Flink DataSet Callback
 
     @Bean
     public DataSetCallback<Long> dataSetCallback() {
@@ -46,7 +48,7 @@ DataSet, DataStream jobs.
         };
     }
 
-# Flink DataStream Callback
+## Flink DataStream Callback
 
     @Bean
     public VoidDataStreamCallback dataStreamCallback() {
@@ -60,7 +62,7 @@ DataSet, DataStream jobs.
         };
     }
 
-# Camel-Flink Producer call
+## Camel-Flink Producer call
 
     CamelContext camelContext = new SpringCamelContext(context);
     

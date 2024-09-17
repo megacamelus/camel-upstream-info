@@ -32,7 +32,7 @@ for this component:
 
 All URI options can also be set as exchange headers.
 
-# Samples
+# Examples
 
 Listen for new mined blocks and send the block hash to a jms queue:
 

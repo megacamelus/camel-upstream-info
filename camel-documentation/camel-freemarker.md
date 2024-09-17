@@ -37,7 +37,9 @@ For example, set the header value of `fruit` in the FreeMarker template:
 
 The header, `fruit`, is now accessible from the `message.out.headers`.
 
-# FreeMarker Context
+# Usage
+
+## FreeMarker Context
 
 Camel will provide exchange information in the FreeMarker context (just
 a `Map`). The `Exchange` is transferred as:
@@ -48,44 +50,44 @@ a `Map`). The `Exchange` is transferred as:
 <col style="width: 50%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">key</th>
 <th style="text-align: left;">value</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>exchange</code></p></td>
 <td style="text-align: left;"><p>The <code>Exchange</code>
 itself.</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td
 style="text-align: left;"><p><code>exchange.properties</code></p></td>
 <td style="text-align: left;"><p>The <code>Exchange</code>
 properties.</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>variables</code></p></td>
 <td style="text-align: left;"><p>The variables</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>headers</code></p></td>
 <td style="text-align: left;"><p>The headers of the In message.</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>camelContext</code></p></td>
 <td style="text-align: left;"><p>The Camel Context.</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>request</code></p></td>
 <td style="text-align: left;"><p>The In message.</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>body</code></p></td>
 <td style="text-align: left;"><p>The In message body.</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>response</code></p></td>
 <td style="text-align: left;"><p>The Out message (only for InOut message
 exchange pattern).</p></td>
@@ -102,21 +104,21 @@ the key "**CamelFreemarkerDataModel**" just like this
     variableMap.put("exchange", exchange);
     exchange.getIn().setHeader("CamelFreemarkerDataModel", variableMap);
 
-# Hot reloading
+## Hot reloading
 
 The FreeMarker template resource is by default **not** hot reloadable
 for both file and classpath resources (expanded jar). If you set
 `contentCache=false`, then Camel will not cache the resource and hot
 reloading is thus enabled. This scenario can be used in development.
 
-# Dynamic templates
+## Dynamic templates
 
 Camel provides two headers by which you can define a different resource
 location for a template or the template content itself. If any of these
 headers is set, then Camel uses this over the endpoint configured
 resource. This allows you to provide a dynamic template at runtime.
 
-# Samples
+# Examples
 
 For example, you could use something like:
 
@@ -153,7 +155,7 @@ dynamically via a header, so for example:
       setHeader(FreemarkerConstants.FREEMARKER_RESOURCE_URI).constant("path/to/my/template.ftl").
       to("freemarker:dummy?allowTemplateFromHeader=true");
 
-# The Email Sample
+## The Email Example
 
 In this sample, we want to use FreeMarker templating for an order
 confirmation email. The email template is laid out in FreeMarker as:

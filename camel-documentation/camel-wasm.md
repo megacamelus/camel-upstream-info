@@ -25,7 +25,9 @@ for this component:
 
     wasm://functionName?[options]
 
-# Writing A Wasm processor
+# Usage
+
+## Writing A Wasm processor
 
 In *Wasm*, sharing objects between the host, in this case the *JVM*, and
 the *Wasm* module is deliberately restricted and as of today, it
@@ -44,7 +46,7 @@ requires a number of steps:
 
 5.  From the *host*, release the memory when done
 
-## Providing functions for memory management
+### Providing functions for memory management
 
 The module hosting the function **must** provide the functions to
 allocate/deallocate memory that **must** be named `alloc` and `dealloc`
@@ -68,7 +70,7 @@ Here’s an example of the mentioned functions implemented in
         let _ = Vec::from_raw_parts(ptr, 0, len as usize);
     }
 
-## Data shapes
+### Data shapes
 
 It is not possible to share a Java object with the Wasm module directly,
 and as mentioned before, data exchange leverages Wasm’s memory that can
@@ -85,7 +87,7 @@ as a base64 string:
         public byte[] body;
     }
 
-## Data processing
+### Data processing
 
 The component expects the processing function to have the following
 signature:

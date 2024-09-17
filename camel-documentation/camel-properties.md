@@ -2,7 +2,7 @@
 
 **Since Camel 2.3**
 
-The properties component is used for property placeholders in your Camel
+The Properties component is used for property placeholders in your Camel
 application, such as endpoint URIs. It is **not** a regular Camel
 component with producer and consumer for routing messages. However, for
 historical reasons it was named `PropertiesComponent` and this name is
@@ -12,16 +12,16 @@ See the [Property
 Placeholder](#manual:ROOT:using-propertyplaceholder.adoc) documentation
 for general information on using property placeholders in Camel.
 
-The properties component requires to load the properties (key=value
+The Properties component requires to load the properties (key=value
 pairs) from an external source such as `.properties` files. The
 component is pluggable, and you can configure to use other sources or
 write a custom implementation (for example to load from a database).
 
 # Defining location of properties files
 
-The properties component needs to know a location(s) where to resolve
-the properties. You can define one to many locations. Multiple locations
-can be separated by comma such as:
+The properties component needs to know the location(s) where to resolve
+the properties. You can define one-to-many locations. You can separate
+multiple locations by comma, such as:
 
     pc.setLocation("com/mycompany/myprop.properties,com/mycompany/other.properties");
 
@@ -39,13 +39,13 @@ and OS environments variables.
 
 For example:
 
-    location=file:{{sys:karaf.home}}/etc/foo.properties
+    location=file:{{sys:app.home}}/etc/foo.properties
 
 In the location above we defined a location using the file scheme using
-the JVM system property with key `karaf.home`.
+the JVM system property with key `app.home`.
 
-To use an OS environment variable instead you would have to prefix with
-`env:`. You can also prefix with `env.`, however this style is not
+To use an OS environment variable, instead you would have to prefix with
+`env:`. You can also prefix with `env.`, however, this style is not
 recommended because all the other functions use colon.
 
     location=file:{{env:APP_HOME}}/etc/foo.properties
@@ -78,7 +78,7 @@ Using the `<propertyPlaceholder>` allows to configure this within the
        <propertyPlaceholder id="properties" location="com/mycompany/myprop.properties"/>
     </camelContext>
 
-For fine grained configuration of the location, then this can be done as
+For fine-grained configuration of the location, then this can be done as
 follows:
 
     <camelContext>
@@ -91,11 +91,6 @@ follows:
           resolver = "classpath"
           path     = "com/my/company/something/my-properties-2.properties"
           optional = "false"/>
-        <propertiesLocation
-          resolver = "file"
-          path     = "{{sys:karaf.home}}/etc/my-override.properties"
-          optional = "true"/>
-       </propertyPlaceholder>
     </camelContext>
 
 # Options
@@ -110,7 +105,7 @@ The component supports the following options, which are listed below.
 <col style="width: 19%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Name</th>
 <th style="text-align: left;">Description</th>
 <th style="text-align: center;">Default</th>
@@ -118,7 +113,7 @@ The component supports the following options, which are listed below.
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td
 style="text-align: left;"><p><strong>camel.component.properties.auto-discover-properties-sources</strong></p></td>
 <td style="text-align: left;"><p>Whether to automatically discovery
@@ -127,7 +122,7 @@ factory.</p></td>
 <td style="text-align: center;"><p>true</p></td>
 <td style="text-align: left;"><p>Boolean</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td
 style="text-align: left;"><p><strong>camel.component.properties.default-fallback-enabled</strong></p></td>
 <td style="text-align: left;"><p>If false, the component does not
@@ -136,7 +131,7 @@ separator.</p></td>
 <td style="text-align: center;"><p>true</p></td>
 <td style="text-align: left;"><p>Boolean</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td
 style="text-align: left;"><p><strong>camel.component.properties.encoding</strong></p></td>
 <td style="text-align: left;"><p>Encoding to use when loading properties
@@ -146,7 +141,7 @@ as documented by java.util.Properties#load(java.io.InputStream)</p></td>
 <td style="text-align: center;"></td>
 <td style="text-align: left;"><p>String</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td
 style="text-align: left;"><p><strong>camel.component.properties.environment-variable-mode</strong></p></td>
 <td style="text-align: left;"><p>Sets the OS environment variables mode
@@ -157,7 +152,7 @@ property mode</p></td>
 <td style="text-align: center;"><p>2</p></td>
 <td style="text-align: left;"><p>Integer</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td
 style="text-align: left;"><p><strong>camel.component.properties.ignore-missing-location</strong></p></td>
 <td style="text-align: left;"><p>Whether to silently ignore if a
@@ -166,7 +161,7 @@ found.</p></td>
 <td style="text-align: center;"><p>false</p></td>
 <td style="text-align: left;"><p>Boolean</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td
 style="text-align: left;"><p><strong>camel.component.properties.initial-properties</strong></p></td>
 <td style="text-align: left;"><p>Sets initial properties which will be
@@ -175,7 +170,7 @@ java.util.Properties type.</p></td>
 <td style="text-align: center;"></td>
 <td style="text-align: left;"><p>String</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td
 style="text-align: left;"><p><strong>camel.component.properties.location</strong></p></td>
 <td style="text-align: left;"><p>A list of locations to load properties.
@@ -185,7 +180,7 @@ option.</p></td>
 <td style="text-align: center;"></td>
 <td style="text-align: left;"><p>String</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td
 style="text-align: left;"><p><strong>camel.component.properties.nested-placeholder</strong></p></td>
 <td style="text-align: left;"><p>Whether to support nested property
@@ -194,7 +189,7 @@ placeholder, that should be resolved (recursively).</p></td>
 <td style="text-align: center;"><p>true</p></td>
 <td style="text-align: left;"><p>Boolean</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td
 style="text-align: left;"><p><strong>camel.component.properties.override-properties</strong></p></td>
 <td style="text-align: left;"><p>Sets a special list of override
@@ -203,7 +198,7 @@ The option is a java.util.Properties type.</p></td>
 <td style="text-align: center;"></td>
 <td style="text-align: left;"><p>String</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td
 style="text-align: left;"><p><strong>camel.component.properties.properties-parser</strong></p></td>
 <td style="text-align: left;"><p>To use a custom PropertiesParser. The
@@ -212,7 +207,7 @@ type.</p></td>
 <td style="text-align: center;"></td>
 <td style="text-align: left;"><p>String</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td
 style="text-align: left;"><p><strong>camel.component.properties.system-properties-mode</strong></p></td>
 <td style="text-align: left;"><p>Sets the JVM system property mode (0 =

@@ -16,7 +16,9 @@ This component aims at integrating Cassandra 2.0+ using the CQL3 API
 instead of the Thrift API. It’s based on [Cassandra Java
 Driver](https://github.com/datastax/java-driver) provided by DataStax.
 
-# Endpoint Connection Syntax
+# Usage
+
+## Endpoint Connection Syntax
 
 The endpoint can initiate the Cassandra connection or use an existing
 one.
@@ -27,33 +29,33 @@ one.
 <col style="width: 50%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">URI</th>
 <th style="text-align: left;">Description</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td
 style="text-align: left;"><p><code>cql:localhost/keyspace</code></p></td>
 <td style="text-align: left;"><p>Single host, default port, usual for
 testing</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td
 style="text-align: left;"><p><code>cql:host1,host2/keyspace</code></p></td>
 <td style="text-align: left;"><p>Multi host, default port</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td
 style="text-align: left;"><p><code>cql:host1,host2:9042/keyspace</code></p></td>
 <td style="text-align: left;"><p>Multi host, custom port</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>cql:host1,host2</code></p></td>
 <td style="text-align: left;"><p>Default port and keyspace</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td
 style="text-align: left;"><p><code>cql:bean:sessionRef</code></p></td>
 <td style="text-align: left;"><p>Provided Session reference</p></td>
@@ -65,9 +67,9 @@ To fine-tune the Cassandra connection (SSL options, pooling options,
 load balancing policy, retry policy, reconnection policy…), create your
 own Cluster instance and give it to the Camel endpoint.
 
-# Messages
+## Messages
 
-## Incoming Message
+### Incoming Message
 
 The Camel Cassandra endpoint expects a bunch of simple objects (`Object`
 or `Object[]` or `Collection<Object>`) which will be bound to the CQL
@@ -79,7 +81,7 @@ Headers:
 -   `CamelCqlQuery` (optional, `String` or `RegularStatement`): CQL
     query either as a plain String or built using the `QueryBuilder`.
 
-## Outgoing Message
+### Outgoing Message
 
 The Camel Cassandra endpoint produces one or many a Cassandra Row
 objects depending on the `resultSetConversionStrategy`:
@@ -92,7 +94,7 @@ objects depending on the `resultSetConversionStrategy`:
 -   Anything else, if `resultSetConversionStrategy` is a custom
     implementation of the `ResultSetConversionStrategy`
 
-# Repositories
+## Repositories
 
 Cassandra can be used to store message keys or messages for the
 idempotent and aggregation EIP.
@@ -103,7 +105,7 @@ datasets](http://www.datastax.com/dev/blog/cassandra-anti-patterns-queues-and-qu
 It’s advised to use LeveledCompaction and a small GC grace setting for
 these tables to allow tombstoned rows to be removed quickly.
 
-# Idempotent repository
+### Idempotent repository
 
 The `NamedCassandraIdempotentRepository` stores messages keys in a
 Cassandra table like this:
@@ -130,35 +132,35 @@ Alternatively, the `CassandraIdempotentRepository` does not have a
 <col style="width: 32%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Option</th>
 <th style="text-align: left;">Default</th>
 <th style="text-align: left;">Description</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>table</code></p></td>
 <td style="text-align: left;"><p><code>CAMEL_IDEMPOTENT</code></p></td>
 <td style="text-align: left;"><p>Table name</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>pkColumns</code></p></td>
 <td style="text-align: left;"><p><code>NAME</code>,` KEY`</p></td>
 <td style="text-align: left;"><p>Primary key columns</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>name</code></p></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"><p>Repository name, value used for
 <code>NAME</code> column</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>ttl</code></p></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"><p>Key time to live</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td
 style="text-align: left;"><p><code>writeConsistencyLevel</code></p></td>
 <td style="text-align: left;"></td>
@@ -166,7 +168,7 @@ style="text-align: left;"><p><code>writeConsistencyLevel</code></p></td>
 key: <code>ANY</code>, <code>ONE</code>, <code>TWO</code>,
 <code>QUORUM</code>, <code>LOCAL_QUORUM</code>…</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td
 style="text-align: left;"><p><code>readConsistencyLevel</code></p></td>
 <td style="text-align: left;"></td>
@@ -177,7 +179,7 @@ key: <code>ONE</code>, <code>TWO</code>, <code>QUORUM</code>,
 </tbody>
 </table>
 
-# Aggregation repository
+### Aggregation repository
 
 The `NamedCassandraAggregationRepository` stores exchanges by
 correlation key in a Cassandra table like this:
@@ -203,46 +205,46 @@ Alternatively, the `CassandraAggregationRepository` does not have a
 <col style="width: 32%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Option</th>
 <th style="text-align: left;">Default</th>
 <th style="text-align: left;">Description</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>table</code></p></td>
 <td style="text-align: left;"><p><code>CAMEL_AGGREGATION</code></p></td>
 <td style="text-align: left;"><p>Table name</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>pkColumns</code></p></td>
 <td
 style="text-align: left;"><p><code>NAME</code>,<code>KEY</code></p></td>
 <td style="text-align: left;"><p>Primary key columns</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>exchangeIdColumn</code></p></td>
 <td style="text-align: left;"><p><code>EXCHANGE_ID</code></p></td>
 <td style="text-align: left;"><p>Exchange Id column</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>exchangeColumn</code></p></td>
 <td style="text-align: left;"><p><code>EXCHANGE</code></p></td>
 <td style="text-align: left;"><p>Exchange content column</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>name</code></p></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"><p>Repository name, value used for
 <code>NAME</code> column</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>ttl</code></p></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"><p>Exchange time to live</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td
 style="text-align: left;"><p><code>writeConsistencyLevel</code></p></td>
 <td style="text-align: left;"></td>
@@ -250,7 +252,7 @@ style="text-align: left;"><p><code>writeConsistencyLevel</code></p></td>
 exchange: <code>ANY</code>, <code>ONE</code>, <code>TWO</code>,
 <code>QUORUM</code>, <code>LOCAL_QUORUM</code>…</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td
 style="text-align: left;"><p><code>readConsistencyLevel</code></p></td>
 <td style="text-align: left;"></td>

@@ -7,27 +7,31 @@
 The Kubernetes Replication Controller component is one of [Kubernetes
 Components](#kubernetes-summary.adoc) which provides a producer to
 execute Kubernetes Replication controller operations and a consumer to
-consume events related to Replication Controller objects.
+consume events related to Replication Controller (RC) objects.
 
-# Supported producer operation
+# Usage
 
--   listReplicationControllers
+## Supported producer operation
 
--   listReplicationControllersByLabels
+-   `listReplicationControllers`
 
--   getReplicationController
+-   `listReplicationControllersByLabels`
 
--   createReplicationController
+-   `getReplicationController`
 
--   updateReplicationController
+-   `createReplicationController`
 
--   deleteReplicationController
+-   `updateReplicationController`
 
--   scaleReplicationController
+-   `deleteReplicationController`
 
-# Kubernetes Replication Controllers Producer Examples
+-   `scaleReplicationController`
 
--   listReplicationControllers: this operation lists the RCs on a
+# Examples
+
+## Kubernetes Replication Controllers Producer Examples
+
+-   `listReplicationControllers`: this operation lists the RCs on a
     kubernetes cluster
 
 <!-- -->
@@ -36,10 +40,10 @@ consume events related to Replication Controller objects.
         toF("kubernetes-replication-controllers:///?kubernetesClient=#kubernetesClient&operation=listReplicationControllers").
         to("mock:result");
 
-This operation returns a List of RCs from your cluster
+This operation returns a list of RCs from your cluster
 
--   listReplicationControllersByLabels: this operation lists the RCs by
-    labels on a kubernetes cluster
+-   `listReplicationControllersByLabels`: this operation lists the RCs
+    by labels on a kubernetes cluster
 
 <!-- -->
 
@@ -55,10 +59,10 @@ This operation returns a List of RCs from your cluster
         toF("kubernetes-replication-controllers:///?kubernetesClient=#kubernetesClient&operation=listReplicationControllersByLabels").
         to("mock:result");
 
-This operation returns a List of RCs from your cluster, using a label
+This operation returns a list of RCs from your cluster using a label
 selector (with key1 and key2, with value value1 and value2)
 
-# Kubernetes Replication Controllers Consumer Example
+## Kubernetes Replication Controllers Consumer Example
 
     fromF("kubernetes-replication-controllers://%s?oauthToken=%s&namespace=default&resourceName=test", host, authToken).process(new KubernertesProcessor()).to("mock:result");
         public class KubernertesProcessor implements Processor {

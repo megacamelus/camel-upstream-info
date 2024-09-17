@@ -37,7 +37,9 @@ for this component:
 
     github://endpoint[?options]
 
-# Configuring authentication
+# Usage
+
+## Configuring authentication
 
 The GitHub component requires to be configured with an authentication
 token on either the component or endpoint level.
@@ -47,7 +49,7 @@ For example, to set it on the component:
     GitHubComponent ghc = context.getComponent("github", GitHubComponent.class);
     ghc.setOauthToken("mytoken");
 
-# Consumer Endpoints:
+## Consumer Endpoints:
 
 <table>
 <colgroup>
@@ -56,20 +58,20 @@ For example, to set it on the component:
 <col style="width: 60%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Endpoint</th>
 <th style="text-align: left;">Context</th>
 <th style="text-align: left;">Body Type</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>pullRequest</p></td>
 <td style="text-align: left;"><p>polling</p></td>
 <td
 style="text-align: left;"><p><code>org.eclipse.egit.github.core.PullRequest</code></p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p>pullRequestComment</p></td>
 <td style="text-align: left;"><p>polling</p></td>
 <td
@@ -78,13 +80,13 @@ style="text-align: left;"><p><code>org.eclipse.egit.github.core.Comment</code>
 <code>org.eclipse.egit.github.core.CommitComment</code> (inline comment
 on a pull request diff)</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>tag</p></td>
 <td style="text-align: left;"><p>polling</p></td>
 <td
 style="text-align: left;"><p><code>org.eclipse.egit.github.core.RepositoryTag</code></p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p>commit</p></td>
 <td style="text-align: left;"><p>polling</p></td>
 <td
@@ -93,7 +95,7 @@ style="text-align: left;"><p><code>org.eclipse.egit.github.core.RepositoryCommit
 </tbody>
 </table>
 
-# Producer Endpoints:
+## Producer Endpoints:
 
 <table>
 <colgroup>
@@ -102,14 +104,14 @@ style="text-align: left;"><p><code>org.eclipse.egit.github.core.RepositoryCommit
 <col style="width: 60%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Endpoint</th>
 <th style="text-align: left;">Body</th>
 <th style="text-align: left;">Message Headers</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>pullRequestComment</p></td>
 <td style="text-align: left;"><p>String (comment text)</p></td>
 <td style="text-align: left;"><p>- <code>GitHubPullRequest</code>
@@ -118,13 +120,13 @@ style="text-align: left;"><p><code>org.eclipse.egit.github.core.RepositoryCommit
 to another inline comment on the pull request diff. If left off, a
 general comment on the pull request discussion is assumed.</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p>closePullRequest</p></td>
 <td style="text-align: left;"><p>none</p></td>
 <td style="text-align: left;"><p>- <code>GitHubPullRequest</code>
 (integer) (REQUIRED): Pull request number.</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>createIssue</p></td>
 <td style="text-align: left;"><p>String (issue body text)</p></td>
 <td style="text-align: left;"><p>- <code>GitHubIssueTitle</code>

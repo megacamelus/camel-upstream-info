@@ -70,7 +70,7 @@ forward body of the Camel exchanges to the Guava `EventBus` instance.
       }
     });
 
-# DeadEvent considerations
+## DeadEvent considerations
 
 Keep in mind that due to the limitations caused by the design of the
 Guava EventBus, you cannot specify event class to be received by the
@@ -110,7 +110,7 @@ follows.
 
     from("guava-eventbus:busName?listenerInterface=com.example.CustomListener").to("seda:queue");
 
-# Consuming multiple types of events
+## Consuming multiple types of events
 
 To define multiple types of events to be consumed by Guava EventBus
 consumer use `listenerInterface` endpoint option, as listener interface

@@ -11,17 +11,17 @@ events related to Node objects.
 
 # Supported producer operation
 
--   listCustomResources
+-   `listCustomResources`
 
--   listCustomResourcesByLabels
+-   `listCustomResourcesByLabels`
 
--   getCustomResource
+-   `getCustomResource`
 
--   deleteCustomResource
+-   `deleteCustomResource`
 
--   createCustomResource
+-   `createCustomResource`
 
--   updateCustomResource
+-   `updateCustomResource`
 
 ## Component Configurations
 

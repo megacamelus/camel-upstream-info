@@ -18,7 +18,7 @@ Or for a delimited file handler with no configuration file just use
 
     flatpack:someName[?options]
 
-# Examples
+# Usage
 
 -   `flatpack:fixed:foo.pzmap.xml` creates a fixed-width endpoint using
     the `foo.pzmap.xml` file configuration.
@@ -29,7 +29,7 @@ Or for a delimited file handler with no configuration file just use
 -   `flatpack:foo` creates a delimited endpoint called `foo` with no
     file configuration.
 
-# Message Body
+## Message Body
 
 The component delivers the data in the IN message as a
 `org.apache.camel.component.flatpack.DataSetList` object that has
@@ -40,7 +40,7 @@ Usually you want the `Map` if you process one row at a time
 Each `Map` contains the key for the column name and its corresponding
 value.
 
-For example to get the firstname from the sample below:
+For example, to get the firstname from the sample below:
 
       Map row = exchange.getIn().getBody(Map.class);
       String firstName = row.get("FIRSTNAME");
@@ -52,7 +52,7 @@ However, you can also always get it as a `List` (even for
       Map row = (Map)data.get(0);
       String firstName = row.get("FIRSTNAME");
 
-# Header and Trailer records
+## Header and Trailer records
 
 The header and trailer notions in Flatpack are supported. However, you
 **must** use fixed record IDs:
@@ -81,7 +81,7 @@ trailer. You can omit one or both of them if not needed.
             <COLUMN name="STATUS" length="7"/>
         </RECORD>
 
-# Using the endpoint
+## Using as an Endpoint
 
 A common use case is sending a file to this endpoint for further
 processing in a separate route. For example:
@@ -101,7 +101,7 @@ processing in a separate route. For example:
 You can also convert the payload of each message created to a `Map` for
 easy Bean Integration
 
-# Flatpack DataFormat
+## Flatpack DataFormat
 
 The [Flatpack](#flatpack-component.adoc) component ships with the
 Flatpack data format that can be used to format between fixed width or
@@ -120,7 +120,7 @@ delimited text messages to a `List` of rows as `Map`.
 **Notice:** The Flatpack library does currently not support header and
 trailers for the marshal operation.
 
-# Options
+### Options
 
 The data format has the following options:
 
@@ -131,56 +131,56 @@ The data format has the following options:
 <col style="width: 79%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Option</th>
 <th style="text-align: left;">Default</th>
 <th style="text-align: left;">Description</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>definition</code></p></td>
 <td style="text-align: left;"><p><code>null</code></p></td>
 <td style="text-align: left;"><p>The flatpack pzmap configuration file.
 Can be omitted in simpler situations, but its preferred to use the
 pzmap.</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>fixed</code></p></td>
 <td style="text-align: left;"><p><code>false</code></p></td>
 <td style="text-align: left;"><p>Delimited or fixed.</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>ignoreFirstRecord</code></p></td>
 <td style="text-align: left;"><p><code>true</code></p></td>
 <td style="text-align: left;"><p>Whether the first line is ignored for
 delimited files (for the column headers).</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>textQualifier</code></p></td>
 <td style="text-align: left;"><p><code>"</code></p></td>
 <td style="text-align: left;"><p>If the text is qualified with a char
 such as <code>"</code>.</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>delimiter</code></p></td>
 <td style="text-align: left;"><p><code>,</code></p></td>
 <td style="text-align: left;"><p>The delimiter char (could be
 <code>;</code> <code>,</code> or similar)</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>parserFactory</code></p></td>
 <td style="text-align: left;"><p><code>null</code></p></td>
 <td style="text-align: left;"><p>Uses the default Flatpack parser
 factory.</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>allowShortLines</code></p></td>
 <td style="text-align: left;"><p><code>false</code></p></td>
 <td style="text-align: left;"><p>Allows for lines to be shorter than
 expected and ignores the extra characters.</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td
 style="text-align: left;"><p><code>ignoreExtraColumns</code></p></td>
 <td style="text-align: left;"><p><code>false</code></p></td>
@@ -190,10 +190,10 @@ expected and ignores the extra characters.</p></td>
 </tbody>
 </table>
 
-# Usage
+## Using the data format
 
-To use the data format, simply instantiate an instance and invoke the
-marshal or unmarshal operation in the route builder:
+To use the data format, instantiate an instance and invoke the marshal
+or unmarshal operation in the route builder:
 
       FlatpackDataFormat fp = new FlatpackDataFormat();
       fp.setDefinition(new ClassPathResource("INVENTORY-Delimited.pzmap.xml"));
@@ -212,21 +212,20 @@ files. The result is a `DataSetList` object we store on the SEDA queue.
     
     from("seda:people").marshal(df).convertBodyTo(String.class).to("jms:queue:people");
 
-In the code above we marshal the data from a Object representation as a
+In the code above we marshal the data from an Object representation as a
 `List` of rows as `Maps`. The rows as `Map` contains the column name as
 the key, and the corresponding value. This structure can be created in
-Java code from e.g. a processor. We marshal the data according to the
+Java code from e.g., a processor. We marshal the data according to the
 Flatpack format and convert the result as a `String` object and store it
 on a JMS queue.
 
-# Dependencies
+## Dependencies
 
-To use Flatpack in your camel routes you need to add the a dependency on
+To use Flatpack in your camel routes, you need to add a dependency on
 **camel-flatpack** which implements this data format.
 
-If you use maven you could just add the following to your pom.xml,
-substituting the version number for the latest \& greatest release (see
-the download page for the latest versions).
+If you use maven, you could add the following to your `pom.xml`,
+substituting the version number for the latest release.
 
     <dependency>
       <groupId>org.apache.camel</groupId>

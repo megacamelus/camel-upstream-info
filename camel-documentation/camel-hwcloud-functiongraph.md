@@ -33,33 +33,33 @@ for this component:
 <col style="width: 79%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Header</th>
 <th style="text-align: left;">Type</th>
 <th style="text-align: left;">Description</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td
 style="text-align: left;"><p><code>CamelHwCloudFgOperation</code></p></td>
 <td style="text-align: left;"><p><code>String</code></p></td>
 <td style="text-align: left;"><p>Name of operation to invoke</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td
 style="text-align: left;"><p><code>CamelHwCloudFgFunction</code></p></td>
 <td style="text-align: left;"><p><code>String</code></p></td>
 <td style="text-align: left;"><p>Name of function to invoke operation
 on</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td
 style="text-align: left;"><p><code>CamelHwCloudFgPackage</code></p></td>
 <td style="text-align: left;"><p><code>String</code></p></td>
 <td style="text-align: left;"><p>Name of the function package</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td
 style="text-align: left;"><p><code>CamelHwCloudFgXCffLogType</code></p></td>
 <td style="text-align: left;"><p><code>String</code></p></td>
@@ -81,14 +81,14 @@ override their corresponding query parameter.
 <col style="width: 79%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Header</th>
 <th style="text-align: left;">Type</th>
 <th style="text-align: left;">Description</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td
 style="text-align: left;"><p><code>CamelHwCloudFgXCffLogs</code></p></td>
 <td style="text-align: left;"><p><code>String</code></p></td>
@@ -99,11 +99,11 @@ is set</p></td>
 </tbody>
 </table>
 
-# List of Supported FunctionGraph Operations
+## List of Supported FunctionGraph Operations
 
 -   invokeFunction - to invoke a serverless function
 
-# Using ServiceKey Configuration Bean
+## Using ServiceKey Configuration Bean
 
 Access key and secret keys are required to authenticate against cloud
 FunctionGraph service. You can avoid having them being exposed and

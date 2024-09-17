@@ -9,23 +9,27 @@ Components](#kubernetes-summary.adoc) which provides a producer to
 execute kubernetes Horizontal Pod Autoscaler operations and a consumer
 to consume events related to Horizontal Pod Autoscaler objects.
 
-# Supported producer operation
+# Usage
 
--   listHPA
+## Supported producer operation
 
--   listHPAByLabels
+-   `listHPA`
 
--   getHPA
+-   `listHPAByLabels`
 
--   createHPA
+-   `getHPA`
 
--   updateHPA
+-   `createHPA`
 
--   deleteHPA
+-   `updateHPA`
 
-# Kubernetes HPA Producer Examples
+-   `deleteHPA`
 
--   listHPA: this operation lists the HPAs on a kubernetes cluster
+# Examples
+
+## Kubernetes HPA Producer Examples
+
+-   `listHPA`: this operation lists the HPAs on a kubernetes cluster
 
 <!-- -->
 
@@ -33,10 +37,10 @@ to consume events related to Horizontal Pod Autoscaler objects.
         toF("kubernetes-hpa:///?kubernetesClient=#kubernetesClient&operation=listHPA").
         to("mock:result");
 
-This operation returns a List of HPAs from your cluster
+This operation returns a list of HPAs from your cluster
 
--   listDeploymentsByLabels: this operation lists the HPAs by labels on
-    a kubernetes cluster
+-   `listDeploymentsByLabels`: this operation lists the HPAs by labels
+    on a kubernetes cluster
 
 <!-- -->
 
@@ -52,10 +56,10 @@ This operation returns a List of HPAs from your cluster
         toF("kubernetes-hpa:///?kubernetesClient=#kubernetesClient&operation=listHPAByLabels").
         to("mock:result");
 
-This operation returns a List of HPAs from your cluster, using a label
+This operation returns a List of HPAs from your cluster using a label
 selector (with key1 and key2, with value value1 and value2)
 
-# Kubernetes HPA Consumer Example
+## Kubernetes HPA Consumer Example
 
     fromF("kubernetes-hpa://%s?oauthToken=%s&namespace=default&resourceName=test", host, authToken).process(new KubernertesProcessor()).to("mock:result");
         public class KubernertesProcessor implements Processor {

@@ -75,7 +75,12 @@ You can also configure the credentials in the `application.properties`
 file such as:
 
     camel.vault.gcp.useDefaultInstance = true
-    camel.vault.aws.projectId = region
+    camel.vault.gcp.projectId = region
+
+`camel.vault.gcp` configuration only applies to the Google Secret
+Manager properties function (E.g when resolving properties). When using
+the `operation` option to create, get, list secrets etc., you should
+provide the usual options for connecting to GCP Services.
 
 At this point you’ll be able to reference a property in the following
 way by using `gcp:` as prefix in the `{{ }}` syntax:
@@ -121,7 +126,7 @@ example:
     <camelContext>
         <route>
             <from uri="direct:start"/>
-            <log message="Username is {{gcp:database/username}}"/>
+            <log message="Username is {{gcp:database#username}}"/>
         </route>
     </camelContext>
 
@@ -133,7 +138,7 @@ is not present on GCP Secret Manager:
     <camelContext>
         <route>
             <from uri="direct:start"/>
-            <log message="Username is {{gcp:database/username:admin}}"/>
+            <log message="Username is {{gcp:database#username:admin}}"/>
         </route>
     </camelContext>
 
@@ -168,7 +173,7 @@ exist.
     <camelContext>
         <route>
             <from uri="direct:start"/>
-            <log message="Username is {{gcp:database/username:admin@1}}"/>
+            <log message="Username is {{gcp:database#username:admin@1}}"/>
         </route>
     </camelContext>
 
@@ -195,7 +200,7 @@ With Environment variables:
 or as plain Camel main properties:
 
     camel.vault.gcp.useDefaultInstance = true
-    camel.vault.aws.projectId = projectId
+    camel.vault.gcp.projectId = projectId
 
 Or by specifying a path to a service account key file, instead of using
 the default instance.
@@ -233,6 +238,96 @@ JAR to your Camel application. - Give the service account used
 permissions to do operation at secret management level, (for example,
 accessing the secret payload, or being admin of secret manager service
 and also have permission over the Pubsub service)
+
+## Automatic `CamelContext` reloading on Secret Refresh - Required infrastructure’s creation
+
+You’ll need to install the gcloud cli from
+[https://cloud.google.com/sdk/docs/install](https://cloud.google.com/sdk/docs/install)
+
+Once the Cli has been installed we can proceed to log in and to set up
+the project with the following commands:
+
+\`\`\` gcloud auth login \`\`\`
+
+and
+
+\`\`\` gcloud projects create \<projectId\> --name="GCP Secret
+Manager Refresh" \`\`\`
+
+The project will need a service identity for using secret manager
+service and we’ll be able to have that through the command:
+
+\`\`\` gcloud beta services identity create --service
+"secretmanager.googleapis.com" --project \<project\_id\> \`\`\`
+
+The latter command will provide a service account name that we need to
+export
+
+\`\`\` export SM\_SERVICE\_ACCOUNT="service-…." \`\`\`
+
+Since we want to have notifications about events related to a specific
+secret through a Google Pubsub topic we’ll need to create a topic for
+this purpose with the following command:
+
+\`\`\` gcloud pubsub topics create
+"projects/\<project\_id\>/topics/pubsub-gcp-sec-refresh" \`\`\`
+
+The service account will need Secret Manager authorization to publish
+messages on the topic just created, so we’ll need to add an iam policy
+binding with the following command:
+
+\`\`\` \`\`\`
+
+We now need to create a subscription to the pubsub-gcp-sec-refresh just
+created and we’re going to call it sub-gcp-sec-refresh with the
+following command:
+
+\`\`\` gcloud pubsub subscriptions create
+"projects/\<project\_id\>/subscriptions/sub-gcp-sec-refresh" --topic
+"projects/\<project\_id\>/topics/pubsub-gcp-sec-refresh" \`\`\`
+
+Now we need to create a service account for running our application:
+
+\`\`\` gcloud iam service-accounts create gcp-sec-refresh-sa
+\--description="GCP Sec Refresh SA" --project \<project\_id\> \`\`\`
+
+Let’s give the SA an owner role:
+
+\`\`\` gcloud projects add-iam-policy-binding \<project\_id\>
+\--member="serviceAccount:gcp-sec-refresh-sa@\<project\_id\>.iam.gserviceaccount.com"
+\--role="roles/owner" \`\`\`
+
+Now we should create a Service account key file for the just create SA:
+
+\`\`\` gcloud iam service-accounts keys create \<project\_id\>.json
+\--iam-account=gcp-sec-refresh-sa@\<project\_id\>.iam.gserviceaccount.com
+\`\`\`
+
+Let’s enable the Secret Manager API for our project
+
+\`\`\` gcloud services enable secretmanager.googleapis.com --project
+\<project\_id\> \`\`\`
+
+Also the PubSub API needs to be enabled
+
+\`\`\` gcloud services enable pubsub.googleapis.com --project
+\<project\_id\> \`\`\`
+
+If needed enable also the Billing API.
+
+Now it’s time to create our secret, with topic notification:
+
+\`\`\` gcloud secrets create \<secret\_name\>
+\--topics=projects/\<project\_id\>/topics/pubsub-gcp-sec-refresh
+\--project=\<project\_id\> \`\`\`
+
+And let’s add the value
+
+\`\`\` gcloud secrets versions add \<secret\_name\>
+\--data-file=\<json\_secret\> --project=\<project\_id\> \`\`\`
+
+You could now use the projectId and the service account json file to
+recover the secret.
 
 ## Google Secret Manager Producer operations
 

@@ -9,24 +9,28 @@ Components](#kubernetes-summary.adoc) which provides a producer to
 execute Kubernetes Namespace operations and a consumer to consume events
 related to Namespace events.
 
-# Supported producer operation
+# Usage
 
--   listNamespaces
+## Supported producer operation
 
--   listNamespacesByLabels
+-   `listNamespaces`
 
--   getNamespace
+-   `listNamespacesByLabels`
 
--   createNamespace
+-   `getNamespace`
 
--   updateNamespace
+-   `createNamespace`
 
--   deleteNamespace
+-   `updateNamespace`
 
-# Kubernetes Namespaces Producer Examples
+-   `deleteNamespace`
 
--   listNamespaces: this operation lists the namespaces on a kubernetes
-    cluster
+# Examples
+
+## Kubernetes Namespaces Producer Examples
+
+-   `listNamespaces`: this operation lists the namespaces on a
+    kubernetes cluster
 
 <!-- -->
 
@@ -34,9 +38,9 @@ related to Namespace events.
         toF("kubernetes-deployments:///?kubernetesClient=#kubernetesClient&operation=listNamespaces").
         to("mock:result");
 
-This operation returns a List of namespaces from your cluster
+This operation returns a list of namespaces from your cluster
 
--   listNamespacesByLabels: this operation lists the namespaces by
+-   `listNamespacesByLabels`: this operation lists the namespaces by
     labels on a kubernetes cluster
 
 <!-- -->
@@ -53,10 +57,10 @@ This operation returns a List of namespaces from your cluster
         toF("kubernetes-deployments:///?kubernetesClient=#kubernetesClient&operation=listNamespacesByLabels").
         to("mock:result");
 
-This operation returns a List of Namespaces from your cluster, using a
+This operation returns a list of namespaces from your cluster, using a
 label selector (with key1 and key2, with value value1 and value2)
 
-# Kubernetes Namespaces Consumer Example
+## Kubernetes Namespaces Consumer Example
 
     fromF("kubernetes-namespaces://%s?oauthToken=%s&namespace=default", host, authToken).process(new KubernertesProcessor()).to("mock:result");
         public class KubernertesProcessor implements Processor {

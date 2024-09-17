@@ -71,7 +71,9 @@ producer side:
 
 -   translateText
 
-# Translate Text example
+# Examples
+
+## Translate Text example
 
     from("direct:start")
       .setHeader(TranslateConstants.SOURCE_LANGUAGE, TranslateLanguageEnum.ITALIAN)
@@ -81,7 +83,7 @@ producer side:
 
 As a result, you’ll get an exchange containing the translated text.
 
-# Using a POJO as body
+## Using a POJO as body
 
 Sometimes building an AWS Request can be complex because of multiple
 options. We introduce the possibility to use a POJO as the body. In AWS

@@ -97,7 +97,9 @@ producer side:
 
 -   removeUserFromGroup
 
-# Producer Examples
+# Examples
+
+## Producer Examples
 
 -   createUser: this operation will create a user in IAM
 
@@ -145,7 +147,7 @@ producer side:
     from("direct:listUsers")
         .to("aws2-iam://test?iamClient=#amazonIAMClient&operation=listGroups")
 
-# Using a POJO as body
+## Using a POJO as body
 
 Sometimes building an AWS Request can be complex because of multiple
 options. We introduce the possibility to use a POJO as a body. In AWS

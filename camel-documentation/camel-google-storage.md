@@ -202,14 +202,14 @@ time for the created link through the header
 DOWNLOAD\_LINK\_EXPIRATION\_TIME. If not specified, by default it is 5
 minutes.
 
-# Bucket Auto creation
+## Bucket Auto creation
 
 With the option `autoCreateBucket` users are able to avoid the
 autocreation of a Bucket in case it doesn’t exist. The default for this
 option is `true`. If set to false, any operation on a not-existent
 bucket won’t be successful and an error will be returned.
 
-# MoveAfterRead consumer option
+## MoveAfterRead consumer option
 
 In addition to `deleteAfterRead` it has been added another option,
 `moveAfterRead`. With this option enabled the consumed object will be

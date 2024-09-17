@@ -9,7 +9,8 @@ OpenStack block storage services.
 
 # Dependencies
 
-Maven users will need to add the following dependency to their pom.xml.
+Maven users will need to add the following dependency to their
+`pom.xml`.
 
 **pom.xml**
 
@@ -30,9 +31,9 @@ Camel.
 
 You can use the following settings for each subsystem:
 
-# volumes
+## Volumes
 
-## Operations you can perform with the Volume producer
+### Operations you can perform with the Volume producer
 
 <table>
 <colgroup>
@@ -40,33 +41,33 @@ You can use the following settings for each subsystem:
 <col style="width: 80%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Operation</th>
 <th style="text-align: left;">Description</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>create</code></p></td>
 <td style="text-align: left;"><p>Create new volume.</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>get</code></p></td>
 <td style="text-align: left;"><p>Get the volume.</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>getAll</code></p></td>
 <td style="text-align: left;"><p>Get all volumes.</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>getAllTypes</code></p></td>
 <td style="text-align: left;"><p>Get volume types.</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>update</code></p></td>
 <td style="text-align: left;"><p>Update the volume.</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>delete</code></p></td>
 <td style="text-align: left;"><p>Delete the volume.</p></td>
 </tr>
@@ -74,12 +75,12 @@ You can use the following settings for each subsystem:
 </table>
 
 If you need more precise volume settings, you can create a new object of
-the type **org.openstack4j.model.storage.block.Volume** and send in the
+the type `org.openstack4j.model.storage.block.Volume` and send in the
 message body.
 
-# snapshots
+## Snapshots
 
-## Operations you can perform with the Snapshot producer
+### Operations you can perform with the Snapshot producer
 
 <table>
 <colgroup>
@@ -87,29 +88,29 @@ message body.
 <col style="width: 80%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Operation</th>
 <th style="text-align: left;">Description</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>create</code></p></td>
 <td style="text-align: left;"><p>Create a new snapshot.</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>get</code></p></td>
 <td style="text-align: left;"><p>Get the snapshot.</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>getAll</code></p></td>
 <td style="text-align: left;"><p>Get all snapshots.</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>update</code></p></td>
 <td style="text-align: left;"><p>Get update the snapshot.</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>delete</code></p></td>
 <td style="text-align: left;"><p>Delete the snapshot.</p></td>
 </tr>
@@ -117,7 +118,7 @@ message body.
 </table>
 
 If you need more precise server settings, you can create a new object of
-the type **org.openstack4j.model.storage.block.VolumeSnapshot** and send
+the type `org.openstack4j.model.storage.block.VolumeSnapshot` and send
 in the message body.
 
 ## Component Configurations

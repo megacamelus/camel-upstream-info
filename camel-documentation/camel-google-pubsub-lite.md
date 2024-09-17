@@ -38,7 +38,9 @@ The Google PubSub Component uses the following URI format:
 
 Destination Name can be either a topic or a subscription name.
 
-# Producer Endpoints
+# Usage
+
+## Producer Endpoints
 
 Google PubSub Lite expects the payload to be `byte[]` array, Producer
 endpoints will send:
@@ -58,7 +60,7 @@ Lite orderingKey for the message. You can find more information on
 [Using ordering
 keys](https://cloud.google.com/pubsub/lite/docs/publishing#using_ordering_keys).
 
-# Consumer Endpoints
+## Consumer Endpoints
 
 Google PubSub Lite will redeliver the message if it has not been
 acknowledged within the time period set as a configuration option on the
@@ -67,7 +69,7 @@ subscription.
 The component will acknowledge the message once exchange processing has
 been completed.
 
-# Message Body
+## Message Body
 
 The consumer endpoint returns the content of the message as `byte[]` -
 exactly as the underlying system sends it. It is up for the route to

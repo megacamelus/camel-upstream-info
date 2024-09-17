@@ -10,8 +10,8 @@ route using the Saga EIP.
 The component should be used for advanced tasks, such as deciding to
 complete or compensate a Saga with completionMode set to **MANUAL**.
 
-Refer to the Saga EIP documentation for help on using sagas in common
-scenarios.
+Refer to the [Saga EIP](#eips:saga-eip.adoc) documentation for help on
+using sagas in common scenarios.
 
 # URI format
 

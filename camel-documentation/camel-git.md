@@ -23,7 +23,9 @@ The producer allows doing operations on a specific repository. The
 consumer allows consuming commits, tags, and branches in a specific
 repository.
 
-# Producer Example
+# Examples
+
+## Producer Example
 
 Below is an example route of a producer that adds a file test.java to a
 local repository, commits it with a specific message on the `main`
@@ -38,14 +40,14 @@ branch and then pushes it to remote repository.
         .to("git:///tmp/testRepo?operation=createTag&tagName=myTag")
         .to("git:///tmp/testRepo?operation=pushTag&tagName=myTag&remoteName=origin");
 
-# Consumer Example
+## Consumer Example
 
 Below is an example route of a consumer that consumes commit:
 
     from("git:///tmp/testRepo?type=commit")
         .to(....)
 
-# Custom config file
+## Custom config file
 
 By default, camel-git will load \`\`.gitconfig\`\` file from user home
 folder. You can override this by providing your own \`\`.gitconfig\`\`

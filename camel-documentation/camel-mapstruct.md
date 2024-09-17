@@ -14,12 +14,14 @@ The camel-mapstruct component is used for converting POJOs using
 Where `className` is the fully qualified class name of the POJO to
 convert to.
 
-# Setting up MapStruct
+# Usage
+
+## Setting up MapStruct
 
 The camel-mapstruct component must be configured with one or more
 package names for classpath scanning MapStruct *Mapper* classes. This is
-needed because the *Mapper* classes are to be used for converting POJOs
-with MapStruct.
+necessary because the *Mapper* classes are to be used for converting
+POJOs with MapStruct.
 
 For example, to set up two packages, you can do the following:
 

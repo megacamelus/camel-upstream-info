@@ -124,13 +124,13 @@ For these operations, `accountName` is **required**.
 <col style="width: 89%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Operation</th>
 <th style="text-align: left;">Description</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>listQueues</code></p></td>
 <td style="text-align: left;"><p>Lists the queues in the storage account
 that pass the filter starting at the specified marker.</p></td>
@@ -148,26 +148,26 @@ For these operations, `accountName` and `queueName` are **required**.
 <col style="width: 89%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Operation</th>
 <th style="text-align: left;">Description</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>createQueue</code></p></td>
 <td style="text-align: left;"><p>Creates a new queue.</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>deleteQueue</code></p></td>
 <td style="text-align: left;"><p>Permanently deletes the queue.</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>clearQueue</code></p></td>
 <td style="text-align: left;"><p>Deletes all messages in the
 queue..</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>sendMessage</code></p></td>
 <td style="text-align: left;"><p><strong>Default Producer
 Operation</strong> Sends a message with a given time-to-live and timeout
@@ -178,24 +178,24 @@ disable this, set the config <code>createQueue</code> or header
 <code>CamelAzureStorageQueueCreateQueue</code> to
 <code>false</code>.</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>deleteMessage</code></p></td>
 <td style="text-align: left;"><p>Deletes the specified message in the
 queue.</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>receiveMessages</code></p></td>
 <td style="text-align: left;"><p>Retrieves up to the maximum number of
 messages from the queue and hides them from other operations for the
 timeout period. However, it will not dequeue the message from the queue
 due to reliability reasons.</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>peekMessages</code></p></td>
 <td style="text-align: left;"><p>Peek messages from the front of the
 queue up to the maximum number of messages.</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>updateMessage</code></p></td>
 <td style="text-align: left;"><p>Updates the specific message in the
 queue with a new message and resets the visibility timeout. The message
@@ -206,6 +206,8 @@ text is evaluated from the exchange message body.</p></td>
 
 Refer to the example section in this page to learn how to use these
 operations into your camel application.
+
+# Examples
 
 ## Consumer Examples
 
@@ -345,7 +347,7 @@ one batch, this can be done like this:
         })
         .to("azure-storage-queue://cameldev/test?serviceClient=#client&operation=updateMessage");
 
-## Development Notes (Important)
+# Important Development Notes
 
 When developing on this component, you will need to obtain your Azure
 `accessKey` to run the integration tests. In addition to the mocked unit

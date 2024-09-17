@@ -48,31 +48,31 @@ to perform on Dropbox remote folder.
 <col style="width: 60%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Operation</th>
 <th style="text-align: left;">Description</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>del</code></p></td>
 <td style="text-align: left;"><p>deletes files or directories on
 Dropbox</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>get</code></p></td>
 <td style="text-align: left;"><p>download files from Dropbox</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>move</code></p></td>
 <td style="text-align: left;"><p>move files from folders on
 Dropbox</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>put</code></p></td>
 <td style="text-align: left;"><p>upload files on Dropbox</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>search</code></p></td>
 <td style="text-align: left;"><p>search files on Dropbox based on string
 queries</p></td>
@@ -83,7 +83,9 @@ queries</p></td>
 **Operations** require additional options to work. Some are mandatory
 for the specific operation.
 
-# Del operation
+# Usage
+
+## Del operation
 
 Delete files on Dropbox.
 
@@ -98,14 +100,14 @@ Below are listed the options for this operation:
 <col style="width: 60%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Property</th>
 <th style="text-align: left;">Mandatory</th>
 <th style="text-align: left;">Description</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>remotePath</code></p></td>
 <td style="text-align: left;"><p><code>true</code></p></td>
 <td style="text-align: left;"><p>Folder or file to delete on
@@ -114,7 +116,7 @@ Dropbox</p></td>
 </tbody>
 </table>
 
-## Samples
+**Examples**
 
     from("direct:start")
       .to("dropbox://del?accessToken=XXX&clientIdentifier=XXX&expireIn=1000&refreshToken=XXXX"
@@ -126,7 +128,7 @@ Dropbox</p></td>
           +"&apiKey=XXXXX&apiSecret=XXXXXX&remotePath=/root/folder1/file1.tar.gz")
       .to("mock:result");
 
-## Result Message Body
+### Result Message Body
 
 The following objects are set on message body result:
 
@@ -136,13 +138,13 @@ The following objects are set on message body result:
 <col style="width: 50%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Object type</th>
 <th style="text-align: left;">Description</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>String</code></p></td>
 <td style="text-align: left;"><p>name of the path deleted on
 dropbox</p></td>
@@ -150,7 +152,7 @@ dropbox</p></td>
 </tbody>
 </table>
 
-# Get (download) operation
+## Get (download) operation
 
 Download files from Dropbox.
 
@@ -165,14 +167,14 @@ Below are listed the options for this operation:
 <col style="width: 60%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Property</th>
 <th style="text-align: left;">Mandatory</th>
 <th style="text-align: left;">Description</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>remotePath</code></p></td>
 <td style="text-align: left;"><p><code>true</code></p></td>
 <td style="text-align: left;"><p>Folder or file to download from
@@ -181,7 +183,7 @@ Dropbox</p></td>
 </tbody>
 </table>
 
-## Samples
+**Examples**
 
     from("direct:start")
       .to("dropbox://get?accessToken=XXX&clientIdentifier=XXX&expireIn=1000&refreshToken=XXXX"
@@ -197,7 +199,7 @@ Dropbox</p></td>
           +"&apiKey=XXXXX&apiSecret=XXXXXX&remotePath=/root/folder1")
       .to("file:///home/kermit/");
 
-## Result Message Body
+### Result Message Body
 
 The following objects are set on message body result:
 
@@ -207,19 +209,19 @@ The following objects are set on message body result:
 <col style="width: 50%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Object type</th>
 <th style="text-align: left;">Description</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>byte[]</code> or
 <code>CachedOutputStream</code> if stream caching is enabled</p></td>
 <td style="text-align: left;"><p>in case of single file download, stream
 represents the file downloaded</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>Map&lt;String, byte[]&gt;</code>
 or <code>Map&lt;String, CachedOutputStream&gt;</code> if stream caching
 is enabled</p></td>
@@ -230,7 +232,7 @@ and as value the stream representing the file downloaded</p></td>
 </tbody>
 </table>
 
-# Move operation
+## Move operation
 
 Move files on Dropbox between one folder to another.
 
@@ -245,20 +247,20 @@ Below are listed the options for this operation:
 <col style="width: 60%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Property</th>
 <th style="text-align: left;">Mandatory</th>
 <th style="text-align: left;">Description</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>remotePath</code></p></td>
 <td style="text-align: left;"><p><code>true</code></p></td>
 <td style="text-align: left;"><p>Original file or folder to
 move</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>newRemotePath</code></p></td>
 <td style="text-align: left;"><p><code>true</code></p></td>
 <td style="text-align: left;"><p>Destination file or folder</p></td>
@@ -266,14 +268,14 @@ move</p></td>
 </tbody>
 </table>
 
-## Samples
+**Examples**
 
     from("direct:start")
       .to("dropbox://move?accessToken=XXX&clientIdentifier=XXX&expireIn=1000&refreshToken=XXXX"
           +"&apiKey=XXXXX&apiSecret=XXXXXX&remotePath=/root/folder1&newRemotePath=/root/folder2")
       .to("mock:result");
 
-## Result Message Body
+### Result Message Body
 
 The following objects are set on message body result:
 
@@ -283,13 +285,13 @@ The following objects are set on message body result:
 <col style="width: 50%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Object type</th>
 <th style="text-align: left;">Description</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>String</code></p></td>
 <td style="text-align: left;"><p>name of the path moved on
 dropbox</p></td>
@@ -297,7 +299,7 @@ dropbox</p></td>
 </tbody>
 </table>
 
-# Put (upload) operation
+## Put (upload) operation
 
 Upload files on Dropbox.
 
@@ -312,14 +314,14 @@ Below are listed the options for this operation:
 <col style="width: 60%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Property</th>
 <th style="text-align: left;">Mandatory</th>
 <th style="text-align: left;">Description</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>uploadMode</code></p></td>
 <td style="text-align: left;"><p><code>true</code></p></td>
 <td style="text-align: left;"><p>add or force this option specifies how
@@ -328,7 +330,7 @@ new file will be renamed if a file with the same name already exists on
 dropbox. In the case of <code>force</code>, if a file with the same name
 already exists on dropbox, this will be overwritten.</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>localPath</code></p></td>
 <td style="text-align: left;"><p><code>false</code></p></td>
 <td style="text-align: left;"><p>Folder or file to upload on Dropbox
@@ -337,7 +339,7 @@ takes precedence over uploading as a single file with content from the
 Camel message body (the message body is converted into a byte
 array).</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>remotePath</code></p></td>
 <td style="text-align: left;"><p><code>false</code></p></td>
 <td style="text-align: left;"><p>Folder destination on Dropbox. If the
@@ -354,7 +356,7 @@ must start with "/": "MyFile"<br />
 </tbody>
 </table>
 
-## Samples
+**Examples**
 
     from("direct:start").to("dropbox://put?accessToken=XXX&clientIdentifier=XXX&expireIn=1000&refreshToken=XXXX"
           +"&apiKey=XXXXX&apiSecret=XXXXXX&uploadMode=add&localPath=/root/folder1")
@@ -377,7 +379,7 @@ The name of the file can be provided in the header
 order of precedence. If no header has been provided then the message id
 (uuid) is used as the file name.
 
-## Result Message Body
+### Result Message Body
 
 The following objects are set on message body result:
 
@@ -387,18 +389,18 @@ The following objects are set on message body result:
 <col style="width: 50%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Object type</th>
 <th style="text-align: left;">Description</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>String</code></p></td>
 <td style="text-align: left;"><p>in case of single file upload, result
 of the upload operation, OK or KO</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td
 style="text-align: left;"><p><code>Map&lt;String, DropboxResultCode&gt;</code></p></td>
 <td style="text-align: left;"><p>in the case of multiple files upload, a
@@ -408,7 +410,7 @@ result of the upload operation, OK or KO</p></td>
 </tbody>
 </table>
 
-# Search operation
+## Search operation
 
 Search inside a remote Dropbox folder including its subdirectories.
 
@@ -423,20 +425,20 @@ Below are listed the options for this operation:
 <col style="width: 60%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Property</th>
 <th style="text-align: left;">Mandatory</th>
 <th style="text-align: left;">Description</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>remotePath</code></p></td>
 <td style="text-align: left;"><p><code>true</code></p></td>
 <td style="text-align: left;"><p>Folder on Dropbox where to search
 in.</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>query</code></p></td>
 <td style="text-align: left;"><p><code>true</code></p></td>
 <td style="text-align: left;"><p>A space-separated list of sub-strings
@@ -448,7 +450,7 @@ header <code>CamelDropboxQuery</code> on the Camel message.</p></td>
 </tbody>
 </table>
 
-## Samples
+**Examples**
 
     from("dropbox://search?accessToken=XXX&clientIdentifier=XXX&expireIn=1000&refreshToken=XXXX"
           +"&apiKey=XXXXX&apiSecret=XXXXXX&remotePath=/XXX&query=XXX")
@@ -460,7 +462,7 @@ header <code>CamelDropboxQuery</code> on the Camel message.</p></td>
           +"&apiKey=XXXXX&apiSecret=XXXXXX&remotePath=/XXX")
       .to("mock:result");
 
-## Result Message Body
+### Result Message Body
 
 The following objects are set on message body result:
 
@@ -470,13 +472,13 @@ The following objects are set on message body result:
 <col style="width: 50%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Object type</th>
 <th style="text-align: left;">Description</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td
 style="text-align: left;"><p><code>List&lt;com.dropbox.core.v2.files.SearchMatchV2&gt;</code></p></td>
 <td style="text-align: left;"><p>list of the file path found. For more

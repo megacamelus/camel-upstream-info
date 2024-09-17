@@ -129,19 +129,19 @@ For these operations, `accountName` is **required**.
 <col style="width: 89%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Operation</th>
 <th style="text-align: left;">Description</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td
 style="text-align: left;"><p><code>listBlobContainers</code></p></td>
 <td style="text-align: left;"><p>Get the content of the blob. You can
 restrict the output of this operation to a blob range.</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>getChangeFeed</code></p></td>
 <td style="text-align: left;"><p>Returns transaction logs of all the
 changes that occur to the blobs and the blob metadata in your storage
@@ -162,27 +162,27 @@ For these operations, `accountName` and `containerName` are
 <col style="width: 89%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Operation</th>
 <th style="text-align: left;">Description</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td
 style="text-align: left;"><p><code>createBlobContainer</code></p></td>
 <td style="text-align: left;"><p>Create a new container within a storage
 account. If a container with the same name already exists, the producer
 will ignore it.</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td
 style="text-align: left;"><p><code>deleteBlobContainer</code></p></td>
 <td style="text-align: left;"><p>Delete the specified container in the
 storage account. If the container doesn’t exist, the operation
 fails.</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>listBlobs</code></p></td>
 <td style="text-align: left;"><p>Returns a list of blobs in this
 container, with folder structures flattened.</p></td>
@@ -202,25 +202,25 @@ For these operations, `accountName`, `containerName` and `blobName` are
 <col style="width: 79%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Operation</th>
 <th style="text-align: left;">Blob Type</th>
 <th style="text-align: left;">Description</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>getBlob</code></p></td>
 <td style="text-align: left;"><p>Common</p></td>
 <td style="text-align: left;"><p>Get the content of the blob. You can
 restrict the output of this operation to a blob range.</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>deleteBlob</code></p></td>
 <td style="text-align: left;"><p>Common</p></td>
 <td style="text-align: left;"><p>Delete a blob.</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td
 style="text-align: left;"><p><code>downloadBlobToFile</code></p></td>
 <td style="text-align: left;"><p>Common</p></td>
@@ -229,7 +229,7 @@ specified by the path. The file will be created and must not exist, if
 the file already exists a <code>FileAlreadyExistsException</code> will
 be thrown.</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>downloadLink</code></p></td>
 <td style="text-align: left;"><p>Common</p></td>
 <td style="text-align: left;"><p>Generate the download link for the
@@ -237,7 +237,7 @@ specified blob using shared access signatures (SAS). This by default
 only limits to 1hour of allowed access. However, you can override the
 default expiration duration through the headers.</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>uploadBlockBlob</code></p></td>
 <td style="text-align: left;"><p>BlockBlob</p></td>
 <td style="text-align: left;"><p>Creates a new block blob, or updates
@@ -246,7 +246,7 @@ overwrites any existing metadata on the blob. Partial updates are not
 supported with PutBlob; the content of the existing blob is overwritten
 with the new content.</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td
 style="text-align: left;"><p><code>stageBlockBlobList</code></p></td>
 <td style="text-align: left;"><p><code>BlockBlob</code></p></td>
@@ -257,7 +257,7 @@ commitBlobBlockList. However, in case header
 <code>commitBlockListLater</code> is set to false, this will commit the
 blocks immediately after staging the blocks.</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td
 style="text-align: left;"><p><code>commitBlobBlockList</code></p></td>
 <td style="text-align: left;"><p><code>BlockBlob</code></p></td>
@@ -270,20 +270,20 @@ those blocks that have changed, then committing the new and existing
 blocks together. Any blocks not specified in the block list and
 permanently deleted.</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>getBlobBlockList</code></p></td>
 <td style="text-align: left;"><p><code>BlockBlob</code></p></td>
 <td style="text-align: left;"><p>Returns the list of blocks that have
 been uploaded as part of a block blob using the specified blocklist
 filter.</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>createAppendBlob</code></p></td>
 <td style="text-align: left;"><p><code>AppendBlob</code></p></td>
 <td style="text-align: left;"><p>Creates a 0-length append blob. Call
 commitAppendBlo`b operation to append data to an append blob.</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>commitAppendBlob</code></p></td>
 <td style="text-align: left;"><p><code>AppendBlob</code></p></td>
 <td style="text-align: left;"><p>Commits a new block of data to the end
@@ -293,14 +293,14 @@ of the existing append blob. In case of header
 the appendBlob through internal call to <code>createAppendBlob</code>
 operation first before committing.</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>createPageBlob</code></p></td>
 <td style="text-align: left;"><p><code>PageBlob</code></p></td>
 <td style="text-align: left;"><p>Creates a page blob of the specified
 length. Call <code>uploadPageBlob</code> operation to upload data to a
 page blob.</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>uploadPageBlob</code></p></td>
 <td style="text-align: left;"><p><code>PageBlob</code></p></td>
 <td style="text-align: left;"><p>Write one or more pages to the page
@@ -310,25 +310,25 @@ blob. The size must be a multiple of 512. In case of header
 the appendBlob through internal call to <code>createPageBlob</code>
 operation first before uploading.</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>resizePageBlob</code></p></td>
 <td style="text-align: left;"><p><code>PageBlob</code></p></td>
 <td style="text-align: left;"><p>Resizes the page blob to the specified
 size, which must be a multiple of 512.</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>clearPageBlob</code></p></td>
 <td style="text-align: left;"><p><code>PageBlob</code></p></td>
 <td style="text-align: left;"><p>Free the specified pages from the page
 blob. The size of the range must be a multiple of 512.</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>getPageBlobRanges</code></p></td>
 <td style="text-align: left;"><p><code>PageBlob</code></p></td>
 <td style="text-align: left;"><p>Returns the list of valid page ranges
 for a page blob or snapshot of a page blob.</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>copyBlob</code></p></td>
 <td style="text-align: left;"><p><code>Common</code></p></td>
 <td style="text-align: left;"><p>Copy a blob from one container to
@@ -339,6 +339,8 @@ another one, even from different accounts.</p></td>
 
 Refer to the example section in this page to learn how to use these
 operations into your camel application.
+
+# Examples
 
 ## Consumer Examples
 
@@ -690,7 +692,7 @@ file so that it can be loaded by the camel route, for example:
     from("direct:copyBlob")
       .to("azure-storage-blob://account/containerblob2?operation=uploadBlockBlob&credentialType=AZURE_SAS")
 
-## Development Notes (Important)
+# Important Development Notes
 
 All integration tests use
 [Testcontainers](https://www.testcontainers.org/) and run by default.

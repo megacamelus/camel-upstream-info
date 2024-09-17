@@ -30,13 +30,17 @@ for this component:
 Where `queueName` identifies the IronMQ queue you want to publish or
 consume messages from.
 
-# Message Body
+# Usage
+
+## Message Body
 
 It should be either a String or an array of Strings. In the latter case,
 the batch of strings will be sent to IronMQ as one request, creating one
 message per element in the array.
 
-# Consumer example
+# Examples
+
+## Consumer example
 
 Consume 50 messages per poll from the queue `testqueue` on aws eu, and
 save the messages to files.
@@ -44,7 +48,7 @@ save the messages to files.
     from("ironmq:testqueue?ironMQCloud=https://mq-aws-eu-west-1-1.iron.io&projectId=myIronMQProjectid&token=myIronMQToken&maxMessagesPerPoll=50")
       .to("file:somefolder");
 
-# Producer example
+## Producer example
 
 Dequeue from activemq jms and enqueue the messages on IronMQ.
 
@@ -71,9 +75,9 @@ Dequeue from activemq jms and enqueue the messages on IronMQ.
 |ironMQCloud|IronMq Cloud url. Urls for public clusters: https://mq-aws-us-east-1-1.iron.io (US) and https://mq-aws-eu-west-1-1.iron.io (EU)|https://mq-aws-us-east-1-1.iron.io|string|
 |preserveHeaders|Should message headers be preserved when publishing messages. This will add the Camel headers to the Iron MQ message as a json payload with a header list, and a message body. Useful when Camel is both consumer and producer.|false|boolean|
 |projectId|IronMQ projectId||string|
-|batchDelete|Should messages be deleted in one batch. This will limit the number of api requests since messages are deleted in one request, instead of one pr. exchange. If enabled care should be taken that the consumer is idempotent when processing exchanges.|false|boolean|
+|batchDelete|Should messages be deleted in one batch. This will limit the number of api requests since messages are deleted in one request, instead of one per exchange. If enabled care should be taken that the consumer is idempotent when processing exchanges.|false|boolean|
 |concurrentConsumers|The number of concurrent consumers.|1|integer|
-|maxMessagesPerPoll|Number of messages to poll pr. call. Maximum is 100.|1|integer|
+|maxMessagesPerPoll|Number of messages to poll per call. Maximum is 100.|1|integer|
 |sendEmptyMessageWhenIdle|If the polling consumer did not poll any files, you can enable this option to send an empty message (no body) instead.|false|boolean|
 |timeout|After timeout (in seconds), item will be placed back onto the queue.|60|integer|
 |wait|Time in seconds to wait for a message to become available. This enables long polling. Default is 0 (does not wait), maximum is 30.||integer|

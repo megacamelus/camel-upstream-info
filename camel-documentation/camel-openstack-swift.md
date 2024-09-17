@@ -9,7 +9,8 @@ object storage services.
 
 # Dependencies
 
-Maven users will need to add the following dependency to their pom.xml.
+Maven users will need to add the following dependency to their
+`pom.xml`.
 
 **pom.xml**
 
@@ -30,9 +31,9 @@ Camel.
 
 You can use the following settings for each subsystem:
 
-# containers
+## Containers
 
-## Operations you can perform with the Container producer
+### Operations you can perform with the Container producer
 
 <table>
 <colgroup>
@@ -40,42 +41,42 @@ You can use the following settings for each subsystem:
 <col style="width: 80%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Operation</th>
 <th style="text-align: left;">Description</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>create</code></p></td>
 <td style="text-align: left;"><p>Create a new container.</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>get</code></p></td>
 <td style="text-align: left;"><p>Get the container.</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>getAll</code></p></td>
 <td style="text-align: left;"><p>Get all containers.</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>update</code></p></td>
 <td style="text-align: left;"><p>Update the container.</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>delete</code></p></td>
 <td style="text-align: left;"><p>Delete the container.</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>getMetadata</code></p></td>
 <td style="text-align: left;"><p>Get metadata.</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td
 style="text-align: left;"><p><code>createUpdateMetadata</code></p></td>
 <td style="text-align: left;"><p>Create/update metadata.</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>deleteMetadata</code></p></td>
 <td style="text-align: left;"><p>Delete metadata.</p></td>
 </tr>
@@ -84,14 +85,14 @@ style="text-align: left;"><p><code>createUpdateMetadata</code></p></td>
 
 If you need more precise container settings, you can create a new object
 of the type
-**org.openstack4j.model.storage.object.options.CreateUpdateContainerOptions**
+`org.openstack4j.model.storage.object.options.CreateUpdateContainerOptions`
 (in case of create or update operation) or
-**org.openstack4j.model.storage.object.options.ContainerListOptions**
-for listing containers and send in the message body.
+`org.openstack4j.model.storage.object.options.ContainerListOptions` for
+listing containers and send in the message body.
 
-# objects
+## Objects
 
-## Operations you can perform with the Object producer
+### Operations you can perform with the Object producer
 
 <table>
 <colgroup>
@@ -99,37 +100,37 @@ for listing containers and send in the message body.
 <col style="width: 80%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Operation</th>
 <th style="text-align: left;">Description</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>create</code></p></td>
 <td style="text-align: left;"><p>Create a new object.</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>get</code></p></td>
 <td style="text-align: left;"><p>Get the object.</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>getAll</code></p></td>
 <td style="text-align: left;"><p>Get all objects.</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>update</code></p></td>
 <td style="text-align: left;"><p>Get update the object.</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>delete</code></p></td>
 <td style="text-align: left;"><p>Delete the object.</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>getMetadata</code></p></td>
 <td style="text-align: left;"><p>Get metadata.</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td
 style="text-align: left;"><p><code>createUpdateMetadata</code></p></td>
 <td style="text-align: left;"><p>Create/update metadata.</p></td>

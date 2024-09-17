@@ -28,14 +28,6 @@ Where **label** is an arbitrary text value describing the endpoint. You
 can append query options to the URI in the following format:
 `?option=value&option=value&...`
 
-# OSGi deployment
-
-To use Hibernate Validator in the OSGi environment use dedicated
-`ValidationProviderResolver` implementation, just as
-`org.apache.camel.component.bean.validator.HibernateValidationProviderResolver`.
-The snippet below demonstrates this approach. You can also use
-`HibernateValidationProviderResolver`.
-
 ## Using HibernateValidationProviderResolver
 
 Java  
@@ -44,10 +36,6 @@ to("bean-validator://ValidationProviderResolverTest?validationProviderResolver=#
 
 XML  
 <bean id="myValidationProviderResolver" class="org.apache.camel.component.bean.validator.HibernateValidationProviderResolver"/>
-
-If no custom `ValidationProviderResolver` is defined and the validator
-component has been deployed into the OSGi environment, the
-`HibernateValidationProviderResolver` will be automatically used.
 
 # Example
 

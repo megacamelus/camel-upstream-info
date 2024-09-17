@@ -25,13 +25,15 @@ for this component:
 Where **templateName** is the classpath-local URI of the template to
 invoke; or the complete URL of the remote template.
 
-# Headers
+# Usage
+
+## Headers
 
 Camel will store a reference to the resource in the message header with
 key, `org.apache.camel.stringtemplate.resource`. The Resource is an
 `org.springframework.core.io.Resource` object.
 
-# String Template Context
+## String Template Context
 
 Camel will provide exchange information in the String Template context
 (just a `Map`). The `Exchange` is transferred as:
@@ -42,44 +44,44 @@ Camel will provide exchange information in the String Template context
 <col style="width: 89%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">key</th>
 <th style="text-align: left;">value</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>exchange</code></p></td>
 <td style="text-align: left;"><p>The <code>Exchange</code>
 itself.</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td
 style="text-align: left;"><p><code>exchange.properties</code></p></td>
 <td style="text-align: left;"><p>The <code>Exchange</code>
 properties.</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>variables</code></p></td>
 <td style="text-align: left;"><p>The variables</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>headers</code></p></td>
 <td style="text-align: left;"><p>The headers of the In message.</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>camelContext</code></p></td>
 <td style="text-align: left;"><p>The Camel Context.</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>request</code></p></td>
 <td style="text-align: left;"><p>The In message.</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>body</code></p></td>
 <td style="text-align: left;"><p>The In message body.</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>response</code></p></td>
 <td style="text-align: left;"><p>The Out message (only for InOut message
 exchange pattern).</p></td>
@@ -87,21 +89,21 @@ exchange pattern).</p></td>
 </tbody>
 </table>
 
-# Hot reloading
+## Hot reloading
 
 The string template resource is by default hot-reloadable for both file
 and classpath resources (expanded jar). If you set `contentCache=true`,
 Camel loads the resource only once and hot-reloading is not possible.
 This scenario can be used in production when the resource never changes.
 
-# Dynamic templates
+## Dynamic templates
 
 Camel provides two headers by which you can define a different resource
 location for a template or the template content itself. If any of these
 headers is set, then Camel uses this over the endpoint configured
 resource. This allows you to provide a dynamic template at runtime.
 
-# StringTemplate Attributes
+## StringTemplate Attributes
 
 You can define the custom context map by setting the message header
 "**CamelStringTemplateVariableMap**" just like the below code.
@@ -114,7 +116,7 @@ You can define the custom context map by setting the message header
     variableMap.put("exchange", exchange);
     exchange.getIn().setHeader("CamelStringTemplateVariableMap", variableMap);
 
-# Samples
+# Examples
 
 For example, you could use a string template as follows in order to
 formulate a response to a message:
@@ -122,7 +124,7 @@ formulate a response to a message:
     from("activemq:My.Queue").
       to("string-template:com/acme/MyResponse.tm");
 
-# The Email Sample
+## The Email Example
 
 In this sample, we want to use a string template to send an order
 confirmation email. The email template is laid out in `StringTemplate`
@@ -134,8 +136,6 @@ as:
     
     Regards Camel Riders Bookstore
     <body>
-
-And the java code is as follows:
 
 ## Component Configurations
 

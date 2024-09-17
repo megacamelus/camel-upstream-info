@@ -53,6 +53,11 @@ You can also enable the usage of Azure Identity in the
     camel.vault.azure.azureIdentityEnabled = true
     camel.vault.azure.vaultName = vaultName
 
+`camel.vault.azure` configuration only applies to the Azure Key Vault
+properties function (E.g when resolving properties). When using the
+`operation` option to create, get, list secrets etc., you should provide
+the usual options for connecting to Azure Services.
+
 At this point, you’ll be able to reference a property in the following
 way:
 
@@ -97,7 +102,7 @@ example:
     <camelContext>
         <route>
             <from uri="direct:start"/>
-            <log message="Username is {{azure:database/username}}"/>
+            <log message="Username is {{azure:database#username}}"/>
         </route>
     </camelContext>
 
@@ -109,7 +114,7 @@ is not present on Azure Key Vault:
     <camelContext>
         <route>
             <from uri="direct:start"/>
-            <log message="Username is {{azure:database/username:admin}}"/>
+            <log message="Username is {{azure:database#username:admin}}"/>
         </route>
     </camelContext>
 
@@ -145,7 +150,7 @@ secret doesn’t exist or the version doesn’t exist.
     <camelContext>
         <route>
             <from uri="direct:start"/>
-            <log message="Username is {{azure:database/username:admin@bf9b4f4b-8e63-43fd-a73c-3e2d3748b451}}"/>
+            <log message="Username is {{azure:database#username:admin@bf9b4f4b-8e63-43fd-a73c-3e2d3748b451}}"/>
         </route>
     </camelContext>
 
@@ -222,6 +227,98 @@ or the properties with an `azure:` prefix.
 
 The only requirement is adding the camel-azure-key-vault jar to your
 Camel application.
+
+## Automatic Camel context reloading on Secret Refresh - Required Infrastructure’s creation
+
+First of all we need to create an application
+
+\`\`\` az ad app create --display-name test-app-key-vault \`\`\`
+
+Then we need to obtain credentials
+
+\`\`\` az ad app credential reset --id \<appId\> --append
+\--display-name *Description: Key Vault app client* --end-date
+*2024-12-31* \`\`\`
+
+This will return a result like this
+
+\`\`\` { "appId": "appId", "password": "pwd", "tenant": "tenantId" }
+\`\`\`
+
+You should take note of the password and use it as clientSecret
+parameter, together with the clientId and tenantId.
+
+Now create the key vault
+
+\`\`\` az keyvault create --name \<vaultName\> --resource-group
+\<resourceGroup\> \`\`\`
+
+Create a service principal associated with the application Id
+
+\`\`\` az ad sp create --id \<appId\> \`\`\`
+
+At this point we need to add a role to the application with role
+assignment
+
+\`\`\` az role assignment create --assignee \<appId\> --role "Key
+Vault Administrator" --scope
+/subscriptions/\<subscriptionId\>/resourceGroups/\<resourceGroup\>/providers/Microsoft.KeyVault/vaults/\<vaultName\>
+\`\`\`
+
+Last step is to create policy on what can be or cannot be done with the
+application. In this case we just want to read the secret value. So This
+should be enough.
+
+\`\`\` az keyvault set-policy --name \<vaultName\> --spn
+\<appId\> --secret-permissions get \`\`\`
+
+You can create a secret through Azure CLI with the following command:
+
+\`\`\` az keyvault secret set --name \<secret\_name\> --vault-name
+\<vaultName\> -f \<json-secret\> \`\`\`
+
+Now we need to setup the Eventhub/EventGrid notification for being
+informed about secrets updates.
+
+First of all we’ll need a Blob account and Blob container, to track
+Eventhub consuming activities.
+
+\`\`\` az storage account create --name \<blobAccountName\>
+\--resource-group \<resourceGroup\> \`\`\`
+
+Then create a container
+
+\`\`\` az storage container create --account-name
+\<blobAccountName\> --name \<blobContainerName\> \`\`\`
+
+Then recover the access key for this purpose
+
+\`\`\` az storage account keys list -g \<resourceGroup\> -n
+\<blobAccountName\> \`\`\`
+
+Take note of the blob Account name, blob Container name and Blob Access
+Key to be used for setting up the vault.
+
+Let’s now create the Eventhub side
+
+Create the namespace first
+
+\`\`\` az eventhubs namespace create --resource-group
+\<resourceGroup\> --name \<eventhub-namespace\> --location
+westus --sku Standard --enable-auto-inflate --maximum-throughput-units
+20 \`\`\`
+
+Now create the resource
+
+\`\`\` az eventhubs eventhub create --resource-group
+\<resourceGroup\> --namespace-name \<eventhub-namespace\> --name
+\<eventhub-name\> --cleanup-policy Delete --partition-count 15
+\`\`\`
+
+In the Azure portal create a shared policy for the just created eventhub
+resource with "MANAGE" permissions and copy the connection string.
+
+You now have all the required parameters to set up the vault.
 
 ## Azure Key Vault Producer operations
 

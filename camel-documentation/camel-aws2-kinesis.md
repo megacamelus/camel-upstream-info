@@ -33,7 +33,9 @@ Required Kinesis component options
 You have to provide the KinesisClient in the Registry with proxies and
 relevant credentials configured.
 
-# Batch Consumer
+# Usage
+
+## Batch Consumer
 
 This component implements the Batch Consumer.
 
@@ -47,7 +49,7 @@ therefore, if you leave the *shardId* property in the DSL configuration
 empty, then it’ll consume all available shards otherwise only the
 specified shard corresponding to the shardId will be consumed.
 
-# Batch Producer
+## Batch Producer
 
 This component implements the Batch Producer.
 
@@ -59,8 +61,6 @@ The batch type needs to implement the `Iterable` interface. For example,
 it can be a `List`, `Set` or any other collection type. The message type
 can be one or more of types `byte[]`, `ByteBuffer`, UTF-8 `String`, or
 `InputStream`. Other types are not supported.
-
-# Usage
 
 ## Static credentials, Default Credential Provider and Profile Credentials Provider
 
@@ -164,7 +164,7 @@ Camel.
 |iteratorType|Defines where in the Kinesis stream to start getting records|TRIM\_HORIZON|object|
 |maxResultsPerRequest|Maximum number of records that will be fetched in each poll|1|integer|
 |sequenceNumber|The sequence number to start polling from. Required if iteratorType is set to AFTER\_SEQUENCE\_NUMBER or AT\_SEQUENCE\_NUMBER||string|
-|shardClosed|Define what will be the behavior in case of shard closed. Possible value are ignore, silent and fail. In case of ignore a message will be logged and the consumer will restart from the beginning,in case of silent there will be no logging and the consumer will start from the beginning,in case of fail a ReachedClosedStateException will be raised|ignore|object|
+|shardClosed|Define what will be the behavior in case of shard closed. Possible value are ignore, silent and fail. In case of ignore a WARN message will be logged once and the consumer will not process new messages until restarted,in case of silent there will be no logging and the consumer will not process new messages until restarted,in case of fail a ReachedClosedStateException will be thrown|ignore|object|
 |shardId|Defines which shardId in the Kinesis stream to get records from||string|
 |shardMonitorInterval|The interval in milliseconds to wait between shard polling|10000|integer|
 |lazyStartProducer|Whether the producer should be started lazy (on the first message). By starting lazy you can use this to allow CamelContext and routes to startup in situations where a producer may otherwise fail during starting and cause the route to fail being started. By deferring this startup to be lazy then the startup failure can be handled during routing messages via Camel's routing error handlers. Beware that when the first message is processed then creating and starting the producer may take a little time and prolong the total processing time of the processing.|false|boolean|
@@ -202,7 +202,7 @@ Camel.
 |maxResultsPerRequest|Maximum number of records that will be fetched in each poll|1|integer|
 |sendEmptyMessageWhenIdle|If the polling consumer did not poll any files, you can enable this option to send an empty message (no body) instead.|false|boolean|
 |sequenceNumber|The sequence number to start polling from. Required if iteratorType is set to AFTER\_SEQUENCE\_NUMBER or AT\_SEQUENCE\_NUMBER||string|
-|shardClosed|Define what will be the behavior in case of shard closed. Possible value are ignore, silent and fail. In case of ignore a message will be logged and the consumer will restart from the beginning,in case of silent there will be no logging and the consumer will start from the beginning,in case of fail a ReachedClosedStateException will be raised|ignore|object|
+|shardClosed|Define what will be the behavior in case of shard closed. Possible value are ignore, silent and fail. In case of ignore a WARN message will be logged once and the consumer will not process new messages until restarted,in case of silent there will be no logging and the consumer will not process new messages until restarted,in case of fail a ReachedClosedStateException will be thrown|ignore|object|
 |shardId|Defines which shardId in the Kinesis stream to get records from||string|
 |bridgeErrorHandler|Allows for bridging the consumer to the Camel routing Error Handler, which mean any exceptions (if possible) occurred while the Camel consumer is trying to pickup incoming messages, or the likes, will now be processed as a message and handled by the routing Error Handler. Important: This is only possible if the 3rd party component allows Camel to be alerted if an exception was thrown. Some components handle this internally only, and therefore bridgeErrorHandler is not possible. In other situations we may improve the Camel component to hook into the 3rd party component and make this possible for future releases. By default the consumer will use the org.apache.camel.spi.ExceptionHandler to deal with exceptions, that will be logged at WARN or ERROR level and ignored.|false|boolean|
 |exceptionHandler|To let the consumer use a custom ExceptionHandler. Notice if the option bridgeErrorHandler is enabled then this option is not in use. By default the consumer will deal with exceptions, that will be logged at WARN or ERROR level and ignored.||object|

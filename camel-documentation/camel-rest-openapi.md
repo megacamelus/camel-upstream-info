@@ -47,10 +47,10 @@ failing that OpenApi’s own resource loading support.
 
 This component does not act as an HTTP client. It delegates that to
 another component mentioned above. The lookup mechanism searches for a
-single component that implements the *RestProducerFactory* interface and
-uses that. If the CLASSPATH contains more than one, then the property
-`componentName` should be set to indicate which component to delegate
-to.
+single component that implements the `RestProducerFactory` interface and
+uses that. If the `_CLASSPATH_` contains more than one, then the
+property `componentName` should be set to indicate which component to
+delegate to.
 
 Most of the configuration is taken from the OpenApi specification, but
 the option exists to override those by specifying them on the component
@@ -66,9 +66,9 @@ and implement the required *RestProducerFactory* interface — as do the
 components listed at the top.
 
 If you do not specify the *componentName* at either component or
-endpoint level, CLASSPATH is searched for a suitable delegate. There
-should be only one component present on the CLASSPATH that implements
-the *RestProducerFactory* interface for this to work.
+endpoint level, `_CLASSPATH_` is searched for a suitable delegate. There
+should be only one component present on the `_CLASSPATH_` that
+implements the `RestProducerFactory` interface for this to work.
 
 This component’s endpoint URI is lenient which means that in addition to
 message headers you can specify REST operation’s parameters as endpoint
@@ -77,66 +77,7 @@ makes sense to use this feature only for parameters that are indeed
 constant for all invocations — for example API version in path such as
 `/api/{version}/users/{id}`.
 
-# Example: PetStore
-
-Checkout the `rest-openapi-simple` example project in the
-[https://github.com/apache/camel-spring-boot-examples](https://github.com/apache/camel-spring-boot-examples) repository.
-
-For example, if you wanted to use the
-[*PetStore*](https://petstore3.swagger.io/api/v3/) provided REST API
-simply reference the specification URI and desired operation id from the
-OpenApi specification or download the specification and store it as
-`openapi.json` (in the root) of CLASSPATH that way it will be
-automatically used. Let’s use the [HTTP](#http-component.adoc) component
-to perform all the requests and Camel’s excellent support for Spring
-Boot.
-
-Here are our dependencies defined in Maven POM file:
-
-    <dependency>
-      <groupId>org.apache.camel.springboot</groupId>
-      <artifactId>camel-http-starter</artifactId>
-    </dependency>
-    
-    <dependency>
-      <groupId>org.apache.camel.springboot</groupId>
-      <artifactId>camel-rest-openapi-starter</artifactId>
-    </dependency>
-
-Start by defining a *RestOpenApiComponent* bean:
-
-    @Bean
-    public Component petstore(CamelContext camelContext) {
-        RestOpenApiComponent petstore = new RestOpenApiComponent(camelContext);
-        petstore.setSpecificationUri("https://petstore3.swagger.io/api/v3/openapi.json");
-        petstore.setHost("https://petstore3.swagger.io");
-        return petstore;
-    }
-
-Support in Camel for Spring Boot will auto create the `HttpComponent`
-Spring bean, and you can configure it using `application.properties` (or
-`application.yml`) using prefix `camel.component.http.`. We are defining
-the `petstore` component here to have a named component in the Camel
-context that we can use to interact with the PetStore REST API, if this
-is the only `rest-openapi` component used we might configure it in the
-same manner (using `application.properties`).
-
-In this example, there is no need to explicitly associate the `petstore`
-component with the `HttpComponent` as Camel will use the first class on
-the CLASSPATH that implements `RestProducerFactory`. However, if a
-different component is required, then calling
-`petstore.setComponentName("http")` would use the named component from
-the Camel registry.
-
-Now in our application we can simply use the `ProducerTemplate` to
-invoke PetStore REST methods:
-
-    @Autowired
-    ProducerTemplate template;
-    
-    String getPetJsonById(int petId) {
-        return template.requestBodyAndHeader("petstore:getPetById", null, "petId", petId);
-    }
+# Usage
 
 # Request validation
 
@@ -170,6 +111,72 @@ If any of the validation checks fail, then a
 `RestOpenApiValidationException` is thrown. The exception object has a
 `getValidationErrors` method that returns the error messages from the
 validator.
+
+# Examples
+
+## PetStore
+
+Checkout the `rest-openapi-simple` example project in the
+[camel-spring-boot-examples](https://github.com/apache/camel-spring-boot-examples)
+repository.
+
+For example, if you wanted to use the
+[*PetStore*](https://petstore3.swagger.io/api/v3/) provided REST API
+simply reference the specification URI and desired operation id from the
+OpenApi specification or download the specification and store it as
+`openapi.json` (in the root) of `_CLASSPATH_` that way it will be
+automatically used. Let’s use the [HTTP](#http-component.adoc) component
+to perform all the requests and Camel’s excellent support for Spring
+Boot.
+
+Here are our dependencies defined in Maven POM file:
+
+**Example pom.xml**
+
+    <dependency>
+      <groupId>org.apache.camel.springboot</groupId>
+      <artifactId>camel-http-starter</artifactId>
+    </dependency>
+    
+    <dependency>
+      <groupId>org.apache.camel.springboot</groupId>
+      <artifactId>camel-rest-openapi-starter</artifactId>
+    </dependency>
+
+Start by defining a `RestOpenApiComponent` bean:
+
+    @Bean
+    public Component petstore(CamelContext camelContext) {
+        RestOpenApiComponent petstore = new RestOpenApiComponent(camelContext);
+        petstore.setSpecificationUri("https://petstore3.swagger.io/api/v3/openapi.json");
+        petstore.setHost("https://petstore3.swagger.io");
+        return petstore;
+    }
+
+Support in Camel for Spring Boot will auto create the `HttpComponent`
+Spring bean, and you can configure it using `application.properties` (or
+`application.yml`) using prefix `camel.component.http.`. We are defining
+the `petstore` component here to have a named component in the Camel
+context that we can use to interact with the PetStore REST API, if this
+is the only `rest-openapi` component used we might configure it in the
+same manner (using `application.properties`).
+
+In this example, there is no need to explicitly associate the `petstore`
+component with the `HttpComponent` as Camel will use the first class on
+the `_CLASSPATH_` that implements `RestProducerFactory`. However, if a
+different component is required, then calling
+`petstore.setComponentName("http")` would use the named component from
+the Camel registry.
+
+Now in our application we can simply use the `ProducerTemplate` to
+invoke PetStore REST methods:
+
+    @Autowired
+    ProducerTemplate template;
+    
+    String getPetJsonById(int petId) {
+        return template.requestBodyAndHeader("petstore:getPetById", null, "petId", petId);
+    }
 
 ## Component Configurations
 

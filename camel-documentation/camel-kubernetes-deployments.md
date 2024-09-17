@@ -9,26 +9,30 @@ Components](#kubernetes-summary.adoc) which provides a producer to
 execute Kubernetes Deployments operations and a consumer to consume
 events related to Deployments objects.
 
-# Supported producer operation
+# Usage
 
--   listDeployments
+## Supported producer operation
 
--   listDeploymentsByLabels
+-   `listDeployments`
 
--   getDeployment
+-   `listDeploymentsByLabels`
 
--   createDeployment
+-   `getDeployment`
 
--   updateDeployment
+-   `createDeployment`
 
--   deleteDeployment
+-   `updateDeployment`
 
--   scaleDeployment
+-   `deleteDeployment`
 
-# Kubernetes Deployments Producer Examples
+-   `scaleDeployment`
 
--   listDeployments: this operation list the deployments on a kubernetes
-    cluster
+# Examples
+
+## Kubernetes Deployments Producer Examples
+
+-   `listDeployments`: this operation lists the deployments on a
+    kubernetes cluster
 
 <!-- -->
 
@@ -36,9 +40,9 @@ events related to Deployments objects.
         toF("kubernetes-deployments:///?kubernetesClient=#kubernetesClient&operation=listDeployments").
         to("mock:result");
 
-This operation return a List of Deployment from your cluster
+This operation returns a List of Deployment from your cluster
 
--   listDeploymentsByLabels: this operation list the deployments by
+-   `listDeploymentsByLabels`: this operation lists the deployments by
     labels on a kubernetes cluster
 
 <!-- -->
@@ -55,10 +59,10 @@ This operation return a List of Deployment from your cluster
         toF("kubernetes-deployments:///?kubernetesClient=#kubernetesClient&operation=listDeploymentsByLabels").
         to("mock:result");
 
-This operation return a List of Deployments from your cluster, using a
+This operation returns a List of Deployments from your cluster, using a
 label selector (with key1 and key2, with value value1 and value2)
 
-# Kubernetes Deployments Consumer Example
+## Kubernetes Deployments Consumer Example
 
     fromF("kubernetes-deployments://%s?oauthToken=%s&namespace=default&resourceName=test", host, authToken).process(new KubernertesProcessor()).to("mock:result");
         public class KubernertesProcessor implements Processor {

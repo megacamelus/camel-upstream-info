@@ -199,7 +199,7 @@ Signatures as Siblings of the Signed Elements".
 
 ## Output Node Determination in Enveloping XML Signature Case
 
-After the validation the node is extracted from the XML signature
+After the validation, the node is extracted from the XML signature
 document which is finally returned to the output-message body. In the
 enveloping XML signature case, the default implementation
 [`DefaultXmlSignature2Message`](https://github.com/apache/camel/blob/main/components/camel-xmlsecurity/src/main/java/org/apache/camel/component/xmlsecurity/api/DefaultXmlSignature2Message.java)
@@ -208,7 +208,7 @@ of
 does this for the node search type `Default` in the following way (see
 option `xmlSignature2Message`):
 
--   First an object reference is determined:
+-   First, an object reference is determined:
     
     -   Only same document references are taken into account (URI must
         start with `#`)
@@ -315,7 +315,7 @@ defined in the XML schema (see option `schemaResourceUri`). You specify
 a list of XPATH expressions pointing to attributes of type ID (see
 option `xpathsToIdAttributes`). These attributes determine the elements
 to be signed. The elements are signed by the same key given by the
-`keyAccessor` bean. Elements with higher (i.e. deeper) hierarchy level
+`keyAccessor` bean. Elements with higher (i.e., deeper) hierarchy level
 are signed first. In the example, the element `C` is signed before the
 element `A`.
 
@@ -406,7 +406,7 @@ you must overwrite either the method
 `DefaultXAdESSignatureProperties` overwrites the method
 `getSigningCertificate()` and allows you to specify the signing
 certificate via a keystore and alias. The following example shows all
-parameters you can specify. If you do not need certain parameters you
+parameters you can specify. If you do not need certain parameters, you
 can just omit them.
 
 **XAdES-BES/EPES Example in Java DSL**

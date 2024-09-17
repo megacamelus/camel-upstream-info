@@ -30,26 +30,26 @@ The list producer provides eight operations:
 
 -   retainAll
 
-## Sample for **add**:
+## Example for **add**:
 
     from("direct:add")
     .setHeader(HazelcastConstants.OPERATION, constant(HazelcastOperation.ADD))
     .toF("hazelcast-%sbar", HazelcastConstants.LIST_PREFIX);
 
-## Sample for **get**:
+## Example for **get**:
 
     from("direct:get")
     .setHeader(HazelcastConstants.OPERATION, constant(HazelcastOperation.GET))
     .toF("hazelcast-%sbar", HazelcastConstants.LIST_PREFIX)
     .to("seda:out");
 
-## Sample for **setvalue**:
+## Example for **setvalue**:
 
     from("direct:set")
     .setHeader(HazelcastConstants.OPERATION, constant(HazelcastOperation.SET_VALUE))
     .toF("hazelcast-%sbar", HazelcastConstants.LIST_PREFIX);
 
-## Sample for **removevalue**:
+## Example for **removevalue**:
 
     from("direct:removevalue")
     .setHeader(HazelcastConstants.OPERATION, constant(HazelcastOperation.REMOVE_VALUE))

@@ -32,7 +32,7 @@ The multimap producer provides eight operations:
 
 -   valueCount
 
-## Sample for **put**:
+## Example for **put**:
 
 Java DSL  
 from("direct:put")
@@ -49,7 +49,7 @@ Spring XML
 <to uri="hazelcast-multimap:foo" />  
 </route>
 
-## Sample for **removevalue**:
+## Example for **removevalue**:
 
 Java DSL  
 from("direct:removevalue")
@@ -71,7 +71,7 @@ inside the message body. If you have a multimap object
 ``\{`key: "4711" values: { "my-foo", "my-bar"``}}\` you have to put
 `my-foo` inside the message body to remove the `my-foo` value.
 
-## Sample for **get**:
+## Example for **get**:
 
 Java DSL  
 from("direct:get")
@@ -90,7 +90,7 @@ Spring XML
 <to uri="seda:out" />  
 </route>
 
-## Sample for **delete**:
+## Example for **delete**:
 
 Java DSL  
 from("direct:delete")

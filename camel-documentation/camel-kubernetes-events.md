@@ -9,23 +9,27 @@ Components](#kubernetes-summary.adoc) which provides a producer to
 execute Kubernetes Event operations and a consumer to consume events
 related to Event objects.
 
-# Supported producer operation
+# Usage
 
--   listEvents
+## Supported producer operation
 
--   listEventsByLabels
+-   `listEvents`
 
--   getEvent
+-   `listEventsByLabels`
 
--   createEvent
+-   `getEvent`
 
--   updateEvent
+-   `createEvent`
 
--   deleteEvent
+-   `updateEvent`
 
-# Kubernetes Events Producer Examples
+-   `deleteEvent`
 
--   listEvents: this operation lists the events
+# Examples
+
+## Kubernetes Events Producer Examples
+
+-   `listEvents`: this operation lists the events
 
 <!-- -->
 
@@ -40,7 +44,7 @@ To indicate from which namespace, the events are expected, it is
 possible to set the message header `CamelKubernetesNamespaceName`. By
 default, the events of all namespaces are returned.
 
--   listEventsByLabels: this operation lists the events selected by
+-   `listEventsByLabels`: this operation lists the events selected by
     labels
 
 <!-- -->
@@ -68,7 +72,7 @@ This operation expects the message header `CamelKubernetesEventsLabels`
 to be set to a `Map<String, String>` where the key-value pairs represent
 the expected label names and values.
 
--   getEvent: this operation gives a specific event
+-   `getEvent`: this operation gives a specific event
 
 <!-- -->
 
@@ -94,7 +98,7 @@ needs to be set to the target name of event.
 
 If no matching event could be found, `null` is returned.
 
--   createEvent: this operation creates a new event
+-   `createEvent`: this operation creates a new event
 
 <!-- -->
 
@@ -146,12 +150,12 @@ representing a prefilled builder to use when creating the event. Please
 note that the labels, name of event and name of namespace are always set
 from the message headers, even when the builder is provided.
 
--   updateEvent: this operation updates an existing event
+-   `updateEvent`: this operation updates an existing event
 
 The behavior is exactly the same as `createEvent`, only the name of the
 operation is different.
 
--   deleteEvent: this operation deletes an existing event.
+-   `deleteEvent`: this operation deletes an existing event.
 
 <!-- -->
 
@@ -174,7 +178,7 @@ This operation expects two message headers which are
 one needs to be set to the name of the target namespace and second one
 needs to be set to the target name of event.
 
-# Kubernetes Events Consumer Example
+## Kubernetes Events Consumer Example
 
     fromF("kubernetes-events://%s?oauthToken=%s", host, authToken)
         .setHeader(KubernetesConstants.KUBERNETES_NAMESPACE_NAME, constant("default"))

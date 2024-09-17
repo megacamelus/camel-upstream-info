@@ -32,13 +32,13 @@ headers `Exchange.HTTP_URI` and `Exchange.HTTP_PATH`.
     from("direct:start")
         .to("vertx-http:https://camel.apache.org");
 
-# URI Parameters
+## URI Parameters
 
 The `vertx-http` producer supports URI parameters to be sent to the HTTP
 server. The URI parameters can either be set directly on the endpoint
 URI, or as a header with the key `Exchange.HTTP_QUERY` on the message.
 
-# Response code
+## Response code
 
 Camel will handle, according to the HTTP response code:
 
@@ -53,13 +53,13 @@ Camel will handle, according to the HTTP response code:
     failure and will throw a `HttpOperationFailedException` with the
     information.
 
-# throwExceptionOnFailure
+## throwExceptionOnFailure
 
 The option, `throwExceptionOnFailure`, can be set to `false` to prevent
 the `HttpOperationFailedException` from being thrown for failed response
 codes. This allows you to get any response from the remote server.
 
-# Exceptions
+## Exceptions
 
 `HttpOperationFailedException` exception contains the following
 information:
@@ -73,7 +73,7 @@ information:
 -   Response body as a `java.lang.String`, if server provided a body as
     response
 
-# HTTP method
+## HTTP method
 
 The following algorithm determines the HTTP method to be used:
 
@@ -84,7 +84,7 @@ The following algorithm determines the HTTP method to be used:
 5. `POST` if there is data to send (body is not `null`).
 6. `GET` otherwise.
 
-# HTTP form parameters
+## HTTP form parameters
 
 You can send HTTP form parameters in one of two ways.
 
@@ -97,12 +97,12 @@ You can send HTTP form parameters in one of two ways.
     [MultiMap](https://vertx.io/docs/apidocs/io/vertx/core/MultiMap.html)
     which allows you to configure form parameter names and values.
 
-# Multipart form data
+## Multipart form data
 
 You can upload text or binary files by setting the message body as a
 [MultipartForm](https://vertx.io/docs/apidocs/io/vertx/ext/web/multipart/MultipartForm.html).
 
-# Customizing Vert.x Web Client options
+## Customizing Vert.x Web Client options
 
 When finer control of the Vert.x Web Client configuration is required,
 you can bind a custom
@@ -120,7 +120,7 @@ Then reference the options on the `vertx-http` producer.
     from("direct:start")
         .to("vertx-http:http://localhost:8080?webClientOptions=#clientOptions")
 
-# SSL
+## SSL
 
 The Vert.x HTTP component supports SSL/TLS configuration through the
 [Camel JSSE Configuration
@@ -129,7 +129,7 @@ Utility](#manual::camel-configuration-utilities.adoc).
 It is also possible to configure SSL options by providing a custom
 `WebClientOptions`.
 
-# Session Management
+## Session Management
 
 Session management can be enabled via the `sessionManagement` URI
 option. When enabled, an in-memory cookie store is used to track

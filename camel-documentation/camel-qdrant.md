@@ -14,12 +14,14 @@ Vector Database](https://qdrant.tech).
 Where **collection** represents a named set of points (vectors with a
 payload) defined in your database.
 
-# Collection Samples
+# Examples
+
+## Collection Examples
 
 In the route below, we use the qdrant component to create a collection
 named *myCollection* with the given parameters:
 
-## Create Collection
+### Create Collection
 
 Java  
 from("direct:in")
@@ -32,7 +34,7 @@ Collections.VectorParams.newBuilder()
 .setDistance(Collections.Distance.Cosine).build())
 .to("qdrant:myCollection");
 
-## Delete Collection
+### Delete Collection
 
 In the route below, we use the qdrant component to delete a collection
 named *myCollection*:
@@ -43,7 +45,7 @@ from("direct:in")
 .constant(QdrantAction.DELETE\_COLLECTION)
 .to("qdrant:myCollection");
 
-## Collection Info
+### Collection Info
 
 In the route below, we use the qdrant component to get information about
 the collection named `myCollection`:
@@ -61,9 +63,9 @@ an exception of type `QdrantActionException` with a cause of type
 `StatusRuntimeException statusRuntimeException` and status
 `Status.NOT_FOUND`.
 
-# Points Samples
+## Points Examples
 
-## Upsert
+### Upsert
 
 In the route below we use the qdrant component to perform insert +
 updates (upsert) on points in the collection named *myCollection*:
@@ -83,7 +85,7 @@ Points.PointStruct.newBuilder()
 .build())
 .to("qdrant:myCollection");
 
-## Retrieve
+### Retrieve
 
 In the route below, we use the qdrant component to retrieve information
 of a single point by id from the collection named *myCollection*:
@@ -96,7 +98,7 @@ from("direct:in")
 .constant(PointIdFactory.id(8))
 .to("qdrant:myCollection");
 
-## Delete
+### Delete
 
 In the route below, we use the qdrant component to delete points from
 the collection named `myCollection` according to a criteria:

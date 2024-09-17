@@ -19,7 +19,9 @@ available at [Camunda Zeebe](https://camunda.com/platform/zeebe/).
 
     zeebe://[endpoint]?[options]
 
-# Producer Endpoints:
+# Usage
+
+## Producer Endpoints
 
 <table>
 <colgroup>
@@ -27,47 +29,47 @@ available at [Camunda Zeebe](https://camunda.com/platform/zeebe/).
 <col style="width: 89%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Endpoint</th>
 <th style="text-align: left;">Description</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td style="text-align: left;"><p>startProcess</p></td>
+<tr class="odd">
+<td style="text-align: left;"><p><code>startProcess</code></p></td>
 <td style="text-align: left;"><p>Creates and starts an instance of the
 specified process.</p></td>
 </tr>
-<tr>
-<td style="text-align: left;"><p>cancelProcess</p></td>
+<tr class="even">
+<td style="text-align: left;"><p><code>cancelProcess</code></p></td>
 <td style="text-align: left;"><p>Cancels a running process
 instance.</p></td>
 </tr>
-<tr>
-<td style="text-align: left;"><p>publishMessage</p></td>
+<tr class="odd">
+<td style="text-align: left;"><p><code>publishMessage</code></p></td>
 <td style="text-align: left;"><p>Publishes a message.</p></td>
 </tr>
-<tr>
-<td style="text-align: left;"><p>completeJob</p></td>
+<tr class="even">
+<td style="text-align: left;"><p><code>completeJob</code></p></td>
 <td style="text-align: left;"><p>Completes a job for a service
 task.</p></td>
 </tr>
-<tr>
-<td style="text-align: left;"><p>failJob</p></td>
+<tr class="odd">
+<td style="text-align: left;"><p><code>failJob</code></p></td>
 <td style="text-align: left;"><p>Fails a job.</p></td>
 </tr>
-<tr>
-<td style="text-align: left;"><p>updateJobRetries</p></td>
+<tr class="even">
+<td style="text-align: left;"><p><code>updateJobRetries</code></p></td>
 <td style="text-align: left;"><p>Updates the number of retries for a
 job.</p></td>
 </tr>
-<tr>
-<td style="text-align: left;"><p>throwError</p></td>
+<tr class="odd">
+<td style="text-align: left;"><p><code>throwError</code></p></td>
 <td style="text-align: left;"><p>Throw an error to indicate that a
 business error has occurred.</p></td>
 </tr>
-<tr>
-<td style="text-align: left;"><p>deployResource</p></td>
+<tr class="even">
+<td style="text-align: left;"><p><code>deployResource</code></p></td>
 <td style="text-align: left;"><p>Deploy a process resource. Currently
 only supports process definitions.</p></td>
 </tr>
@@ -276,7 +278,7 @@ becomes process\_id.
                 }
             });
 
-# Consumer Endpoints:
+## Consumer Endpoints:
 
 <table>
 <colgroup>
@@ -284,13 +286,13 @@ becomes process\_id.
 <col style="width: 89%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Endpoint</th>
 <th style="text-align: left;">Description</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>worker</p></td>
 <td style="text-align: left;"><p>Registers a job worker for a job type
 and provides messages for available jobs.</p></td>

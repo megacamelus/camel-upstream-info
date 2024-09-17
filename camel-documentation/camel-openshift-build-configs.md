@@ -8,17 +8,21 @@ The OpenShift Build Config component is one of [Kubernetes
 Components](#kubernetes-summary.adoc) which provides a producer to
 execute Openshift Build Configs operations.
 
-# Supported producer operation
+# Usage
 
--   listBuildConfigs
+## Supported producer operation
 
--   listBuildConfigsByLabels
+-   `listBuildConfigs`
 
--   getBuildConfig
+-   `listBuildConfigsByLabels`
 
-# Openshift Build Configs Producer Examples
+-   `getBuildConfig`
 
--   listBuilds: this operation lists the Build Configs on an Openshift
+# Examples
+
+## Openshift Build Configs Producer Examples
+
+-   `listBuilds`: this operation lists the build configs on an Openshift
     cluster
 
 <!-- -->
@@ -27,10 +31,10 @@ execute Openshift Build Configs operations.
         toF("openshift-build-configs:///?kubernetesClient=#kubernetesClient&operation=listBuildConfigs").
         to("mock:result");
 
-This operation returns a List of Builds from your Openshift cluster
+This operation returns a list of builds from your Openshift cluster
 
--   listBuildsByLabels: this operation lists the build configs by labels
-    on an Openshift cluster
+-   `listBuildsByLabels`: this operation lists the build configs by
+    labels on an Openshift cluster
 
 <!-- -->
 
@@ -46,8 +50,8 @@ This operation returns a List of Builds from your Openshift cluster
         toF("openshift-build-configs:///?kubernetesClient=#kubernetesClient&operation=listBuildConfigsByLabels").
         to("mock:result");
 
-This operation returns a List of Build configs from your cluster, using
-a label selector (with key1 and key2, with value value1 and value2)
+This operation returns a list of build configs from your cluster using a
+label selector (with key1 and key2, with value value1 and value2)
 
 ## Component Configurations
 

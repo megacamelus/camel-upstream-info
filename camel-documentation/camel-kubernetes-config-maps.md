@@ -9,23 +9,27 @@ Components](#kubernetes-summary.adoc) which provides a producer to
 execute Kubernetes ConfigMap operations and a consumer to consume events
 related to ConfigMap objects.
 
-# Supported producer operation
+# Usage
 
--   listConfigMaps
+## Supported producer operation
 
--   listConfigMapsByLabels
+-   `listConfigMaps`
 
--   getConfigMap
+-   `listConfigMapsByLabels`
 
--   createConfigMap
+-   `getConfigMap`
 
--   updateConfigMap
+-   `createConfigMap`
 
--   deleteConfigMap
+-   `updateConfigMap`
 
-# Kubernetes ConfigMaps Producer Examples
+-   `deleteConfigMap`
 
--   listConfigMaps: this operation lists the configmaps
+# Examples
+
+## Kubernetes ConfigMaps Producer Examples
+
+-   `listConfigMaps`: this operation lists the configmaps
 
 <!-- -->
 
@@ -35,8 +39,8 @@ related to ConfigMap objects.
 
 This operation returns a List of ConfigMaps from your cluster
 
--   listConfigMapsByLabels: this operation lists the configmaps selected
-    by label
+-   `listConfigMapsByLabels`: this operation lists the configmaps
+    selected by label
 
 <!-- -->
 
@@ -56,7 +60,7 @@ This operation returns a List of ConfigMaps from your cluster
 This operation returns a List of ConfigMaps from your cluster, using a
 label selector (with key1 and key2, with value value1 and value2)
 
-# Kubernetes ConfigMaps Consumer Example
+## Kubernetes ConfigMaps Consumer Example
 
     fromF("kubernetes-config-maps://%s?oauthToken=%s", host, authToken)
         .setHeader(KubernetesConstants.KUBERNETES_NAMESPACE_NAME, constant("default"))
@@ -74,6 +78,55 @@ label selector (with key1 and key2, with value value1 and value2)
 
 This consumer will return a list of events on the namespace default for
 the config map test.
+
+# Using configmap properties function with Kubernetes
+
+The `camel-kubernetes` component include the following configmap related
+functions:
+
+-   `configmap` - A function to lookup the string property from
+    Kubernetes ConfigMaps.
+
+-   `configmap-binary` - A function to lookup the binary property from
+    Kubernetes ConfigMaps.
+
+Camel reads Configmaps from the Kubernetes API Server. And when RBAC is
+enabled on the cluster, the ServiceAccount that is used to run the
+application needs to have the proper permissions for such access.
+
+Before the Kubernetes property placeholder functions can be used they
+need to be configured with either (or both)
+
+-   path - A *mount path* that must be mounted to the running pod, to
+    load the configmaps or secrets from local disk.
+
+-   kubernetes client - **Autowired** An
+    `io.fabric8.kubernetes.client.KubernetesClient` instance to use for
+    connecting to the Kubernetes API server.
+
+Camel will first use *mount paths* (if configured) to lookup, and then
+fallback to use the `KubernetesClient`.
+
+## Using configmap with Kubernetes
+
+Given a configmap named `myconfig` in Kubernetes that has two entries:
+
+    drink = beer
+    first = Carlsberg
+
+Then these values can be used in your Camel routes such as:
+
+    <camelContext>
+      <route>
+        <from uri="direct:start"/>
+        <log message="What {{configmap:myconfig/drink}} do you want?"/>
+        <log message="I want {{configmap:myconfig/first}}"/>
+      </route>
+    </camelContext>
+
+You can also provide a default value in case a key does not exist:
+
+        <log message="I want {{configmap:myconfig/second:Heineken}}"/>
 
 ## Component Configurations
 

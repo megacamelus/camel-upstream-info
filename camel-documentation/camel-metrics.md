@@ -14,7 +14,7 @@ Camel routes. Supported metric types are
 the behaviour of applications. The configurable reporting backend
 enables different integration options for collecting and visualizing
 statistics. The component also provides a `MetricsRoutePolicyFactory`
-which allows to expose route statistics using Dropwizard Metrics, see
+which allows exposing route statistics using Dropwizard Metrics, see
 bottom of page for details.
 
 Maven users will need to add the following dependency to their `pom.xml`
@@ -111,11 +111,11 @@ endpoint finishes processing of exchange. While processing exchange
 Metrics endpoint will catch all exceptions and write log entry using
 level `warn`.
 
-# Metrics type counter
+## Metrics type counter
 
     metrics:counter:metricname[?options]
 
-## Options
+### Options
 
 <table>
 <colgroup>
@@ -124,20 +124,20 @@ level `warn`.
 <col style="width: 33%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Name</th>
 <th style="text-align: left;">Default</th>
 <th style="text-align: left;">Description</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>increment</p></td>
 <td style="text-align: left;"><p>-</p></td>
 <td style="text-align: left;"><p>Long value to add to the
 counter</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p>decrement</p></td>
 <td style="text-align: left;"><p>-</p></td>
 <td style="text-align: left;"><p>Long value to subtract from the
@@ -165,7 +165,7 @@ both defined only increment operation is called.
         .to("metrics:counter:simple.counter?decrement=3")
         .to("direct:out");
 
-## Headers
+### Headers
 
 Message headers can be used to override `increment` and `decrement`
 values specified in Metrics component URI.
@@ -177,20 +177,20 @@ values specified in Metrics component URI.
 <col style="width: 10%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Name</th>
 <th style="text-align: left;">Description</th>
 <th style="text-align: left;">Expected type</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>CamelMetricsCounterIncrement</p></td>
 <td style="text-align: left;"><p>Override increment value in
 URI</p></td>
 <td style="text-align: left;"><p>Long</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p>CamelMetricsCounterDecrement</p></td>
 <td style="text-align: left;"><p>Override decrement value in
 URI</p></td>
@@ -211,11 +211,11 @@ URI</p></td>
         .to("metrics:counter:body.length")
         .to("mock:out");
 
-# Metric type histogram
+## Metric type histogram
 
     metrics:histogram:metricname[?options]
 
-## Options
+### Options
 
 <table>
 <colgroup>
@@ -224,14 +224,14 @@ URI</p></td>
 <col style="width: 33%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Name</th>
 <th style="text-align: left;">Default</th>
 <th style="text-align: left;">Description</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>value</p></td>
 <td style="text-align: left;"><p>-</p></td>
 <td style="text-align: left;"><p>Value to use in histogram</p></td>
@@ -252,7 +252,7 @@ logged.
         .to("metrics:histogram:simple.histogram")
         .to("direct:out");
 
-## Headers
+### Headers
 
 Message header can be used to override value specified in Metrics
 component URI.
@@ -264,14 +264,14 @@ component URI.
 <col style="width: 10%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Name</th>
 <th style="text-align: left;">Description</th>
 <th style="text-align: left;">Expected type</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>CamelMetricsHistogramValue</p></td>
 <td style="text-align: left;"><p>Override histogram value in
 URI</p></td>
@@ -286,11 +286,11 @@ URI</p></td>
         .to("metrics:histogram:simple.histogram?value=700")
         .to("direct:out")
 
-# Metric type meter
+## Metric type meter
 
     metrics:meter:metricname[?options]
 
-## Options
+### Options
 
 <table>
 <colgroup>
@@ -299,14 +299,14 @@ URI</p></td>
 <col style="width: 33%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Name</th>
 <th style="text-align: left;">Default</th>
 <th style="text-align: left;">Description</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>mark</p></td>
 <td style="text-align: left;"><p>-</p></td>
 <td style="text-align: left;"><p>Long value to use as mark</p></td>
@@ -326,7 +326,7 @@ If `mark` is not set then `meter.mark()` is called without argument.
         .to("metrics:meter:simple.meter?mark=81")
         .to("direct:out");
 
-## Headers
+### Headers
 
 Message header can be used to override `mark` value specified in Metrics
 component URI.
@@ -338,14 +338,14 @@ component URI.
 <col style="width: 10%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Name</th>
 <th style="text-align: left;">Description</th>
 <th style="text-align: left;">Expected type</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>CamelMetricsMeterMark</p></td>
 <td style="text-align: left;"><p>Override mark value in URI</p></td>
 <td style="text-align: left;"><p>Long</p></td>
@@ -359,11 +359,11 @@ component URI.
         .to("metrics:meter:simple.meter?mark=123")
         .to("direct:out");
 
-# Metrics type timer
+## Metrics type timer
 
     metrics:timer:metricname[?options]
 
-## Options
+### Options
 
 <table>
 <colgroup>
@@ -372,14 +372,14 @@ component URI.
 <col style="width: 33%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Name</th>
 <th style="text-align: left;">Default</th>
 <th style="text-align: left;">Description</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>action</p></td>
 <td style="text-align: left;"><p>-</p></td>
 <td style="text-align: left;"><p>start or stop</p></td>
@@ -401,7 +401,7 @@ and warning is logged.
 `TimerContext` objects are stored as Exchange properties between
 different Metrics component calls.
 
-## Headers
+### Headers
 
 Message header can be used to override action value specified in Metrics
 component URI.
@@ -413,14 +413,14 @@ component URI.
 <col style="width: 10%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Name</th>
 <th style="text-align: left;">Description</th>
 <th style="text-align: left;">Expected type</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>CamelMetricsTimerAction</p></td>
 <td style="text-align: left;"><p>Override timer action in URI</p></td>
 <td
@@ -435,11 +435,11 @@ style="text-align: left;"><p><code>org.apache.camel.component.metrics.MetricsTim
         .to("metrics:timer:simple.timer")
         .to("direct:out");
 
-# Metric type gauge
+## Metric type gauge
 
     metrics:gauge:metricname[?options]
 
-## Options
+### Options
 
 <table>
 <colgroup>
@@ -448,14 +448,14 @@ style="text-align: left;"><p><code>org.apache.camel.component.metrics.MetricsTim
 <col style="width: 33%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Name</th>
 <th style="text-align: left;">Default</th>
 <th style="text-align: left;">Description</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>subject</p></td>
 <td style="text-align: left;"><p>-</p></td>
 <td style="text-align: left;"><p>Any object to be observed by the
@@ -472,7 +472,7 @@ registered.
         .to("metrics:gauge:simple.gauge?subject=#mySubjectBean")
         .to("direct:out");
 
-## Headers
+### Headers
 
 Message headers can be used to override `subject` values specified in
 Metrics component URI. Note: if `CamelMetricsName` header is specified,
@@ -486,14 +486,14 @@ URI.
 <col style="width: 10%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Name</th>
 <th style="text-align: left;">Description</th>
 <th style="text-align: left;">Expected type</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>CamelMetricsGaugeSubject</p></td>
 <td style="text-align: left;"><p>Override subject value in URI</p></td>
 <td style="text-align: left;"><p>Object</p></td>
@@ -507,7 +507,7 @@ URI.
         .to("metrics:counter:simple.gauge?subject=#mySubjectBean")
         .to("direct:out");
 
-# MetricsRoutePolicyFactory
+## MetricsRoutePolicyFactory
 
 This factory allows adding a `RoutePolicy` for each route that exposes
 route utilization statistics using Dropwizard metrics. This factory can
@@ -536,14 +536,14 @@ following options:
 <col style="width: 33%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Name</th>
 <th style="text-align: left;">Default</th>
 <th style="text-align: left;">Description</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>useJmx</p></td>
 <td style="text-align: left;"><p>false</p></td>
 <td style="text-align: left;"><p>Whether to report fine-grained
@@ -555,18 +555,18 @@ type in the JMX tree. That mbean has a single operation to output the
 statistics using json. Setting <code>useJmx</code> to true is only
 needed if you want fine-grained mbeans per statistics type.</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p>jmxDomain</p></td>
 <td style="text-align: left;"><p>org.apache.camel.metrics</p></td>
 <td style="text-align: left;"><p>The JMX domain name</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>prettyPrint</p></td>
 <td style="text-align: left;"><p>false</p></td>
 <td style="text-align: left;"><p>Whether to use pretty print when
 outputting statistics in json format</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p>metricsRegistry</p></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"><p>Allow using a shared
@@ -574,19 +574,19 @@ outputting statistics in json format</p></td>
 then Camel will create a shared instance used by the
 CamelContext.</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>rateUnit</p></td>
 <td style="text-align: left;"><p>TimeUnit.SECONDS</p></td>
 <td style="text-align: left;"><p>The unit to use for rate in the metrics
 reporter or when dumping the statistics as json.</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p>durationUnit</p></td>
 <td style="text-align: left;"><p>TimeUnit.MILLISECONDS</p></td>
 <td style="text-align: left;"><p>The unit to use for duration in the
 metrics reporter or when dumping the statistics as json.</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>namePattern</p></td>
 <td
 style="text-align: left;"><p><code>##name##.##routeId##.##type##</code></p></td>
@@ -612,7 +612,7 @@ as shown below:
       ...
     }
 
-# MetricsMessageHistoryFactory
+## MetricsMessageHistoryFactory
 
 This factory allows using metrics to capture Message History performance
 statistics while routing messages. It works by using a metrics Timer for
@@ -637,14 +637,14 @@ The following options are supported on the factory:
 <col style="width: 33%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Name</th>
 <th style="text-align: left;">Default</th>
 <th style="text-align: left;">Description</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>useJmx</p></td>
 <td style="text-align: left;"><p>false</p></td>
 <td style="text-align: left;"><p>Whether to report fine-grained
@@ -656,18 +656,18 @@ type in the JMX tree. That mbean has a single operation to output the
 statistics using json. Setting <code>useJmx</code> to true is only
 needed if you want fine-grained mbeans per statistics type.</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p>jmxDomain</p></td>
 <td style="text-align: left;"><p>org.apache.camel.metrics</p></td>
 <td style="text-align: left;"><p>The JMX domain name</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>prettyPrint</p></td>
 <td style="text-align: left;"><p>false</p></td>
 <td style="text-align: left;"><p>Whether to use pretty print when
 outputting statistics in json format</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p>metricsRegistry</p></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"><p>Allow using a shared
@@ -675,19 +675,19 @@ outputting statistics in json format</p></td>
 then Camel will create a shared instance used by the
 CamelContext.</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>rateUnit</p></td>
 <td style="text-align: left;"><p>TimeUnit.SECONDS</p></td>
 <td style="text-align: left;"><p>The unit to use for rate in the metrics
 reporter or when dumping the statistics as json.</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p>durationUnit</p></td>
 <td style="text-align: left;"><p>TimeUnit.MILLISECONDS</p></td>
 <td style="text-align: left;"><p>The unit to use for duration in the
 metrics reporter or when dumping the statistics as json.</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>namePattern</p></td>
 <td
 style="text-align: left;"><p><code>##name##.##routeId##.###id###.##type##</code></p></td>
@@ -714,7 +714,7 @@ From Java code, you can get the service from the CamelContext as shown:
 And the JMX API the MBean is registered in the `type=services` tree with
 `name=MetricsMessageHistoryService`.
 
-# InstrumentedThreadPoolFactory
+## InstrumentedThreadPoolFactory
 
 This factory allows you to gather performance information about Camel
 Thread Pools by injecting a `InstrumentedThreadPoolFactory` which

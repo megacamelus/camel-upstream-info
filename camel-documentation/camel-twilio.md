@@ -8,7 +8,7 @@ The Twilio component provides access to Version 2010-04-01 of Twilio
 REST APIs accessible using [Twilio Java
 SDK](https://github.com/twilio/twilio-java).
 
-Maven users will need to add the following dependency to their pom.xml
+Maven users will need to add the following dependency to their `pom.xml`
 for this component:
 
     <dependency>
@@ -17,7 +17,9 @@ for this component:
         <version>${camel-version}</version>
     </dependency>
 
-# Producer Endpoints:
+# Usage
+
+## Producer Endpoints:
 
 Producer endpoints can use endpoint prefixes followed by endpoint names
 and associated options described next. A shorthand alias can be used for
@@ -38,38 +40,38 @@ Endpoint can be one of:
 <col style="width: 60%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Endpoint</th>
 <th style="text-align: left;">Shorthand Alias</th>
 <th style="text-align: left;">Description</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><strong>creator</strong></p></td>
 <td style="text-align: left;"><p>create</p></td>
 <td style="text-align: left;"><p>Make the request to the Twilio API to
 perform the <code>create</code></p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><strong>deleter</strong></p></td>
 <td style="text-align: left;"><p>delete</p></td>
 <td style="text-align: left;"><p>Make the request to the Twilio API to
 perform the <code>delete</code></p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><strong>fetcher</strong></p></td>
 <td style="text-align: left;"><p>fetch</p></td>
 <td style="text-align: left;"><p>Make the request to the Twilio API to
 perform the <code>fetch</code></p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><strong>reader</strong></p></td>
 <td style="text-align: left;"><p>read</p></td>
 <td style="text-align: left;"><p>Make the request to the Twilio API to
 perform the <code>read</code></p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><strong>updater</strong></p></td>
 <td style="text-align: left;"><p>update</p></td>
 <td style="text-align: left;"><p>Make the request to the Twilio API to

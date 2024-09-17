@@ -24,7 +24,9 @@ with extensions *.chtml* or \_.cxml. \_If you need to specify a
 different folder or extensions, you will need to use the specific
 options listed above.
 
-# Chunk Context
+# Usage
+
+## Chunk Context
 
 Camel will provide exchange information in the Chunk context (just a
 `Map`). The `Exchange` is transferred as:
@@ -35,44 +37,44 @@ Camel will provide exchange information in the Chunk context (just a
 <col style="width: 80%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">key</th>
 <th style="text-align: left;">value</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>exchange</code></p></td>
 <td style="text-align: left;"><p>The <code>Exchange</code>
 itself.</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td
 style="text-align: left;"><p><code>exchange.properties</code></p></td>
 <td style="text-align: left;"><p>The <code>Exchange</code>
 properties.</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>variables</code></p></td>
 <td style="text-align: left;"><p>The variables</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>headers</code></p></td>
 <td style="text-align: left;"><p>The headers of the In message.</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>camelContext</code></p></td>
 <td style="text-align: left;"><p>The Camel Context.</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>request</code></p></td>
 <td style="text-align: left;"><p>The In message.</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>body</code></p></td>
 <td style="text-align: left;"><p>The In message body.</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>response</code></p></td>
 <td style="text-align: left;"><p>The Out message (only for InOut message
 exchange pattern).</p></td>
@@ -80,14 +82,14 @@ exchange pattern).</p></td>
 </tbody>
 </table>
 
-# Dynamic templates
+## Dynamic templates
 
 Camel provides two headers by which you can define a different resource
 location for a template or the template content itself. If any of these
 headers is set, then Camel uses this over the endpoint configured
 resource. This allows you to provide a dynamic template at runtime.
 
-# Samples
+# Examples
 
 For example, you could use something like:
 
@@ -119,7 +121,7 @@ An example of Chunk component options use:
 In this example, the Chunk component will look for the file
 `file_example.chunk` in the folder `template/subfolder`.
 
-# The Email Sample
+## The Email Example
 
 In this sample, we want to use Chunk templating for an order
 confirmation email. The email template is laid out in Chunk as:

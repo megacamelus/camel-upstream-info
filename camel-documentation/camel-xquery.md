@@ -21,7 +21,9 @@ as a second argument to the **xquery()** method.
     from("direct:start")
       .recipientList().xquery("concat('mock:foo.', /person/@city)", String.class);
 
-# Variables
+# Usage
+
+## Variables
 
 The IN message body will be set as the `contextItem`. Besides this,
 these Variables are also added as parameters:
@@ -33,45 +35,45 @@ these Variables are also added as parameters:
 <col style="width: 79%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Variable</th>
 <th style="text-align: left;">Type</th>
 <th style="text-align: left;">Description</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td style="text-align: left;"><p>exchange</p></td>
+<tr class="odd">
+<td style="text-align: left;"><p><code>exchange</code></p></td>
 <td style="text-align: left;"><p>Exchange</p></td>
 <td style="text-align: left;"><p>The current Exchange</p></td>
 </tr>
-<tr>
-<td style="text-align: left;"><p>in.body</p></td>
+<tr class="even">
+<td style="text-align: left;"><p><code>in.body</code></p></td>
 <td style="text-align: left;"><p>Object</p></td>
 <td style="text-align: left;"><p>The In message’s body</p></td>
 </tr>
-<tr>
-<td style="text-align: left;"><p>out.body</p></td>
+<tr class="odd">
+<td style="text-align: left;"><p><code>out.body</code></p></td>
 <td style="text-align: left;"><p>Object</p></td>
 <td style="text-align: left;"><p>The OUT message’s body (if
 any)</p></td>
 </tr>
-<tr>
-<td style="text-align: left;"><p>in.headers.*</p></td>
+<tr class="even">
+<td style="text-align: left;"><p><code>in.headers.*</code></p></td>
 <td style="text-align: left;"><p>Object</p></td>
 <td style="text-align: left;"><p>You can access the value of
 exchange.in.headers with key <strong>foo</strong> by using the variable
 which name is in.headers.foo</p></td>
 </tr>
-<tr>
-<td style="text-align: left;"><p>out.headers.*</p></td>
+<tr class="odd">
+<td style="text-align: left;"><p><code>out.headers.*</code></p></td>
 <td style="text-align: left;"><p>Object</p></td>
 <td style="text-align: left;"><p>You can access the value of
 exchange.out.headers with key <strong>foo</strong> by using the variable
 which name is out.headers.foo variable</p></td>
 </tr>
-<tr>
-<td style="text-align: left;"><p><strong>key name</strong></p></td>
+<tr class="even">
+<td style="text-align: left;"><p><code>*key name*</code></p></td>
 <td style="text-align: left;"><p>Object</p></td>
 <td style="text-align: left;"><p>Any exchange.properties and
 exchange.in.headers and any additional parameters set using
@@ -82,7 +84,7 @@ own key name, for instance, if there is an IN header with the key name
 </tbody>
 </table>
 
-# Using XML configuration
+## Using XML configuration
 
 If you prefer to configure your routes in your Spring XML file, then you
 can use XPath expressions as follows
@@ -114,7 +116,7 @@ attribute:
 
     <xquery resultType="java.lang.String">concat('mock:foo.', /person/@city)</xquery>
 
-# Using XQuery as an endpoint
+## Using XQuery as an endpoint
 
 Sometimes an XQuery expression can be quite large; it can essentally be
 used for Templating. So you may want to use an XQuery Endpoint, so you
@@ -131,7 +133,7 @@ The following example shows how to take a message of an ActiveMQ queue
         </route>
       </camelContext>
 
-# Loading script from external resource
+## Loading script from external resource
 
 You can externalize the script and have Apache Camel load it from a
 resource such as `"classpath:"`, `"file:"`, or `"http:"`. This is done
@@ -140,7 +142,7 @@ to a file on the classpath you can do:
 
     .setHeader("myHeader").xquery("resource:classpath:myxquery.txt", String.class)
 
-# Learning XQuery
+## Learning XQuery
 
 XQuery is a very powerful language for querying, searching, sorting and
 returning XML. For help learning XQuery, try these tutorials
@@ -157,7 +159,7 @@ To use XQuery in your Camel routes, you need to add the dependency on
 **camel-saxon**, which implements the XQuery language.
 
 If you use Maven, you could add the following to your `pom.xml`,
-substituting the version number for the latest \& greatest release.
+substituting the version number for the latest release.
 
     <dependency>
       <groupId>org.apache.camel</groupId>

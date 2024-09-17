@@ -39,7 +39,9 @@ the start of a route.
 For SSL configuration, refer to the `camel-ldap` component where there
 is an example of setting up a custom SocketFactory instance.
 
-# Body types:
+# Usage
+
+## Body types:
 
 The body can be a URL to an LDIF file or an inline LDIF file. To signify
 the difference in body types, an inline LDIF must start with:
@@ -48,13 +50,13 @@ the difference in body types, an inline LDIF must start with:
 
 If not, the component will try to parse the body as a URL.
 
-# Result
+## Result
 
 The result is returned in the Out body as a
-`ArrayList<java.lang.String>` object. This contains either "success" or
-an Exception message for each LDIF entry.
+`ArrayList<java.lang.String>` object. This contains either `_success_`
+or an Exception message for each LDIF entry.
 
-# LdapConnection
+## LdapConnection
 
 The URI, `ldif:ldapConnectionName`, references a bean with the ID,
 `ldapConnectionName`. The ldapConnection can be configured using a
@@ -79,24 +81,7 @@ The `LdapConnection` bean may be defined as follows in Spring XML:
     
     <bean id="ldapConnection" factory-bean="ldapConnectionFactory" factory-method="newLdapConnection" scope="prototype"/>
 
-or in a OSGi blueprint.xml:
-
-    <bean id="ldapConnectionOptions" class="org.apache.directory.ldap.client.api.LdapConnectionConfig">
-      <property name="ldapHost" value="${ldap.host}"/>
-      <property name="ldapPort" value="${ldap.port}"/>
-      <property name="name" value="${ldap.username}"/>
-      <property name="credentials" value="${ldap.password}"/>
-      <property name="useSsl" value="false"/>
-      <property name="useTls" value="false"/>
-    </bean>
-    
-    <bean id="ldapConnectionFactory" class="org.apache.directory.ldap.client.api.DefaultLdapConnectionFactory">
-      <argument ref="ldapConnectionOptions"/>
-    </bean>
-    
-    <bean id="ldapConnection" factory-ref="ldapConnectionFactory" factory-method="newLdapConnection" scope="prototype"/>
-
-# Samples
+# Examples
 
 Following on from the Spring configuration above, the code sample below
 sends an LDAP request to filter search a group for a member. The Common

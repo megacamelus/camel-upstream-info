@@ -27,7 +27,9 @@ The Google Pubsub Component uses the following URI format:
 
 Destination Name can be either a topic or a subscription name.
 
-# Producer Endpoints
+# Usage
+
+## Producer Endpoints
 
 Producer endpoints can accept and deliver to PubSub individual and
 grouped exchanges alike. Grouped exchanges have
@@ -60,7 +62,7 @@ messages](https://cloud.google.com/pubsub/docs/ordering).
 Once exchange has been delivered to PubSub the PubSub Message ID will be
 assigned to the header `GooglePubsubConstants.MESSAGE_ID`.
 
-# Consumer Endpoints
+## Consumer Endpoints
 
 Google PubSub will redeliver the message if it has not been acknowledged
 within the time period set as a configuration option on the
@@ -77,13 +79,13 @@ header `GooglePubsubConstants.ACK_ID`. If the header is removed or
 tampered with, the ack will fail and the message will be redelivered
 again after the ack deadline.
 
-# Message Body
+## Message Body
 
 The consumer endpoint returns the content of the message as `byte[]`.
 Exactly as the underlying system sends it. It is up for the route to
 convert/unmarshall the contents.
 
-# Authentication Configuration
+## Authentication Configuration
 
 By default, this component acquires credentials using
 `GoogleCredentials.getApplicationDefault()`. This behavior can be
@@ -92,7 +94,7 @@ requests to Google API will be made without authentication details. This
 is only desirable when developing against an emulator. This behavior can
 be altered by supplying a path to a service account key file.
 
-# Rollback and Redelivery
+## Rollback and Redelivery
 
 The rollback for Google PubSub relies on the idea of the Acknowledgement
 Deadline - the time period where Google PubSub expects to receive the
@@ -113,7 +115,7 @@ acknowledgement deadline explicitly for the rollback by setting the
 message header `GooglePubsubConstants.ACK_DEADLINE` to the value in
 seconds.
 
-# Manual Acknowledgement
+## Manual Acknowledgement
 
 By default, the PubSub consumer will acknowledge messages once the
 exchange has been processed, or negative-acknowledge them if the

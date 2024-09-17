@@ -23,7 +23,9 @@ for this component:
 
     grpc:host:port/service[?options]
 
-# Transport security and authentication support
+# Usage
+
+## Transport security and authentication support
 
 The following [authentication](https://grpc.io/docs/guides/auth.html)
 mechanisms are built-in to gRPC and available in this component:
@@ -52,7 +54,7 @@ combinations must be configured:
 <col style="width: 30%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Num.</th>
 <th style="text-align: left;">Option</th>
 <th style="text-align: left;">Parameter</th>
@@ -61,42 +63,42 @@ combinations must be configured:
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>1</p></td>
 <td style="text-align: left;"><p><strong>SSL/TLS</strong></p></td>
 <td style="text-align: left;"><p>negotiationType</p></td>
 <td style="text-align: left;"><p>TLS</p></td>
 <td style="text-align: left;"><p>Required</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"><p>keyCertChainResource</p></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"><p>Required</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"><p>keyResource</p></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"><p>Required</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"><p>keyPassword</p></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"><p>Optional</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"><p>trustCertCollectionResource</p></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"><p>Optional</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p>2</p></td>
 <td style="text-align: left;"><p><strong>Token-based authentication with
 Google API</strong></p></td>
@@ -104,21 +106,21 @@ Google API</strong></p></td>
 <td style="text-align: left;"><p>GOOGLE</p></td>
 <td style="text-align: left;"><p>Required</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"><p>negotiationType</p></td>
 <td style="text-align: left;"><p>TLS</p></td>
 <td style="text-align: left;"><p>Required</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"><p>serviceAccountResource</p></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"><p>Required</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>3</p></td>
 <td style="text-align: left;"><p><strong>Custom JSON Web Token
 implementation authentication</strong></p></td>
@@ -126,7 +128,7 @@ implementation authentication</strong></p></td>
 <td style="text-align: left;"><p>JWT</p></td>
 <td style="text-align: left;"><p>Required</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"><p>negotiationType</p></td>
@@ -134,7 +136,7 @@ implementation authentication</strong></p></td>
 <td style="text-align: left;"><p>Optional. The TLS/SSL not checking for
 this type, but strongly recommended.</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"><p>jwtAlgorithm</p></td>
@@ -142,21 +144,21 @@ this type, but strongly recommended.</p></td>
 (HMAC384,HMAC512)</p></td>
 <td style="text-align: left;"><p>Optional</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"><p>jwtSecret</p></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"><p>Required</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"><p>jwtIssuer</p></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"><p>Optional</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"><p>jwtSubject</p></td>
@@ -166,7 +168,7 @@ this type, but strongly recommended.</p></td>
 </tbody>
 </table>
 
-# gRPC producer resource type mapping
+## gRPC producer resource type mapping
 
 The table below shows the types of objects in the message body,
 depending on the types (simple or stream) of incoming and outgoing
@@ -183,7 +185,7 @@ incoming stream parameter in asynchronous style is not allowed.
 <col style="width: 26%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Invocation style</th>
 <th style="text-align: left;">Request type</th>
 <th style="text-align: left;">Response type</th>
@@ -192,56 +194,56 @@ incoming stream parameter in asynchronous style is not allowed.
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><strong>synchronous</strong></p></td>
 <td style="text-align: left;"><p>simple</p></td>
 <td style="text-align: left;"><p>simple</p></td>
 <td style="text-align: left;"><p>Object</p></td>
 <td style="text-align: left;"><p>Object</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><strong>synchronous</strong></p></td>
 <td style="text-align: left;"><p>simple</p></td>
 <td style="text-align: left;"><p>stream</p></td>
 <td style="text-align: left;"><p>Object</p></td>
 <td style="text-align: left;"><p>List&lt;Object&gt;</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>synchronous</p></td>
 <td style="text-align: left;"><p>stream</p></td>
 <td style="text-align: left;"><p>simple</p></td>
 <td style="text-align: left;"><p>not allowed</p></td>
 <td style="text-align: left;"><p>not allowed</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p>synchronous</p></td>
 <td style="text-align: left;"><p>stream</p></td>
 <td style="text-align: left;"><p>stream</p></td>
 <td style="text-align: left;"><p>not allowed</p></td>
 <td style="text-align: left;"><p>not allowed</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><strong>asynchronous</strong></p></td>
 <td style="text-align: left;"><p>simple</p></td>
 <td style="text-align: left;"><p>simple</p></td>
 <td style="text-align: left;"><p>Object</p></td>
 <td style="text-align: left;"><p>List&lt;Object&gt;</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><strong>asynchronous</strong></p></td>
 <td style="text-align: left;"><p>simple</p></td>
 <td style="text-align: left;"><p>stream</p></td>
 <td style="text-align: left;"><p>Object</p></td>
 <td style="text-align: left;"><p>List&lt;Object&gt;</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><strong>asynchronous</strong></p></td>
 <td style="text-align: left;"><p>stream</p></td>
 <td style="text-align: left;"><p>simple</p></td>
 <td style="text-align: left;"><p>Object or List&lt;Object&gt;</p></td>
 <td style="text-align: left;"><p>List&lt;Object&gt;</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><strong>asynchronous</strong></p></td>
 <td style="text-align: left;"><p>stream</p></td>
 <td style="text-align: left;"><p>stream</p></td>
@@ -251,14 +253,14 @@ incoming stream parameter in asynchronous style is not allowed.
 </tbody>
 </table>
 
-# gRPC Proxy
+## gRPC Proxy
 
 It is not possible to create a universal proxy-route for all methods, so
 you need to divide your gRPC service into several services by method’s
 type: unary, server streaming, client streaming and bidirectional
 streaming.
 
-## Unary
+### Unary
 
 For unary requests, it is enough to write the following code:
 

@@ -9,6 +9,12 @@ Server](https://github.com/ChatScript/ChatScript) and have
 conversations. This component is stateless and relies on ChatScript to
 maintain chat history.
 
+Refer to the file
+[`ChatScriptMessage.java`](https://github.com/apache/camel/blob/main/components/camel-chatscript/src/main/java/org/apache/camel/component/chatscript/ChatScriptMessage.java)
+for details and samples.
+
+# Usage
+
 This component expects a JSON with the following fields:
 
     {
@@ -16,10 +22,6 @@ This component expects a JSON with the following fields:
       "botname": "name here",
       "body": "body here"
     }
-
-Refer to the file
-[`ChatScriptMessage.java`](https://github.com/apache/camel/blob/main/components/camel-chatscript/src/main/java/org/apache/camel/component/chatscript/ChatScriptMessage.java)
-for details and samples.
 
 ## Component Configurations
 

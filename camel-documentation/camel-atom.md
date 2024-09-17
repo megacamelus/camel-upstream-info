@@ -39,21 +39,21 @@ Depending on the `splitEntries` flag Camel will either return one
 <col style="width: 79%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Option</th>
 <th style="text-align: left;">Value</th>
 <th style="text-align: left;">Behavior</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>splitEntries</code></p></td>
 <td style="text-align: left;"><p><code>true</code></p></td>
 <td style="text-align: left;"><p>Only a single entry from the currently
 being processed feed is set:
 <code>exchange.in.body(Entry)</code></p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>splitEntries</code></p></td>
 <td style="text-align: left;"><p><code>false</code></p></td>
 <td style="text-align: left;"><p>The entire list of entries from the

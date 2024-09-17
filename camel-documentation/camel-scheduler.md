@@ -31,7 +31,9 @@ Consumer](http://camel.apache.org/polling-consumer.html) where you can
 find more information about the options above, and examples at the
 [Polling Consumer](http://camel.apache.org/polling-consumer.html) page.
 
-# Exchange Properties
+# Usage
+
+## Exchange Properties
 
 When the timer is fired, it adds the following information as properties
 to the `Exchange`:
@@ -43,21 +45,21 @@ to the `Exchange`:
 <col style="width: 79%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Name</th>
 <th style="text-align: left;">Type</th>
 <th style="text-align: left;">Description</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td
 style="text-align: left;"><p><code>Exchange.TIMER_NAME</code></p></td>
 <td style="text-align: left;"><p><code>String</code></p></td>
 <td style="text-align: left;"><p>The value of the <code>name</code>
 option.</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td
 style="text-align: left;"><p><code>Exchange.TIMER_FIRED_TIME</code></p></td>
 <td style="text-align: left;"><p><code>Date</code></p></td>
@@ -67,7 +69,27 @@ fired.</p></td>
 </tbody>
 </table>
 
-# Sample
+## Forcing the scheduler to trigger immediately when completed
+
+To let the scheduler trigger as soon as the previous task is complete,
+you can set the option `greedy=true`. But beware then the scheduler will
+keep firing all the time. So use this with caution.
+
+## Forcing the scheduler to be idle
+
+There can be use cases where you want the scheduler to trigger and be
+greedy. But sometimes you want to "tell the scheduler" that there was no
+task to poll, so the scheduler can change into idle mode using the
+backoff options. To do this, you would need to set a property on the
+exchange with the key `Exchange.SCHEDULER_POLLED_MESSAGES` to a boolean
+value of false. This will cause the consumer to indicate that there were
+no messages polled.
+
+The consumer will otherwise as by default return 1 message polled to the
+scheduler, every time the consumer has completed processing the
+exchange.
+
+# Example
 
 To set up a route that generates an event every 60 seconds:
 
@@ -83,26 +105,6 @@ And the route in Spring DSL:
       <from uri="scheduler://foo?delay=60000"/>
       <to uri="bean:myBean?method=someMethodName"/>
     </route>
-
-# Forcing the scheduler to trigger immediately when completed
-
-To let the scheduler trigger as soon as the previous task is complete,
-you can set the option `greedy=true`. But beware then the scheduler will
-keep firing all the time. So use this with caution.
-
-# Forcing the scheduler to be idle
-
-There can be use cases where you want the scheduler to trigger and be
-greedy. But sometimes you want to "tell the scheduler" that there was no
-task to poll, so the scheduler can change into idle mode using the
-backoff options. To do this, you would need to set a property on the
-exchange with the key `Exchange.SCHEDULER_POLLED_MESSAGES` to a boolean
-value of false. This will cause the consumer to indicate that there were
-no messages polled.
-
-The consumer will otherwise as by default return 1 message polled to the
-scheduler, every time the consumer has completed processing the
-exchange.
 
 ## Component Configurations
 

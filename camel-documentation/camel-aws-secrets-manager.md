@@ -98,6 +98,11 @@ file such as:
     camel.vault.aws.profileName = test-account
     camel.vault.aws.region = region
 
+`camel.vault.aws` configuration only applies to the AWS Secrets Manager
+properties function (E.g when resolving properties). When using the
+`operation` option to create, get, list secrets etc., you should provide
+the usual options for connecting to AWS Services.
+
 At this point, you’ll be able to reference a property in the following
 way:
 
@@ -142,7 +147,7 @@ example:
     <camelContext>
         <route>
             <from uri="direct:start"/>
-            <log message="Username is {{aws:database/username}}"/>
+            <log message="Username is {{aws:database#username}}"/>
         </route>
     </camelContext>
 
@@ -154,7 +159,7 @@ is not present on AWS Secret Manager:
     <camelContext>
         <route>
             <from uri="direct:start"/>
-            <log message="Username is {{aws:database/username:admin}}"/>
+            <log message="Username is {{aws:database#username:admin}}"/>
         </route>
     </camelContext>
 
@@ -190,7 +195,7 @@ secret doesn’t exist or the version doesn’t exist.
     <camelContext>
         <route>
             <from uri="direct:start"/>
-            <log message="Username is {{aws:database/username:admin@bf9b4f4b-8e63-43fd-a73c-3e2d3748b451}}"/>
+            <log message="Username is {{aws:database#username:admin@bf9b4f4b-8e63-43fd-a73c-3e2d3748b451}}"/>
         </route>
     </camelContext>
 
@@ -317,6 +322,8 @@ the producer side:
 -   rotateSecret
 
 -   getSecret
+
+-   batchGetSecret
 
 -   updateSecret
 

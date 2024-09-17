@@ -9,7 +9,8 @@ compute services.
 
 # Dependencies
 
-Maven users will need to add the following dependency to their pom.xml.
+Maven users will need to add the following dependency to their
+`pom.xml`.
 
 **pom.xml**
 
@@ -30,9 +31,9 @@ Camel.
 
 You can use the following settings for each subsystem:
 
-# flavors
+## Flavors
 
-## Operations you can perform with the Flavor producer
+### Operations you can perform with the Flavor producer
 
 <table>
 <colgroup>
@@ -40,25 +41,25 @@ You can use the following settings for each subsystem:
 <col style="width: 80%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Operation</th>
 <th style="text-align: left;">Description</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>create</code></p></td>
 <td style="text-align: left;"><p>Create new flavor.</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>get</code></p></td>
 <td style="text-align: left;"><p>Get the flavor.</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>getAll</code></p></td>
 <td style="text-align: left;"><p>Get all flavors.</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>delete</code></p></td>
 <td style="text-align: left;"><p>Delete the flavor.</p></td>
 </tr>
@@ -66,12 +67,12 @@ You can use the following settings for each subsystem:
 </table>
 
 If you need more precise flavor settings, you can create a new object of
-the type **org.openstack4j.model.compute.Flavor** and send in the
-message body.
+the type `org.openstack4j.model.compute.Flavor` and send in the message
+body.
 
-# servers
+## Servers
 
-## Operations you can perform with the Server producer
+### Operations you can perform with the Server producer
 
 <table>
 <colgroup>
@@ -79,33 +80,33 @@ message body.
 <col style="width: 80%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Operation</th>
 <th style="text-align: left;">Description</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>create</code></p></td>
 <td style="text-align: left;"><p>Create a new server.</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>createSnapshot</code></p></td>
 <td style="text-align: left;"><p>Create snapshot of the server.</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>get</code></p></td>
 <td style="text-align: left;"><p>Get the server.</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>getAll</code></p></td>
 <td style="text-align: left;"><p>Get all servers.</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>delete</code></p></td>
 <td style="text-align: left;"><p>Delete the server.</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>action</code></p></td>
 <td style="text-align: left;"><p>Perform an action on the
 server.</p></td>
@@ -114,12 +115,12 @@ server.</p></td>
 </table>
 
 If you need more precise server settings, you can create a new object of
-the type **org.openstack4j.model.compute.ServerCreate** and send in the
+the type `org.openstack4j.model.compute.ServerCreate` and send in the
 message body.
 
-# keypairs
+## Key/Pairs
 
-## Operations you can perform with the Keypair producer
+### Operations you can perform with the Keypair producer
 
 <table>
 <colgroup>
@@ -127,25 +128,25 @@ message body.
 <col style="width: 80%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Operation</th>
 <th style="text-align: left;">Description</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>create</code></p></td>
 <td style="text-align: left;"><p>Create new keypair.</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>get</code></p></td>
 <td style="text-align: left;"><p>Get the keypair.</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>getAll</code></p></td>
 <td style="text-align: left;"><p>Get all keypairs.</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>delete</code></p></td>
 <td style="text-align: left;"><p>Delete the keypair.</p></td>
 </tr>

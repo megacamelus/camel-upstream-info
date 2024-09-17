@@ -23,21 +23,26 @@ for this component:
 
     quickfix:configFile[?sessionID=sessionID&lazyCreateEngine=true|false]
 
-The **configFile** is the name of the QuickFIX/J configuration to use
-for the FIX engine (located as a resource found in your classpath). The
-optional **sessionID** identifies a specific FIX session. The format of
+The `configFile` is the name of the QuickFIX/J configuration to use for
+the FIX engine (located as a resource found in your classpath). The
+optional `sessionID` identifies a specific FIX session. The format of
 the sessionID is:
 
     (BeginString):(SenderCompID)[/(SenderSubID)[/(SenderLocationID)]]->(TargetCompID)[/(TargetSubID)[/(TargetLocationID)]]
 
-The optional **lazyCreateEngine** parameter allows creating QuickFIX/J
-engine on demand. Value **true** means the engine is started when the
-first message is sent or there’s consumer configured in route
-definition. When **false** value is used, the engine is started at the
-endpoint creation. When this parameter is missing, the value of
-component’s property **lazyCreateEngines** is being used.
+The optional `lazyCreateEngine` parameter allows creating QuickFIX/J
+engine on demand:
 
-Example URIs:
+-   The value `true` means the engine is started when the first message
+    is sent or there’s consumer configured in route definition.
+
+-   When the value `false` is used, the engine is started at the
+    endpoint creation.
+
+When this parameter is missing, the value of component’s property
+`lazyCreateEngines` is being used.
+
+**Example URIs:**
 
     quickfix:config.cfg
     
@@ -47,11 +52,11 @@ Example URIs:
 
 # Endpoints
 
-FIX sessions are endpoints for the **quickfix** component. An endpoint
-URI may specify a single session or all sessions managed by a specific
+FIX sessions are endpoints for the quickfix component. An endpoint URI
+may specify a single session or all sessions managed by a specific
 QuickFIX/J engine. Typical applications will use only one FIX engine,
 but advanced users may create multiple FIX engines by referencing
-different configuration files in **quickfix** component endpoint URIs.
+different configuration files in quickfix component endpoint URIs.
 
 When a consumer does not include a session ID in the endpoint URI, it
 will receive exchanges for all sessions managed by the FIX engine
@@ -61,28 +66,29 @@ include the session-related fields in the FIX message being sent. If a
 session is specified in the URI, then the component will automatically
 inject the session-related fields into the FIX message.
 
+# Usage
+
 The DataDictionary header is useful if string messages are being
 received and need to be parsed in a route. QuickFIX/J requires a data
 dictionary to parse certain types of messages (with repeating groups,
 for example). By injecting a DataDictionary header in the route after
 receiving a message string, the FIX engine can properly parse the data.
 
-# QuickFIX/J Configuration Extensions
+## QuickFIX/J Configuration Extensions
 
 When using QuickFIX/J directly, one typically writes code to create
 instances of logging adapters, message stores, and communication
-connectors. The **quickfix** component will automatically create
-instances of these classes based on information in the configuration
-file. It also provides defaults for many of the commonly required
-settings and adds additional capabilities (like the ability to activate
-JMX support).
+connectors. The quickfix component will automatically create instances
+of these classes based on information in the configuration file. It also
+provides defaults for many of the commonly required settings and adds
+additional capabilities (like the ability to activate JMX support).
 
-The following sections describe how the **quickfix** component processes
-the QuickFIX/J configuration. For comprehensive information about
-QuickFIX/J configuration, see the [QFJ user
+The following sections describe how the quickfix component processes the
+QuickFIX/J configuration. For comprehensive information about QuickFIX/J
+configuration, see the [user
 manual](http://www.quickfixj.org/quickfixj/usermanual/usage/configuration.html).
 
-## Communication Connectors
+### Communication Connectors
 
 When the component detects an initiator or acceptor session setting in
 the QuickFIX/J configuration file, it will automatically create the
@@ -96,18 +102,18 @@ file.
 <col style="width: 89%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Session Setting</th>
 <th style="text-align: left;">Component Action</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td
 style="text-align: left;"><p><code>ConnectionType=initiator</code></p></td>
 <td style="text-align: left;"><p>Create an initiator connector</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td
 style="text-align: left;"><p><code>ConnectionType=acceptor</code></p></td>
 <td style="text-align: left;"><p>Create an acceptor connector</p></td>
@@ -125,19 +131,19 @@ and must be placed in the settings default section.
 <col style="width: 89%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Default/Global Setting</th>
 <th style="text-align: left;">Component Action</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td
 style="text-align: left;"><p><code>ThreadModel=ThreadPerConnector</code></p></td>
 <td style="text-align: left;"><p>Use <code>SocketInitiator</code> or
 <code>SocketAcceptor</code> (default)</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td
 style="text-align: left;"><p><code>ThreadModel=ThreadPerSession</code></p></td>
 <td style="text-align: left;"><p>Use
@@ -147,7 +153,7 @@ style="text-align: left;"><p><code>ThreadModel=ThreadPerSession</code></p></td>
 </tbody>
 </table>
 
-## Logging
+### Logging
 
 The QuickFIX/J logger implementation can be specified by including the
 following settings in the default section of the configuration file. The
@@ -163,44 +169,44 @@ values in the QuickFIX/J settings file.
 <col style="width: 89%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Default/Global Setting</th>
 <th style="text-align: left;">Component Action</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td
 style="text-align: left;"><p><code>ScreenLogShowEvents</code></p></td>
 <td style="text-align: left;"><p>Use a <code>ScreenLog</code></p></td>
 </tr>
-<tr>
+<tr class="even">
 <td
 style="text-align: left;"><p><code>ScreenLogShowIncoming</code></p></td>
 <td style="text-align: left;"><p>Use a <code>ScreenLog</code></p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td
 style="text-align: left;"><p><code>ScreenLogShowOutgoing</code></p></td>
 <td style="text-align: left;"><p>Use a <code>ScreenLog</code></p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>SLF4J*</code></p></td>
 <td style="text-align: left;"><p>Use a <code>SLF4JLog</code>. Any of the
 SLF4J settings will cause this log to be used.</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>FileLogPath</code></p></td>
 <td style="text-align: left;"><p>Use a <code>FileLog</code></p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>JdbcDriver</code></p></td>
 <td style="text-align: left;"><p>Use a <code>JdbcLog</code></p></td>
 </tr>
 </tbody>
 </table>
 
-## Message Store
+### Message Store
 
 The QuickFIX/J message store implementation can be specified by
 including the following settings in the default section of the
@@ -217,21 +223,21 @@ QuickFIX/J settings file.
 <col style="width: 89%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Default/Global Setting</th>
 <th style="text-align: left;">Component Action</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>JdbcDriver</code></p></td>
 <td style="text-align: left;"><p>Use a <code>JdbcStore</code></p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>FileStorePath</code></p></td>
 <td style="text-align: left;"><p>Use a <code>FileStore</code></p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td
 style="text-align: left;"><p><code>SleepycatDatabaseDir</code></p></td>
 <td style="text-align: left;"><p>Use a
@@ -240,14 +246,14 @@ style="text-align: left;"><p><code>SleepycatDatabaseDir</code></p></td>
 </tbody>
 </table>
 
-## Message Factory
+### Message Factory
 
 A message factory is used to construct domain objects from raw FIX
 messages. The default message factory is `DefaultMessageFactory`.
 However, advanced applications may require a custom message factory.
 This can be set on the QuickFIX/J component.
 
-## JMX
+### JMX
 
 <table>
 <colgroup>
@@ -255,13 +261,13 @@ This can be set on the QuickFIX/J component.
 <col style="width: 89%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Default/Global Setting</th>
 <th style="text-align: left;">Component Action</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>UseJmx</code></p></td>
 <td style="text-align: left;"><p>if <code>Y</code>, then enable
 QuickFIX/J JMX</p></td>
@@ -269,7 +275,7 @@ QuickFIX/J JMX</p></td>
 </tbody>
 </table>
 
-## Other Defaults
+### Other Defaults
 
 The component provides some default settings for what are normally
 required settings in QuickFIX/J configuration files. `SessionStartTime`
@@ -277,7 +283,7 @@ and `SessionEndTime` default to "00:00:00", meaning the session will not
 be automatically started and stopped. The `HeartBtInt` (heartbeat
 interval) defaults to 30 seconds.
 
-## Minimal Initiator Configuration Example
+### Minimal Initiator Configuration Example
 
     [SESSION]
     ConnectionType=initiator
@@ -285,7 +291,7 @@ interval) defaults to 30 seconds.
     SenderCompID=YOUR_SENDER
     TargetCompID=YOUR_TARGET
 
-# Using the InOut Message Exchange Pattern
+## Using the InOut Message Exchange Pattern
 
 Although the FIX protocol is event-driven and asynchronous, there are
 specific pairs of messages that represent a request-reply message
@@ -293,9 +299,9 @@ exchange. To use an InOut exchange pattern, there should be a single
 request message and single reply message to the request. Examples
 include an OrderStatusRequest message and UserRequest.
 
-## Implementing InOut Exchanges for Consumers
+### Implementing InOut Exchanges for Consumers
 
-Add "exchangePattern=InOut" to the QuickFIX/J enpoint URI. The
+Add `exchangePattern=InOut` to the QuickFIX/J enpoint URI. The
 `MessageOrderStatusService` in the example below is a bean with a
 synchronous service method. The method returns the response to the
 request (an ExecutionReport in this case) which is then sent back to the
@@ -305,7 +311,7 @@ requestor session.
             .filter(header(QuickfixjEndpoint.MESSAGE_TYPE_KEY).isEqualTo(MsgType.ORDER_STATUS_REQUEST))
             .bean(new MarketOrderStatusService());
 
-## Implementing InOut Exchanges for Producers
+### Implementing InOut Exchanges for Producers
 
 For producers, sending a message will block until a reply is received or
 a timeout occurs. There is no standard way to correlate reply messages
@@ -321,7 +327,7 @@ using `Exchange` properties.
 <col style="width: 10%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Description</th>
 <th style="text-align: left;">Key String</th>
 <th style="text-align: left;">Key Constant</th>
@@ -329,26 +335,28 @@ using `Exchange` properties.
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>Correlation Criteria</p></td>
-<td style="text-align: left;"><p>"CorrelationCriteria"</p></td>
 <td
-style="text-align: left;"><p>QuickfixjProducer.CORRELATION_CRITERIA_KEY</p></td>
+style="text-align: left;"><p><code>CorrelationCriteria</code></p></td>
+<td
+style="text-align: left;"><p><code>QuickfixjProducer.CORRELATION_CRITERIA_KEY</code></p></td>
 <td style="text-align: left;"><p>None</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p>Correlation Timeout in
 Milliseconds</p></td>
-<td style="text-align: left;"><p>"CorrelationTimeout"</p></td>
 <td
-style="text-align: left;"><p>QuickfixjProducer.CORRELATION_TIMEOUT_KEY</p></td>
+style="text-align: left;"><p><code>CorrelationTimeout</code></p></td>
+<td
+style="text-align: left;"><p><code>QuickfixjProducer.CORRELATION_TIMEOUT_KEY</code></p></td>
 <td style="text-align: left;"><p>1000</p></td>
 </tr>
 </tbody>
 </table>
 
 The correlation criteria is defined with a `MessagePredicate` object.
-The following example will treat a FIX ExecutionReport from the
+The following example will treat a FIX `ExecutionReport` from the
 specified session where the transaction type is STATUS and the Order ID
 matches our request. The session ID should be for the *requestor*, the
 sender and target CompID fields will be reversed when looking for the
@@ -359,18 +367,7 @@ reply.
             .withField(ExecTransType.FIELD, Integer.toString(ExecTransType.STATUS))
             .withField(OrderID.FIELD, request.getString(OrderID.FIELD)));
 
-## Example
-
-The source code contains an example called `RequestReplyExample` that
-demonstrates the InOut exchanges for a consumer and producer. This
-example creates a simple HTTP server endpoint that accepts order status
-requests. The HTTP request is converted to a FIX
-OrderStatusRequestMessage, is augmented with a correlation criteria, and
-is then routed to a quickfix endpoint. The response is then converted to
-a JSON-formatted string and sent back to the HTTP server endpoint to be
-provided as the web response.
-
-# Spring Configuration
+## Spring Configuration
 
 The QuickFIX/J component includes a Spring `FactoryBean` for configuring
 the session settings within a Spring context. A type converter for
@@ -433,7 +430,7 @@ session ID strings is also included. The following example shows a
 simple configuration of an acceptor and initiator session with default
 settings for both sessions.
 
-# Exception handling
+## Exception handling
 
 QuickFIX/J behavior can be modified if certain exceptions are thrown
 during processing of a message. If a `RejectLogon` exception is thrown
@@ -444,13 +441,13 @@ Normally, QuickFIX/J handles the logon process automatically. However,
 sometimes an outgoing logon message must be modified to include
 credentials required by a FIX counterparty. If the FIX logon message
 body is modified when sending a logon message
-(EventCategory=`AdminMessageSent` the modified message will be sent to
+(`EventCategory=AdminMessageSent` the modified message will be sent to
 the counterparty. It is important that the outgoing logon message is
 being processed *synchronously*. If it is processed asynchronously (on
 another thread), the FIX engine will immediately send the unmodified
 outgoing message when its callback method returns.
 
-# FIX Sequence Number Management
+## FIX Sequence Number Management
 
 If an application exception is thrown during *synchronous* exchange
 processing, this will cause QuickFIX/J to not increment incoming FIX
@@ -475,7 +472,9 @@ sending messages.
 See the FIX protocol specifications and the QuickFIX/J documentation for
 more details about FIX sequence number management.
 
-# Route Examples
+# Examples
+
+## Route Examples
 
 Several examples are included in the QuickFIX/J component source code
 (test subdirectories). One of these examples implements a trival trade
@@ -501,6 +500,17 @@ and processes them.
     from("quickfix:examples/inprocess.qf.cfg?sessionID=FIX.4.2:TRADER->MARKET").
         filter(header(QuickfixjEndpoint.MESSAGE_TYPE_KEY).isEqualTo(MsgType.EXECUTION_REPORT)).
         bean(new MyTradeExecutionProcessor());
+
+## Additional Examples
+
+The source code contains an example called `RequestReplyExample` that
+demonstrates the InOut exchanges for a consumer and producer. This
+example creates a simple HTTP server endpoint that accepts order status
+requests. The HTTP request is converted to a FIX
+`OrderStatusRequestMessage`, is augmented with a correlation criteria,
+and is then routed to a quickfix endpoint. The response is then
+converted to a JSON-formatted string and sent back to the HTTP server
+endpoint to be provided as the web response.
 
 ## Component Configurations
 

@@ -661,7 +661,9 @@ producer side:
 
 -   invokeEmbeddingsModel
 
-# Producer Examples
+# Examples
+
+## Producer Examples
 
 -   invokeTextModel: this operation will invoke a model from Bedrock.
     This is an example for both Titan Express and Titan Lite.

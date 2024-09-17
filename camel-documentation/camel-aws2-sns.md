@@ -33,8 +33,6 @@ You have to provide the amazonSNSClient in the Registry or your
 accessKey and secretKey to access the [Amazon’s
 SNS](https://aws.amazon.com/sns).
 
-# Usage
-
 ## Static credentials, Default Credential Provider and Profile Credentials Provider
 
 You have the possibility of avoiding the usage of explicit static
@@ -69,6 +67,8 @@ same time.
 For more information about this you can look at [AWS credentials
 documentation](https://docs.aws.amazon.com/sdk-for-java/latest/developer-guide/credentials.html)
 
+# Usage
+
 ## Advanced AmazonSNS configuration
 
 If you need more control over the `SnsClient` instance configuration you
@@ -97,14 +97,14 @@ your SQS Queue
     from("aws2-sqs://test-camel?amazonSQSClient=#amazonSQSClient&delay=50&maxMessagesPerPoll=5")
         .to(...);
 
-# Topic Autocreation
+## Topic Auto-creation
 
 With the option `autoCreateTopic` users are able to avoid the
-autocreation of an SNS Topic in case it doesn’t exist. The default for
+auto-creation of an SNS Topic in case it doesn’t exist. The default for
 this option is `false`. If set to false, any operation on a non-existent
 topic in AWS won’t be successful and an error will be returned.
 
-# SNS FIFO
+## SNS FIFO
 
 SNS FIFO are supported. While creating the SQS queue, you will subscribe
 to the SNS topic there is an important point to remember, you’ll need to
@@ -112,10 +112,10 @@ make possible for the SNS Topic to send the message to the SQS Queue.
 
 This is clear with an example.
 
-Suppose you created an SNS FIFO Topic called Order.fifo and an SQS Queue
-called QueueSub.fifo.
+Suppose you created an SNS FIFO Topic called `Order.fifo` and an SQS
+Queue called `QueueSub.fifo`.
 
-In the access Policy of the QueueSub.fifo you should submit something
+In the access Policy of the `QueueSub.fifo` you should submit something
 like this
 
     {

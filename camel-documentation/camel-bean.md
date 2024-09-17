@@ -54,7 +54,7 @@ The bean component can also call a bean by *bean id* by looking up the
 bean in the [Registry](#manual::registry.adoc) instead of using the
 class name.
 
-# Java DSL specific bean syntax
+## Java DSL specific bean syntax
 
 Java DSL comes with syntactic sugar for the [Bean](#bean-component.adoc)
 component. Instead of specifying the bean explicitly as the endpoint

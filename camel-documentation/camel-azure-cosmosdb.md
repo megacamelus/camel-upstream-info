@@ -37,7 +37,9 @@ operation being requested in container level, e.g: readItem, then
 You can append query options to the URI in the following format,
 `?options=value&option2=value&`…
 
-# Authentication Information
+# Usage
+
+## Authentication Information
 
 To use this component, you have two options to provide the required
 Azure authentication information:
@@ -50,20 +52,12 @@ Azure authentication information:
     [CosmosAsyncClient](https://docs.microsoft.com/en-us/java/api/com.azure.cosmos.cosmosasyncclient?view=azure-java-stable)
     instance which can be provided into `cosmosAsyncClient`.
 
-# Async Consumer and Producer
+## Async Consumer and Producer
 
 This component implements the async Consumer and producer.
 
 This allows camel route to consume and produce events asynchronously
 without blocking any threads.
-
-# Usage
-
-For example, to consume records from a specific container in a specific
-database to a file, use the following snippet:
-
-    from("azure-cosmosdb://camelDb/myContainer?accountKey=MyaccountKey&databaseEndpoint=https//myazure.com:443&leaseDatabaseName=myLeaseDB&createLeaseDatabaseIfNotExists=true&createLeaseContainerIfNotExists=true").
-    to("file://directory");
 
 ## Message headers evaluated by the component producer
 
@@ -75,7 +69,7 @@ database to a file, use the following snippet:
 <col style="width: 69%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Header</th>
 <th style="text-align: left;">Variable Name</th>
 <th style="text-align: left;">Type</th>
@@ -83,7 +77,7 @@ database to a file, use the following snippet:
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td
 style="text-align: left;"><p><code>CamelAzureCosmosDbDatabaseName</code></p></td>
 <td
@@ -94,7 +88,7 @@ the name of the Cosmos database that component should connect to. In
 case you are producing data and have createDatabaseIfNotExists=true, the
 component will automatically auto create a Cosmos database.</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td
 style="text-align: left;"><p><code>CamelAzureCosmosDbContainerName</code></p></td>
 <td
@@ -106,7 +100,7 @@ case you are producing data and have createContainerIfNotExists=true,
 the component will automatically auto create a Cosmos
 container.</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td
 style="text-align: left;"><p><code>CamelAzureCosmosDbOperation</code></p></td>
 <td
@@ -116,7 +110,7 @@ style="text-align: left;"><p><code>CosmosDbOperationsDefinition</code></p></td>
 <td style="text-align: left;"><p>Set the producer operation which can be
 used to execute a specific operation on the producer.</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td
 style="text-align: left;"><p><code>CamelAzureCosmosDbQuery</code></p></td>
 <td
@@ -125,7 +119,7 @@ style="text-align: left;"><p><code>CosmosDbConstants.QUERY</code></p></td>
 <td style="text-align: left;"><p>Set the SQL query to execute on a given
 producer query operations.</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td
 style="text-align: left;"><p><code>CamelAzureCosmosDbQueryRequestOptions</code></p></td>
 <td
@@ -136,7 +130,7 @@ style="text-align: left;"><p><code>CosmosQueryRequestOptions</code></p></td>
 can be used with queryItems, queryContainers, queryDatabases,
 listDatabases, listItems, listContainers operations.</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td
 style="text-align: left;"><p><code>CamelAzureCosmosDbCreateDatabaseIfNotExist</code></p></td>
 <td
@@ -146,7 +140,7 @@ style="text-align: left;"><p><code>CosmosDbConstants.CREATE_DATABASE_IF_NOT_EXIS
 Cosmos database automatically in case it doesn’t exist in the Cosmos
 account.</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td
 style="text-align: left;"><p><code>CamelAzureCosmosDbCreateContainerIfNotExist</code></p></td>
 <td
@@ -156,7 +150,7 @@ style="text-align: left;"><p><code>CosmosDbConstants.CREATE_CONTAINER_IF_NOT_EXI
 Cosmos container automatically in case it doesn’t exist in the Cosmos
 account.</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td
 style="text-align: left;"><p><code>CamelAzureCosmosDbThroughputProperties</code></p></td>
 <td
@@ -166,7 +160,7 @@ style="text-align: left;"><p><code>ThroughputProperties</code></p></td>
 <td style="text-align: left;"><p>Sets throughput of the resources in the
 Azure Cosmos DB service.</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td
 style="text-align: left;"><p><code>CamelAzureCosmosDbDatabaseRequestOptions</code></p></td>
 <td
@@ -176,7 +170,7 @@ style="text-align: left;"><p><code>CosmosDatabaseRequestOptions</code></p></td>
 <td style="text-align: left;"><p>Sets additional options to execute on
 database operations.</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td
 style="text-align: left;"><p><code>CamelAzureCosmosDbContainerPartitionKeyPath</code></p></td>
 <td
@@ -185,7 +179,7 @@ style="text-align: left;"><p><code>CosmosDbConstants.CONTAINER_PARTITION_KEY_PAT
 <td style="text-align: left;"><p>Set the container partition key
 path.</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td
 style="text-align: left;"><p><code>CamelAzureCosmosDbContainerRequestOptions</code></p></td>
 <td
@@ -195,7 +189,7 @@ style="text-align: left;"><p><code>CosmosContainerRequestOptions</code></p></td>
 <td style="text-align: left;"><p>Set additional options to execute on
 container operations.</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td
 style="text-align: left;"><p><code>CamelAzureCosmosDbItemPartitionKey</code></p></td>
 <td
@@ -205,7 +199,7 @@ style="text-align: left;"><p><code>CosmosDbConstants.ITEM_PARTITION_KEY</code></
 partition key value in the Azure Cosmos DB database service. A partition
 key identifies the partition where the item is stored in.</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td
 style="text-align: left;"><p><code>CamelAzureCosmosDbItemRequestOptions</code></p></td>
 <td
@@ -215,7 +209,7 @@ style="text-align: left;"><p><code>CosmosItemRequestOptions</code></p></td>
 <td style="text-align: left;"><p>Set additional options to execute on
 item operations.</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td
 style="text-align: left;"><p><code>CamelAzureCosmosDbItemId</code></p></td>
 <td
@@ -237,7 +231,7 @@ operation on item like <em>delete</em>, <em>replace</em>.</p></td>
 <col style="width: 69%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Header</th>
 <th style="text-align: left;">Variable Name</th>
 <th style="text-align: left;">Type</th>
@@ -245,7 +239,7 @@ operation on item like <em>delete</em>, <em>replace</em>.</p></td>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td
 style="text-align: left;"><p><code>CamelAzureCosmosDbRecourseId</code></p></td>
 <td
@@ -254,7 +248,7 @@ style="text-align: left;"><p><code>CosmosDbConstants.RESOURCE_ID</code></p></td>
 <td style="text-align: left;"><p>The resource ID of the requested
 resource.</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td
 style="text-align: left;"><p><code>CamelAzureCosmosDbEtag</code></p></td>
 <td
@@ -263,7 +257,7 @@ style="text-align: left;"><p><code>CosmosDbConstants.E_TAG</code></p></td>
 <td style="text-align: left;"><p>The Etag ID of the requested
 resource.</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td
 style="text-align: left;"><p><code>CamelAzureCosmosDbTimestamp</code></p></td>
 <td
@@ -272,7 +266,7 @@ style="text-align: left;"><p><code>CosmosDbConstants.TIMESTAMP</code></p></td>
 <td style="text-align: left;"><p>The timestamp of the requested
 resource.</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td
 style="text-align: left;"><p><code>CamelAzureCosmosDbResponseHeaders</code></p></td>
 <td
@@ -281,7 +275,7 @@ style="text-align: left;"><p><code>CosmosDbConstants.RESPONSE_HEADERS</code></p>
 <td style="text-align: left;"><p>The response headers of the requested
 resource.</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td
 style="text-align: left;"><p><code>CamelAzureCosmosDbStatusCode</code></p></td>
 <td
@@ -290,7 +284,7 @@ style="text-align: left;"><p><code>CosmosDbConstants.STATUS_CODE</code></p></td>
 <td style="text-align: left;"><p>The status code of the requested
 resource.</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td
 style="text-align: left;"><p><code>CamelAzureCosmosDbDefaultTimeToLiveInSeconds</code></p></td>
 <td
@@ -299,7 +293,7 @@ style="text-align: left;"><p><code>CosmosDbConstants.DEFAULT_TIME_TO_LIVE_SECOND
 <td style="text-align: left;"><p>The TTL of the requested
 resource.</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td
 style="text-align: left;"><p><code>CamelAzureCosmosDbManualThroughput</code></p></td>
 <td
@@ -308,7 +302,7 @@ style="text-align: left;"><p><code>CosmosDbConstants.MANUAL_THROUGHPUT</code></p
 <td style="text-align: left;"><p>The manual throughput of the requested
 resource.</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td
 style="text-align: left;"><p><code>CamelAzureCosmosDbAutoscaleMaxThroughput</code></p></td>
 <td
@@ -336,24 +330,24 @@ For these operations, `databaseName` is **required** except for
 <col style="width: 89%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Operation</th>
 <th style="text-align: left;">Description</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>listDatabases</code></p></td>
 <td style="text-align: left;"><p>Gets a list of all databases as
 <code>List&lt;CosmosDatabaseProperties&gt;</code> set in the exchange
 message body.</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>createDatabase</code></p></td>
 <td style="text-align: left;"><p>Create a database in the specified
 Azure CosmosDB account.</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>queryDatabases</code></p></td>
 <td style="text-align: left;"><p><strong><code>query</code> is
 required</strong> Execute an SQL query against the service level in
@@ -376,35 +370,35 @@ here and `containerName` only for `createContainer` and
 <col style="width: 89%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Operation</th>
 <th style="text-align: left;">Description</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>deleteDatabase</code></p></td>
 <td style="text-align: left;"><p>Delete a database from the Azure
 CosmosDB account.</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>createContainer</code></p></td>
 <td style="text-align: left;"><p>Create a container in the specified
 Azure CosmosDB database.</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td
 style="text-align: left;"><p><code>replaceDatabaseThroughput</code></p></td>
 <td style="text-align: left;"><p>Replace the throughput for the
 specified Azure CosmosDB database.</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>listContainers</code></p></td>
 <td style="text-align: left;"><p>Gets a list of all containers in the
 specified database as <code>List&lt;CosmosContainerProperties&gt;</code>
 set in the exchange message body.</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>queryContainers</code></p></td>
 <td style="text-align: left;"><p><strong><code>query</code> is
 required</strong> Executes an SQL query against the database level in
@@ -427,57 +421,57 @@ for all operations here.
 <col style="width: 89%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Operation</th>
 <th style="text-align: left;">Description</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>deleteContainer</code></p></td>
 <td style="text-align: left;"><p>Delete a container from the specified
 Azure CosmosDB database.</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td
 style="text-align: left;"><p><code>replaceContainerThroughput</code></p></td>
 <td style="text-align: left;"><p>Replace the throughput for the
 specified Azure CosmosDB container.</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>createItem</code></p></td>
 <td style="text-align: left;"><p><strong><code>itemPartitionKey</code>
 is required</strong> Creates an item in the specified container, it
 accepts POJO or key value as <code>Map&lt;String, ?&gt;</code>.</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>upsertItem</code></p></td>
 <td style="text-align: left;"><p><strong><code>itemPartitionKey</code>
 is required</strong> Creates an item in the specified container if it
 doesn’t exist otherwise overwrite it if it exists, it accepts POJO or
 key value as <code>Map&lt;String, ?&gt;</code>.</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>replaceItem</code></p></td>
 <td style="text-align: left;"><p><strong><code>itemPartitionKey</code>
 and <code>itemId</code> are required</strong> Overwrites an item in the
 specified container, it accepts POJO or key value as
 <code>Map&lt;String, ?&gt;</code>.</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>deleteItem</code></p></td>
 <td style="text-align: left;"><p><strong><code>itemPartitionKey</code>
 and <code>itemId</code> are required</strong> Deletes an item in the
 specified container.</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>readItem</code></p></td>
 <td style="text-align: left;"><p><strong><code>itemPartitionKey</code>
 and <code>itemId</code> are required</strong> Gets an item in the
 specified container as <code>Map&lt;String,?&gt;</code> set in the
 exchange body message.</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>readItem</code></p></td>
 <td
 style="text-align: left;"><p><strong><code>itemPartitionKey</code></strong>
@@ -486,7 +480,7 @@ Gets a list of items in the specified container per the
 <code>List&lt;Map&lt;String,?&gt;&gt;</code> set in the exchange body
 message.</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>queryItems</code></p></td>
 <td style="text-align: left;"><p><strong><code>query</code> is
 required</strong> Execute an SQL query against the container level in
@@ -500,7 +494,17 @@ message body.</p></td>
 Refer to the example section in this page to learn how to use these
 operations into your camel application.
 
-### Examples
+# Examples
+
+## Consuming records from a specific container
+
+For example, to consume records from a specific container in a specific
+database to a file, use the following snippet:
+
+    from("azure-cosmosdb://camelDb/myContainer?accountKey=MyaccountKey&databaseEndpoint=https//myazure.com:443&leaseDatabaseName=myLeaseDB&createLeaseDatabaseIfNotExists=true&createLeaseContainerIfNotExists=true").
+    to("file://directory");
+
+## Operations
 
 -   `listDatabases`:
 
@@ -692,7 +696,7 @@ this feature:
 The consumer will set `List<Map<String,>>` in exchange message body
 which reflect the list of items in a single feed.
 
-### Example:
+### Example
 
 For example, to listen to the events in `myContainer` container in
 `myDb`:
@@ -700,7 +704,7 @@ For example, to listen to the events in `myContainer` container in
     from("azure-cosmosdb://myDb/myContainer?leaseDatabaseName=myLeaseDb&createLeaseDatabaseIfNotExists=true&createLeaseContainerIfNotExists=true")
       .to("mock:result");
 
-## Development Notes (Important)
+# Important Development Notes
 
 When developing on this component, you will need to obtain your Azure
 accessKey in order to run the integration tests. In addition to the
@@ -719,15 +723,15 @@ is the access key being generated from Azure CosmosDB portal.
   
 |Name|Description|Default|Type|
 |---|---|---|---|
-|clientTelemetryEnabled|Sets the flag to enable client telemetry which will periodically collect database operations aggregation statistics, system information like cpu/memory and send it to cosmos monitoring service, which will be helpful during debugging. DEFAULT value is false indicating this is opt in feature, by default no telemetry collection.|false|boolean|
+|clientTelemetryEnabled|Sets the flag to enable client telemetry which will periodically collect database operations aggregation statistics, system information like cpu/memory and send it to cosmos monitoring service, which will be helpful during debugging. DEFAULT value is false indicating this is an opt-in feature, by default no telemetry collection.|false|boolean|
 |configuration|The component configurations||object|
-|connectionSharingAcrossClientsEnabled|Enables connections sharing across multiple Cosmos Clients. The default is false. When you have multiple instances of Cosmos Client in the same JVM interacting to multiple Cosmos accounts, enabling this allows connection sharing in Direct mode if possible between instances of Cosmos Client. Please note, when setting this option, the connection configuration (e.g., socket timeout config, idle timeout config) of the first instantiated client will be used for all other client instances.|false|boolean|
+|connectionSharingAcrossClientsEnabled|Enables connections sharing across multiple Cosmos Clients. The default is false. When you have multiple instances of Cosmos Client in the same JVM interacting with multiple Cosmos accounts, enabling this allows connection sharing in Direct mode if possible between instances of Cosmos Client. Please note, when setting this option, the connection configuration (e.g., socket timeout config, idle timeout config) of the first instantiated client will be used for all other client instances.|false|boolean|
 |consistencyLevel|Sets the consistency levels supported for Azure Cosmos DB client operations in the Azure Cosmos DB service. The requested ConsistencyLevel must match or be weaker than that provisioned for the database account. Consistency levels by order of strength are STRONG, BOUNDED\_STALENESS, SESSION and EVENTUAL. Refer to consistency level documentation for additional details: https://docs.microsoft.com/en-us/azure/cosmos-db/consistency-levels|SESSION|object|
 |containerPartitionKeyPath|Sets the container partition key path.||string|
-|contentResponseOnWriteEnabled|Sets the boolean to only return the headers and status code in Cosmos DB response in case of Create, Update and Delete operations on CosmosItem. In Consumer, it is enabled by default because of the ChangeFeed in the consumer that needs this flag to be enabled and thus is shouldn't be overridden. In Producer, it advised to disable it since it reduces the network overhead|true|boolean|
+|contentResponseOnWriteEnabled|Sets the boolean to only return the headers and status code in Cosmos DB response in case of Create, Update and Delete operations on CosmosItem. In Consumer, it is enabled by default because of the ChangeFeed in the consumer that needs this flag to be enabled, and thus it shouldn't be overridden. In Producer, it is advised to disable it since it reduces the network overhead|true|boolean|
 |cosmosAsyncClient|Inject an external CosmosAsyncClient into the component which provides a client-side logical representation of the Azure Cosmos DB service. This asynchronous client is used to configure and execute requests against the service.||object|
-|createContainerIfNotExists|Sets if the component should create Cosmos container automatically in case it doesn't exist in Cosmos database|false|boolean|
-|createDatabaseIfNotExists|Sets if the component should create Cosmos database automatically in case it doesn't exist in Cosmos account|false|boolean|
+|createContainerIfNotExists|Sets if the component should create the Cosmos container automatically in case it doesn't exist in the Cosmos database|false|boolean|
+|createDatabaseIfNotExists|Sets if the component should create the Cosmos database automatically in case it doesn't exist in the Cosmos account|false|boolean|
 |databaseEndpoint|Sets the Azure Cosmos database endpoint the component will connect to.||string|
 |multipleWriteRegionsEnabled|Sets the flag to enable writes on any regions for geo-replicated database accounts in the Azure Cosmos DB service. When the value of this property is true, the SDK will direct write operations to available writable regions of geo-replicated database account. Writable regions are ordered by PreferredRegions property. Setting the property value to true has no effect until EnableMultipleWriteRegions in DatabaseAccount is also set to true. DEFAULT value is true indicating that writes are directed to available writable regions of geo-replicated database account.|true|boolean|
 |preferredRegions|Sets the comma separated preferred regions for geo-replicated database accounts. For example, East US as the preferred region. When EnableEndpointDiscovery is true and PreferredRegions is non-empty, the SDK will prefer to use the regions in the container in the order they are specified to perform operations.||string|
@@ -736,10 +740,10 @@ is the access key being generated from Azure CosmosDB portal.
 |bridgeErrorHandler|Allows for bridging the consumer to the Camel routing Error Handler, which mean any exceptions (if possible) occurred while the Camel consumer is trying to pickup incoming messages, or the likes, will now be processed as a message and handled by the routing Error Handler. Important: This is only possible if the 3rd party component allows Camel to be alerted if an exception was thrown. Some components handle this internally only, and therefore bridgeErrorHandler is not possible. In other situations we may improve the Camel component to hook into the 3rd party component and make this possible for future releases. By default the consumer will use the org.apache.camel.spi.ExceptionHandler to deal with exceptions, that will be logged at WARN or ERROR level and ignored.|false|boolean|
 |changeFeedProcessorOptions|Sets the ChangeFeedProcessorOptions to be used. Unless specifically set the default values that will be used are: maximum items per page or FeedResponse: 100 lease renew interval: 17 seconds lease acquire interval: 13 seconds lease expiration interval: 60 seconds feed poll delay: 5 seconds maximum scale count: unlimited||object|
 |createLeaseContainerIfNotExists|Sets if the component should create Cosmos lease container for the consumer automatically in case it doesn't exist in Cosmos database|false|boolean|
-|createLeaseDatabaseIfNotExists|Sets if the component should create Cosmos lease database for the consumer automatically in case it doesn't exist in Cosmos account|false|boolean|
+|createLeaseDatabaseIfNotExists|Sets if the component should create the Cosmos lease database for the consumer automatically in case it doesn't exist in the Cosmos account|false|boolean|
 |hostName|Sets the hostname. The host: a host is an application instance that uses the change feed processor to listen for changes. Multiple instances with the same lease configuration can run in parallel, but each instance should have a different instance name. If not specified, this will be a generated random hostname.||string|
-|leaseContainerName|Sets the lease container which acts as a state storage and coordinates processing the change feed across multiple workers. The lease container can be stored in the same account as the monitored container or in a separate account. It will be auto created if createLeaseContainerIfNotExists is set to true.|camel-lease|string|
-|leaseDatabaseName|Sets the lease database where the leaseContainerName will be stored. If it is not specified, this component will store the lease container in the same database that is specified in databaseName. It will be auto created if createLeaseDatabaseIfNotExists is set to true.||string|
+|leaseContainerName|Sets the lease container which acts as a state storage and coordinates processing the change feed across multiple workers. The lease container can be stored in the same account as the monitored container or in a separate account. It will be auto-created if createLeaseContainerIfNotExists is set to true.|camel-lease|string|
+|leaseDatabaseName|Sets the lease database where the leaseContainerName will be stored. If it is not specified, this component will store the lease container in the same database that is specified in databaseName. It will be auto-created if createLeaseDatabaseIfNotExists is set to true.||string|
 |itemId|Sets the itemId in case needed for operation on item like delete, replace||string|
 |itemPartitionKey|Sets partition key. Represents a partition key value in the Azure Cosmos DB database service. A partition key identifies the partition where the item is stored in.||string|
 |lazyStartProducer|Whether the producer should be started lazy (on the first message). By starting lazy you can use this to allow CamelContext and routes to startup in situations where a producer may otherwise fail during starting and cause the route to fail being started. By deferring this startup to be lazy then the startup failure can be handled during routing messages via Camel's routing error handlers. Beware that when the first message is processed then creating and starting the producer may take a little time and prolong the total processing time of the processing.|false|boolean|
@@ -758,14 +762,14 @@ is the access key being generated from Azure CosmosDB portal.
 |---|---|---|---|
 |databaseName|The name of the Cosmos database that component should connect to. In case you are producing data and have createDatabaseIfNotExists=true, the component will automatically auto create a Cosmos database.||string|
 |containerName|The name of the Cosmos container that component should connect to. In case you are producing data and have createContainerIfNotExists=true, the component will automatically auto create a Cosmos container.||string|
-|clientTelemetryEnabled|Sets the flag to enable client telemetry which will periodically collect database operations aggregation statistics, system information like cpu/memory and send it to cosmos monitoring service, which will be helpful during debugging. DEFAULT value is false indicating this is opt in feature, by default no telemetry collection.|false|boolean|
-|connectionSharingAcrossClientsEnabled|Enables connections sharing across multiple Cosmos Clients. The default is false. When you have multiple instances of Cosmos Client in the same JVM interacting to multiple Cosmos accounts, enabling this allows connection sharing in Direct mode if possible between instances of Cosmos Client. Please note, when setting this option, the connection configuration (e.g., socket timeout config, idle timeout config) of the first instantiated client will be used for all other client instances.|false|boolean|
+|clientTelemetryEnabled|Sets the flag to enable client telemetry which will periodically collect database operations aggregation statistics, system information like cpu/memory and send it to cosmos monitoring service, which will be helpful during debugging. DEFAULT value is false indicating this is an opt-in feature, by default no telemetry collection.|false|boolean|
+|connectionSharingAcrossClientsEnabled|Enables connections sharing across multiple Cosmos Clients. The default is false. When you have multiple instances of Cosmos Client in the same JVM interacting with multiple Cosmos accounts, enabling this allows connection sharing in Direct mode if possible between instances of Cosmos Client. Please note, when setting this option, the connection configuration (e.g., socket timeout config, idle timeout config) of the first instantiated client will be used for all other client instances.|false|boolean|
 |consistencyLevel|Sets the consistency levels supported for Azure Cosmos DB client operations in the Azure Cosmos DB service. The requested ConsistencyLevel must match or be weaker than that provisioned for the database account. Consistency levels by order of strength are STRONG, BOUNDED\_STALENESS, SESSION and EVENTUAL. Refer to consistency level documentation for additional details: https://docs.microsoft.com/en-us/azure/cosmos-db/consistency-levels|SESSION|object|
 |containerPartitionKeyPath|Sets the container partition key path.||string|
-|contentResponseOnWriteEnabled|Sets the boolean to only return the headers and status code in Cosmos DB response in case of Create, Update and Delete operations on CosmosItem. In Consumer, it is enabled by default because of the ChangeFeed in the consumer that needs this flag to be enabled and thus is shouldn't be overridden. In Producer, it advised to disable it since it reduces the network overhead|true|boolean|
+|contentResponseOnWriteEnabled|Sets the boolean to only return the headers and status code in Cosmos DB response in case of Create, Update and Delete operations on CosmosItem. In Consumer, it is enabled by default because of the ChangeFeed in the consumer that needs this flag to be enabled, and thus it shouldn't be overridden. In Producer, it is advised to disable it since it reduces the network overhead|true|boolean|
 |cosmosAsyncClient|Inject an external CosmosAsyncClient into the component which provides a client-side logical representation of the Azure Cosmos DB service. This asynchronous client is used to configure and execute requests against the service.||object|
-|createContainerIfNotExists|Sets if the component should create Cosmos container automatically in case it doesn't exist in Cosmos database|false|boolean|
-|createDatabaseIfNotExists|Sets if the component should create Cosmos database automatically in case it doesn't exist in Cosmos account|false|boolean|
+|createContainerIfNotExists|Sets if the component should create the Cosmos container automatically in case it doesn't exist in the Cosmos database|false|boolean|
+|createDatabaseIfNotExists|Sets if the component should create the Cosmos database automatically in case it doesn't exist in the Cosmos account|false|boolean|
 |databaseEndpoint|Sets the Azure Cosmos database endpoint the component will connect to.||string|
 |multipleWriteRegionsEnabled|Sets the flag to enable writes on any regions for geo-replicated database accounts in the Azure Cosmos DB service. When the value of this property is true, the SDK will direct write operations to available writable regions of geo-replicated database account. Writable regions are ordered by PreferredRegions property. Setting the property value to true has no effect until EnableMultipleWriteRegions in DatabaseAccount is also set to true. DEFAULT value is true indicating that writes are directed to available writable regions of geo-replicated database account.|true|boolean|
 |preferredRegions|Sets the comma separated preferred regions for geo-replicated database accounts. For example, East US as the preferred region. When EnableEndpointDiscovery is true and PreferredRegions is non-empty, the SDK will prefer to use the regions in the container in the order they are specified to perform operations.||string|
@@ -773,10 +777,10 @@ is the access key being generated from Azure CosmosDB portal.
 |throughputProperties|Sets throughput of the resources in the Azure Cosmos DB service.||object|
 |changeFeedProcessorOptions|Sets the ChangeFeedProcessorOptions to be used. Unless specifically set the default values that will be used are: maximum items per page or FeedResponse: 100 lease renew interval: 17 seconds lease acquire interval: 13 seconds lease expiration interval: 60 seconds feed poll delay: 5 seconds maximum scale count: unlimited||object|
 |createLeaseContainerIfNotExists|Sets if the component should create Cosmos lease container for the consumer automatically in case it doesn't exist in Cosmos database|false|boolean|
-|createLeaseDatabaseIfNotExists|Sets if the component should create Cosmos lease database for the consumer automatically in case it doesn't exist in Cosmos account|false|boolean|
+|createLeaseDatabaseIfNotExists|Sets if the component should create the Cosmos lease database for the consumer automatically in case it doesn't exist in the Cosmos account|false|boolean|
 |hostName|Sets the hostname. The host: a host is an application instance that uses the change feed processor to listen for changes. Multiple instances with the same lease configuration can run in parallel, but each instance should have a different instance name. If not specified, this will be a generated random hostname.||string|
-|leaseContainerName|Sets the lease container which acts as a state storage and coordinates processing the change feed across multiple workers. The lease container can be stored in the same account as the monitored container or in a separate account. It will be auto created if createLeaseContainerIfNotExists is set to true.|camel-lease|string|
-|leaseDatabaseName|Sets the lease database where the leaseContainerName will be stored. If it is not specified, this component will store the lease container in the same database that is specified in databaseName. It will be auto created if createLeaseDatabaseIfNotExists is set to true.||string|
+|leaseContainerName|Sets the lease container which acts as a state storage and coordinates processing the change feed across multiple workers. The lease container can be stored in the same account as the monitored container or in a separate account. It will be auto-created if createLeaseContainerIfNotExists is set to true.|camel-lease|string|
+|leaseDatabaseName|Sets the lease database where the leaseContainerName will be stored. If it is not specified, this component will store the lease container in the same database that is specified in databaseName. It will be auto-created if createLeaseDatabaseIfNotExists is set to true.||string|
 |bridgeErrorHandler|Allows for bridging the consumer to the Camel routing Error Handler, which mean any exceptions (if possible) occurred while the Camel consumer is trying to pickup incoming messages, or the likes, will now be processed as a message and handled by the routing Error Handler. Important: This is only possible if the 3rd party component allows Camel to be alerted if an exception was thrown. Some components handle this internally only, and therefore bridgeErrorHandler is not possible. In other situations we may improve the Camel component to hook into the 3rd party component and make this possible for future releases. By default the consumer will use the org.apache.camel.spi.ExceptionHandler to deal with exceptions, that will be logged at WARN or ERROR level and ignored.|false|boolean|
 |exceptionHandler|To let the consumer use a custom ExceptionHandler. Notice if the option bridgeErrorHandler is enabled then this option is not in use. By default the consumer will deal with exceptions, that will be logged at WARN or ERROR level and ignored.||object|
 |exchangePattern|Sets the exchange pattern when the consumer creates an exchange.||object|

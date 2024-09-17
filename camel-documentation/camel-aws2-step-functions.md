@@ -110,7 +110,9 @@ the producer side:
 
 -   getExecutionHistory
 
-# Producer Examples
+# Examples
+
+## Producer Examples
 
 -   createStateMachine: this operation will create a state machine
 
@@ -119,7 +121,7 @@ the producer side:
     from("direct:createStateMachine")
         .to("aws2-step-functions://test?awsSfnClient=#awsSfnClient&operation=createMachine")
 
-# Using a POJO as body
+## Using a POJO as body
 
 Sometimes building an AWS Request can be complex because of multiple
 options. We introduce the possibility to use a POJO as the body. In AWS

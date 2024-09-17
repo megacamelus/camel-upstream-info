@@ -7,11 +7,13 @@
 The JOOQ component enables you to store and retrieve Java objects from
 persistent storage using JOOQ library.
 
+# Usage
+
 JOOQ provides DSL to create queries. There are two types of queries:
 
-1.  org.jooq.Query - can be executed
+1.  `org.jooq.Query`: can be executed
 
-2.  org.jooq.ResultQuery - can return results
+2.  `org.jooq.ResultQuery`: can return results
 
 For example:
 
@@ -23,7 +25,7 @@ For example:
     ResultQuery<Record> resultQuery = create.resultQuery("SELECT * FROM BOOK");
     Result<Record> result = resultQuery.fetch();
 
-# Plain SQL
+## Plain SQL
 
 SQL could be executed using JOOQ’s objects "Query" or "ResultQuery".
 Also, the SQL query could be specified inside URI:
@@ -32,7 +34,7 @@ Also, the SQL query could be specified inside URI:
 
 See the examples below.
 
-# Consuming from endpoint
+## Consuming from endpoint
 
 Consuming messages from a JOOQ consumer endpoint removes (or updates)
 entity beans in the database. This allows you to use a database table as
@@ -52,22 +54,22 @@ When using jooq as a producer you can use any of the following
 <col style="width: 66%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Operation</th>
 <th style="text-align: left;">Description</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>none</p></td>
 <td style="text-align: left;"><p>Execute a query (default)</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p>execute</p></td>
 <td style="text-align: left;"><p>Execute a query with no expected
 results</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>fetch</p></td>
 <td style="text-align: left;"><p>Execute a query and the result of the
 query is stored as the new message body</p></td>
@@ -75,9 +77,9 @@ query is stored as the new message body</p></td>
 </tbody>
 </table>
 
-## Example:
+# Example
 
-JOOQ configuration:
+**JOOQ configuration:**
 
     <?xml version="1.0" encoding="UTF-8"?>
     
@@ -119,7 +121,7 @@ JOOQ configuration:
     
     </beans>
 
-Camel context configuration:
+**Camel context configuration:**
 
     <?xml version="1.0" encoding="UTF-8"?>
     
@@ -199,7 +201,7 @@ Camel context configuration:
         </camelContext>
     </beans>
 
-Sample bean:
+**Sample bean:**
 
     @Component
     public class BookStoreRecordBean {

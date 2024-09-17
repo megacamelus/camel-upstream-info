@@ -26,7 +26,9 @@ The exchange name determines the exchange to which the produced messages
 will be sent to. In the case of consumers, the exchange name determines
 the exchange the queue will be bound to.
 
-# Using a connection factory
+# Usage
+
+## Using a connection factory
 
 To connect to RabbitMQ, you need to set up a `ConnectionFactory` (same
 as with JMS) with the login details such as:
@@ -47,7 +49,7 @@ The `ConnectionFactory` is auto-detected by default, so you can do:
       </route>
     </camelContext>
 
-# Default Exchange Name
+## Default Exchange Name
 
 To use default exchange name (which would be an empty exchange name in
 RabbitMQ) then you should use `default` as name in the endpoint uri,
@@ -55,7 +57,7 @@ such as:
 
     to("spring-rabbitmq:default?routingKey=foo")
 
-# Auto declare exchanges, queues and bindings
+## Auto declare exchanges, queues and bindings
 
 Before you can send or receive messages from RabbitMQ, then exchanges,
 queues and bindings must be setup first.
@@ -83,7 +85,7 @@ configure the endpoint uri with
 <col style="width: 10%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Option</th>
 <th style="text-align: left;">Type</th>
 <th style="text-align: left;">Description</th>
@@ -91,7 +93,7 @@ configure the endpoint uri with
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>autoDelete</p></td>
 <td style="text-align: left;"><p>boolean</p></td>
 <td style="text-align: left;"><p>True if the server should delete the
@@ -99,7 +101,7 @@ exchange when it is no longer in use (if all bindings are
 deleted).</p></td>
 <td style="text-align: left;"><p>false</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p>durable</p></td>
 <td style="text-align: left;"><p>boolean</p></td>
 <td style="text-align: left;"><p>A durable exchange will survive a
@@ -122,7 +124,7 @@ RabbitMQ documentation.
 <col style="width: 10%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Option</th>
 <th style="text-align: left;">Type</th>
 <th style="text-align: left;">Description</th>
@@ -130,7 +132,7 @@ RabbitMQ documentation.
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>autoDelete</p></td>
 <td style="text-align: left;"><p>boolean</p></td>
 <td style="text-align: left;"><p>True if the server should delete the
@@ -138,20 +140,20 @@ exchange when it is no longer in use (if all bindings are
 deleted).</p></td>
 <td style="text-align: left;"><p>false</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p>durable</p></td>
 <td style="text-align: left;"><p>boolean</p></td>
 <td style="text-align: left;"><p>A durable queue will survive a server
 restart.</p></td>
 <td style="text-align: left;"><p>false</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>exclusive</p></td>
 <td style="text-align: left;"><p>boolean</p></td>
 <td style="text-align: left;"><p>Whether the queue is exclusive</p></td>
 <td style="text-align: left;"><p>false</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p>x-dead-letter-exchange</p></td>
 <td style="text-align: left;"><p>String</p></td>
 <td style="text-align: left;"><p>The name of the dead letter exchange.
@@ -159,7 +161,7 @@ If none configured, then the component configured value is
 used.</p></td>
 <td style="text-align: left;"></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>x-dead-letter-routing-key</p></td>
 <td style="text-align: left;"><p>String</p></td>
 <td style="text-align: left;"><p>The routing key for the dead letter
@@ -174,7 +176,7 @@ You can also configure any additional `x-` arguments, such as the
 message time to live, via `x-message-ttl`, and many others. See details
 in the RabbitMQ documentation.
 
-# Mapping from Camel to RabbitMQ
+## Mapping from Camel to RabbitMQ
 
 The message body is mapped from Camel Message body to a `byte[]` which
 is the type that RabbitMQ uses for message body. Camel will use its type
@@ -189,7 +191,7 @@ Custom message headers are mapped from Camel Message headers to RabbitMQ
 headers. This behaviour can be customized by configuring a new
 implementation of `HeaderFilterStrategy` on the Camel component.
 
-# Request / Reply
+## Request / Reply
 
 Request and reply messaging is supported using [RabbitMQ direct
 reply-to](https://www.rabbitmq.com/direct-reply-to.html).
@@ -219,7 +221,7 @@ the message being logged
         .to("log:input")
         .transform(body().prepend("Hello "));
 
-# Reuse endpoint and send to different destinations computed at runtime
+## Reuse endpoint and send to different destinations computed at runtime
 
 If you need to send messages to a lot of different RabbitMQ exchanges,
 it makes sense to reuse an endpoint and specify the real destination in
@@ -239,20 +241,20 @@ You can specify using the following headers:
 <col style="width: 79%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Header</th>
 <th style="text-align: left;">Type</th>
 <th style="text-align: left;">Description</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td
 style="text-align: left;"><p><code>CamelSpringRabbitmqExchangeOverrideName</code></p></td>
 <td style="text-align: left;"><p><code>String</code></p></td>
 <td style="text-align: left;"><p>The exchange name.</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td
 style="text-align: left;"><p><code>CamelSpringRabbitmqRoutingOverrideKey</code></p></td>
 <td style="text-align: left;"><p><code>String</code></p></td>
@@ -293,7 +295,7 @@ not propagate them to the created Rabbitmq message to avoid the
 accidental loops in the routes (in scenarios when the message will be
 forwarded to another RabbitMQ endpoint).
 
-# Using toD
+## Using toD
 
 If you need to send messages to a lot of different exchanges, it makes
 sense to reuse an endpoint and specify the dynamic destinations with
@@ -302,10 +304,12 @@ simple language using [toD](#eips:toD-eip.adoc).
 For example, suppose you need to send messages to exchanges with order
 types, then using toD could, for example, be done as follows:
 
+**Example SJMS2 route with `toD`**
+
     from("direct:order")
       .toD("spring-rabbit:order-${header.orderType}");
 
-# Manual Acknowledgement
+## Manual Acknowledgement
 
 If we need to manually acknowledge a message for some use case, we can
 do it by setting and acknowledgeMode to Manual and using the below
@@ -394,6 +398,9 @@ the message:
 |confirm|Controls whether to wait for confirms. The connection factory must be configured for publisher confirms and this method. auto = Camel detects if the connection factory uses confirms or not. disabled = Confirms is disabled. enabled = Confirms is enabled.|auto|string|
 |confirmTimeout|Specify the timeout in milliseconds to be used when waiting for a message sent to be confirmed by RabbitMQ when doing send only messaging (InOnly). The default value is 5 seconds. A negative value indicates an indefinite timeout.|5000|duration|
 |replyTimeout|Specify the timeout in milliseconds to be used when waiting for a reply message when doing request/reply (InOut) messaging. The default value is 30 seconds. A negative value indicates an indefinite timeout (Beware that this will cause a memory leak if a reply is not received).|30000|duration|
+|skipBindQueue|If true the queue will not be bound to the exchange after declaring it.|false|boolean|
+|skipDeclareExchange|This can be used if we need to declare the queue but not the exchange.|false|boolean|
+|skipDeclareQueue|If true the producer will not declare and bind a queue. This can be used for directing messages via an existing routing key.|false|boolean|
 |usePublisherConnection|Use a separate connection for publishers and consumers|false|boolean|
 |lazyStartProducer|Whether the producer should be started lazy (on the first message). By starting lazy you can use this to allow CamelContext and routes to startup in situations where a producer may otherwise fail during starting and cause the route to fail being started. By deferring this startup to be lazy then the startup failure can be handled during routing messages via Camel's routing error handlers. Beware that when the first message is processed then creating and starting the producer may take a little time and prolong the total processing time of the processing.|false|boolean|
 |args|Specify arguments for configuring the different RabbitMQ concepts, a different prefix is required for each element: arg.consumer. arg.exchange. arg.queue. arg.binding. arg.dlq.exchange. arg.dlq.queue. arg.dlq.binding. For example to declare a queue with message ttl argument: args=arg.queue.x-message-ttl=60000||object|

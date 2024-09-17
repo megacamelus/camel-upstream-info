@@ -20,7 +20,9 @@ for this component:
 
     consul://domain?[options]
 
-# Api Endpoint
+# Usage
+
+## Api Endpoint
 
 The `apiEndpoint` denotes the type of [consul
 api](https://www.consul.io/api-docs) which should be addressed.
@@ -32,54 +34,54 @@ api](https://www.consul.io/api-docs) which should be addressed.
 <col style="width: 33%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Domain</th>
 <th style="text-align: left;">Producer</th>
 <th style="text-align: left;">Consumer</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>kv</p></td>
 <td style="text-align: left;"><p>ConsulKeyValueProducer</p></td>
 <td style="text-align: left;"><p>ConsulKeyValueConsumer</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p>event</p></td>
 <td style="text-align: left;"><p>ConsulEventProducer</p></td>
 <td style="text-align: left;"><p>ConsulEventConsumer</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>agent</p></td>
 <td style="text-align: left;"><p>ConsulAgentProducer</p></td>
 <td style="text-align: left;"><p>-</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p>coordinates</p></td>
 <td style="text-align: left;"><p>ConsulCoordinatesProducer</p></td>
 <td style="text-align: left;"><p>-</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>health</p></td>
 <td style="text-align: left;"><p>ConsulHealthProducer</p></td>
 <td style="text-align: left;"><p>-</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p>status</p></td>
 <td style="text-align: left;"><p>ConsulStatusProducer</p></td>
 <td style="text-align: left;"><p>-</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>preparedQuery</p></td>
 <td style="text-align: left;"><p>ConsulPreparedQueryProducer</p></td>
 <td style="text-align: left;"><p>-</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p>catalog</p></td>
 <td style="text-align: left;"><p>ConsulCatalogProducer</p></td>
 <td style="text-align: left;"><p>-</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p>session</p></td>
 <td style="text-align: left;"><p>ConsulSessionProducer</p></td>
 <td style="text-align: left;"><p>-</p></td>
@@ -87,7 +89,9 @@ api](https://www.consul.io/api-docs) which should be addressed.
 </tbody>
 </table>
 
-# Producer Examples
+# Examples
+
+## Producer Examples
 
 As an example, we will show how to use the `ConsulAgentProducer` to
 register a service by means of the Consul agent api.

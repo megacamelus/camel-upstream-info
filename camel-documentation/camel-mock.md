@@ -12,6 +12,15 @@ Framework to simplify your unit and integration testing using
 Patterns](#eips:enterprise-integration-patterns.adoc) and Camel’s large
 range of Components together with the powerful Bean Integration.
 
+# URI format
+
+    mock:someName[?options]
+
+Where `someName` can be any string that uniquely identifies the
+endpoint.
+
+# Usage
+
 The Mock component provides a powerful declarative testing mechanism,
 which is similar to [jMock](http://www.jmock.org) in that it allows
 declarative expectations to be created on any Mock endpoint before a
@@ -53,14 +62,9 @@ instead of adding Mock endpoints to routes directly. There are two new
 options `retainFirst`, and `retainLast` that can be used to limit the
 number of messages the Mock endpoints keep in memory.
 
-# URI format
+# Examples
 
-    mock:someName[?options]
-
-Where `someName` can be any string that uniquely identifies the
-endpoint.
-
-# Simple Example
+## Simple Example
 
 Here’s a simple example of Mock endpoint in use. First, the endpoint is
 resolved on the context. Then we set an expectation, and then, after the
@@ -84,7 +88,7 @@ Camel will by default wait 10 seconds when the `assertIsSatisfied()` is
 invoked. This can be configured by setting the
 `setResultWaitTime(millis)` method.
 
-# Using assertPeriod
+## Using assertPeriod
 
 When the assertion is satisfied then Camel will stop waiting and
 continue from the `assertIsSatisfied` method. That means if a new
@@ -102,7 +106,7 @@ can do that by setting the `setAssertPeriod` method, for example:
     // now let's assert that the mock:foo endpoint received 2 messages
     resultEndpoint.assertIsSatisfied();
 
-# Setting expectations
+## Setting expectations
 
 You can see from the Javadoc of
 [MockEndpoint](https://www.javadoc.io/doc/org.apache.camel/camel-mock/current/org/apache/camel/component/mock/MockEndpoint.html)
@@ -115,51 +119,51 @@ methods are as follows:
 <col style="width: 50%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Method</th>
 <th style="text-align: left;">Description</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td
 style="text-align: left;"><p><code>expectedMessageCount(int)</code></p></td>
 <td style="text-align: left;"><p>To define the expected count of
 messages on the endpoint.</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td
 style="text-align: left;"><p><code>expectedMinimumMessageCount(int)</code></p></td>
 <td style="text-align: left;"><p>To define the minimum number of
 expected messages on the endpoint.</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td
 style="text-align: left;"><p><code>expectedBodiesReceived(…)</code></p></td>
 <td style="text-align: left;"><p>To define the expected bodies that
 should be received (in order).</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td
 style="text-align: left;"><p><code>expectedHeaderReceived(…)</code></p></td>
 <td style="text-align: left;"><p>To define the expected header that
 should be received</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td
 style="text-align: left;"><p><code>expectsAscending(Expression)</code></p></td>
 <td style="text-align: left;"><p>To add an expectation that messages are
 received in order, using the given Expression to compare
 messages.</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td
 style="text-align: left;"><p><code>expectsDescending(Expression)</code></p></td>
 <td style="text-align: left;"><p>To add an expectation that messages are
 received in order, using the given Expression to compare
 messages.</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td
 style="text-align: left;"><p><code>expectsNoDuplicates(Expression)</code></p></td>
 <td style="text-align: left;"><p>To add an expectation that no duplicate
@@ -175,7 +179,7 @@ Here’s another example:
 
     resultEndpoint.expectedBodiesReceived("firstMessageBody", "secondMessageBody", "thirdMessageBody");
 
-# Adding expectations to specific messages
+## Adding expectations to specific messages
 
 In addition, you can use the
 [`message(int messageIndex)`](https://javadoc.io/doc/org.apache.camel/camel-mock/latest/org/apache/camel/component/mock/MockEndpoint.html)
@@ -191,7 +195,7 @@ There are some examples of the Mock endpoint in use in the [`camel-core`
 processor
 tests](https://github.com/apache/camel/tree/main/core/camel-core/src/test/java/org/apache/camel/processor).
 
-# Mocking existing endpoints
+## Mocking existing endpoints
 
 Camel now allows you to automatically mock existing endpoints in your
 Camel routes.
@@ -233,11 +237,10 @@ more details about this at Intercept as it is the same matching function
 used by Camel.
 
 Mind that mocking endpoints causes the messages to be copied when they
-arrive at the mock.  
-That means Camel will use more memory. This may not be suitable when you
-send in a lot of messages.
+arrive at the mock. That means Camel will use more memory. This may not
+be suitable when you send in a lot of messages.
 
-# Mocking existing endpoints using the `camel-test` component
+## Mocking existing endpoints using the `camel-test` component
 
 Instead of using the `adviceWith` to instruct Camel to mock endpoints,
 you can easily enable this behavior when using the `camel-test` Test
@@ -252,11 +255,11 @@ instead.
 
 ****`isMockEndpoints` using camel-test kit****
 
-# Mocking existing endpoints with XML DSL
+## Mocking existing endpoints with XML DSL
 
 If you do not use the `camel-test` component for unit testing (as shown
-above) you can use a different approach when using XML files for
-routes.  
+above) you can use a different approach when using XML files for routes.
+
 The solution is to create a new XML file used by the unit test and then
 include the intended XML file which has the route you want to test.
 
@@ -281,7 +284,7 @@ the pattern in the constructor for the bean:
         <constructor-arg index="0" value="log*"/>
     </bean>
 
-# Mocking endpoints and skip sending to original endpoint
+## Mocking endpoints and skip sending to original endpoint
 
 Sometimes you want to easily mock and skip sending to certain endpoints.
 So the message is detoured and send to the mock endpoint only. You can
@@ -295,7 +298,7 @@ The same example using the Test Kit
 
 ****isMockEndpointsAndSkip using camel-test kit****
 
-# Limiting the number of messages to keep
+## Limiting the number of messages to keep
 
 The [Mock](#mock-component.adoc) endpoints will by default keep a copy
 of every Exchange that it received. So if you test with a lot of
@@ -323,7 +326,7 @@ methods that work on message bodies, headers, etc. will only operate on
 the retained messages. In the example above, they can test only the
 expectations on the 10 retained messages.
 
-# Testing with arrival times
+## Testing with arrival times
 
 The [Mock](#mock-component.adoc) endpoint stores the arrival time of the
 message as a property on the Exchange.

@@ -30,7 +30,9 @@ If you want to send a message to a dynamic topic then use
 `KafkaConstants.OVERRIDE_TOPIC` as it is used as a one-time header that
 is not sent along the message, and actually is removed in the producer.
 
-# Consumer error handling
+# Usage
+
+## Consumer error handling
 
 While kafka consumer is polling messages from the kafka broker, then
 errors can happen. This section describes what happens and what you can
@@ -69,7 +71,7 @@ For advanced control a custom implementation of
 configured on the component level, which allows controlling which of the
 strategies to use for each exception.
 
-# Consumer error handling (advanced)
+## Consumer error handling (advanced)
 
 By default, Camel will poll using the **ERROR\_HANDLER** to process
 exceptions. How Camel handles a message that results in an exception can
@@ -87,127 +89,7 @@ It is recommended that you read the section below "Using manual commit
 with Kafka consumer" to understand how `breakOnFirstError` will work
 based on the `CommitManager` that is configured.
 
-# Samples
-
-## Consuming messages from Kafka
-
-Here is the minimal route you need to read messages from Kafka.
-
-    from("kafka:test?brokers=localhost:9092")
-        .log("Message received from Kafka : ${body}")
-        .log("    on the topic ${headers[kafka.TOPIC]}")
-        .log("    on the partition ${headers[kafka.PARTITION]}")
-        .log("    with the offset ${headers[kafka.OFFSET]}")
-        .log("    with the key ${headers[kafka.KEY]}")
-
-If you need to consume messages from multiple topics, you can use a
-comma separated list of topic names.
-
-    from("kafka:test,test1,test2?brokers=localhost:9092")
-        .log("Message received from Kafka : ${body}")
-        .log("    on the topic ${headers[kafka.TOPIC]}")
-        .log("    on the partition ${headers[kafka.PARTITION]}")
-        .log("    with the offset ${headers[kafka.OFFSET]}")
-        .log("    with the key ${headers[kafka.KEY]}")
-
-It’s also possible to subscribe to multiple topics giving a pattern as
-the topic name and using the `topicIsPattern` option.
-
-    from("kafka:test.*?brokers=localhost:9092&topicIsPattern=true")
-        .log("Message received from Kafka : ${body}")
-        .log("    on the topic ${headers[kafka.TOPIC]}")
-        .log("    on the partition ${headers[kafka.PARTITION]}")
-        .log("    with the offset ${headers[kafka.OFFSET]}")
-        .log("    with the key ${headers[kafka.KEY]}")
-
-When consuming messages from Kafka, you can use your own offset
-management and not delegate this management to Kafka. To keep the
-offsets, the component needs a `StateRepository` implementation such as
-`FileStateRepository`. This bean should be available in the registry.
-Here how to use it :
-
-    // Create the repository in which the Kafka offsets will be persisted
-    FileStateRepository repository = FileStateRepository.fileStateRepository(new File("/path/to/repo.dat"));
-    
-    // Bind this repository into the Camel registry
-    Registry registry = createCamelRegistry();
-    registry.bind("offsetRepo", repository);
-    
-    // Configure the camel context
-    DefaultCamelContext camelContext = new DefaultCamelContext(registry);
-    camelContext.addRoutes(new RouteBuilder() {
-        @Override
-        public void configure() throws Exception {
-            from("kafka:" + TOPIC + "?brokers=localhost:{{kafkaPort}}" +
-                         // Set up the topic and broker address
-                         "&groupId=A" +
-                         // The consumer processor group ID
-                         "&autoOffsetReset=earliest" +
-                         // Ask to start from the beginning if we have unknown offset
-                         "&offsetRepository=#offsetRepo")
-                         // Keep the offsets in the previously configured repository
-                    .to("mock:result");
-        }
-    });
-
-## Producing messages to Kafka
-
-Here is the minimal route you need in order to write messages to Kafka.
-
-    from("direct:start")
-        .setBody(constant("Message from Camel"))          // Message to send
-        .setHeader(KafkaConstants.KEY, constant("Camel")) // Key of the message
-        .to("kafka:test?brokers=localhost:9092");
-
-# SSL configuration
-
-You have 2 different ways to configure the SSL communication on the
-Kafka component.
-
-The first way is through the many SSL endpoint parameters:
-
-    from("kafka:" + TOPIC + "?brokers=localhost:{{kafkaPort}}" +
-                 "&groupId=A" +
-                 "&sslKeystoreLocation=/path/to/keystore.jks" +
-                 "&sslKeystorePassword=changeit" +
-                 "&sslKeyPassword=changeit" +
-                 "&securityProtocol=SSL")
-            .to("mock:result");
-
-The second way is to use the `sslContextParameters` endpoint parameter:
-
-    // Configure the SSLContextParameters object
-    KeyStoreParameters ksp = new KeyStoreParameters();
-    ksp.setResource("/path/to/keystore.jks");
-    ksp.setPassword("changeit");
-    KeyManagersParameters kmp = new KeyManagersParameters();
-    kmp.setKeyStore(ksp);
-    kmp.setKeyPassword("changeit");
-    SSLContextParameters scp = new SSLContextParameters();
-    scp.setKeyManagers(kmp);
-    
-    // Bind this SSLContextParameters into the Camel registry
-    Registry registry = createCamelRegistry();
-    registry.bind("ssl", scp);
-    
-    // Configure the camel context
-    DefaultCamelContext camelContext = new DefaultCamelContext(registry);
-    camelContext.addRoutes(new RouteBuilder() {
-        @Override
-        public void configure() throws Exception {
-            from("kafka:" + TOPIC + "?brokers=localhost:{{kafkaPort}}" +
-                         // Set up the topic and broker address
-                         "&groupId=A" +
-                         // The consumer processor group ID
-                         "&sslContextParameters=#ssl" +
-                         // The security protocol
-                         "&securityProtocol=SSL)
-                         // Reference the SSL configuration
-                    .to("mock:result");
-        }
-    });
-
-# Using the Kafka idempotent repository
+## The Kafka idempotent repository
 
 The `camel-kafka` library provides a Kafka topic-based idempotent
 repository. This repository stores broadcasts all changes to idempotent
@@ -241,20 +123,20 @@ A `KafkaIdempotentRepository` has the following properties:
 <col style="width: 55%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th style="text-align: left;">Property</th>
 <th style="text-align: left;">Default</th>
 <th style="text-align: left;">Description</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>topic</code></p></td>
 <td style="text-align: left;"><p><code></code></p></td>
 <td style="text-align: left;"><p><strong>Required</strong> The name of
 the Kafka topic to use to broadcast changes. (required)</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>bootstrapServers</code></p></td>
 <td style="text-align: left;"><p><code></code></p></td>
 <td style="text-align: left;"><p><strong>Required</strong> The
@@ -264,25 +146,25 @@ and consumer. Use this as shorthand if not setting
 this component will apply sensible default configurations for the
 producer and consumer.</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>groupId</code></p></td>
 <td style="text-align: left;"><p><code></code></p></td>
 <td style="text-align: left;"><p>The groupId to assign to the idempotent
 consumer.</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>startupOnly</code></p></td>
 <td style="text-align: left;"><p><code>false</code></p></td>
 <td style="text-align: left;"><p>Whether to sync on startup only, or to
 continue syncing while Camel is running.</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>maxCacheSize</code></p></td>
 <td style="text-align: left;"><p><code>1000</code></p></td>
 <td style="text-align: left;"><p>How many of the most recently used keys
 should be stored in memory (default 1000).</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>pollDurationMs</code></p></td>
 <td style="text-align: left;"><p><code>100</code></p></td>
 <td style="text-align: left;"><p>The poll duration of the Kafka
@@ -300,7 +182,7 @@ sent on the topic, there exists a possibility that the cache cannot be
 warmed up and will operate in an inconsistent state relative to its
 peers until it catches up.</p></td>
 </tr>
-<tr>
+<tr class="odd">
 <td style="text-align: left;"><p><code>producerConfig</code></p></td>
 <td style="text-align: left;"><p><code></code></p></td>
 <td style="text-align: left;"><p>Sets the properties that will be used
@@ -308,7 +190,7 @@ by the Kafka producer that broadcasts changes. Overrides
 <code>bootstrapServers</code>, so must define the Kafka
 <code>bootstrap.servers</code> property itself</p></td>
 </tr>
-<tr>
+<tr class="even">
 <td style="text-align: left;"><p><code>consumerConfig</code></p></td>
 <td style="text-align: left;"><p><code></code></p></td>
 <td style="text-align: left;"><p>Sets the properties that will be used
@@ -323,8 +205,8 @@ The repository can be instantiated by defining the `topic` and
 `bootstrapServers`, or the `producerConfig` and `consumerConfig`
 property sets can be explicitly defined to enable features such as
 SSL/SASL. To use, this repository must be placed in the Camel registry,
-either manually or by registration as a bean in Spring/Blueprint, as it
-is `CamelContext` aware.
+either manually or by registration as a bean in Spring, as it is
+`CamelContext` aware.
 
 Sample usage is as follows:
 
@@ -408,7 +290,7 @@ Lastly, it is also possible to do so in a processor:
         .idempotentRepository("kafkaIdempotentRepository")
         .to(to);
 
-# Using manual commit with Kafka consumer
+## Manual commits with the Kafka consumer
 
 By default, the Kafka consumer will use auto commit, where the offset
 will be committed automatically in the background using a given
@@ -423,7 +305,7 @@ endpoint, for example:
     KafkaComponent kafka = new KafkaComponent();
     kafka.setAutoCommitEnable(false);
     kafka.setAllowManualCommit(true);
-    ...
+    // ...
     camelContext.addComponent("kafka", kafka);
 
 By default, it uses the `NoopCommitManager` behind the scenes. To commit
@@ -483,7 +365,7 @@ operations.
 \*Note 2: this is mostly useful with aggregation’s completion timeout
 strategies.
 
-# Pausable Consumers
+## Pausable Consumers
 
 The Kafka component supports pausable consumers. This type of consumer
 can pause consuming data based on conditions external to the component
@@ -509,7 +391,7 @@ most users should prefer using the
 [RoutePolicy](#manual::route-policy.adoc), which offers better control
 of the route.
 
-# Kafka Headers propagation
+## Kafka Headers propagation
 
 When consuming messages from Kafka, headers will be propagated to camel
 exchange headers automatically. Producing flow backed by same
@@ -541,9 +423,9 @@ and `from` routes:
 
 `myStrategy` object should be a subclass of `HeaderFilterStrategy` and
 must be placed in the Camel registry, either manually or by registration
-as a bean in Spring/Blueprint, as it is `CamelContext` aware.
+as a bean in Spring, as it is `CamelContext` aware.
 
-# Kafka Transaction
+## Kafka Transaction
 
 You need to add `transactional.id`, `enable.idempotence` and `retries`
 in `additional-properties` to enable kafka transaction with the
@@ -568,15 +450,15 @@ transaction has been committed before and there is no chance to roll
 back the changes since the kafka transaction does not support JTA/XA
 spec. There is still a risk with the data consistency.
 
-# Setting Kerberos config file
+## Setting Kerberos config file
 
-Configure the *krb5.conf* file directly through the API
+Configure the *krb5.conf* file directly through the API:
 
     static {
         KafkaComponent.setKerberosConfigLocation("path/to/config/file");
     }
 
-# Batching Consumer
+## Batching Consumer
 
 To use a Kafka batching consumer with Camel, an application has to set
 the configuration `batching` to `true`.
@@ -592,7 +474,7 @@ fill the batch, it is possible to use the `pollTimeoutMs` option to set
 a timeout for the polling. In this case, the batch may contain less
 messages than set in the `maxPollRecords`.
 
-## Automatic Commits
+### Automatic Commits
 
 By default, Camel uses automatic commits when using batch processing. In
 this case, Camel automatically commits the records after they have been
@@ -621,7 +503,7 @@ The code below provides an example of this approach:
         }).to(KafkaTestUtil.MOCK_RESULT);
     }
 
-### Handling Errors with Automatic Commits
+#### Handling Errors with Automatic Commits
 
 When using automatic commits, Camel will not commit records if there is
 a failure in processing. Because of this, there is a risk that records
@@ -721,7 +603,7 @@ and other Kafka operations are not abruptly aborted. For instance:
         // route setup ...
     }
 
-# Custom Subscription Adapters
+## Custom Subscription Adapters
 
 Applications with complex subscription logic may provide a custom bean
 to handle the subscription process. To so, it is necessary to implement
@@ -747,9 +629,9 @@ Then, it is necessary to add it as named bean instance to the registry:
 
     context.getRegistry().bind(KafkaConstants.KAFKA_SUBSCRIBE_ADAPTER, new CustomSubscribeAdapter());
 
-# Interoperability
+## Interoperability
 
-## JMS
+### JMS
 
 When interoperating Kafka and JMS, it may be necessary to coerce the JMS
 headers into their expected type.
@@ -781,6 +663,126 @@ option. For example:
     from("kafka:topic?headerDeserializer=#class:org.apache.camel.component.kafka.consumer.support.interop.JMSDeserializer")
         .to("...");
 
+# Examples
+
+## Consuming messages from Kafka
+
+Here is the minimal route you need to read messages from Kafka.
+
+    from("kafka:test?brokers=localhost:9092")
+        .log("Message received from Kafka : ${body}")
+        .log("    on the topic ${headers[kafka.TOPIC]}")
+        .log("    on the partition ${headers[kafka.PARTITION]}")
+        .log("    with the offset ${headers[kafka.OFFSET]}")
+        .log("    with the key ${headers[kafka.KEY]}")
+
+If you need to consume messages from multiple topics, you can use a
+comma separated list of topic names.
+
+    from("kafka:test,test1,test2?brokers=localhost:9092")
+        .log("Message received from Kafka : ${body}")
+        .log("    on the topic ${headers[kafka.TOPIC]}")
+        .log("    on the partition ${headers[kafka.PARTITION]}")
+        .log("    with the offset ${headers[kafka.OFFSET]}")
+        .log("    with the key ${headers[kafka.KEY]}")
+
+It’s also possible to subscribe to multiple topics giving a pattern as
+the topic name and using the `topicIsPattern` option.
+
+    from("kafka:test.*?brokers=localhost:9092&topicIsPattern=true")
+        .log("Message received from Kafka : ${body}")
+        .log("    on the topic ${headers[kafka.TOPIC]}")
+        .log("    on the partition ${headers[kafka.PARTITION]}")
+        .log("    with the offset ${headers[kafka.OFFSET]}")
+        .log("    with the key ${headers[kafka.KEY]}")
+
+When consuming messages from Kafka, you can use your own offset
+management and not delegate this management to Kafka. To keep the
+offsets, the component needs a `StateRepository` implementation such as
+`FileStateRepository`. This bean should be available in the registry.
+Here how to use it :
+
+    // Create the repository in which the Kafka offsets will be persisted
+    FileStateRepository repository = FileStateRepository.fileStateRepository(new File("/path/to/repo.dat"));
+    
+    // Bind this repository into the Camel registry
+    Registry registry = createCamelRegistry();
+    registry.bind("offsetRepo", repository);
+    
+    // Configure the camel context
+    DefaultCamelContext camelContext = new DefaultCamelContext(registry);
+    camelContext.addRoutes(new RouteBuilder() {
+        @Override
+        public void configure() throws Exception {
+            fromF("kafka:%s?brokers=localhost:{{kafkaPort}}" +
+                         // Set up the topic and broker address
+                         "&groupId=A" +
+                         // The consumer processor group ID
+                         "&autoOffsetReset=earliest" +
+                         // Ask to start from the beginning if we have unknown offset
+                         "&offsetRepository=#offsetRepo", TOPIC)
+                         // Keep the offsets in the previously configured repository
+                    .to("mock:result");
+        }
+    });
+
+## Producing messages to Kafka
+
+Here is the minimal route you need to produce messages to Kafka.
+
+    from("direct:start")
+        .setBody(constant("Message from Camel"))          // Message to send
+        .setHeader(KafkaConstants.KEY, constant("Camel")) // Key of the message
+        .to("kafka:test?brokers=localhost:9092");
+
+## SSL configuration
+
+You have two different ways to configure the SSL communication on the
+Kafka component.
+
+The first way is through the many SSL endpoint parameters:
+
+    from("kafka:" + TOPIC + "?brokers=localhost:{{kafkaPort}}" +
+                 "&groupId=A" +
+                 "&sslKeystoreLocation=/path/to/keystore.jks" +
+                 "&sslKeystorePassword=changeit" +
+                 "&sslKeyPassword=changeit" +
+                 "&securityProtocol=SSL")
+            .to("mock:result");
+
+The second way is to use the `sslContextParameters` endpoint parameter:
+
+    // Configure the SSLContextParameters object
+    KeyStoreParameters ksp = new KeyStoreParameters();
+    ksp.setResource("/path/to/keystore.jks");
+    ksp.setPassword("changeit");
+    KeyManagersParameters kmp = new KeyManagersParameters();
+    kmp.setKeyStore(ksp);
+    kmp.setKeyPassword("changeit");
+    SSLContextParameters scp = new SSLContextParameters();
+    scp.setKeyManagers(kmp);
+    
+    // Bind this SSLContextParameters into the Camel registry
+    Registry registry = createCamelRegistry();
+    registry.bind("ssl", scp);
+    
+    // Configure the camel context
+    DefaultCamelContext camelContext = new DefaultCamelContext(registry);
+    camelContext.addRoutes(new RouteBuilder() {
+        @Override
+        public void configure() throws Exception {
+            from("kafka:" + TOPIC + "?brokers=localhost:{{kafkaPort}}" +
+                         // Set up the topic and broker address
+                         "&groupId=A" +
+                         // The consumer processor group ID
+                         "&sslContextParameters=#ssl" +
+                         // The security protocol
+                         "&securityProtocol=SSL)
+                         // Reference the SSL configuration
+                    .to("mock:result");
+        }
+    });
+
 ## Component Configurations
 
   
@@ -806,9 +808,9 @@ option. For example:
 |commitTimeoutMs|The maximum time, in milliseconds, that the code will wait for a synchronous commit to complete|5000|duration|
 |consumerRequestTimeoutMs|The configuration controls the maximum amount of time the client will wait for the response of a request. If the response is not received before the timeout elapsed, the client will resend the request if necessary or fail the request if retries are exhausted.|30000|integer|
 |consumersCount|The number of consumers that connect to kafka server. Each consumer is run on a separate thread that retrieves and process the incoming data.|1|integer|
-|fetchMaxBytes|The maximum amount of data the server should return for a fetch request This is not an absolute maximum, if the first message in the first non-empty partition of the fetch is larger than this value, the message will still be returned to ensure that the consumer can make progress. The maximum message size accepted by the broker is defined via message.max.bytes (broker config) or max.message.bytes (topic config). Note that the consumer performs multiple fetches in parallel.|52428800|integer|
+|fetchMaxBytes|The maximum amount of data the server should return for a fetch request. This is not an absolute maximum, if the first message in the first non-empty partition of the fetch is larger than this value, the message will still be returned to ensure that the consumer can make progress. The maximum message size accepted by the broker is defined via message.max.bytes (broker config) or max.message.bytes (topic config). Note that the consumer performs multiple fetches in parallel.|52428800|integer|
 |fetchMinBytes|The minimum amount of data the server should return for a fetch request. If insufficient data is available, the request will wait for that much data to accumulate before answering the request.|1|integer|
-|fetchWaitMaxMs|The maximum amount of time the server will block before answering the fetch request if there isn't sufficient data to immediately satisfy fetch.min.bytes|500|integer|
+|fetchWaitMaxMs|The maximum amount of time the server will block before answering the fetch request if there isn't enough data to immediately satisfy fetch.min.bytes|500|integer|
 |groupId|A string that uniquely identifies the group of consumer processes to which this consumer belongs. By setting the same group id, multiple processes can indicate that they are all part of the same consumer group. This option is required for consumers.||string|
 |groupInstanceId|A unique identifier of the consumer instance provided by the end user. Only non-empty strings are permitted. If set, the consumer is treated as a static member, which means that only one instance with this ID is allowed in the consumer group at any time. This can be used in combination with a larger session timeout to avoid group rebalances caused by transient unavailability (e.g., process restarts). If not set, the consumer will join the group as a dynamic member, which is the traditional behavior.||string|
 |headerDeserializer|To use a custom KafkaHeaderDeserializer to deserialize kafka headers values||object|
@@ -844,7 +846,7 @@ option. For example:
 |key|The record key (or null if no key is specified). If this option has been configured then it take precedence over header KafkaConstants#KEY||string|
 |keySerializer|The serializer class for keys (defaults to the same as for messages if nothing is given).|org.apache.kafka.common.serialization.StringSerializer|string|
 |lazyStartProducer|Whether the producer should be started lazy (on the first message). By starting lazy you can use this to allow CamelContext and routes to startup in situations where a producer may otherwise fail during starting and cause the route to fail being started. By deferring this startup to be lazy then the startup failure can be handled during routing messages via Camel's routing error handlers. Beware that when the first message is processed then creating and starting the producer may take a little time and prolong the total processing time of the processing.|false|boolean|
-|lingerMs|The producer groups together any records that arrive in between request transmissions into a single, batched, request. Normally, this occurs only under load when records arrive faster than they can be sent out. However, in some circumstances, the client may want to reduce the number of requests even under a moderate load. This setting accomplishes this by adding a small amount of artificial delay. That is, rather than immediately sending out a record, the producer will wait for up to the given delay to allow other records to be sent so that they can be batched together. This can be thought of as analogous to Nagle's algorithm in TCP. This setting gives the upper bound on the delay for batching: once we get batch.size worth of records for a partition, it will be sent immediately regardless of this setting, however, if we have fewer than this many bytes accumulated for this partition, we will 'linger' for the specified time waiting for more records to show up. This setting defaults to 0 (i.e., no delay). Setting linger.ms=5, for example, would have the effect of reducing the number of requests sent but would add up to 5ms of latency to records sent in the absence of load.|0|integer|
+|lingerMs|The producer groups together any records that arrive in between request transmissions into a single, batched, request. Normally, this occurs only under load when records arrive faster than they can be sent out. However, in some circumstances, the client may want to reduce the number of requests even under a moderate load. This setting achieves this by adding a small amount of artificial delay. That is, rather than immediately sending out a record, the producer will wait for up to the given delay to allow other records to be sent so that they can be batched together. This can be thought of as analogous to Nagle's algorithm in TCP. This setting gives the upper bound on the delay for batching: once we get batch.size worth of records for a partition, it will be sent immediately regardless of this setting, however, if we have fewer than this many bytes accumulated for this partition, we will 'linger' for the specified time waiting for more records to show up. This setting defaults to 0 (i.e., no delay). Setting linger.ms=5, for example, would have the effect of reducing the number of requests sent but would add up to 5ms of latency to records sent in the absence of load.|0|integer|
 |maxBlockMs|The configuration controls how long the KafkaProducer's send(), partitionsFor(), initTransactions(), sendOffsetsToTransaction(), commitTransaction() and abortTransaction() methods will block. For send() this timeout bounds the total time waiting for both metadata fetch and buffer allocation (blocking in the user-supplied serializers or partitioner is not counted against this timeout). For partitionsFor() this time out bounds the time spent waiting for metadata if it is unavailable. The transaction-related methods always block, but may time out if the transaction coordinator could not be discovered or did not respond within the timeout.|60000|integer|
 |maxInFlightRequest|The maximum number of unacknowledged requests the client will send on a single connection before blocking. Note that if this setting is set to be greater than 1 and there are failed sends, there is a risk of message re-ordering due to retries (i.e., if retries are enabled).|5|integer|
 |maxRequestSize|The maximum size of a request. This is also effectively a cap on the maximum record size. Note that the server has its own cap on record size which may be different from this. This setting will limit the number of record batches the producer will send in a single request to avoid sending huge requests.|1048576|integer|
@@ -862,7 +864,7 @@ option. For example:
 |recordMetadata|Whether the producer should store the RecordMetadata results from sending to Kafka. The results are stored in a List containing the RecordMetadata metadata's. The list is stored on a header with the key KafkaConstants#KAFKA\_RECORDMETA|true|boolean|
 |requestRequiredAcks|The number of acknowledgments the producer requires the leader to have received before considering a request complete. This controls the durability of records that are sent. The following settings are allowed: acks=0 If set to zero, then the producer will not wait for any acknowledgment from the server at all. The record will be immediately added to the socket buffer and considered sent. No guarantee can be made that the server has received the record in this case, and the retry configuration will not take effect (as the client won't generally know of any failures). The offset given back for each record will always be set to -1. acks=1 This will mean the leader will write the record to its local log but will respond without awaiting full acknowledgment from all followers. In this case should the leader fail immediately after acknowledging the record, but before the followers have replicated it, then the record will be lost. acks=all This means the leader will wait for the full set of in-sync replicas to acknowledge the record. This guarantees that the record will not be lost as long as at least one in-sync replica remains alive. This is the strongest available guarantee. This is equivalent to the acks=-1 setting. Note that enabling idempotence requires this config value to be 'all'. If conflicting configurations are set and idempotence is not explicitly enabled, idempotence is disabled.|all|string|
 |requestTimeoutMs|The amount of time the broker will wait trying to meet the request.required.acks requirement before sending back an error to the client.|30000|integer|
-|retries|Setting a value greater than zero will cause the client to resend any record that has failed to be sent due to a potentially transient error. Note that this retry is no different from if the client re-sending the record upon receiving the error. Produce requests will be failed before the number of retries has been exhausted if the timeout configured by delivery.timeout.ms expires first before successful acknowledgement. Users should generally prefer to leave this config unset and instead use delivery.timeout.ms to control retry behavior. Enabling idempotence requires this config value to be greater than 0. If conflicting configurations are set and idempotence is not explicitly enabled, idempotence is disabled. Allowing retries while setting enable.idempotence to false and max.in.flight.requests.per.connection to 1 will potentially change the ordering of records because if two batches are sent to a single partition, and the first fails and is retried but the second succeeds, then the records in the second batch may appear first.||integer|
+|retries|Setting a value greater than zero will cause the client to resend any record that has failed to be sent due to a potentially transient error. Note that this retry is no different from if the client re-sending the record upon receiving the error. Produce requests will be failed before the number of retries has been exhausted if the timeout configured by delivery.timeout.ms expires first before successful acknowledgement. Users should generally prefer to leave this config unset and instead use delivery.timeout.ms to control retry behavior. Enabling idempotence requires this config value to be greater than 0. If conflicting configurations are set and idempotence is not explicitly enabled, idempotence is disabled. Allowing retries while setting enable.idempotence to false and max.in.flight.requests.per.connection to 1 will potentially change the ordering of records, because if two batches are sent to a single partition, and the first fails and is retried but the second succeeds; then the records in the second batch may appear first.||integer|
 |sendBufferBytes|Socket write buffer size|131072|integer|
 |useIterator|Sets whether sending to kafka should send the message body as a single record, or use a java.util.Iterator to send multiple records to kafka (if the message body can be iterated).|true|boolean|
 |valueSerializer|The serializer class for messages.|org.apache.kafka.common.serialization.StringSerializer|string|
@@ -927,9 +929,9 @@ option. For example:
 |commitTimeoutMs|The maximum time, in milliseconds, that the code will wait for a synchronous commit to complete|5000|duration|
 |consumerRequestTimeoutMs|The configuration controls the maximum amount of time the client will wait for the response of a request. If the response is not received before the timeout elapsed, the client will resend the request if necessary or fail the request if retries are exhausted.|30000|integer|
 |consumersCount|The number of consumers that connect to kafka server. Each consumer is run on a separate thread that retrieves and process the incoming data.|1|integer|
-|fetchMaxBytes|The maximum amount of data the server should return for a fetch request This is not an absolute maximum, if the first message in the first non-empty partition of the fetch is larger than this value, the message will still be returned to ensure that the consumer can make progress. The maximum message size accepted by the broker is defined via message.max.bytes (broker config) or max.message.bytes (topic config). Note that the consumer performs multiple fetches in parallel.|52428800|integer|
+|fetchMaxBytes|The maximum amount of data the server should return for a fetch request. This is not an absolute maximum, if the first message in the first non-empty partition of the fetch is larger than this value, the message will still be returned to ensure that the consumer can make progress. The maximum message size accepted by the broker is defined via message.max.bytes (broker config) or max.message.bytes (topic config). Note that the consumer performs multiple fetches in parallel.|52428800|integer|
 |fetchMinBytes|The minimum amount of data the server should return for a fetch request. If insufficient data is available, the request will wait for that much data to accumulate before answering the request.|1|integer|
-|fetchWaitMaxMs|The maximum amount of time the server will block before answering the fetch request if there isn't sufficient data to immediately satisfy fetch.min.bytes|500|integer|
+|fetchWaitMaxMs|The maximum amount of time the server will block before answering the fetch request if there isn't enough data to immediately satisfy fetch.min.bytes|500|integer|
 |groupId|A string that uniquely identifies the group of consumer processes to which this consumer belongs. By setting the same group id, multiple processes can indicate that they are all part of the same consumer group. This option is required for consumers.||string|
 |groupInstanceId|A unique identifier of the consumer instance provided by the end user. Only non-empty strings are permitted. If set, the consumer is treated as a static member, which means that only one instance with this ID is allowed in the consumer group at any time. This can be used in combination with a larger session timeout to avoid group rebalances caused by transient unavailability (e.g., process restarts). If not set, the consumer will join the group as a dynamic member, which is the traditional behavior.||string|
 |headerDeserializer|To use a custom KafkaHeaderDeserializer to deserialize kafka headers values||object|
@@ -962,7 +964,7 @@ option. For example:
 |headerSerializer|To use a custom KafkaHeaderSerializer to serialize kafka headers values||object|
 |key|The record key (or null if no key is specified). If this option has been configured then it take precedence over header KafkaConstants#KEY||string|
 |keySerializer|The serializer class for keys (defaults to the same as for messages if nothing is given).|org.apache.kafka.common.serialization.StringSerializer|string|
-|lingerMs|The producer groups together any records that arrive in between request transmissions into a single, batched, request. Normally, this occurs only under load when records arrive faster than they can be sent out. However, in some circumstances, the client may want to reduce the number of requests even under a moderate load. This setting accomplishes this by adding a small amount of artificial delay. That is, rather than immediately sending out a record, the producer will wait for up to the given delay to allow other records to be sent so that they can be batched together. This can be thought of as analogous to Nagle's algorithm in TCP. This setting gives the upper bound on the delay for batching: once we get batch.size worth of records for a partition, it will be sent immediately regardless of this setting, however, if we have fewer than this many bytes accumulated for this partition, we will 'linger' for the specified time waiting for more records to show up. This setting defaults to 0 (i.e., no delay). Setting linger.ms=5, for example, would have the effect of reducing the number of requests sent but would add up to 5ms of latency to records sent in the absence of load.|0|integer|
+|lingerMs|The producer groups together any records that arrive in between request transmissions into a single, batched, request. Normally, this occurs only under load when records arrive faster than they can be sent out. However, in some circumstances, the client may want to reduce the number of requests even under a moderate load. This setting achieves this by adding a small amount of artificial delay. That is, rather than immediately sending out a record, the producer will wait for up to the given delay to allow other records to be sent so that they can be batched together. This can be thought of as analogous to Nagle's algorithm in TCP. This setting gives the upper bound on the delay for batching: once we get batch.size worth of records for a partition, it will be sent immediately regardless of this setting, however, if we have fewer than this many bytes accumulated for this partition, we will 'linger' for the specified time waiting for more records to show up. This setting defaults to 0 (i.e., no delay). Setting linger.ms=5, for example, would have the effect of reducing the number of requests sent but would add up to 5ms of latency to records sent in the absence of load.|0|integer|
 |maxBlockMs|The configuration controls how long the KafkaProducer's send(), partitionsFor(), initTransactions(), sendOffsetsToTransaction(), commitTransaction() and abortTransaction() methods will block. For send() this timeout bounds the total time waiting for both metadata fetch and buffer allocation (blocking in the user-supplied serializers or partitioner is not counted against this timeout). For partitionsFor() this time out bounds the time spent waiting for metadata if it is unavailable. The transaction-related methods always block, but may time out if the transaction coordinator could not be discovered or did not respond within the timeout.|60000|integer|
 |maxInFlightRequest|The maximum number of unacknowledged requests the client will send on a single connection before blocking. Note that if this setting is set to be greater than 1 and there are failed sends, there is a risk of message re-ordering due to retries (i.e., if retries are enabled).|5|integer|
 |maxRequestSize|The maximum size of a request. This is also effectively a cap on the maximum record size. Note that the server has its own cap on record size which may be different from this. This setting will limit the number of record batches the producer will send in a single request to avoid sending huge requests.|1048576|integer|
@@ -980,7 +982,7 @@ option. For example:
 |recordMetadata|Whether the producer should store the RecordMetadata results from sending to Kafka. The results are stored in a List containing the RecordMetadata metadata's. The list is stored on a header with the key KafkaConstants#KAFKA\_RECORDMETA|true|boolean|
 |requestRequiredAcks|The number of acknowledgments the producer requires the leader to have received before considering a request complete. This controls the durability of records that are sent. The following settings are allowed: acks=0 If set to zero, then the producer will not wait for any acknowledgment from the server at all. The record will be immediately added to the socket buffer and considered sent. No guarantee can be made that the server has received the record in this case, and the retry configuration will not take effect (as the client won't generally know of any failures). The offset given back for each record will always be set to -1. acks=1 This will mean the leader will write the record to its local log but will respond without awaiting full acknowledgment from all followers. In this case should the leader fail immediately after acknowledging the record, but before the followers have replicated it, then the record will be lost. acks=all This means the leader will wait for the full set of in-sync replicas to acknowledge the record. This guarantees that the record will not be lost as long as at least one in-sync replica remains alive. This is the strongest available guarantee. This is equivalent to the acks=-1 setting. Note that enabling idempotence requires this config value to be 'all'. If conflicting configurations are set and idempotence is not explicitly enabled, idempotence is disabled.|all|string|
 |requestTimeoutMs|The amount of time the broker will wait trying to meet the request.required.acks requirement before sending back an error to the client.|30000|integer|
-|retries|Setting a value greater than zero will cause the client to resend any record that has failed to be sent due to a potentially transient error. Note that this retry is no different from if the client re-sending the record upon receiving the error. Produce requests will be failed before the number of retries has been exhausted if the timeout configured by delivery.timeout.ms expires first before successful acknowledgement. Users should generally prefer to leave this config unset and instead use delivery.timeout.ms to control retry behavior. Enabling idempotence requires this config value to be greater than 0. If conflicting configurations are set and idempotence is not explicitly enabled, idempotence is disabled. Allowing retries while setting enable.idempotence to false and max.in.flight.requests.per.connection to 1 will potentially change the ordering of records because if two batches are sent to a single partition, and the first fails and is retried but the second succeeds, then the records in the second batch may appear first.||integer|
+|retries|Setting a value greater than zero will cause the client to resend any record that has failed to be sent due to a potentially transient error. Note that this retry is no different from if the client re-sending the record upon receiving the error. Produce requests will be failed before the number of retries has been exhausted if the timeout configured by delivery.timeout.ms expires first before successful acknowledgement. Users should generally prefer to leave this config unset and instead use delivery.timeout.ms to control retry behavior. Enabling idempotence requires this config value to be greater than 0. If conflicting configurations are set and idempotence is not explicitly enabled, idempotence is disabled. Allowing retries while setting enable.idempotence to false and max.in.flight.requests.per.connection to 1 will potentially change the ordering of records, because if two batches are sent to a single partition, and the first fails and is retried but the second succeeds; then the records in the second batch may appear first.||integer|
 |sendBufferBytes|Socket write buffer size|131072|integer|
 |useIterator|Sets whether sending to kafka should send the message body as a single record, or use a java.util.Iterator to send multiple records to kafka (if the message body can be iterated).|true|boolean|
 |valueSerializer|The serializer class for messages.|org.apache.kafka.common.serialization.StringSerializer|string|

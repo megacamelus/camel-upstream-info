@@ -4,8 +4,8 @@
 
 **Only producer is supported**
 
-The Pionecone Component provides support for interacting with the
-[Milvus Vector Database](https://pinecone.io/).
+The Pinecone Component provides support for interacting with the
+[Pinecone Vector Database](https://pinecone.io/).
 
 # URI format
 

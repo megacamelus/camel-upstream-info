@@ -26,7 +26,7 @@ Where `specName` is the classpath-local URI of the specification to
 invoke; or the complete URL of the remote specification (e.g.:
 `\file://folder/myfile.vm`).
 
-# Samples
+# Examples
 
 For example, you could use something like
 

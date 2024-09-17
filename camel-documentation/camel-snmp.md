@@ -30,7 +30,9 @@ It can also be used to request information using GET method.
 
 The response body type is `org.apache.camel.component.snmp.SnmpMessage`.
 
-# The result of a poll
+# Usage
+
+## The result of a poll
 
 Given the situation, that I poll for the following OIDs:
 
