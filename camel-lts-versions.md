@@ -2,6 +2,9 @@
 
 ## Apache Camel 4
 
+
+- Apache Camel 4.8.x
+-- End of maintenance: September 13, 2025.
 - Apache Camel 4.4.x
 -- End of maintenance: February 12, 2025.
 - Apache Camel 4.0.x
